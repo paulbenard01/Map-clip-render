@@ -29,7 +29,8 @@ if not exist "node_modules\maplibre-gl\package.json" (
   echo   First run - setting things up. This takes a few minutes,
   echo   and only happens once.
   echo.
-  call npm install
+  REM --no-audit: see the note in Update.bat and the README.
+  call npm install --no-audit
   if errorlevel 1 (
     echo.
     echo   Setup failed while installing dependencies.

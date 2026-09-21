@@ -38,6 +38,23 @@ Add your own by copying a block in `styles/presets.json` and giving it a
 new key; the builder's style picker and `--style <your-key>` both pick it
 up automatically.
 
+## Keeping it up to date
+
+Clone the repository once, rather than downloading a ZIP, and updating becomes
+a single step instead of a re-download:
+
+```
+git clone https://github.com/paulbenard01/Map-clip-render.git
+cd Map-clip-render
+```
+
+After that, **double-click `Update.bat`** (Windows) or run `./update.sh`
+(Mac/Linux) whenever you want the latest changes. It pulls, refreshes
+dependencies, and tells you when it's done.
+
+Your own work is never touched by an update — scenes, photos and renders live
+in `scenes/`, `assets/` and `output/`, which aren't part of what gets pulled.
+
 ## Setup (one time)
 
 You need [Node.js](https://nodejs.org) 18 or newer and
@@ -347,6 +364,8 @@ ever extend this to use MapLibre popups directly.
 ```
 Start Builder.bat     double-click launcher (Windows)
 start-builder.sh      the same, for Mac and Linux
+Update.bat            double-click updater (Windows)
+update.sh             the same, for Mac and Linux
 builder.html          the editor page
 builder/              its modules (store, canvas, timeline, inspector, tools)
 lib/scene-engine.js   camera/fade/route/duration math — pure functions
@@ -379,6 +398,9 @@ Run `npm test` after touching the engine. Rendering
 - **A render looks wrong** — use `--draft --keep-frames` to render fast and
   inspect the individual PNG frames it leaves behind (path is printed at
   the end) before waiting on a full-quality render.
+- **Update.bat says "this folder is a downloaded copy"** — you have a ZIP
+  extraction rather than a clone. See "Keeping it up to date" above; cloning
+  once fixes it permanently.
 - **The launcher window closes instantly** — that means it failed before it
   could print anything. Open PowerShell in the project folder and run
   `node server.js` directly to see the error.

@@ -24,7 +24,8 @@ if [ ! -f node_modules/maplibre-gl/package.json ]; then
   echo "  First run - setting things up. This takes a few minutes,"
   echo "  and only happens once."
   echo
-  npm install || { echo; echo "  Setup failed while installing dependencies."; exit 1; }
+  # --no-audit: see the note in update.sh and the README.
+  npm install --no-audit || { echo; echo "  Setup failed while installing dependencies."; exit 1; }
   echo
   echo "  Downloading the headless browser used to capture frames..."
   npx playwright install chromium || { echo; echo "  Setup failed while downloading the browser."; exit 1; }
