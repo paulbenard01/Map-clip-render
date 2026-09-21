@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Heritle Scene Builder</title>
+<link rel="stylesheet" href="/node_modules/maplibre-gl/dist/maplibre-gl.css" />
+<link rel="stylesheet" href="/styles/overlay.css" />
+<link rel="stylesheet" href="/styles/builder.css" />
+<!--
+  Classic scripts, so the shared engine and view are on window before the
+  ES modules (which are deferred) run. Same files the render page loads —
+  the preview and the export are painted by one implementation.
+-->
+<script src="/node_modules/maplibre-gl/dist/maplibre-gl.js"></script>
+<script src="/lib/scene-engine.js"></script>
+<script src="/lib/scene-view.js"></script>
+</head>
+<body>
+
+<header class="toolbar">
+  <div class="tb-group tb-project">
+    <span class="brand">Heritle</span>
+    <input id="projectName" type="text" value="untitled" title="Project name — used for the saved file and the render output" />
+    <span id="dirtyDot" class="dirty-dot" title="Unsaved changes"></span>
+  </div>
+
+  <div class="tb-group">
+    <label>Style <select id="stylePicker"></select></label>
+    <label>Ratio
+      <select id="aspectPicker">
+        <option value="9:16">9:16</option>
+        <option value="16:9">16:9</option>
+      </select>
+    </label>
+    <label>fps <input id="fpsInput" type="number" min="1" max="60" step="1" value="30" /></label>
+    <label>Duration <input id="durationInput" type="number" min="1" step="0.5" value="12" /></label>
+  </div>
+
+  <div class="tb-group">
+    <button id="undoBtn" class="btn" type="button" title="Undo (Ctrl/Cmd+Z)">Undo</button>
+    <button id="redoBtn" class="btn" type="button" title="Redo (Ctrl/Cmd+Shift+Z)">Redo</button>
+  </div>
+
+  <div class="tb-group tb-right">
+    <select id="templatePicker" title="Start from a template">
+      <option value="">Template…</option>
+    </select>
+    <button id="copyPromptBtn" class="btn" type="button" title="Copy the scene-writing prompt for a Claude chat">Copy prompt</button>
+    <button id="importBtn" class="btn" type="button">Import</button>
+    <button id="exportBtn" class="btn" type="button">Export JSON</button>
+    <button id="saveBtn" class="btn" type="button" title="Save into scenes/ (Ctrl/Cmd+S)">Save</button>
+    <button id="renderDraft" class="btn" type="button" title="Half resolution, 12fps — quick to check timing">Quick render</button>
+    <button id="renderFull" class="btn primary" type="button">Render</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="canvas-area">
+    <div class="canvas-tools">
+      <button class="btn tool" data-tool="pin" type="button" title="Click the map to drop a photo pin">Pin</button>
+      <button class="btn tool" data-tool="route" type="button" title="Click a start then an end point">Route</button>
+      <button class="btn tool" data-tool="radiate" type="button" title="One origin, then several destinations, staggered">Radiate</button>
+      <button class="btn tool" data-tool="camera" type="button" title="Add a camera keyframe at the playhead">Keyframe</button>
+      <span class="sep"></span>
+      <button id="addOrbit" class="btn" type="button" title="Adds a second keyframe 4s later, rotated 45°">Add orbit</button>
+      <button id="addTitle" class="btn" type="button">Title</button>
+      <button id="addHighlight" class="btn" type="button" title="Highlight a country for a stretch of the clip">Country</button>
+      <span class="sep"></span>
+      <label class="inline-check" title="Let the timeline drive the camera. Turn off to look around without moving keyframes.">
+        <input id="followCam" type="checkbox" checked /> Follow camera
+      </label>
+      <span id="toolStatus" class="tool-status"></span>
+      <span id="coordReadout" class="coord-readout mono"></span>
+    </div>
+
+    <div id="canvasWrap" class="canvas-wrap">
+      <!-- Letterboxed to the scene's aspect ratio: compose in the same shape you render. -->
+      <div id="canvasFrame" class="canvas-frame">
+        <div id="map"></div>
+        <div id="overlay">
+          <svg id="routeSvg"></svg>
+        </div>
+        <div id="handles" class="handle-layer"></div>
+      </div>
+    </div>
+  </section>
+
+  <aside id="inspector" class="inspector"></aside>
+</main>
+
+<section id="timeline" class="timeline">
+  <div class="tl-transport">
+    <button id="playBtn" class="btn" type="button" title="Play / pause (Space)">Play</button>
+    <button id="stopBtn" class="btn" type="button">Stop</button>
+    <span id="timeReadout" class="mono">0.00s</span>
+  </div>
+  <div class="tl-body">
+    <div class="tl-track-names">
+      <div class="tl-name">Camera</div>
+      <div class="tl-name">Pins</div>
+      <div class="tl-name">Routes</div>
+      <div class="tl-name">Countries</div>
+      <div class="tl-name">Titles</div>
+    </div>
+    <div class="tl-scroll">
+      <div id="tlRuler" class="tl-ruler"></div>
+      <div id="tlLanes" class="tl-lanes"></div>
+      <div id="tlPlayhead" class="tl-playhead"></div>
+    </div>
+  </div>
+</section>
+
+<div id="renderPanel" class="render-panel"></div>
+<div id="flash" class="flash"></div>
+
+<div id="importModal" class="modal">
+  <div class="modal-panel">
+    <div class="modal-head">
+      <h2>Import a scene</h2>
+      <button id="importClose" class="btn" type="button">Close</button>
+    </div>
+
+    <div class="import-cols">
+      <div>
+        <h3>From scenes/</h3>
+        <ul id="sceneList" class="scene-list"></ul>
+      </div>
+      <div>
+        <h3>From a file</h3>
+        <input id="importFile" type="file" accept="application/json,.json" />
+
+        <h3>Paste JSON</h3>
+        <p class="muted">
+          Paste a scene written elsewhere — for instance by handing a Claude chat
+          the prompt from <strong>Copy prompt</strong> along with a description of the clip.
+        </p>
+        <textarea id="importText" rows="10" placeholder='{ "schemaVersion": 2, "camera": [ ... ] }'></textarea>
+        <button id="importPasteBtn" class="btn primary" type="button">Load pasted JSON</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/builder/main.js"></script>
+</body>
+</html>
