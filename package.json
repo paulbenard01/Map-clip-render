@@ -6,7 +6,8 @@
   "scripts": {
     "build-basemap": "node lib/build-basemap.js",
     "builder": "node server.js",
-    "render": "node render.js"
+    "render": "node render.js",
+    "test": "node test/scene-engine.test.js && node test/image-search.test.js"
   },
   "dependencies": {
     "maplibre-gl": "4.7.1",
