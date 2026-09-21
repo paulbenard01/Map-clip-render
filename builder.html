@@ -142,6 +142,41 @@
   </div>
 </div>
 
+<script>
+/*
+ * Last-resort guard.
+ *
+ * If one of the builder's modules fails to load, that happens before any of
+ * its own code runs, so its error handling never gets a chance — the page
+ * just sits there blank. This catches that case and says something useful
+ * instead of leaving you staring at an empty window.
+ */
+(function () {
+  window.__builderBooted = false;
+
+  window.addEventListener("error", function (e) {
+    if (window.__builderBooted) return;
+    var src = (e.target && (e.target.src || e.target.href)) || "";
+    if (src) showFailure("Couldn't load " + src.replace(location.origin, "") +
+      "\n\nThe file may be missing from this copy of the project. Try Update.bat, " +
+      "or re-clone the repository.");
+  }, true);
+
+  setTimeout(function () {
+    if (!window.__builderBooted) {
+      showFailure("The builder didn't finish starting.\n\nCheck the console window that " +
+        "launched it for errors, and your browser's developer console (F12) for more detail.");
+    }
+  }, 12000);
+
+  function showFailure(message) {
+    if (document.querySelector(".boot-error")) return;
+    document.body.innerHTML =
+      '<div class="boot-error"><h1>The builder couldn\'t start</h1><pre></pre></div>';
+    document.querySelector(".boot-error pre").textContent = message;
+  }
+})();
+</script>
 <script type="module" src="/builder/main.js"></script>
 </body>
 </html>

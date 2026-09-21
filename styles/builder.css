@@ -362,4 +362,17 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 }
 .flash.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-.boot-error { padding: 24px; color: #ff8b86; font-family: ui-monospace, Menlo, monospace; white-space: pre-wrap; }
+.boot-error { padding: 32px; max-width: 760px; }
+.boot-error h1 { font-size: 18px; margin-bottom: 14px; color: #ff8b86; }
+.boot-error pre {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid #ff8b86;
+  border-radius: var(--radius);
+  padding: 14px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  margin-bottom: 14px;
+}
+.boot-error p { color: var(--muted); }

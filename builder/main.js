@@ -11,6 +11,7 @@ import * as Tools from "./tools.js";
 import * as RenderClient from "./render-client.js";
 import { TEMPLATES } from "./templates.js";
 import { uploadFile } from "./inspector.js";
+import { fetchJson } from "./net.js";
 
 const Engine = window.SceneEngine;
 
@@ -18,7 +19,7 @@ const $ = (sel) => document.querySelector(sel);
 let presets = null;
 
 async function boot() {
-  presets = await fetch("/styles/presets.json").then((r) => r.json());
+  presets = await fetchJson("/styles/presets.json");
 
   const elements = {
     map: $("#map"),
@@ -46,6 +47,9 @@ async function boot() {
   Inspector.init(elements, { presets });
   Tools.init(elements);
   RenderClient.init(elements);
+
+  // Tells the inline guard in builder.html that startup got this far.
+  window.__builderBooted = true;
 
   wireToolbar();
   wirePlayback();
@@ -448,5 +452,10 @@ function flash(message) {
 function round(n, p) { const m = Math.pow(10, p); return Math.round(n * m) / m; }
 
 boot().catch((err) => {
-  document.body.innerHTML = `<pre class="boot-error">Builder failed to start:\n\n${err.stack || err}</pre>`;
+  document.body.innerHTML =
+    `<div class="boot-error">` +
+    `<h1>The builder couldn't start</h1>` +
+    `<pre>${String(err.message || err).replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]))}</pre>` +
+    `<p>If this persists, the console window that launched the builder may have more detail.</p>` +
+    `</div>`;
 });

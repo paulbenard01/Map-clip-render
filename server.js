@@ -22,7 +22,7 @@ const crypto = require("crypto");
 const { spawn } = require("child_process");
 
 const { serveStatic } = require("./lib/static-server.js");
-const { renderScene } = require("./lib/renderer.js");
+const { renderScene, ensureBasemap } = require("./lib/renderer.js");
 const Engine = require("./lib/scene-engine.js");
 const images = require("./lib/image-search.js");
 
@@ -322,6 +322,12 @@ function openBrowser(url) {
     /* no browser opener available — the printed URL still works */
   }
 }
+
+// The basemap in data/ is generated from world-atlas rather than committed,
+// so a fresh clone doesn't have it yet. Build it before accepting requests:
+// otherwise the builder's first fetch of /data/land.geo.json 404s, and the
+// page fails on a JSON parse error that says nothing about the real cause.
+ensureBasemap((msg) => console.log(msg));
 
 server.listen(PORT, "127.0.0.1", () => {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });

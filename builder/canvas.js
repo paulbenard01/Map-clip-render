@@ -9,6 +9,7 @@
  */
 
 import * as Store from "./store.js";
+import { fetchJson } from "./net.js";
 
 const Engine = window.SceneEngine;
 const View = window.SceneView;
@@ -68,9 +69,9 @@ export async function init(els, options) {
   await new Promise((resolve) => map.on("load", resolve));
 
   basemapData = await Promise.all([
-    fetch("/data/land.geo.json").then((r) => r.json()),
-    fetch("/data/countries.geo.json").then((r) => r.json()),
-    fetch("/data/graticule.geo.json").then((r) => r.json()),
+    fetchJson("/data/land.geo.json"),
+    fetchJson("/data/countries.geo.json"),
+    fetchJson("/data/graticule.geo.json"),
   ]).then(([land, countries, graticule]) => ({ land, countries, graticule }));
 
   View.installBasemap(map, preset, basemapData);
