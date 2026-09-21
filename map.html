@@ -4,58 +4,15 @@
 <meta charset="utf-8" />
 <title>Heritle Map Renderer</title>
 <link rel="stylesheet" href="/node_modules/maplibre-gl/dist/maplibre-gl.css" />
+<link rel="stylesheet" href="/styles/overlay.css" />
 <script src="/node_modules/maplibre-gl/dist/maplibre-gl.js"></script>
+<script src="/lib/scene-engine.js"></script>
+<script src="/lib/scene-view.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
   #map { position: absolute; inset: 0; }
   .maplibregl-ctrl-attrib, .maplibregl-ctrl-logo, .maplibregl-control-container { display: none !important; }
-
-  /* ---- overlay layers, drawn on top of the WebGL canvas ---- */
-  #overlay { position: absolute; inset: 0; pointer-events: none; font-family: 'Helvetica Neue', Arial, sans-serif; }
-  #routeSvg { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-  .pin { position: absolute; transform: translate(-50%, -50%); opacity: 0; transition: none; text-align: center; }
-  .pin-photo {
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    box-sizing: border-box;
-  }
-  .pin-label {
-    margin-top: 8px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-    white-space: nowrap;
-  }
-
-  .title-card {
-    position: absolute;
-    padding: 14px 22px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    opacity: 0;
-  }
-  .title-card.pos-bottom-left { left: 5%; bottom: 8%; }
-  .title-card.pos-bottom-right { right: 5%; bottom: 8%; text-align: right; }
-  .title-card.pos-top-left { left: 5%; top: 8%; }
-  .title-card.pos-top-right { right: 5%; top: 8%; text-align: right; }
-  .title-card.pos-center { left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; }
-
-  .route-label {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-size: 15px;
-    padding: 4px 10px;
-    opacity: 0;
-    white-space: nowrap;
-  }
 </style>
 </head>
 <body>
@@ -65,108 +22,42 @@
 </div>
 
 <script>
+/**
+ * The page render.js screenshots, one frame at a time.
+ *
+ * Everything about *how* a scene looks lives in lib/scene-view.js and
+ * lib/scene-engine.js, shared with the builder. This file is only the
+ * headless harness around them: load, wait, expose __setFrame.
+ */
 (function () {
   const params = new URLSearchParams(location.search);
   const scenePath = params.get("scene");
   const styleName = params.get("style") || "dark-navy";
 
-  const overlay = document.getElementById("overlay");
-  const routeSvg = document.getElementById("routeSvg");
-
-  let PRESET, SCENE;
-  let pinEls = {};   // id -> {el, img, label}
-  let titleEls = {}; // id -> el
-  let routePaths = {}; // id -> {path, labelEl}
-
-  // -------------------- easing --------------------
-  function easeInOutCubic(x) {
-    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
-  }
-
-  // -------------------- camera interpolation --------------------
-  // Simple linear lerp on lng/lat/zoom/bearing/pitch between the two
-  // surrounding keyframes. Good enough for continental/country-level b-roll;
-  // does not handle antimeridian wraparound (a v1 limitation, see README).
-  function cameraAt(t) {
-    const kfs = SCENE.camera;
-    if (!kfs || kfs.length === 0) return { center: [0, 20], zoom: 2, bearing: 0, pitch: 0 };
-    if (t <= kfs[0].t) return normKf(kfs[0]);
-    if (t >= kfs[kfs.length - 1].t) return normKf(kfs[kfs.length - 1]);
-    for (let i = 0; i < kfs.length - 1; i++) {
-      const a = kfs[i], b = kfs[i + 1];
-      if (t >= a.t && t <= b.t) {
-        const span = b.t - a.t || 1;
-        const raw = (t - a.t) / span;
-        const f = easeInOutCubic(raw);
-        const A = normKf(a), B = normKf(b);
-        return {
-          center: [
-            A.center[0] + (B.center[0] - A.center[0]) * f,
-            A.center[1] + (B.center[1] - A.center[1]) * f,
-          ],
-          zoom: A.zoom + (B.zoom - A.zoom) * f,
-          bearing: A.bearing + (B.bearing - A.bearing) * f,
-          pitch: A.pitch + (B.pitch - A.pitch) * f,
-        };
-      }
-    }
-    return normKf(kfs[kfs.length - 1]);
-  }
-  function normKf(k) {
-    return {
-      center: k.center,
-      zoom: k.zoom != null ? k.zoom : 2,
-      bearing: k.bearing != null ? k.bearing : 0,
-      pitch: k.pitch != null ? k.pitch : 0,
-    };
-  }
-
-  // -------------------- fade helper --------------------
-  // Returns 0..1 opacity for an element active between `at` and `until`,
-  // with a short automatic fade in/out unless the item sets fade:0.
-  function fadeOpacity(t, at, until, fadeSec) {
-    if (fadeSec == null) fadeSec = 0.45;
-    if (until == null) until = Infinity;
-    if (t < at || t > until) return 0;
-    const inT = Math.min(1, (t - at) / fadeSec);
-    const outT = until === Infinity ? 1 : Math.min(1, (until - t) / fadeSec);
-    return Math.max(0, Math.min(inT, outT));
-  }
-
-  // -------------------- great-circle-ish route sampling --------------------
-  function sampleRoute(from, to, n) {
-    const pts = [];
-    for (let i = 0; i <= n; i++) {
-      const f = i / n;
-      // simple lerp in lng/lat with a slight arc lift is enough for
-      // regional/continental hops used in this kind of explainer video.
-      pts.push([from[0] + (to[0] - from[0]) * f, from[1] + (to[1] - from[1]) * f]);
-    }
-    return pts;
-  }
+  let stage;
 
   async function main() {
-    const [presetsResp, sceneResp] = await Promise.all([
-      fetch("/styles/presets.json"),
-      fetch(scenePath),
+    const [presets, scene] = await Promise.all([
+      fetch("/styles/presets.json").then((r) => r.json()),
+      fetch(scenePath).then((r) => r.json()),
     ]);
-    const presets = await presetsResp.json();
-    SCENE = await sceneResp.json();
-    PRESET = presets[styleName] || presets["dark-navy"];
+    const preset = presets[styleName] || presets["dark-navy"];
+    const normalized = SceneEngine.normalizeScene(scene);
 
-    document.body.style.background = PRESET.background;
+    document.body.style.background = preset.background;
 
+    const first = SceneEngine.cameraAt(normalized, 0);
     const map = new maplibregl.Map({
       container: "map",
       style: {
         version: 8,
         sources: {},
-        layers: [{ id: "bg", type: "background", paint: { "background-color": PRESET.background } }],
+        layers: [{ id: "bg", type: "background", paint: { "background-color": preset.background } }],
       },
-      center: (SCENE.camera && SCENE.camera[0] && SCENE.camera[0].center) || [0, 20],
-      zoom: (SCENE.camera && SCENE.camera[0] && SCENE.camera[0].zoom) || 2,
-      bearing: (SCENE.camera && SCENE.camera[0] && SCENE.camera[0].bearing) || 0,
-      pitch: (SCENE.camera && SCENE.camera[0] && SCENE.camera[0].pitch) || 0,
+      center: first.center,
+      zoom: first.zoom,
+      bearing: first.bearing,
+      pitch: first.pitch,
       interactive: false,
       attributionControl: false,
       fadeDuration: 0,
@@ -182,168 +73,50 @@
       fetch("/data/graticule.geo.json").then((r) => r.json()),
     ]);
 
-    map.addSource("graticule", { type: "geojson", data: graticule });
-    map.addLayer({
-      id: "graticule",
-      type: "line",
-      source: "graticule",
-      paint: { "line-color": PRESET.graticule, "line-width": 1 },
+    SceneView.installBasemap(map, preset, { land, countries, graticule });
+
+    stage = SceneView.createStage({
+      map,
+      overlay: document.getElementById("overlay"),
+      routeSvg: document.getElementById("routeSvg"),
+      preset,
+      scene: normalized,
     });
 
-    map.addSource("land", { type: "geojson", data: land });
-    map.addLayer({
-      id: "land-fill",
-      type: "fill",
-      source: "land",
-      paint: { "fill-color": PRESET.land },
-    });
+    // Paint frame 0 before declaring ready, then wait for the map to settle.
+    //
+    // Both waits matter. Pin photos need to be decoded or the first frames
+    // render with missing images; the country polygons need a rasterisation
+    // pass or the opening frames come out as bare land silhouettes with no
+    // country fills or highlights at all. (That second one was a real bug in
+    // v1 — the first ~0.25s of every clip was missing the country layer.)
+    stage.setFrame(0);
 
-    map.addSource("countries", { type: "geojson", data: countries });
-    const focus = SCENE.focusCountry || null;
-    map.addLayer({
-      id: "countries-fill",
-      type: "fill",
-      source: "countries",
-      paint: {
-        "fill-color": focus
-          ? ["case", ["==", ["get", "id"], focus], PRESET.landFocus, PRESET.land]
-          : PRESET.land,
-      },
-    });
-    map.addLayer({
-      id: "countries-border",
-      type: "line",
-      source: "countries",
-      paint: { "line-color": PRESET.border, "line-width": PRESET.borderWidth || 0.6 },
-    });
+    await Promise.all(Array.from(document.images).map((img) =>
+      img.complete ? Promise.resolve() : new Promise((r) => { img.onload = img.onerror = r; })
+    ));
+    await waitForIdle(map, 10000);
 
-    // -------------------- build pin DOM elements --------------------
-    (SCENE.pins || []).forEach((pin, i) => {
-      const id = pin.id || "pin" + i;
-      const el = document.createElement("div");
-      el.className = "pin";
-      const size = pin.size || 96;
-      const img = document.createElement("img");
-      img.className = "pin-photo";
-      img.src = pin.image;
-      img.style.width = size + "px";
-      img.style.height = size + "px";
-      img.style.border = "4px solid " + PRESET.pinRing;
-      img.style.boxShadow = "0 0 0 2px " + PRESET.pinRingInner + ", 0 4px 18px rgba(0,0,0,0.55)";
-      el.appendChild(img);
-      if (pin.label) {
-        const lab = document.createElement("div");
-        lab.className = "pin-label";
-        lab.textContent = pin.label;
-        lab.style.color = PRESET.labelText;
-        lab.style.fontSize = (pin.labelSize || 15) + "px";
-        el.appendChild(lab);
-      }
-      overlay.appendChild(el);
-      pinEls[id] = { el, img, def: pin };
-    });
-
-    // -------------------- build title cards --------------------
-    (SCENE.titles || []).forEach((title, i) => {
-      const id = title.id || "title" + i;
-      const el = document.createElement("div");
-      el.className = "title-card pos-" + (title.position || "bottom-left");
-      el.textContent = title.text;
-      el.style.color = PRESET.text;
-      el.style.background = PRESET.textBacking;
-      el.style.fontSize = (title.size || 22) + "px";
-      overlay.appendChild(el);
-      titleEls[id] = { el, def: title };
-    });
-
-    // -------------------- build route paths (SVG) --------------------
-    (SCENE.routes || []).forEach((route, i) => {
-      const id = route.id || "route" + i;
-      const ns = "http://www.w3.org/2000/svg";
-      const path = document.createElementNS(ns, "path");
-      path.setAttribute("fill", "none");
-      path.setAttribute("stroke", route.color || PRESET.routeColor);
-      path.setAttribute("stroke-width", route.width || 3);
-      path.setAttribute("stroke-linecap", "round");
-      if (route.dashed) path.setAttribute("stroke-dasharray", "10 8");
-      routeSvg.appendChild(path);
-
-      let labelEl = null;
-      if (route.label) {
-        labelEl = document.createElement("div");
-        labelEl.className = "route-label";
-        labelEl.textContent = route.label;
-        labelEl.style.color = PRESET.labelText;
-        labelEl.style.background = PRESET.textBacking;
-        overlay.appendChild(labelEl);
-      }
-      routePaths[id] = { path, labelEl, def: route };
-    });
-
+    window.__duration = SceneEngine.computeDuration(normalized);
     window.__ready = true;
   }
 
-  // Called once per frame from Node via page.evaluate. Deterministic:
-  // jumps the camera straight to the interpolated state for time t (no
-  // animation, no reliance on real wall-clock timing) so every frame is
-  // captured exactly on-beat regardless of how fast/slow this machine is.
-  window.__setFrame = function (t) {
-    const map = window.__map;
-    const cam = cameraAt(t);
-    map.jumpTo({ center: cam.center, zoom: cam.zoom, bearing: cam.bearing, pitch: cam.pitch });
-
-    // Pins
-    Object.keys(pinEls).forEach((id) => {
-      const { el, def } = pinEls[id];
-      const op = fadeOpacity(t, def.at || 0, def.until, def.fade);
-      el.style.opacity = op;
-      if (op > 0) {
-        const p = map.project(def.center || [def.lng, def.lat]);
-        el.style.left = p.x + "px";
-        el.style.top = p.y + "px";
-      }
+  // Resolves once MapLibre has finished rendering everything it knows about.
+  // Falls back on a timeout so a scene can never hang the render outright.
+  function waitForIdle(map, timeoutMs) {
+    return new Promise((resolve) => {
+      let done = false;
+      const finish = () => { if (!done) { done = true; resolve(); } };
+      const timer = setTimeout(finish, timeoutMs);
+      map.once("idle", () => { clearTimeout(timer); finish(); });
     });
+  }
 
-    // Titles
-    Object.keys(titleEls).forEach((id) => {
-      const { el, def } = titleEls[id];
-      el.style.opacity = fadeOpacity(t, def.at || 0, def.until, def.fade);
-    });
-
-    // Routes: progressively reveal the path between startAt and
-    // startAt+drawDuration, then hold (or fade per `until`).
-    Object.keys(routePaths).forEach((id) => {
-      const { path, labelEl, def } = routePaths[id];
-      const start = def.startAt || 0;
-      const drawDur = def.drawDuration != null ? def.drawDuration : 1.2;
-      const overallOpacity = fadeOpacity(t, start, def.until, def.fade != null ? def.fade : 0.3);
-      if (overallOpacity <= 0) {
-        path.setAttribute("opacity", 0);
-        if (labelEl) labelEl.style.opacity = 0;
-        return;
-      }
-      const drawFrac = drawDur > 0 ? Math.max(0, Math.min(1, (t - start) / drawDur)) : 1;
-      const nPts = 64;
-      const full = sampleRoute(def.from, def.to, nPts);
-      const upto = Math.max(1, Math.round(full.length * drawFrac));
-      const screenPts = full.slice(0, upto).map((ll) => map.project(ll));
-      const d = screenPts.map((p, i) => (i === 0 ? "M" : "L") + p.x.toFixed(1) + "," + p.y.toFixed(1)).join(" ");
-      path.setAttribute("d", d);
-      path.setAttribute("opacity", overallOpacity);
-
-      if (labelEl) {
-        // Anchored at the route's fixed midpoint (not the growing tip) so it
-        // doesn't end up sitting on top of the destination pin once the
-        // line finishes drawing.
-        const mid = full[Math.floor(full.length / 2)];
-        const p = map.project(mid);
-        labelEl.style.left = p.x + "px";
-        labelEl.style.top = (p.y - 22) + "px";
-        const labelFade = fadeOpacity(t, start + drawDur * 0.3, def.until, def.fade != null ? def.fade : 0.3);
-        labelEl.style.opacity = labelFade;
-      }
-    });
-  };
+  // Called once per frame from Node via page.evaluate. Deterministic: jumps
+  // straight to the interpolated state for time t, with no reliance on
+  // real-time animation, so every frame lands exactly on-beat regardless of
+  // how fast this machine is.
+  window.__setFrame = function (t) { stage.setFrame(t); };
 
   window.__init = main();
 })();

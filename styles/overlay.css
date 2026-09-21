@@ -1,0 +1,101 @@
+/*
+ * Styling for the pin / title / route overlays.
+ *
+ * Shared by map.html (what actually gets screenshotted) and builder.html
+ * (the live preview), so the preview looks like the render. Anything that
+ * affects how an overlay *looks* belongs here; anything editor-only (handles,
+ * selection outlines) belongs in builder.css.
+ */
+
+#overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+#routeSvg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* ---------------------------------------------------------------- pins */
+.pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: none;
+  text-align: center;
+}
+.pin-photo {
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  box-sizing: border-box;
+}
+.pin-label {
+  margin-top: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+
+/* A photo tacked to the map: cream border, deep shadow, a couple of degrees
+   off square so it reads as a physical print. */
+.pin-style-polaroid .pin-photo { transform: rotate(var(--pin-tilt, -2.5deg)); }
+.pin-style-polaroid .pin-label { margin-top: 12px; }
+
+/* Badge: a small marker on the exact coordinate, photo in a card beside it.
+   Keeps dense clusters of pins readable. */
+.pin-style-badge { text-align: left; }
+.pin-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.pin-card {
+  position: absolute;
+  left: 18px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 11px 7px 7px;
+  border-radius: 7px;
+  border: 1px solid;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+.pin-card-photo { object-fit: cover; border-radius: 4px; display: block; }
+.pin-card-label {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------------------- titles */
+.title-card {
+  position: absolute;
+  padding: 14px 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+}
+.title-card.pos-bottom-left { left: 5%; bottom: 8%; }
+.title-card.pos-bottom-right { right: 5%; bottom: 8%; text-align: right; }
+.title-card.pos-top-left { left: 5%; top: 8%; }
+.title-card.pos-top-right { right: 5%; top: 8%; text-align: right; }
+.title-card.pos-center { left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; }
+
+/* -------------------------------------------------------------- routes */
+.route-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 4px 10px;
+  opacity: 0;
+  white-space: nowrap;
+}
