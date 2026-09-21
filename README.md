@@ -62,11 +62,19 @@ time with `npm run build-basemap`).
 
 ## The builder
 
+**Double-click `Start Builder.bat`** (Windows) or `start-builder.sh` (Mac/Linux).
+It installs what's missing the first time, starts the builder, and opens it in
+your browser. Leave the window it opens alone while you work — that window *is*
+the tool; closing it stops it.
+
+Or from a terminal, if you prefer:
+
 ```
 npm run builder
 ```
 
-Then open <http://127.0.0.1:4317>.
+Either way the builder is at <http://127.0.0.1:4317>, and opens there by itself.
+Add `--no-open` if you'd rather it didn't.
 
 Four regions:
 
@@ -337,6 +345,8 @@ ever extend this to use MapLibre popups directly.
 ## Project layout
 
 ```
+Start Builder.bat     double-click launcher (Windows)
+start-builder.sh      the same, for Mac and Linux
 builder.html          the editor page
 builder/              its modules (store, canvas, timeline, inspector, tools)
 lib/scene-engine.js   camera/fade/route/duration math — pure functions
@@ -369,6 +379,11 @@ Run `npm test` after touching the engine. Rendering
 - **A render looks wrong** — use `--draft --keep-frames` to render fast and
   inspect the individual PNG frames it leaves behind (path is printed at
   the end) before waiting on a full-quality render.
+- **The launcher window closes instantly** — that means it failed before it
+  could print anything. Open PowerShell in the project folder and run
+  `node server.js` directly to see the error.
+- **"Port 4317 is already in use"** — the builder is probably already running
+  in another window. Either use that one, or close it and try again.
 - **Image search says it failed** — that's the one part of the tool that
   needs the internet, and it's also the one part you can skip: upload a file
   instead. Rendering is unaffected.

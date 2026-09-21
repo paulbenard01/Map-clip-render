@@ -19,6 +19,7 @@ const fs = require("fs");
 const path = require("path");
 const http = require("http");
 const crypto = require("crypto");
+const { spawn } = require("child_process");
 
 const { serveStatic } = require("./lib/static-server.js");
 const { renderScene } = require("./lib/renderer.js");
@@ -301,8 +302,47 @@ const server = http.createServer((req, res) => {
   serveStatic(req, res, ROOT, { index: "/builder.html" });
 });
 
+/**
+ * Opens the builder in the default browser.
+ *
+ * Best-effort on purpose: if the platform's opener isn't there, the URL is
+ * already printed above and the server carries on regardless. Failing to
+ * launch a browser is never a reason to fail to start.
+ */
+function openBrowser(url) {
+  const cmd = process.platform === "win32" ? "cmd"
+    : process.platform === "darwin" ? "open"
+    : "xdg-open";
+  const args = process.platform === "win32" ? ["/c", "start", "", url] : [url];
+  try {
+    const child = spawn(cmd, args, { stdio: "ignore", detached: true });
+    child.on("error", () => {});
+    child.unref();
+  } catch (err) {
+    /* no browser opener available — the printed URL still works */
+  }
+}
+
 server.listen(PORT, "127.0.0.1", () => {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-  console.log(`Heritle scene builder running at http://127.0.0.1:${PORT}`);
+  const url = `http://127.0.0.1:${PORT}`;
+  console.log(`Heritle scene builder running at ${url}`);
   console.log(`  scenes: ${path.relative(ROOT, SCENES_DIR)}/   output: ${path.relative(ROOT, OUTPUT_DIR)}/`);
+  console.log("  Leave this window open while you work. Ctrl+C to stop.");
+
+  if (!process.argv.includes("--no-open") && !process.env.HERITLE_NO_OPEN) {
+    openBrowser(url);
+  }
+});
+
+// A friendlier message than a raw stack trace when the port is already taken,
+// which usually just means the builder is already running in another window.
+server.on("error", (err) => {
+  if (err.code === "EADDRINUSE") {
+    console.error(`\nPort ${PORT} is already in use.`);
+    console.error("The builder is probably already running — try http://127.0.0.1:" + PORT);
+    console.error("If not, close the other window, or start this one with:  set PORT=4318 && node server.js");
+    process.exit(1);
+  }
+  throw err;
 });
