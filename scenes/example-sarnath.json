@@ -1,0 +1,60 @@
+{
+  "_comment": "Example scene: Sarnath -> the Vietnam relic tour (2:36-3:23 beat of the Sarnath Deep Dive script). Swap the placeholder images in /assets for real photos before using this for real.",
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "focusCountry": "IND",
+
+  "camera": [
+    { "t": 0,    "center": [79.5, 22.5],   "zoom": 3.6, "bearing": 0, "pitch": 0 },
+    { "t": 3.5,  "center": [83.0220, 25.3811], "zoom": 6.4 },
+    { "t": 9,    "center": [83.0220, 25.3811], "zoom": 6.4 },
+    { "t": 12.5, "center": [93.0, 22.5],   "zoom": 3.3 },
+    { "t": 17,   "center": [105.8342, 21.0278], "zoom": 5.2 },
+    { "t": 21,   "center": [105.8342, 21.0278], "zoom": 5.2 }
+  ],
+
+  "pins": [
+    {
+      "id": "sarnath",
+      "center": [83.0220, 25.3811],
+      "at": 2.2,
+      "until": 12.5,
+      "image": "/assets/placeholder-lion-capital.jpg",
+      "label": "Sarnath, India",
+      "size": 120
+    },
+    {
+      "id": "hanoi",
+      "center": [105.8342, 21.0278],
+      "at": 16.2,
+      "until": null,
+      "image": "/assets/placeholder-relic-tour.jpg",
+      "label": "Hanoi, Vietnam",
+      "size": 120
+    }
+  ],
+
+  "routes": [
+    {
+      "id": "sarnath-to-hanoi",
+      "from": [83.0220, 25.3811],
+      "to": [105.8342, 21.0278],
+      "startAt": 12.7,
+      "drawDuration": 2.8,
+      "until": null,
+      "color": "#e8c14c",
+      "width": 3,
+      "dashed": true,
+      "label": "Relics, 2025"
+    }
+  ],
+
+  "titles": [
+    { "id": "t1", "text": "Sarnath, India", "position": "bottom-left", "at": 0.3, "until": 3 },
+    { "id": "t2", "text": "The Buddhist Circuit", "position": "bottom-left", "at": 12.7, "until": 16 },
+    { "id": "t3", "text": "Hanoi, Vietnam — 2025", "position": "bottom-left", "at": 17.5, "until": 21.5 }
+  ],
+
+  "duration": 22
+}

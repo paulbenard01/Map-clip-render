@@ -1,0 +1,19 @@
+{
+  "name": "heritle-map-renderer",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Renders map-animation video clips from a scene JSON, plus a browser-based visual scene builder.",
+  "scripts": {
+    "build-basemap": "node lib/build-basemap.js",
+    "builder": "node server.js",
+    "render": "node render.js"
+  },
+  "dependencies": {
+    "maplibre-gl": "4.7.1",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
+}

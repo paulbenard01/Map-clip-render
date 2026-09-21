@@ -1,0 +1,4 @@
+node_modules/
+output/
+data/*.geo.json
+.DS_Store

@@ -1,0 +1,50 @@
+{
+  "dark-navy": {
+    "description": "Default for The Heritle Deep Dive. Navy on navy with a warm gold accent.",
+    "background": "#0a1420",
+    "land": "#16283f",
+    "landFocus": "#234b73",
+    "border": "#2f5578",
+    "borderWidth": 0.6,
+    "graticule": "rgba(255,255,255,0.045)",
+    "accent": "#e8c14c",
+    "pinRing": "#e8c14c",
+    "pinRingInner": "#0a1420",
+    "routeColor": "#e8c14c",
+    "text": "#f5f2ea",
+    "textBacking": "rgba(10,20,32,0.78)",
+    "labelText": "#f5f2ea"
+  },
+  "muted-editorial": {
+    "description": "Cream/grey desaturated look, in the Vox/Johnny Harris explainer family.",
+    "background": "#eef0ea",
+    "land": "#d9dccf",
+    "landFocus": "#c9b48c",
+    "border": "#aab19c",
+    "borderWidth": 0.6,
+    "graticule": "rgba(0,0,0,0.045)",
+    "accent": "#2b3a4a",
+    "pinRing": "#2b3a4a",
+    "pinRingInner": "#eef0ea",
+    "routeColor": "#2b3a4a",
+    "text": "#1c1c1c",
+    "textBacking": "rgba(238,240,234,0.85)",
+    "labelText": "#1c1c1c"
+  },
+  "mono-contrast": {
+    "description": "Black and white with a single red accent. High contrast, cinematic.",
+    "background": "#050505",
+    "land": "#e5e5e5",
+    "landFocus": "#ffffff",
+    "border": "#050505",
+    "borderWidth": 0.7,
+    "graticule": "rgba(0,0,0,0.08)",
+    "accent": "#ff3b30",
+    "pinRing": "#ff3b30",
+    "pinRingInner": "#050505",
+    "routeColor": "#ff3b30",
+    "text": "#ffffff",
+    "textBacking": "rgba(5,5,5,0.8)",
+    "labelText": "#ffffff"
+  }
+}
