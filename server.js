@@ -103,6 +103,9 @@ async function handleApi(req, res, url) {
     fs.mkdirSync(SCENES_DIR, { recursive: true });
     const target = path.join(SCENES_DIR, file);
     const serialized = Engine.serializeScene(body.scene || {});
+    // The filename is what the person actually chose, so it wins over
+    // whatever `name` the scene was carrying (a template's, usually).
+    serialized.name = path.basename(file, ".json");
     fs.writeFileSync(target, JSON.stringify(serialized, null, 2) + "\n");
     return sendJson(res, 200, { saved: "/scenes/" + file, name: path.basename(file, ".json") });
   }
