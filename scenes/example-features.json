@@ -1,0 +1,56 @@
+{
+  "_comment": "Feature tour: every new schema addition in one clip — camera cut and zoomBlast, all four pin styles, arc/greatCircle/via routes with an arrowhead, and timed multi-country highlights. Useful as a visual regression check after touching the engine or the view.",
+  "schemaVersion": 2,
+  "name": "example-features",
+  "aspect": "16:9",
+  "style": "dark-navy",
+  "fps": 30,
+  "duration": 30,
+
+  "camera": [
+    { "t": 0, "center": [83.02, 25.38], "zoom": 3.2 },
+    { "t": 4, "center": [83.02, 25.38], "zoom": 6.8, "transition": "zoomBlast" },
+    { "t": 8, "center": [83.02, 25.38], "zoom": 6.8 },
+    { "t": 8.5, "center": [105.83, 21.03], "zoom": 6.0, "transition": "cut" },
+    { "t": 13, "center": [105.83, 21.03], "zoom": 6.0 },
+    { "t": 17, "center": [95.0, 24.0], "zoom": 3.0 },
+    { "t": 23, "center": [95.0, 24.0], "zoom": 3.0, "bearing": 25 },
+    { "t": 29, "center": [95.0, 24.0], "zoom": 3.0, "bearing": 25 }
+  ],
+
+  "countryHighlights": [
+    { "iso": "IND", "color": "#e8c14c", "at": 0.5, "until": 9, "fade": 0.6 },
+    { "iso": "VNM", "color": "#c0673a", "at": 8.5, "until": 17, "fade": 0.6 },
+    { "iso": "MMR", "color": "#6a9a6f", "at": 18, "until": null, "fade": 0.8 },
+    { "iso": "THA", "color": "#6a9a6f", "at": 18.4, "until": null, "fade": 0.8 }
+  ],
+
+  "pins": [
+    { "id": "sarnath", "center": [83.02, 25.38], "at": 2.5, "until": 8.5,
+      "image": "/assets/placeholder-lion-capital.jpg", "label": "Sarnath", "size": 130, "style": "circle" },
+    { "id": "hanoi", "center": [105.83, 21.03], "at": 9.5, "until": 17,
+      "image": "/assets/placeholder-relic-tour.jpg", "label": "Hanoi", "size": 130, "style": "rounded-square" },
+    { "id": "bagan", "center": [94.86, 21.17], "at": 19, "until": null,
+      "image": "/assets/placeholder-lion-capital.jpg", "label": "Bagan", "size": 110, "style": "badge" },
+    { "id": "ayutthaya", "center": [100.58, 14.35], "at": 20, "until": null,
+      "image": "/assets/placeholder-relic-tour.jpg", "label": "Ayutthaya", "size": 110, "style": "polaroid" }
+  ],
+
+  "routes": [
+    { "id": "arc-route", "from": [83.02, 25.38], "to": [105.83, 21.03],
+      "startAt": 17.5, "drawDuration": 2.4, "until": null,
+      "curve": "arc", "bulge": 0.22, "dashed": true, "arrowEnd": true, "label": "Arc" },
+    { "id": "via-route", "from": [83.02, 25.38], "to": [100.58, 14.35],
+      "startAt": 19.5, "drawDuration": 2.4, "until": null,
+      "via": [90.0, 12.0], "color": "#8a6aa8", "width": 4, "label": "Via" },
+    { "id": "gc-route", "from": [83.02, 25.38], "to": [94.86, 21.17],
+      "startAt": 21.5, "drawDuration": 2.0, "until": null,
+      "curve": "greatCircle", "color": "#6a9a6f", "arrowEnd": true, "label": "Great circle" }
+  ],
+
+  "titles": [
+    { "id": "t1", "text": "zoomBlast push", "position": "top-left", "at": 1, "until": 8 },
+    { "id": "t2", "text": "cut", "position": "top-left", "at": 8.6, "until": 13 },
+    { "id": "t3", "text": "Curves, styles, highlights", "position": "bottom-left", "at": 18, "until": 29 }
+  ]
+}
