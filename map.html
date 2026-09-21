@@ -37,10 +37,13 @@
   let stage;
 
   async function main() {
-    const [presets, scene] = await Promise.all([
-      fetch("/styles/presets.json").then((r) => r.json()),
-      fetch(scenePath).then((r) => r.json()),
-    ]);
+    // The CLI points the page at a scene file on the local server; the
+    // builder's Render button injects the scene it has in memory instead,
+    // so an unsaved scene can be rendered without writing a temp file.
+    const presets = await fetch("/styles/presets.json").then((r) => r.json());
+    const scene = window.__SCENE_JSON
+      ? JSON.parse(window.__SCENE_JSON)
+      : await fetch(scenePath).then((r) => r.json());
     const preset = presets[styleName] || presets["dark-navy"];
     const normalized = SceneEngine.normalizeScene(scene);
 
