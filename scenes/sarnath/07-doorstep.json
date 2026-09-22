@@ -3,7 +3,7 @@
   "aspect": "9:16",
   "style": "dark-navy",
   "fps": 30,
-  "_comment": "Script ~3:15 — Chinese building at Lumbini, and the Nanhai Academy. The cut is doing real work: Lumbini genuinely sits on India's doorstep, the Nanhai Academy does not sit near Nalanda at all. See the production note about the word 'nearby' in the script.",
+  "_comment": "Script ~3:15 — Chinese building at Lumbini, and the Nanhai Academy. The cut is doing real work: Lumbini genuinely sits on India's doorstep, the Nanhai Academy does not sit near Nalanda at all. See the production note about the word 'nearby' in the script. The cut still lands hard on China, but now opens on a wide shot (Hainan visibly an island off the southern coast) before pushing to the tight Nanhai Academy shot -- landing straight at zoom 7 on a small island with nothing around it left viewers with no sense of where they were.",
   "name": "sarnath-07-doorstep",
   "duration": 19,
   "camera": [
@@ -13,7 +13,7 @@
         83.276,
         27.4833
       ],
-      "zoom": 7.4
+      "zoom": 5.6
     },
     {
       "t": 4.5,
@@ -26,11 +26,19 @@
     {
       "t": 5,
       "center": [
+        108.0,
+        23.0
+      ],
+      "zoom": 4.0,
+      "transition": "cut"
+    },
+    {
+      "t": 7.5,
+      "center": [
         109.18,
         18.35
       ],
-      "zoom": 7.0,
-      "transition": "cut"
+      "zoom": 7.0
     },
     {
       "t": 9.5,

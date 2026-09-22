@@ -3,7 +3,7 @@
   "aspect": "9:16",
   "style": "dark-navy",
   "fps": 30,
-  "_comment": "Script 3:25-3:42 — the succession of the Dalai Lama. Two capitals, two colours, one unresolved line between them. The route is deliberately dashed with no arrowhead: nothing about this has landed anywhere yet.",
+  "_comment": "Script 3:25-3:42 — the succession of the Dalai Lama. Two capitals, two colours, one unresolved line between them. The route is deliberately dashed with no arrowhead: nothing about this has landed anywhere yet. Both pins carry a placeholder photo (assets/placeholder-dalai-lama.jpg, assets/placeholder-xi-jinping.jpg) -- swap for real, properly licensed photos before this renders for real. Both opening shots now push in from a wider view instead of landing straight at a tight zoom, so a cut into a shot doesn't leave the viewer without a sense of where they just landed.",
   "name": "sarnath-08-succession",
   "duration": 17,
   "camera": [
@@ -13,7 +13,7 @@
         76.3234,
         32.219
       ],
-      "zoom": 6.8
+      "zoom": 4.6
     },
     {
       "t": 3.5,
@@ -29,8 +29,16 @@
         116.4074,
         39.9042
       ],
-      "zoom": 6.0,
+      "zoom": 4.2,
       "transition": "cut"
+    },
+    {
+      "t": 6.5,
+      "center": [
+        116.4074,
+        39.9042
+      ],
+      "zoom": 6.0
     },
     {
       "t": 8,
@@ -82,6 +90,7 @@
       ],
       "at": 0.8,
       "until": null,
+      "image": "/assets/placeholder-dalai-lama.jpg",
       "label": "Dharamshala",
       "size": 100,
       "style": "badge"
@@ -94,6 +103,7 @@
       ],
       "at": 4.6,
       "until": null,
+      "image": "/assets/placeholder-xi-jinping.jpg",
       "label": "Beijing",
       "size": 100,
       "style": "badge"
