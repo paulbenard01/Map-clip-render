@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script 0:12-0:30 — 'This is Sarnath, just outside Varanasi.' Wide on northern India, then a hard push onto the site. The zoomBlast keeps the wide frame long enough to read, then arrives fast on the line.",
+  "name": "sarnath-01-locate",
+  "duration": 16,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        80.5,
+        22.0
+      ],
+      "zoom": 3.3
+    },
+    {
+      "t": 4.5,
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "zoom": 6.4,
+      "transition": "zoomBlast"
+    },
+    {
+      "t": 15,
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "zoom": 6.4
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "IND",
+      "at": 0.4,
+      "until": null,
+      "fade": 0.8
+    }
+  ],
+  "pins": [
+    {
+      "id": "sarnath",
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "at": 4.6,
+      "until": null,
+      "image": "/assets/sarnath-lion-capital.jpg",
+      "label": "Sarnath",
+      "size": 130,
+      "style": "circle"
+    },
+    {
+      "id": "varanasi",
+      "center": [
+        82.9739,
+        25.3176
+      ],
+      "at": 6.0,
+      "until": null,
+      "label": "Varanasi",
+      "size": 96,
+      "style": "badge"
+    }
+  ],
+  "routes": [],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "Sarnath, Uttar Pradesh",
+      "position": "bottom-left",
+      "at": 0.6,
+      "until": 4.4
+    },
+    {
+      "id": "t2",
+      "text": "The first turning of the wheel",
+      "position": "bottom-left",
+      "at": 8.0,
+      "until": 14.5
+    }
+  ]
+}

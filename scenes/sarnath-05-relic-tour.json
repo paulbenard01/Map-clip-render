@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script 2:50-3:00 — the 2025 Buddha relic tour through Vietnam, crowds estimated above fifteen million. The highlight hands off from India to Vietnam as the route lands, so the country in focus follows the relics.",
+  "name": "sarnath-05-relic-tour",
+  "duration": 22,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "zoom": 6.2
+    },
+    {
+      "t": 3.5,
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "zoom": 6.2
+    },
+    {
+      "t": 8,
+      "center": [
+        94.5,
+        22.0
+      ],
+      "zoom": 3.4
+    },
+    {
+      "t": 14,
+      "center": [
+        105.8342,
+        21.0278
+      ],
+      "zoom": 5.6
+    },
+    {
+      "t": 21,
+      "center": [
+        105.8342,
+        21.0278
+      ],
+      "zoom": 5.6
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "IND",
+      "at": 0,
+      "until": 11.0,
+      "fade": 0.8
+    },
+    {
+      "iso": "VNM",
+      "at": 10.5,
+      "until": null,
+      "color": "#2f6ea8",
+      "fade": 0.8
+    }
+  ],
+  "pins": [
+    {
+      "id": "sarnath",
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "at": 0.6,
+      "until": 9.0,
+      "image": "/assets/sarnath-lion-capital.jpg",
+      "label": "Sarnath",
+      "size": 120
+    },
+    {
+      "id": "hanoi",
+      "center": [
+        105.8342,
+        21.0278
+      ],
+      "at": 14.5,
+      "until": null,
+      "image": "/assets/relic-tour-vietnam.jpg",
+      "label": "Hanoi",
+      "size": 120
+    },
+    {
+      "id": "hcmc",
+      "center": [
+        106.6297,
+        10.8231
+      ],
+      "at": 16.0,
+      "until": null,
+      "label": "Ho Chi Minh City",
+      "size": 90,
+      "style": "badge"
+    }
+  ],
+  "routes": [
+    {
+      "id": "relics",
+      "from": [
+        83.022,
+        25.3811
+      ],
+      "to": [
+        105.8342,
+        21.0278
+      ],
+      "startAt": 7.5,
+      "drawDuration": 3.4,
+      "until": null,
+      "curve": "arc",
+      "bulge": 0.18,
+      "dashed": true,
+      "arrowEnd": true,
+      "label": "Relic tour, 2025"
+    }
+  ],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "Relics, India to Vietnam",
+      "position": "bottom-left",
+      "at": 0.6,
+      "until": 6.0
+    },
+    {
+      "id": "t2",
+      "text": "15 million+ turned out",
+      "position": "bottom-left",
+      "at": 16.5,
+      "until": 21.5
+    }
+  ]
+}

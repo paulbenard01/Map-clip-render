@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script ~3:05 — China's World Buddhist Forum at Ningbo, delegates from over seventy countries. Thirteen destinations stand in for the full list; add or remove entries in `routes` to taste. Routes are greatCircle because several are long hauls where a flat line would visibly lie.",
+  "name": "sarnath-06-china-forum",
+  "duration": 22,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        121.544,
+        29.8683
+      ],
+      "zoom": 6.0
+    },
+    {
+      "t": 4,
+      "center": [
+        121.544,
+        29.8683
+      ],
+      "zoom": 6.0
+    },
+    {
+      "t": 9,
+      "center": [
+        106.0,
+        20.0
+      ],
+      "zoom": 2.9
+    },
+    {
+      "t": 21,
+      "center": [
+        106.0,
+        20.0
+      ],
+      "zoom": 2.9
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "CHN",
+      "at": 0.4,
+      "until": null,
+      "color": "#a8563f",
+      "fade": 0.8
+    }
+  ],
+  "pins": [
+    {
+      "id": "ningbo",
+      "center": [
+        121.544,
+        29.8683
+      ],
+      "at": 1.0,
+      "until": null,
+      "label": "Ningbo",
+      "size": 100,
+      "style": "badge"
+    }
+  ],
+  "routes": [
+    {
+      "id": "delegate1",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        126.978,
+        37.5665
+      ],
+      "startAt": 6.0,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate2",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        139.6917,
+        35.6895
+      ],
+      "startAt": 6.3,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate3",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        100.5018,
+        13.7563
+      ],
+      "startAt": 6.6,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate4",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        96.1951,
+        16.8661
+      ],
+      "startAt": 6.9,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate5",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        104.916,
+        11.5564
+      ],
+      "startAt": 7.2,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate6",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        102.6331,
+        17.9757
+      ],
+      "startAt": 7.5,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate7",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        105.8342,
+        21.0278
+      ],
+      "startAt": 7.8,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate8",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        79.8612,
+        6.9271
+      ],
+      "startAt": 8.1,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate9",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        85.324,
+        27.7172
+      ],
+      "startAt": 8.4,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate10",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        106.9057,
+        47.8864
+      ],
+      "startAt": 8.7,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate11",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        103.8198,
+        1.3521
+      ],
+      "startAt": 9.0,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate12",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        121.5654,
+        25.033
+      ],
+      "startAt": 9.3,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    },
+    {
+      "id": "delegate13",
+      "from": [
+        121.544,
+        29.8683
+      ],
+      "to": [
+        2.306,
+        48.85
+      ],
+      "startAt": 9.6,
+      "drawDuration": 1.8,
+      "until": null,
+      "curve": "greatCircle",
+      "arrowEnd": false,
+      "width": 2
+    }
+  ],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "World Buddhist Forum",
+      "position": "bottom-left",
+      "at": 0.6,
+      "until": 5.5
+    },
+    {
+      "id": "t2",
+      "text": "Delegates from 70+ countries",
+      "position": "bottom-left",
+      "at": 12.0,
+      "until": 21.0
+    }
+  ]
+}

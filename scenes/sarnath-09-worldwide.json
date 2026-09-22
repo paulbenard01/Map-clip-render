@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script 4:08-4:28 — 'a Buddhist community of roughly half a billion people, worldwide.' Countries light up in sequence rather than all at once, so the scale accumulates while the line is read. India lands last, which is the point of the close.",
+  "name": "sarnath-09-worldwide",
+  "duration": 20,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        100.0,
+        16.0
+      ],
+      "zoom": 2.7
+    },
+    {
+      "t": 10,
+      "center": [
+        102.0,
+        16.0
+      ],
+      "zoom": 2.8
+    },
+    {
+      "t": 19,
+      "center": [
+        102.0,
+        16.0
+      ],
+      "zoom": 2.8
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "CHN",
+      "at": 0.5,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "THA",
+      "at": 1.0,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "MMR",
+      "at": 1.4,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "JPN",
+      "at": 1.8,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "VNM",
+      "at": 2.2,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "KHM",
+      "at": 2.6,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "LKA",
+      "at": 3.0,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "KOR",
+      "at": 3.4,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "TWN",
+      "at": 3.8,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "MNG",
+      "at": 4.2,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "BTN",
+      "at": 4.6,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "LAO",
+      "at": 5.0,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "SGP",
+      "at": 5.4,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "NPL",
+      "at": 5.8,
+      "until": null,
+      "fade": 0.9,
+      "color": "#2f6ea8"
+    },
+    {
+      "iso": "IND",
+      "at": 6.4,
+      "until": null,
+      "fade": 0.9,
+      "color": "#e8c14c"
+    }
+  ],
+  "pins": [],
+  "routes": [],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "Roughly half a billion people",
+      "position": "bottom-left",
+      "at": 8.0,
+      "until": 19.0
+    }
+  ]
+}

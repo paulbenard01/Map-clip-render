@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script 0:30-0:50 — Ashoka's turn to Buddhism after Kalinga. Opens on the battlefield, pulls back, then draws north to Sarnath. The arc is the argument: conflict in one place, revival in another.",
+  "name": "sarnath-02-kalinga",
+  "duration": 15,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        85.84,
+        20.192
+      ],
+      "zoom": 6.6
+    },
+    {
+      "t": 3.5,
+      "center": [
+        85.84,
+        20.192
+      ],
+      "zoom": 6.6
+    },
+    {
+      "t": 7,
+      "center": [
+        84.6,
+        23.0
+      ],
+      "zoom": 4.5
+    },
+    {
+      "t": 14,
+      "center": [
+        84.6,
+        23.0
+      ],
+      "zoom": 4.5
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "IND",
+      "at": 0,
+      "until": null,
+      "fade": 0.6
+    }
+  ],
+  "pins": [
+    {
+      "id": "kalinga",
+      "center": [
+        85.84,
+        20.192
+      ],
+      "at": 0.8,
+      "until": null,
+      "label": "Kalinga",
+      "size": 96,
+      "style": "badge"
+    },
+    {
+      "id": "sarnath",
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "at": 10.2,
+      "until": null,
+      "label": "Sarnath",
+      "size": 96,
+      "style": "badge"
+    }
+  ],
+  "routes": [
+    {
+      "id": "ashoka",
+      "from": [
+        85.84,
+        20.192
+      ],
+      "to": [
+        83.022,
+        25.3811
+      ],
+      "startAt": 6.5,
+      "drawDuration": 3.2,
+      "until": null,
+      "curve": "arc",
+      "bulge": 0.2,
+      "arrowEnd": true,
+      "label": "Ashoka's revival"
+    }
+  ],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "Kalinga, c. 261 BCE",
+      "position": "bottom-left",
+      "at": 0.5,
+      "until": 5.5
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script 3:25-3:42 — the succession of the Dalai Lama. Two capitals, two colours, one unresolved line between them. The route is deliberately dashed with no arrowhead: nothing about this has landed anywhere yet.",
+  "name": "sarnath-08-succession",
+  "duration": 17,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        76.3234,
+        32.219
+      ],
+      "zoom": 6.8
+    },
+    {
+      "t": 3.5,
+      "center": [
+        76.3234,
+        32.219
+      ],
+      "zoom": 6.8
+    },
+    {
+      "t": 4,
+      "center": [
+        116.4074,
+        39.9042
+      ],
+      "zoom": 6.0,
+      "transition": "cut"
+    },
+    {
+      "t": 8,
+      "center": [
+        116.4074,
+        39.9042
+      ],
+      "zoom": 6.0
+    },
+    {
+      "t": 12,
+      "center": [
+        96.0,
+        33.0
+      ],
+      "zoom": 2.8
+    },
+    {
+      "t": 16,
+      "center": [
+        96.0,
+        33.0
+      ],
+      "zoom": 2.8
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "IND",
+      "at": 0.3,
+      "until": null,
+      "fade": 0.6
+    },
+    {
+      "iso": "CHN",
+      "at": 4.0,
+      "until": null,
+      "color": "#a8563f",
+      "fade": 0.6
+    }
+  ],
+  "pins": [
+    {
+      "id": "dharamshala",
+      "center": [
+        76.3234,
+        32.219
+      ],
+      "at": 0.8,
+      "until": null,
+      "label": "Dharamshala",
+      "size": 100,
+      "style": "badge"
+    },
+    {
+      "id": "beijing",
+      "center": [
+        116.4074,
+        39.9042
+      ],
+      "at": 4.6,
+      "until": null,
+      "label": "Beijing",
+      "size": 100,
+      "style": "badge"
+    }
+  ],
+  "routes": [
+    {
+      "id": "dispute",
+      "from": [
+        76.3234,
+        32.219
+      ],
+      "to": [
+        116.4074,
+        39.9042
+      ],
+      "startAt": 12.5,
+      "drawDuration": 2.6,
+      "until": null,
+      "curve": "arc",
+      "bulge": 0.16,
+      "dashed": true,
+      "arrowEnd": false,
+      "color": "#d8d2c4",
+      "label": "Unresolved"
+    }
+  ],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "2025: succession declaration",
+      "position": "bottom-left",
+      "at": 0.6,
+      "until": 3.8
+    },
+    {
+      "id": "t2",
+      "text": "“A thorn in the relationship”",
+      "position": "bottom-left",
+      "at": 8.5,
+      "until": 15.5
+    }
+  ]
+}

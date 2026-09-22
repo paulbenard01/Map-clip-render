@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script ~2:30 — the Buddhist Circuit graphic the shot list calls for. All pins are 'badge' style on purpose: these sites sit close together at this zoom, and photo discs would overlap into mush. Legs draw in pilgrimage order, staggered so the route reads as a sequence.",
+  "name": "sarnath-04-circuit",
+  "duration": 20,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        84.0,
+        26.0
+      ],
+      "zoom": 5.0
+    },
+    {
+      "t": 6,
+      "center": [
+        84.0,
+        26.0
+      ],
+      "zoom": 5.4
+    },
+    {
+      "t": 19,
+      "center": [
+        84.0,
+        26.0
+      ],
+      "zoom": 5.4
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "IND",
+      "at": 0,
+      "until": null,
+      "fade": 0.6
+    },
+    {
+      "iso": "NPL",
+      "at": 1.2,
+      "until": null,
+      "fade": 0.6
+    }
+  ],
+  "pins": [
+    {
+      "id": "lumbini",
+      "center": [
+        83.276,
+        27.4833
+      ],
+      "at": 1.5,
+      "until": null,
+      "label": "Lumbini",
+      "size": 100,
+      "style": "badge"
+    },
+    {
+      "id": "bodhgaya",
+      "center": [
+        84.991,
+        24.6958
+      ],
+      "at": 2.2,
+      "until": null,
+      "label": "Bodh Gaya",
+      "size": 100,
+      "style": "badge"
+    },
+    {
+      "id": "sarnath",
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "at": 2.9,
+      "until": null,
+      "label": "Sarnath",
+      "size": 100,
+      "style": "badge"
+    },
+    {
+      "id": "kushinagar",
+      "center": [
+        83.8875,
+        26.74
+      ],
+      "at": 3.6,
+      "until": null,
+      "label": "Kushinagar",
+      "size": 100,
+      "style": "badge"
+    },
+    {
+      "id": "rajgir",
+      "center": [
+        85.42,
+        25.028
+      ],
+      "at": 5.0,
+      "until": null,
+      "size": 70,
+      "style": "badge"
+    },
+    {
+      "id": "nalanda",
+      "center": [
+        85.4437,
+        25.1358
+      ],
+      "at": 5.4,
+      "until": null,
+      "size": 70,
+      "style": "badge"
+    },
+    {
+      "id": "vaishali",
+      "center": [
+        85.13,
+        25.99
+      ],
+      "at": 5.8,
+      "until": null,
+      "size": 70,
+      "style": "badge"
+    },
+    {
+      "id": "sravasti",
+      "center": [
+        82.03,
+        27.52
+      ],
+      "at": 6.2,
+      "until": null,
+      "size": 70,
+      "style": "badge"
+    }
+  ],
+  "routes": [
+    {
+      "id": "leg1",
+      "from": [
+        83.276,
+        27.4833
+      ],
+      "to": [
+        84.991,
+        24.6958
+      ],
+      "startAt": 7.5,
+      "drawDuration": 1.5,
+      "until": null,
+      "curve": "arc",
+      "bulge": 0.12,
+      "arrowEnd": true
+    },
+    {
+      "id": "leg2",
+      "from": [
+        84.991,
+        24.6958
+      ],
+      "to": [
+        83.022,
+        25.3811
+      ],
+      "startAt": 9.1,
+      "drawDuration": 1.5,
+      "until": null,
+      "curve": "arc",
+      "bulge": 0.12,
+      "arrowEnd": true
+    },
+    {
+      "id": "leg3",
+      "from": [
+        83.022,
+        25.3811
+      ],
+      "to": [
+        83.8875,
+        26.74
+      ],
+      "startAt": 10.7,
+      "drawDuration": 1.5,
+      "until": null,
+      "curve": "arc",
+      "bulge": 0.12,
+      "arrowEnd": true
+    }
+  ],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "The Buddhist Circuit",
+      "position": "bottom-left",
+      "at": 0.5,
+      "until": 6.0
+    }
+  ]
+}

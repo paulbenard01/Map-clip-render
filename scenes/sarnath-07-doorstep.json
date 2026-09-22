@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script ~3:15 — Chinese building at Lumbini, and the Nanhai Academy. The cut is doing real work: Lumbini genuinely sits on India's doorstep, the Nanhai Academy does not sit near Nalanda at all. See the production note about the word 'nearby' in the script.",
+  "name": "sarnath-07-doorstep",
+  "duration": 19,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        83.276,
+        27.4833
+      ],
+      "zoom": 7.4
+    },
+    {
+      "t": 4.5,
+      "center": [
+        83.276,
+        27.4833
+      ],
+      "zoom": 7.4
+    },
+    {
+      "t": 5,
+      "center": [
+        109.17,
+        18.29
+      ],
+      "zoom": 7.0,
+      "transition": "cut"
+    },
+    {
+      "t": 9.5,
+      "center": [
+        109.17,
+        18.29
+      ],
+      "zoom": 7.0
+    },
+    {
+      "t": 13.5,
+      "center": [
+        99.0,
+        20.0
+      ],
+      "zoom": 3.0
+    },
+    {
+      "t": 18,
+      "center": [
+        99.0,
+        20.0
+      ],
+      "zoom": 3.0
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "NPL",
+      "at": 0.3,
+      "until": 6.0,
+      "color": "#2f6ea8",
+      "fade": 0.6
+    },
+    {
+      "iso": "CHN",
+      "at": 5.0,
+      "until": null,
+      "color": "#a8563f",
+      "fade": 0.6
+    },
+    {
+      "iso": "IND",
+      "at": 13.0,
+      "until": null,
+      "fade": 0.8
+    }
+  ],
+  "pins": [
+    {
+      "id": "lumbini",
+      "center": [
+        83.276,
+        27.4833
+      ],
+      "at": 0.8,
+      "until": null,
+      "label": "Lumbini, Nepal",
+      "size": 100,
+      "style": "badge"
+    },
+    {
+      "id": "nanhai",
+      "center": [
+        109.17,
+        18.29
+      ],
+      "at": 5.6,
+      "until": null,
+      "label": "Nanhai Academy",
+      "size": 100,
+      "style": "badge"
+    },
+    {
+      "id": "nalanda",
+      "center": [
+        85.4437,
+        25.1358
+      ],
+      "at": 14.5,
+      "until": null,
+      "size": 80,
+      "style": "badge"
+    }
+  ],
+  "routes": [],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "Lumbini — on India's doorstep",
+      "position": "bottom-left",
+      "at": 0.6,
+      "until": 4.8
+    },
+    {
+      "id": "t2",
+      "text": "Nanhai Academy, Hainan",
+      "position": "bottom-left",
+      "at": 5.6,
+      "until": 9.8
+    }
+  ]
+}

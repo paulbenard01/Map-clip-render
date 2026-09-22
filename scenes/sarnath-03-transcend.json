@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 2,
+  "aspect": "9:16",
+  "style": "dark-navy",
+  "fps": 30,
+  "_comment": "Script 1:36-2:07 — UNESCO's 'Outstanding Universal Value', significance that transcends national boundaries. The India highlight deliberately fades out as the camera pulls back: the national frame dissolving into the global one is the whole point of the beat.",
+  "name": "sarnath-03-transcend",
+  "duration": 14,
+  "camera": [
+    {
+      "t": 0,
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "zoom": 7.0
+    },
+    {
+      "t": 5,
+      "center": [
+        80.0,
+        21.0
+      ],
+      "zoom": 3.4
+    },
+    {
+      "t": 10,
+      "center": [
+        80.0,
+        12.0
+      ],
+      "zoom": 2.8
+    },
+    {
+      "t": 13,
+      "center": [
+        80.0,
+        12.0
+      ],
+      "zoom": 2.8
+    }
+  ],
+  "countryHighlights": [
+    {
+      "iso": "IND",
+      "at": 0,
+      "until": 8.0,
+      "fade": 2.0
+    }
+  ],
+  "pins": [
+    {
+      "id": "sarnath",
+      "center": [
+        83.022,
+        25.3811
+      ],
+      "at": 0.5,
+      "until": 6.0,
+      "label": "Sarnath",
+      "size": 90,
+      "style": "badge"
+    }
+  ],
+  "routes": [],
+  "titles": [
+    {
+      "id": "t1",
+      "text": "Outstanding Universal Value",
+      "position": "center",
+      "at": 8.0,
+      "until": 13.5,
+      "size": 26
+    }
+  ]
+}
