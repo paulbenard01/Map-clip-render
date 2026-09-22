@@ -294,6 +294,13 @@ is what shows, so a roughly square source crops best. Put your photos in
 `assets/` and reference them as `/assets/your-file.jpg` in the scene — the
 builder's upload and image search both do this for you.
 
+### Drafts frame the same shot
+
+A `--draft` render is half resolution but shows exactly the same field of view
+as the full-quality one, so it can be trusted for checking framing as well as
+timing. (It captures a full-size page at half device scale rather than
+shrinking the viewport, which at the same zoom would show half as much map.)
+
 ### A note on precision
 
 Camera interpolation moves in a straight line between coordinates and does
@@ -317,6 +324,7 @@ node render.js --scene <scene.json> [options]
   --out <path.mp4>      Output file path (default: output/<scene-name>.mp4)
   --width <px>          Override output width in pixels (height follows the ratio)
   --draft               Fast low-res preview: half resolution, 12fps, rougher encode
+                        (frames the identical shot to a full render)
   --keep-frames         Keep the intermediate PNG frames on disk (for debugging)
 ```
 
