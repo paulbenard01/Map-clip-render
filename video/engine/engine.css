@@ -111,7 +111,7 @@ svg.layer { overflow: visible; }
 
 /* ---------- subtitles ---------- */
 #subs .chunk { position: absolute; left: 90px; width: 900px; top: 1405px; text-align: center;
-  font-family: "Inter"; font-weight: 800; font-size: 56px; line-height: 1.16; letter-spacing: -.005em; color: var(--white);
+  font-family: "Inter"; font-weight: 800; font-size: 52px; line-height: 1.18; letter-spacing: -.005em; color: var(--white);
   text-shadow: 0 3px 0 rgba(10,17,34,.9), 0 0 24px rgba(10,17,34,.95), 0 0 6px rgba(10,17,34,.9); }
 #subs .chunk span { display: inline; }
 #subs .chunk .on { color: var(--gold-bright); }

@@ -16,6 +16,11 @@
   const END = 262.0;
   V.useTranscript(transcript, {
     endAt: VO_END + 0.1,
+    maxChars: 46,
+    pause: 0.5,
+    commaAfter: 26,
+    // Title cards that already put the line on screen.
+    mute: [[12.8, 14.5], [67.9, 70.2], [255.8, 258]],
     fixes: { "Sana.": "Sarnath.", Sarnat: "Sarnath" },
     merges: [
       { match: ["nineteen", "forty", "seven"], text: "1947" },
@@ -80,7 +85,6 @@
     t0: 0.3, t1: 4.98, enter: "up", dist: 1100, inDur: 0.7, exit: "cut",
     move: [[3.9, [400, 700, 1]], [4.98, [420, 820, 2.7], V.ease.inCubic]],
   });
-  tag({ text: "Indian passport", x: 400, y: 250, t0: 1.6, t1: 3.9, color: "navy" });
   box({
     html: gfx.banknote(EMBLEM), w: 700, h: 330, x: 650, y: 1150, rot: 7,
     t0: 2.3, t1: 4.4, enter: "right", dist: 900, inDur: 0.5, exit: "right", outDur: 0.4,
@@ -125,7 +129,6 @@
   // =====================================================================
   title({ text: "c. 6th century BCE", at: [24.77, 24.77, 25.02, 25.34], t0: 24.7, t1: 30.3, x: 540, y: 300, size: 96, style: "serif", anim: "slam", hl: [1, 2, 3] });
   ph("buddha", { x: 540, y: 860, w: 640, h: 800, rot: 2, t0: 26.2, t1: 31.2, enter: "up", dist: 900, exit: "left", kb: [1.0, 1.1] });
-  tag({ text: "The first sermon", x: 540, y: 1300, t0: 29.25, t1: 31.0 });
   box({
     html: gfx.wheel(8, "#E2BE6A", { innerRing: true }), w: 560, h: 560, x: 540, y: 880,
     t0: 31.3, t1: 34.1, enter: "pop", inDur: 0.5,
@@ -135,14 +138,12 @@
       node.style.filter = "drop-shadow(0 0 30px rgba(226,190,106,.45))";
     },
   });
-  title({ text: "The first turning of the \\n wheel of dharma", t0: 31.39, t1: 34.0, x: 540, y: 310, size: 76, style: "serif", sync: true, hl: [6, 7, 8] });
 
   // =====================================================================
   // 0:34  "Centuries later, after a brutal conflict in Kalinga left him in
   //        need of spiritual guidance, emperor Ashoka led a Buddhist revival
   //        and built a space for worship in Sarnath."
   // =====================================================================
-  tag({ text: "Centuries later", x: 540, y: 250, t0: 34.03, t1: 36.4, color: "navy" });
   seg(34.0, 44.5, [
     [34.0, 84.5, 23.0, 36, 820],
     [36.6, 85.3, 21.2, 56, 820],
@@ -196,7 +197,6 @@
       `<div style="font-size:54px"><m data-at="63.65" data-dur="0.7">Jagat Singh, 1794</m></div>` +
       `<div class="small" style="margin-top:14px">dewan (official) of the Raja of Benares, whose workers found the site</div>`,
   });
-  tag({ text: "Found it first", x: 540, y: 1215, t0: 65.73, t1: 66.9 });
 
   // "This plays into who gets credit for Buddhism's legacy. And as it turns
   //  out, it's a very old and politically consequential battlefield."
@@ -206,14 +206,11 @@
     hl(iso, 71.0 + i * 0.16, 74.9, { fill: 0.3, fout: 0.4 }));
   hl("CHN", 72.6, 74.9, { color: "red", fill: 0.3, fout: 0.4 });
   hl("IND", 72.8, 74.9, { fill: 0.45, fout: 0.4 });
-  title({ text: "A politically consequential \\n battlefield", t0: 72.3, t1: 74.9, x: 540, y: 300, size: 74, style: "serif", sync: true, hl: [4] });
 
   // =====================================================================
   // 1:15  "This isn't the first time this sculpture was pulled into national politics."
   // =====================================================================
   ph("lion", { x: 540, y: 820, w: 660, h: 820, rot: -2, t0: 74.9, t1: 78.8, enter: "up", dist: 900, exit: "up", kb: [1.2, 1.08], pan: [0, 40, 0, -20] });
-  title({ text: "Not the first time.", at: [75.27, 75.51, 75.67, 75.83], t0: 75.2, t1: 78.7, x: 540, y: 250, size: 84, style: "serif-i" });
-  tag({ text: "National politics", x: 540, y: 1290, t0: 77.42, t1: 78.7 });
 
   // 1:19  "Right after independence in 1947, Nehru needed a symbol no religious community could object to."
   tag({ text: "Independence", x: 540, y: 190, t0: 79.42, t1: 85.9, color: "navy" });
@@ -230,12 +227,9 @@
   tag({ text: "Sikhs", x: 830, y: 1020, t0: 89.09, t1: 92.5, color: "cream", size: 38 });
   marker({ kind: "strike", x: 398, y: 950, x2: 392, y2: 1095, t0: 89.3, t1: 92.5, color: "#E0685B", dur: 0.25 });
   marker({ kind: "strike", x: 688, y: 950, x2: 694, y2: 1095, t0: 89.45, t1: 92.5, color: "#E0685B", dur: 0.25 });
-  tag({ text: "Centuries older than the divide", x: 540, y: 760, t0: 89.65, t1: 92.5, color: "ghost" });
-  tag({ text: "Belongs to no side", x: 540, y: 1200, t0: 91.3, t1: 92.5 });
 
   // 1:32  "Even Hindus, the country's largest community, already counted the
   //        Buddha as one of their own, as an avatar of Vishnu."
-  tag({ text: "Hindu tradition", x: 540, y: 290, t0: 92.93, t1: 99.2, color: "navy" });
   ph("dashavatara", { x: 540, y: 780, w: 940, h: 700, rot: -1, t0: 92.6, t1: 99.3, enter: "up", dist: 900, exit: "zoom", kb: [1.0, 1.08] });
   marker({ kind: "circle", x: 540, y: 780, rx: 150, ry: 170, t0: 96.05, t1: 99.2 });
   tag({ text: "The avatars of Vishnu", x: 540, y: 1210, t0: 97.73, t1: 99.2 });
@@ -250,12 +244,9 @@
     move: [[102.9, [540, 770, 1]], [104.0, [540, 640, 0.86]]],
     tick(t, node) { node.style.filter = `drop-shadow(0 0 ${(20 + 14 * Math.sin(t * 2)).toFixed(1)}px rgba(226,190,106,.5))`; },
   });
-  title({ text: "India's national emblem", t0: 100.73, t1: 103.0, x: 540, y: 270, size: 84, style: "serif", sync: true, hl: [1, 2], exit: "up" });
   tag({ text: "Adopted 26 January 1950", x: 540, y: 1150, t0: 101.8, t1: 103.0, color: "navy" });
-  tag({ text: "Religious politics", x: 540, y: 1020, t0: 104.0, t1: 107.2, color: "ghost" });
   ["Hindus", "Muslims", "Sikhs"].forEach((txt, i) =>
     tag({ text: txt, x: 250 + i * 290, y: 1110, t0: 103.6 + i * 0.12, t1: 107.2, color: "cream", size: 36 }));
-  tag({ text: "A unifying symbol", x: 540, y: 250, t0: 105.53, t1: 107.2 });
 
   ph("partition", { frame: "full", t0: 107.3, t1: 111.0, enter: "fade", inDur: 0.4, kb: [1.12, 1.02], dim: 0.9 });
   tag({ text: "Partition · 1947", sub: "~15 million displaced", x: 540, y: 300, t0: 107.9, t1: 110.9, color: "red" });
@@ -267,7 +258,6 @@
   hl("IND", 110.9, 115.8, { fout: 0.4 });
   pin("sarnath", 111.0, 115.6, { r: 11 });
   title({ text: "July 2026", at: [111.22, 111.3], t0: 111.2, t1: 113.7, x: 540, y: 300, size: 124, style: "sans", anim: "slam", hl: [1] });
-  title({ text: "The international stage", t0: 114.17, t1: 115.8, x: 540, y: 300, size: 80, style: "serif-i", sync: true });
 
   // 1:55  "UNESCO's listing isn't based on national importance. Its legal
   //        standard is based on outstanding universal value, meaning significance
@@ -298,10 +288,8 @@
   M.borders = [[0, 1], [137.2, 1], [138.8, 0.04], [141.2, 0.04], [141.7, 1]];
   hl("IND", 135.8, 139.2, { fout: 1.4 });
   lbl("INDIA", "IND", 135.9, 137.6, { size: 70 });
-  title({ text: "A more international vision", t0: 136.54, t1: 138.6, x: 540, y: 300, size: 76, style: "serif-i", sync: true, hl: [3] });
 
   // 2:18  "The verdict on universal value doesn't arrive on its own."
-  title({ text: "The verdict doesn't \\n arrive on its own", t0: 138.62, t1: 141.5, x: 540, y: 330, size: 80, style: "serif", sync: true, hl: [1] });
 
   // =====================================================================
   // 2:21  "India sat on UNESCO's World Heritage Committee through 2025 and
@@ -332,7 +320,6 @@
   seg(145.5, 148.9, [[145.5, 79, 25.5, 24, 820], [148.9, 77.8, 27.6, 38, 820, "linear"]]);
   hl("IND", 145.5, 148.9, { fill: 0.22 });
   pin("newdelhi", 147.19, 148.8, { label: "NEW DELHI", sub: "HOSTS THE SESSION · 2024", side: "right", size: 50 });
-  tag({ text: "The host", x: 540, y: 300, t0: 145.67, t1: 148.8, color: "navy" });
 
   doc({
     t0: 148.8, t1: 154.45, x: 540, y: 790, w: 900, rot: -1,
@@ -376,7 +363,6 @@
   M.icons.push({ kind: "pawn", at: [104, 34], t0: 160.31, t1: 162.0, drop: true, color: "red" });
   hl("IND", 158.4, 162.2, { fill: 0.22 });
   hl("CHN", 160.3, 162.2, { fill: 0.22, color: "red" });
-  title({ text: "The bigger \\n regional contest", t0: 159.91, t1: 162.0, x: 540, y: 300, size: 84, style: "serif-i", sync: true, hl: [3, 4] });
 
   tag({ text: "India's strategy", x: 540, y: 190, t0: 162.06, t1: 169.0, color: "navy" });
   [["✓ Birthplace", 163.82], ["✓ Authenticity", 164.62], ["✓ Relic tours", 165.75], ["✓ Pilgrimage routes", 166.62]].forEach(([txt, t0], i) =>
@@ -404,7 +390,6 @@
   // =====================================================================
   hl("CHN", 175.4, 182.6, { color: "red" });
   lbl("CHINA", "CHN", 175.6, 178.1, { size: 72 });
-  title({ text: "The counter-strategy", at: [176.3, 176.46], t0: 176.3, t1: 178.3, x: 540, y: 300, size: 92, style: "sans", hl: [1] });
   pin("ningbo", 178.06, 180.4, { label: "NINGBO", sub: "WORLD BUDDHIST FORUM", color: "red", subColor: "cream", side: "left", size: 46 });
   ["USA", "CAN", "MEX", "BRA", "ARG", "GBR", "FRA", "DEU", "ITA", "ESP", "RUS", "ZAF", "KEN", "EGY", "AUS", "NZL", "JPN", "KOR", "MNG", "THA", "LKA", "MMR", "KHM", "LAO", "VNM", "NPL", "IDN", "MYS", "KAZ", "PAK"].forEach((iso, i) =>
     arc(iso, "ningbo", 179.3 + (i % 15) * 0.09 + Math.floor(i / 15) * 0.05, 182.4, { dur: 0.9, bend: 0.18, width: 3, arrow: false, color: "red", alpha: 0.8 }));
@@ -433,14 +418,12 @@
   // =====================================================================
   title({ text: "The succession", at: [196.11, 196.27], t0: 196.1, t1: 202.4, x: 540, y: 230, size: 104, style: "sans", hl: [1] });
   ph("dalai", { x: 540, y: 830, w: 620, h: 760, rot: -2, t0: 196.9, t1: 202.5, enter: "up", dist: 900, exit: "left" });
-  tag({ text: "The 14th Dalai Lama", x: 540, y: 1250, t0: 197.4, t1: 200.2 });
+  tag({ text: "The 14th Dalai Lama", x: 540, y: 1250, t0: 197.4, t1: 202.4 });
   tag({ text: "July 2025", x: 540, y: 360, t0: 198.35, t1: 202.4, color: "navy" });
-  tag({ text: "Only his office names the next", x: 540, y: 1250, t0: 200.35, t1: 202.4 });
 
   seg(202.45, 215.0, [[202.45, 91, 34, 12.5, 860], [215.0, 92, 34, 13.2, 860, "linear"]]);
   hl("IND", 202.6, 215.0, { fill: 0.3 });
   pin("dharamshala", 202.8, 214.9, { label: "DHARAMSHALA", sub: "SEAT OF THE DALAI LAMA", side: "bottom", size: 44 });
-  tag({ text: "India publicly backs him", x: 540, y: 300, t0: 202.99, t1: 205.1 });
 
   // 3:25  "And yet China insists it must approve of that choice instead,
   //        calling the dispute, in its own words, a thorn in the relationship.
@@ -448,7 +431,6 @@
   hl("CHN", 205.5, 215.0, { color: "red", fill: 0.3 });
   pin("beijing", 205.55, 214.9, { label: "BEIJING", color: "red", side: "top", size: 48 });
   arc("beijing", "dharamshala", 206.1, 214.9, { dur: 1.2, dashed: true, color: "red", bend: -0.2 });
-  tag({ text: "China: it must approve", x: 540, y: 300, t0: 206.11, t1: 208.4, color: "red" });
   doc({
     t0: 208.49, t1: 212.3, x: 540, y: 620, w: 880, rot: 1.5,
     head: "China, on the dispute",
@@ -466,7 +448,6 @@
   title({ text: "Sarnath's test", t0: 215.12, t1: 217.6, x: 540, y: 560, size: 120, style: "serif", sync: true, hl: [1] });
   doc({ t0: 217.76, t1: 224.7, x: 540, y: 820, w: 820, rot: -2, head: "Site management plan · Sarnath", title: "Protecting the ruins from a tourism boom", bars: 5 });
   stamp({ text: "Not published", x: 560, y: 900, rot: -12, size: 62, red: true, t0: 222.56, t1: 224.7 });
-  tag({ text: "As of late July", x: 540, y: 300, t0: 223.69, t1: 224.7, color: "navy" });
   box({
     html: `<div style="display:grid;grid-template-columns:repeat(12,1fr);gap:14px 18px;width:100%">${Array.from({ length: 84 }, (_, i) =>
       `<div class="p" style="height:92px;opacity:0">${gfx.person(i % 7 === 3 ? "#E2BE6A" : "#F3EBDA")}</div>`).join("")}</div>`,
@@ -478,7 +459,6 @@
       });
     },
   });
-  tag({ text: "Can the site cope?", x: 540, y: 300, t0: 226.3, t1: 228.8 });
 
   // =====================================================================
   // 3:48  "This lion has been a political tool for almost eighty years now.
@@ -495,8 +475,6 @@
     [251.7, 70, 22, 3.3, 860, "inOutSine"],
   ]);
   hl("IND", 233.2, 251.7, { fill: 0.4, pulse: true });
-  tag({ text: "1947: hold India together", x: 540, y: 1230, t0: 233.58, t1: 235.6 });
-  tag({ text: "2026: lead the Buddhist world", x: 540, y: 300, t0: 236.38, t1: 242.6 });
   ["LKA", "MMR", "THA", "LAO", "KHM", "VNM", "BTN", "NPL", "MNG", "CHN", "KOR", "JPN", "TWN", "SGP", "MYS"].forEach((iso, i) =>
     hl(iso, 237.4 + i * 0.22, 251.7, { fill: 0.3, color: iso === "CHN" ? "cream" : "gold" }));
   counter({ t0: 240.13, t1: 242.6, x: 540, y: 1150, to: 500000000, dur: 1.0, size: 110, prefix: "~", label: "Buddhists worldwide", labelSize: 28 });
@@ -509,7 +487,6 @@
     const x = 230 + V.rand(i * 3.3) * 620, y = 560 + V.rand(i * 5.1 + 1) * 640;
     ph(key, { x, y, w: 360, h: 280, rot: (V.rand(i * 7.7) - 0.5) * 22, t0: 247.4 + i * 0.28, t1: 251.6, enter: "pop", inDur: 0.35, exit: "fade" });
   });
-  title({ text: "Everywhere else", t0: 249.5, t1: 251.6, x: 540, y: 300, size: 92, style: "serif-i", sync: true, hl: [0] });
 
   // 4:11  "Every flag, every ruin, and every plaque carries a deeper message
   //        that goes beyond the veneer of heritage."

@@ -70,13 +70,14 @@
       if (cur.length && len(cur) + w.text.length > MAX) { chunks.push(cur); cur = []; }
       cur.push(w);
       const endSentence = /[.!?]$/.test(w.text);
-      const pause = next ? next.start - w.end > 0.32 : true;
-      const comma = /,$/.test(w.text) && len(cur) > 14;
+      const pause = next ? next.start - w.end > (opts.pause ?? 0.32) : true;
+      const comma = /,$/.test(w.text) && len(cur) > (opts.commaAfter ?? 14);
       if (endSentence || pause || comma || !next) { chunks.push(cur); cur = []; }
     }
     if (cur.length) chunks.push(cur);
 
     const layer = V.layers.subs;
+    const mute = opts.mute || [];
     const endAt = opts.endAt ?? 1e9;
     chunks.forEach((c, idx) => {
       const node = document.createElement("div");
@@ -95,7 +96,8 @@
         t0, t1, el: node,
         update(t) {
           const p = V.ease.outCubic(V.prog(t, t0, t0 + 0.12));
-          node.style.opacity = p.toFixed(3);
+          const muted = mute.some(([a, b]) => t >= a && t <= b);
+          node.style.opacity = muted ? "0" : p.toFixed(3);
           node.style.transform = `translateY(${((1 - p) * 14).toFixed(1)}px)`;
           c.forEach((w, k) => {
             const on = t >= w.start - 0.02 && (k === c.length - 1 ? true : t < c[k + 1].start - 0.02);
