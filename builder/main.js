@@ -37,6 +37,7 @@ async function boot() {
     inspector: $("#inspector"),
     toolStatus: $("#toolStatus"),
     renderPanel: $("#renderPanel"),
+    timelineResizeHandle: $("#timelineResizeHandle"),
   };
 
   populateStylePicker();
@@ -56,8 +57,14 @@ async function boot() {
   wirePlayback();
   wireKeyboard();
   wireDropTarget(elements.frame);
+  wireTimelineResize(elements.timelineResizeHandle);
+  applyLayoutMode();
   refreshMeta();
   refreshSceneList();
+
+  Store.subscribe((state, reason) => {
+    if (reason !== "time") applyLayoutMode();
+  });
 
   Store.subscribe((state, reason) => {
     if (reason !== "time") refreshMeta();
@@ -199,6 +206,25 @@ function buildTemplate(tpl) {
     { center: [here.center[0] + 8, here.center[1] - 9] },
     { center: [here.center[0] - 11, here.center[1] - 2] },
   ]);
+}
+
+/**
+ * 9:16 scenes are tall and narrow; centring them in the wide top row used
+ * by the 16:9 layout leaves most of the window empty. Below, `body` gets
+ * a class the CSS grid in styles/builder.css keys off of to rearrange
+ * into a full-height preview on the left with the inspector and timeline
+ * stacked in a column on the right — see the .portrait-layout rules.
+ */
+let lastPortrait = null;
+function applyLayoutMode() {
+  const isPortrait = Store.getScene().aspect === "9:16";
+  if (isPortrait === lastPortrait) return;
+  lastPortrait = isPortrait;
+  document.body.classList.toggle("portrait-layout", isPortrait);
+  // The grid track sizes just changed, which resizes the canvas's actual
+  // box — let the preview re-fit to it rather than staying the old size
+  // until the next window resize event.
+  Canvas.handleResize();
 }
 
 function refreshMeta() {
@@ -398,6 +424,59 @@ function startRender(draft) {
     style: scene.style,
     fps: draft ? undefined : scene.fps,
   });
+}
+
+// ---------------------------------------------------- timeline resizing
+const TIMELINE_H_KEY = "heritle.timelineHeight";
+const TIMELINE_H_MIN = 160;
+const TIMELINE_H_MAX = 640;
+
+/**
+ * Drags --timeline-h directly. Only wired up visually in the landscape
+ * layout (the portrait layout hides the handle via CSS, since there the
+ * timeline row is 1fr and already fills whatever's left below the
+ * inspector) — dragging still works if triggered programmatically, it's
+ * just not reachable there.
+ */
+function wireTimelineResize(handle) {
+  if (!handle) return;
+  const saved = Number(localStorage.getItem(TIMELINE_H_KEY));
+  if (saved) setTimelineHeight(saved);
+
+  let dragging = false;
+  let startY = 0;
+  let startH = 0;
+
+  handle.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    startY = e.clientY;
+    startH = currentTimelineHeight();
+    handle.classList.add("dragging");
+    handle.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+  handle.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    // Dragging the top edge down shrinks the timeline (it's anchored to
+    // the bottom of the window), so moving down is a negative delta.
+    setTimelineHeight(startH - (e.clientY - startY));
+  });
+  ["pointerup", "pointercancel"].forEach((t) => handle.addEventListener(t, () => {
+    if (!dragging) return;
+    dragging = false;
+    handle.classList.remove("dragging");
+    localStorage.setItem(TIMELINE_H_KEY, String(currentTimelineHeight()));
+  }));
+}
+
+function currentTimelineHeight() {
+  return parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--timeline-h")) || 300;
+}
+
+function setTimelineHeight(px) {
+  const clamped = Math.max(TIMELINE_H_MIN, Math.min(TIMELINE_H_MAX, px));
+  document.documentElement.style.setProperty("--timeline-h", clamped + "px");
+  Canvas.handleResize();
 }
 
 // --------------------------------------------------------- drag and drop

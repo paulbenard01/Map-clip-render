@@ -48,6 +48,11 @@ export async function init(els, options) {
 
   applyAspect(Store.getScene().aspect);
   window.addEventListener("resize", () => applyAspect(Store.getScene().aspect));
+  // Catches every other way the preview's actual box can change size —
+  // the portrait/landscape layout swap, dragging the timeline resize
+  // handle, anything — without each of those call sites needing to know
+  // to call handleResize() themselves.
+  new ResizeObserver(() => applyAspect(Store.getScene().aspect)).observe(elements.wrap);
 
   map = new EqualEarthMap({
     container: elements.map,
@@ -150,6 +155,11 @@ export function render() {
 }
 
 export function getMap() { return map; }
+
+/** Re-fits the preview frame to its container immediately, rather than
+ * waiting for the ResizeObserver's next tick — used right after a layout
+ * change so there's no visible flash of the old size. */
+export function handleResize() { applyAspect(Store.getScene().aspect); }
 
 /** Where the camera is looking right now — used by "add keyframe here". */
 export function currentView() {

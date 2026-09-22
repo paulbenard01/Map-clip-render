@@ -97,30 +97,31 @@
   </section>
 
   <aside id="inspector" class="inspector"></aside>
-</main>
 
-<section id="timeline" class="timeline">
-  <div class="tl-transport">
-    <button id="playBtn" class="btn" type="button" title="Play / pause (Space)">Play</button>
-    <button id="stopBtn" class="btn" type="button">Stop</button>
-    <span id="timeReadout" class="mono">0.00s</span>
-  </div>
-  <div class="tl-body">
-    <div id="tlTrackNames" class="tl-track-names">
-      <div class="tl-name" data-track="camera">Camera</div>
-      <div class="tl-name" data-track="pins">Pins</div>
-      <div class="tl-name" data-track="routes">Routes</div>
-      <div class="tl-name" data-track="highlights">Countries</div>
-      <div class="tl-name" data-track="zones">Zones</div>
-      <div class="tl-name" data-track="titles">Text boxes</div>
+  <section id="timeline" class="timeline">
+    <div id="timelineResizeHandle" class="tl-resize-handle" title="Drag to resize"></div>
+    <div class="tl-transport">
+      <button id="playBtn" class="btn" type="button" title="Play / pause (Space)">Play</button>
+      <button id="stopBtn" class="btn" type="button">Stop</button>
+      <span id="timeReadout" class="mono">0.00s</span>
     </div>
-    <div class="tl-scroll">
-      <div id="tlRuler" class="tl-ruler"></div>
-      <div id="tlLanes" class="tl-lanes"></div>
-      <div id="tlPlayhead" class="tl-playhead"></div>
+    <div class="tl-body">
+      <div id="tlTrackNames" class="tl-track-names">
+        <div class="tl-name" data-track="camera">Camera</div>
+        <div class="tl-name" data-track="pins">Pins</div>
+        <div class="tl-name" data-track="routes">Routes</div>
+        <div class="tl-name" data-track="highlights">Countries</div>
+        <div class="tl-name" data-track="zones">Zones</div>
+        <div class="tl-name" data-track="titles">Text boxes</div>
+      </div>
+      <div class="tl-scroll">
+        <div id="tlRuler" class="tl-ruler"></div>
+        <div id="tlLanes" class="tl-lanes"></div>
+        <div id="tlPlayhead" class="tl-playhead"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <div id="renderPanel" class="render-panel"></div>
 <div id="flash" class="flash"></div>

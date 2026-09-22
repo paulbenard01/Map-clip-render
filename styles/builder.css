@@ -102,13 +102,37 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 .dirty-dot.dirty { background: var(--accent); }
 
 /* ------------------------------------------------------------ workspace */
+/*
+ * A grid, not flex, so the timeline can be pulled fully into the layout
+ * (rather than sitting in a separate fixed-height strip below it) — that's
+ * what makes the portrait rearrangement below possible: the same three
+ * children just get reassigned to different cells.
+ */
 .workspace {
-  display: flex;
-  height: calc(100vh - var(--toolbar-h) - var(--timeline-h));
+  display: grid;
+  height: calc(100vh - var(--toolbar-h));
   min-height: 260px;
+  grid-template-columns: 1fr 310px;
+  grid-template-rows: 1fr var(--timeline-h);
+  grid-template-areas:
+    "canvas inspector"
+    "timeline timeline";
 }
 
-.canvas-area { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+/* Portrait scenes (9:16) are tall and narrow — centering them in a wide
+   top row wastes most of the window's height. Instead: the preview runs
+   the full height on the left, and the inspector + timeline share a
+   narrower column on the right, inspector on top since that's what you're
+   looking at right after clicking something. */
+body.portrait-layout .workspace {
+  grid-template-columns: 1fr 360px;
+  grid-template-rows: minmax(220px, 38vh) 1fr;
+  grid-template-areas:
+    "canvas inspector"
+    "canvas timeline";
+}
+
+.canvas-area { grid-area: canvas; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 
 .canvas-tools {
   display: flex;
@@ -214,8 +238,10 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 
 /* ------------------------------------------------------------ inspector */
 .inspector {
-  width: 310px;
-  flex-shrink: 0;
+  grid-area: inspector;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
   background: var(--panel);
   border-left: 1px solid var(--line);
   overflow-y: auto;
@@ -270,12 +296,29 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 
 /* ------------------------------------------------------------- timeline */
 .timeline {
-  height: var(--timeline-h);
+  grid-area: timeline;
+  position: relative;
+  min-height: 0;
   background: var(--panel);
   border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
 }
+/* Landscape: the timeline's row height is the --timeline-h var, and this
+   handle drags it directly. Portrait: the timeline row is already 1fr
+   (fills whatever's left below the inspector), so there's nothing to
+   resize — the handle is hidden there. */
+.tl-resize-handle {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  cursor: ns-resize;
+  z-index: 10;
+}
+.tl-resize-handle:hover, .tl-resize-handle.dragging { background: rgba(232, 193, 76, 0.35); }
+body.portrait-layout .tl-resize-handle { display: none; }
 .tl-transport { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-bottom: 1px solid var(--line); }
 /* auto (not hidden): six tracks fit the default height, but a track with
    overlapping blocks packs extra sub-rows and can still run taller than
@@ -348,6 +391,10 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
   z-index: 40;
 }
 .render-panel.open { display: block; }
+/* Portrait: the timeline lives in a right-hand column now, not a
+   full-width strip at the bottom, so anchoring above it would float this
+   over empty space. Anchor to the bottom of the preview column instead. */
+body.portrait-layout .render-panel { right: auto; left: 16px; bottom: 16px; }
 .render-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
 .render-panel video { width: 100%; border-radius: var(--radius); background: #000; margin-bottom: 8px; max-height: 320px; }
 .render-panel p { margin-bottom: 7px; }
@@ -432,6 +479,9 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
   max-width: 70vw;
 }
 .flash.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* Same reasoning as .render-panel above: centre over the preview column,
+   not the page, once the timeline is no longer full-width at the bottom. */
+body.portrait-layout .flash { left: 30%; bottom: 16px; }
 
 .boot-error { padding: 32px; max-width: 760px; }
 .boot-error h1 { font-size: 18px; margin-bottom: 14px; color: #ff8b86; }
