@@ -66,6 +66,7 @@ export async function init(els, options) {
     preserveDrawingBuffer: true,
   });
 
+  window.__builderMap = map; // debug convenience, mirrors map.html's window.__map
   await new Promise((resolve) => map.on("load", resolve));
 
   basemapData = await Promise.all([
@@ -88,8 +89,15 @@ export async function init(els, options) {
 
   map.on("click", onMapClick);
   map.on("mousemove", onMapMove);
-  // Keep handles glued to the map while the user pans or zooms manually.
-  map.on("move", () => drawHandles());
+  // Keep everything glued to the map while the user pans or zooms manually:
+  // the painted pins/routes/titles (via stage.setFrame — moveCamera:false so
+  // this never fights the drag itself) and the selection handles. Without
+  // this, only the handles used to move; the actual overlays stayed put at
+  // their old screen position while the map slid out from under them.
+  map.on("move", () => {
+    if (stage) stage.setFrame(Store.getState().time, { moveCamera: false });
+    drawHandles();
+  });
 
   installHandleDragging();
 
