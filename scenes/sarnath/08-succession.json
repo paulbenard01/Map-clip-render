@@ -51,10 +51,11 @@
     {
       "t": 16,
       "center": [
-        96.0,
-        33.0
+        97.2,
+        32.3
       ],
-      "zoom": 2.8
+      "zoom": 2.85,
+      "transition": "smooth"
     }
   ],
   "countryHighlights": [
