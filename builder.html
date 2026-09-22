@@ -70,6 +70,9 @@
       <label class="inline-check" title="Let the timeline drive the camera. Turn off to look around without moving keyframes.">
         <input id="followCam" type="checkbox" checked /> Follow camera
       </label>
+      <label class="inline-check" title="A margin guide near the frame edges. 9:16 shows much less width than 16:9 at the same zoom — this is where a pin or route endpoint is at real risk of running off-screen.">
+        <input id="safeAreaToggle" type="checkbox" /> Safe area
+      </label>
       <span id="toolStatus" class="tool-status"></span>
       <span id="coordReadout" class="coord-readout mono"></span>
     </div>
@@ -82,6 +85,7 @@
           <svg id="routeSvg"></svg>
         </div>
         <div id="handles" class="handle-layer"></div>
+        <div id="safeArea" class="safe-area-guide"></div>
       </div>
     </div>
   </section>

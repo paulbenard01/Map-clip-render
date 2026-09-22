@@ -213,6 +213,7 @@ function wirePlayback() {
   $("#playBtn").onclick = togglePlayback;
   $("#stopBtn").onclick = () => { stopPlayback(); Store.setTime(0); };
   $("#followCam").onchange = (e) => Canvas.setFollowCamera(e.target.checked);
+  $("#safeAreaToggle").onchange = (e) => $("#safeArea").classList.toggle("on", e.target.checked);
 
   Store.subscribe((state, reason) => {
     if (reason === "playing") $("#playBtn").textContent = state.playing ? "Pause" : "Play";

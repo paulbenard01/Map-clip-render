@@ -152,6 +152,22 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 
 /* --------------------------------------------------------- edit handles */
 .handle-layer { position: absolute; inset: 0; pointer-events: none; }
+
+/*
+ * Safe-area guide: a margin near the frame edges, toggleable while
+ * composing. 9:16 shows far less horizontal ground at a given zoom than
+ * 16:9 does (roughly half, at this project's default output widths) — this
+ * marks where a pin or route endpoint is at real risk of running off-screen,
+ * especially on the left/right edges of a portrait shot.
+ */
+#safeArea {
+  position: absolute;
+  inset: 9% 8%;
+  border: 1px dashed rgba(232, 193, 76, 0.55);
+  pointer-events: none;
+  display: none;
+}
+#safeArea.on { display: block; }
 .handle {
   position: absolute;
   width: 14px;

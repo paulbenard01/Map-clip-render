@@ -98,7 +98,10 @@ Four regions:
 - **Toolbar** — style preset, aspect ratio, fps, duration, project name,
   templates, Import / Export / Save, and the two render buttons.
 - **Canvas** — the live map, letterboxed to the scene's aspect ratio so the
-  framing you compose is the framing that renders. Pan and zoom freely.
+  framing you compose is the framing that renders. Pan and zoom freely. Toggle
+  **Safe area** for a margin guide near the edges — 9:16 shows much less width
+  than 16:9 at the same zoom, so this is where a pin or route endpoint is at
+  real risk of running off-screen, especially near the left/right edges.
 - **Timeline** — a track per element type. Drag a block to move it, drag an
   edge to resize it, click it to select. The playhead scrubs the canvas.
 - **Inspector** — exact values for whatever's selected. Dragging is for
