@@ -80,6 +80,10 @@ function pinFields(body, pin) {
   body.appendChild(timingFields("pin", pin));
 
   body.appendChild(textField("Label", pin.label || "", (v) => set("pin", pin, { label: v || null })));
+  body.appendChild(el("div", { className: "row label-style-row" },
+    checkboxLabel("ALL CAPS", pin.labelCaps, (v) => set("pin", pin, { labelCaps: v })),
+    checkboxLabel("Bold", pin.labelBold, (v) => set("pin", pin, { labelBold: v }))
+  ));
 
   const imageRow = el("div", { className: "field" },
     el("label", {}, "Image"),
@@ -141,6 +145,10 @@ function routeFields(body, route) {
   body.appendChild(numberField("Width (px)", route.width, { min: 1, max: 30, step: 1 }, (v) => set("route", route, { width: v })));
   body.appendChild(colorField("Colour", route.color, presetColor("routeColor"), (v) => set("route", route, { color: v })));
   body.appendChild(textField("Label", route.label || "", (v) => set("route", route, { label: v || null })));
+  body.appendChild(el("div", { className: "row label-style-row" },
+    checkboxLabel("ALL CAPS", route.labelCaps, (v) => set("route", route, { labelCaps: v })),
+    checkboxLabel("Bold", route.labelBold, (v) => set("route", route, { labelBold: v }))
+  ));
 }
 
 // ---------------------------------------------------------------- camera
@@ -166,8 +174,22 @@ function cameraFields(body, kf) {
 // ---------------------------------------------------------------- titles
 function titleFields(body, title) {
   body.appendChild(textField("Text", title.text, (v) => set("title", title, { text: v })));
-  body.appendChild(selectField("Position", title.position, Engine.TITLE_POSITIONS, (v) => set("title", title, { position: v })));
+
+  // The five named positions are the quick option; "Custom" is what you get
+  // by dragging the title on the canvas — picking a named one here snaps it
+  // back off free placement.
+  const positionOptions = Engine.TITLE_POSITIONS.filter((p) => p !== "custom").concat(title.position === "custom" ? ["custom"] : []);
+  body.appendChild(selectField("Position", title.position, positionOptions,
+    (v) => set("title", title, v === "custom" ? { position: v, x: title.x != null ? title.x : 0.5, y: title.y != null ? title.y : 0.5 } : { position: v }),
+    title.position === "custom" ? "Drag the title on the canvas to move it" : "Or drag the title directly on the canvas"));
+
   body.appendChild(numberField("Size (px)", title.size, { min: 8, max: 120, step: 1 }, (v) => set("title", title, { size: v })));
+
+  body.appendChild(sectionLabel("Text style"));
+  body.appendChild(checkboxField("ALL CAPS", title.caps, (v) => set("title", title, { caps: v })));
+  body.appendChild(checkboxField("Bold", title.bold, (v) => set("title", title, { bold: v })));
+  body.appendChild(colorField("Colour", title.color, presetColor("text"), (v) => set("title", title, { color: v })));
+
   body.appendChild(timingFields("title", title));
 }
 
@@ -269,6 +291,13 @@ function selectField(label, value, options, onChange, hint) {
   return el("div", { className: "field" },
     el("label", {}, label, hint ? el("span", { className: "hint" }, hint) : null),
     sel
+  );
+}
+
+function checkboxLabel(label, checked, onChange) {
+  return el("label", { className: "inline-check" },
+    el("input", { type: "checkbox", checked, onchange: (e) => onChange(e.target.checked) }),
+    document.createTextNode(" " + label)
   );
 }
 

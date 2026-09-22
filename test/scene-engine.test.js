@@ -240,5 +240,64 @@ testFocusCountryMigration();
 testTimedHighlights();
 testDuration();
 testRoundTrip();
+function testTitleTextStyleDefaults() {
+  const s = E.normalizeScene({ titles: [{ text: "Plain" }, { text: "Styled", caps: false, bold: false, color: "#ff0000" }] });
+  assert.strictEqual(s.titles[0].caps, true, "caps defaults on:");
+  assert.strictEqual(s.titles[0].bold, true, "bold defaults on:");
+  assert.strictEqual(s.titles[0].color, null, "no colour override by default:");
+  assert.strictEqual(s.titles[1].caps, false);
+  assert.strictEqual(s.titles[1].bold, false);
+  assert.strictEqual(s.titles[1].color, "#ff0000");
+
+  const once = E.serializeScene(s);
+  assert.strictEqual(once.titles[0].caps, undefined, "default caps is not written out:");
+  assert.strictEqual(once.titles[1].caps, false, "an override is written out:");
+  assert.strictEqual(once.titles[1].bold, false);
+  assert.strictEqual(once.titles[1].color, "#ff0000");
+  console.log("  ok  title caps/bold/colour default to the current look and round-trip");
+}
+
+function testTitleCustomPosition() {
+  const s = E.normalizeScene({ titles: [{ text: "Dragged", position: "custom", x: 0.2, y: 0.85 }] });
+  assert.strictEqual(s.titles[0].position, "custom");
+  close(s.titles[0].x, 0.2, 1e-9, "x:");
+  close(s.titles[0].y, 0.85, 1e-9, "y:");
+
+  const serialized = E.serializeScene(s);
+  assert.strictEqual(serialized.titles[0].x, 0.2);
+  assert.strictEqual(serialized.titles[0].y, 0.85);
+
+  // A non-custom title carries no x/y at all — nothing to serialize, and
+  // normalizeScene ignores stray x/y on a positioned title rather than
+  // treating their presence as meaningful.
+  const anchored = E.normalizeScene({ titles: [{ text: "Anchored", position: "bottom-left", x: 0.9, y: 0.9 }] });
+  assert.strictEqual(anchored.titles[0].x, null, "x is ignored outside custom position:");
+  assert.strictEqual(E.serializeScene(anchored).titles[0].x, undefined);
+
+  const twice = E.normalizeScene(E.normalizeScene(s));
+  assert.deepStrictEqual(twice, E.normalizeScene(s), "normalize is idempotent with a custom position");
+  console.log("  ok  custom title position round-trips and is idempotent");
+}
+
+function testPinAndRouteLabelStyle() {
+  const s = E.normalizeScene({
+    pins: [{ center: [0, 0], label: "Loud", labelCaps: false, labelBold: false }],
+    routes: [{ from: [0, 0], to: [1, 1], label: "Quiet", labelCaps: false }],
+  });
+  assert.strictEqual(s.pins[0].labelCaps, false);
+  assert.strictEqual(s.pins[0].labelBold, false);
+  assert.strictEqual(s.routes[0].labelCaps, false);
+  assert.strictEqual(s.routes[0].labelBold, true, "unset field still defaults on:");
+
+  const out = E.serializeScene(s);
+  assert.strictEqual(out.pins[0].labelCaps, false);
+  assert.strictEqual(out.routes[0].labelCaps, false);
+  assert.strictEqual(out.routes[0].labelBold, undefined, "default is not written out:");
+  console.log("  ok  pin and route label style overrides round-trip");
+}
+
+testTitleTextStyleDefaults();
+testTitleCustomPosition();
+testPinAndRouteLabelStyle();
 testNormalizeIsIdempotent();
 console.log("all scene-engine tests passed");

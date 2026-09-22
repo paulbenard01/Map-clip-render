@@ -146,6 +146,9 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 /* Overlay pins are clickable here (they are not on the render page). */
 .canvas-frame #overlay { pointer-events: none; }
 .canvas-frame #overlay .pin { pointer-events: auto; cursor: pointer; }
+.canvas-frame #overlay .title-card { pointer-events: auto; cursor: grab; }
+.canvas-frame #overlay .title-card:active { cursor: grabbing; }
+.canvas-frame #overlay .title-card.title-selected { outline: 2px dashed var(--accent); outline-offset: 3px; }
 
 /* --------------------------------------------------------- edit handles */
 .handle-layer { position: absolute; inset: 0; pointer-events: none; }
@@ -208,6 +211,7 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 .field .row { display: flex; gap: 6px; align-items: center; }
 .field .row input[type="number"] { flex: 1; }
 .field-inline { margin: 10px 0; }
+.label-style-row { margin: -4px 0 10px; gap: 16px; }
 .image-field { display: flex; gap: 5px; }
 .image-field input { flex: 1; }
 .image-preview { display: block; margin-top: 7px; width: 100%; max-height: 120px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); }
@@ -239,7 +243,7 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 
 .tl-block {
   position: absolute;
-  top: 5px;
+  /* top is set per-block by timeline.js, based on its packed row */
   height: 28px;
   border-radius: 4px;
   cursor: grab;
@@ -264,7 +268,7 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 .tl-resize-r { right: 0; }
 
 /* Camera keyframes are instants, so they're diamonds rather than bars. */
-.tl-block.point { background: none; border: none; width: 0; overflow: visible; top: 9px; }
+.tl-block.point { background: none; border: none; width: 0; overflow: visible; }
 .tl-diamond { position: absolute; left: -7px; width: 14px; height: 14px; background: var(--track-camera); border: 1px solid rgba(255, 255, 255, 0.5); transform: rotate(45deg); }
 .tl-block.point.selected { outline: none; }
 .tl-block.point.selected .tl-diamond { background: var(--accent); box-shadow: 0 0 0 2px rgba(232, 193, 76, 0.5); }

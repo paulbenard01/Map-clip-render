@@ -189,6 +189,7 @@ function onMapMove(e) {
  * selecting a pin that hasn't appeared yet looks like nothing happened).
  */
 function drawHandles() {
+  syncTitleSelection();
   if (!handleLayer || !map) return;
   handleLayer.innerHTML = "";
 
@@ -211,6 +212,40 @@ function drawHandles() {
   } else if (kind === "camera") {
     addHandle(element.center, "camera-handle", { kind: "camera", id: element.id, role: "center" }, "t=" + element.t);
   }
+}
+
+/** Toggles the dashed outline on whichever title card is currently selected. */
+function syncTitleSelection() {
+  if (!elements.overlay) return;
+  const selected = Store.getSelected();
+  elements.overlay.querySelectorAll(".title-card").forEach((el) => {
+    const isSelected = selected && selected.kind === "title" && el.dataset.elementId === selected.element.id;
+    el.classList.toggle("title-selected", !!isSelected);
+  });
+  bringSelectedToFront(selected);
+}
+
+/**
+ * Re-appends the selected pin or title as the last child of #overlay, so it
+ * paints on top of anything it was stacked underneath — cycling selection
+ * (see installOverlayInteraction) picks an obscured element out of a stack,
+ * and this is what makes it visible and directly clickable/draggable
+ * afterwards, rather than merely selected-but-still-hidden.
+ *
+ * Purely a builder-editing convenience: it reorders DOM nodes the editor
+ * itself created, never the scene data, and has no effect on the render —
+ * scene-view.js rebuilds the overlay from the scene's own array order every
+ * time setScene runs.
+ */
+function bringSelectedToFront(selected) {
+  if (!selected || (selected.kind !== "pin" && selected.kind !== "title")) return;
+  const selector = selected.kind === "pin" ? ".pin" : ".title-card";
+  const el = elements.overlay.querySelector(`${selector}[data-element-id="${cssEscape(selected.element.id)}"]`);
+  if (el) elements.overlay.appendChild(el);
+}
+
+function cssEscape(id) {
+  return window.CSS && CSS.escape ? CSS.escape(id) : id.replace(/["\\]/g, "\\$&");
 }
 
 function addHandle(lngLat, className, meta, label) {
@@ -274,11 +309,112 @@ function installHandleDragging() {
   handleLayer.addEventListener("pointercancel", finish);
 }
 
-/** Clicking a painted pin in the preview selects it. */
+/**
+ * Selecting and (for titles) dragging elements painted directly on the
+ * canvas — pins and title cards.
+ *
+ * The tricky part is overlap: two pins placed close together, or two titles
+ * both anchored "bottom-left", occupy the same screen pixels. The browser's
+ * normal hit-testing only ever gives you the topmost one, which makes
+ * anything underneath unreachable by clicking. `elementsFromPoint` returns
+ * the whole stack at a point, so a click that lands on the same spot as the
+ * previous one cycles to the next element down instead of reselecting the
+ * same top one every time.
+ */
 export function installOverlaySelection() {
-  elements.overlay.addEventListener("pointerdown", (e) => {
-    const pin = e.target.closest(".pin");
-    if (!pin || !pin.dataset.elementId) return;
-    Store.select("pin", pin.dataset.elementId);
-  });
+  installOverlayInteraction();
 }
+
+let lastPick = null; // { x, y, ids: [{kind,id}], picked: {kind,id} }
+const PICK_TOLERANCE = 4; // px — how close a click has to land to count as "the same spot"
+const pickKey = (p) => p.kind + ":" + p.id;
+
+function installOverlayInteraction() {
+  let dragging = null; // set only when the picked element is a title
+
+  elements.overlay.addEventListener("pointerdown", (e) => {
+    const stack = pickableStackAt(e.clientX, e.clientY);
+    if (!stack.length) { lastPick = null; return; }
+
+    const samePlace = lastPick
+      && Math.abs(e.clientX - lastPick.x) <= PICK_TOLERANCE
+      && Math.abs(e.clientY - lastPick.y) <= PICK_TOLERANCE
+      && sameStack(stack, lastPick.ids);
+
+    let picked;
+    if (samePlace) {
+      // Advance through a stable, paint-order-independent cycle. Selecting
+      // an element brings it to the front (see bringSelectedToFront), which
+      // would otherwise scramble a cycle based on the live DOM order —
+      // sorting by identity keeps it deterministic and guarantees every
+      // element in the stack gets reached exactly once per lap.
+      const sorted = stack.slice().sort((a, b) => pickKey(a).localeCompare(pickKey(b)));
+      const at = sorted.findIndex((p) => pickKey(p) === pickKey(lastPick.picked));
+      picked = sorted[(at + 1) % sorted.length];
+    } else {
+      // A fresh click (new spot, or the same spot after clicking elsewhere)
+      // takes the natural, topmost element.
+      picked = stack[0];
+    }
+    lastPick = { x: e.clientX, y: e.clientY, ids: stack, picked };
+
+    Store.select(picked.kind, picked.id);
+
+    if (picked.kind === "title") {
+      e.preventDefault();
+      elements.overlay.setPointerCapture(e.pointerId);
+      dragging = { id: picked.id };
+      Store.beginInteraction("drag title");
+      // Dragging text must not also pan the map underneath it.
+      map.dragPan.disable();
+    }
+    // Pins aren't dragged directly here — their handle (in the separate
+    // handle layer, unaffected by overlay stacking) does that, and it's
+    // already pointed at whichever pin selection just landed on.
+  });
+
+  elements.overlay.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const rect = elements.frame.getBoundingClientRect();
+    const x = clamp01((e.clientX - rect.left) / rect.width);
+    const y = clamp01((e.clientY - rect.top) / rect.height);
+    Store.updateElement("title", dragging.id, {
+      position: "custom",
+      x: round(x, 4),
+      y: round(y, 4),
+    });
+  });
+
+  const finish = (e) => {
+    if (!dragging) return;
+    dragging = null;
+    Store.endInteraction();
+    map.dragPan.enable();
+    try { elements.overlay.releasePointerCapture(e.pointerId); } catch (err) { /* already released */ }
+  };
+  elements.overlay.addEventListener("pointerup", finish);
+  elements.overlay.addEventListener("pointercancel", finish);
+}
+
+/** Every selectable overlay element at a point, topmost first. */
+function pickableStackAt(x, y) {
+  const stack = document.elementsFromPoint(x, y);
+  const picks = [];
+  stack.forEach((el) => {
+    if (!elements.overlay.contains(el)) return;
+    if (el.classList.contains("pin") && el.dataset.elementId) picks.push({ kind: "pin", id: el.dataset.elementId });
+    else if (el.classList.contains("title-card") && el.dataset.elementId) picks.push({ kind: "title", id: el.dataset.elementId });
+  });
+  return picks;
+}
+
+function sameStack(a, b) {
+  // Order-independent: bringSelectedToFront changes DOM paint order between
+  // clicks (that's its whole job), so "is this still the same spot" has to
+  // be about which elements are present, not what order they paint in.
+  if (a.length !== b.length) return false;
+  const keys = new Set(a.map(pickKey));
+  return b.every((p) => keys.has(pickKey(p)));
+}
+
+function clamp01(n) { return n < 0 ? 0 : n > 1 ? 1 : n; }

@@ -23,6 +23,7 @@ let root = null;
 let lanesEl = null;
 let rulerEl = null;
 let playheadEl = null;
+let namesEl = null;
 let onSeek = null;
 
 export function init(elements, opts) {
@@ -30,6 +31,7 @@ export function init(elements, opts) {
   lanesEl = elements.lanes;
   rulerEl = elements.ruler;
   playheadEl = elements.playhead;
+  namesEl = elements.trackNames;
   onSeek = opts.onSeek;
 
   installScrubbing();
@@ -83,10 +85,37 @@ function formatTime(t) {
   return (Math.round(t * 10) / 10) + "s";
 }
 
+const ROW_STEP = 33;   // block height (28) + the gap between rows (5)
+const LANE_PAD = 5;    // matches the span block's own top offset
+
+/**
+ * Assigns each block in a track a sub-row, so two blocks whose time ranges
+ * overlap land in separate rows instead of stacking in the same screen
+ * position — which otherwise hides one behind the other and makes only the
+ * topmost clickable. Greedy interval scheduling: sort by start time, and
+ * give each block the first row whose last occupant has already finished.
+ *
+ * Point blocks (camera keyframes) are zero-width for this purpose — two at
+ * the exact same instant still get separate rows, but a keyframe doesn't
+ * force a row split for anything before or after it.
+ */
+function packRows(blocks) {
+  const rowEnds = [];
+  const sorted = blocks.slice().sort((a, b) => a.start - b.start);
+  sorted.forEach((block) => {
+    let row = rowEnds.findIndex((end) => end <= block.start + 1e-9);
+    if (row === -1) { row = rowEnds.length; rowEnds.push(-Infinity); }
+    rowEnds[row] = Math.max(block.end, block.start);
+    block.row = row;
+  });
+  return Math.max(1, rowEnds.length);
+}
+
 function renderLanes() {
   const scene = Store.getScene();
   const blocks = Engine.timelineBlocks(scene);
   const selection = Store.getState().selection;
+  const nameEls = namesEl ? namesEl.querySelectorAll(".tl-name") : [];
 
   lanesEl.innerHTML = "";
   TRACKS.forEach((track) => {
@@ -94,7 +123,15 @@ function renderLanes() {
     lane.className = "tl-lane";
     lane.dataset.track = track.key;
 
-    blocks.filter((b) => b.track === track.key).forEach((block) => {
+    const trackBlocks = blocks.filter((b) => b.track === track.key);
+    const rowCount = packRows(trackBlocks);
+    const laneHeight = LANE_PAD + rowCount * ROW_STEP;
+    lane.style.height = laneHeight + "px";
+
+    const nameEl = Array.from(nameEls).find((n) => n.dataset.track === track.key);
+    if (nameEl) nameEl.style.height = laneHeight + "px";
+
+    trackBlocks.forEach((block) => {
       lane.appendChild(renderBlock(block, track, selection));
     });
 
@@ -109,8 +146,13 @@ function renderBlock(block, track, selection) {
   el.dataset.kind = block.kind;
   el.dataset.id = block.id;
 
+  const top = LANE_PAD + block.row * ROW_STEP;
+
   if (block.point) {
-    // Camera keyframes are instants, not spans — drawn as diamonds.
+    // Camera keyframes are instants, not spans — drawn as diamonds. The
+    // diamond is visually smaller than a span block, so it gets a small
+    // extra offset to sit centred within the same row band.
+    el.style.top = (top + 4) + "px";
     el.style.left = timeToX(block.start) + "px";
     el.title = `Keyframe at ${block.start}s`;
     const dot = document.createElement("span");
@@ -127,6 +169,7 @@ function renderBlock(block, track, selection) {
   const width = Math.max(10, timeToX(block.end) - left);
   el.style.left = left + "px";
   el.style.width = width + "px";
+  el.style.top = top + "px";
   if (block.openEnded) el.classList.add("open-ended");
 
   // Routes show how much of their span is the draw-on, as a lighter portion.

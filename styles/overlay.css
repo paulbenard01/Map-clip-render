@@ -86,6 +86,8 @@
 .title-card.pos-top-left { left: 5%; top: 8%; }
 .title-card.pos-top-right { right: 5%; top: 8%; text-align: right; }
 .title-card.pos-center { left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; }
+/* Free placement: left/top/transform set inline by scene-view.js from x/y. */
+.title-card.pos-custom { text-align: center; }
 
 /* -------------------------------------------------------------- routes */
 .route-label {

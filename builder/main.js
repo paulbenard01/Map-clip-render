@@ -33,6 +33,7 @@ async function boot() {
     lanes: $("#tlLanes"),
     ruler: $("#tlRuler"),
     playhead: $("#tlPlayhead"),
+    trackNames: $("#tlTrackNames"),
     inspector: $("#inspector"),
     toolStatus: $("#toolStatus"),
     renderPanel: $("#renderPanel"),
