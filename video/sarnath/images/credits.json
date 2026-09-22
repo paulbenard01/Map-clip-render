@@ -1,1 +1,100 @@
-{}
+{
+  "lion-capital": {
+    "title": "File:Lion capital of Ashoka, Sarnath.jpg",
+    "artist": "lisa bat",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lion_capital_of_Ashoka,_Sarnath.jpg",
+    "credit": "https://www.flickr.com/photos/61856099@N00/49645065441/"
+  },
+  "emblem-of-india": {
+    "title": "File:Emblem of India.svg",
+    "artist": "Government of India",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Emblem_of_India.svg",
+    "credit": "Extracted from PDF version of 'ACT NO. 50 OF 2005' (direct PDF URL THE STATE EMBLEM OF INDIA (PROHIBITION OF IMPROPER USE) ACT, 2005 ACT NO. 50 OF 2005 (2005-12-20). Archived from the original on 2022-07-12.)"
+  },
+  "dhamek-stupa": {
+    "title": "File:14. Dhamek Stupa, Sarnath.jpg",
+    "artist": "Preeti Prajapati",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:14._Dhamek_Stupa,_Sarnath.jpg",
+    "credit": "Own work"
+  },
+  "ashoka-pillar": {
+    "title": "File:Ananda Stupa with Ashok lion pillar at vaishali, Bihar 03.jpg",
+    "artist": "Rohit Sharma",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ananda_Stupa_with_Ashok_lion_pillar_at_vaishali,_Bihar_03.jpg",
+    "credit": "Own work"
+  },
+  "sarnath-ruins": {
+    "title": "File:Buddhist monastery near Dhamekh Stupa, Sarnath.jpg",
+    "artist": "ampersandyslexia",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Buddhist_monastery_near_Dhamekh_Stupa,_Sarnath.jpg",
+    "credit": "originally posted to Flickr as India, Day 15"
+  },
+  "dharmarajika": {
+    "title": "File:The Dharmarajika Stupa at sarnath (6563812801).jpg",
+    "artist": "Archit Ratan from Gurugram, India",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Dharmarajika_Stupa_at_sarnath_(6563812801).jpg",
+    "credit": "The Dharmarajika Stupa at sarnath"
+  },
+  "cunningham": {
+    "title": "File:RAS 089.003 - Sir Alexander Cunningham.jpg",
+    "artist": "C. W. Walton (artist), Walton & Co. (lithographer)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:RAS_089.003_-_Sir_Alexander_Cunningham.jpg",
+    "credit": "https://royalasiaticcollections.org/ras-089-003-sir-alexander-cunningham/"
+  },
+  "nehru": {
+    "title": "File:Jawaharlal Nehru’s first speech after his \"Tryst with Destiny\" speech.jpg",
+    "artist": "Unknown author",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Jawaharlal_Nehru%E2%80%99s_first_speech_after_his_%22Tryst_with_Destiny%22_speech.jpg",
+    "credit": "http://www.nehrumemorial.nic.in/en/galleries/photo-gallery/category/44-jawaharlal-nehru-photos-general.html"
+  },
+  "dashavatara": {
+    "title": "File:The painting by an artist from Raghurajpur.JPG",
+    "artist": "Revanthv552",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_painting_by_an_artist_from_Raghurajpur.JPG",
+    "credit": "Own work"
+  },
+  "partition": {
+    "title": "File:Refugees from West Punjab and Dera Ismail Khan.jpg",
+    "artist": "Photo Division, Govt. of India",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Refugees_from_West_Punjab_and_Dera_Ismail_Khan.jpg",
+    "credit": "http://photodivision.gov.in/waterMarkdetails.asp?id=994.jpg"
+  },
+  "nalanda": {
+    "title": "File:Temple 3 - Sariputta Stupa - Nalanda Mahavihara (10).jpg",
+    "artist": "Sumitsurai",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Temple_3_-_Sariputta_Stupa_-_Nalanda_Mahavihara_(10).jpg",
+    "credit": "Own work"
+  },
+  "nanhai": {
+    "title": "File:Sanya Nanshan Temple. Sanya Nanshan Buddhism Cultural Tourism Zone. Санья, Хайнань, Китай - panoramio.jpg",
+    "artist": "Николай Максимович",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sanya_Nanshan_Temple._Sanya_Nanshan_Buddhism_Cultural_Tourism_Zone._%D0%A1%D0%B0%D0%BD%D1%8C%D1%8F,_%D0%A5%D0%B0%D0%B9%D0%BD%D0%B0%D0%BD%D1%8C,_%D0%9A%D0%B8%D1%82%D0%B0%D0%B9_-_panoramio.jpg",
+    "credit": "https://web.archive.org/web/20161017123808/http://www.panoramio.com/photo/49078545"
+  },
+  "dalai-lama": {
+    "title": "File:The Dalai Lama in 2012.jpg",
+    "artist": "Christopher Michel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Dalai_Lama_in_2012.jpg",
+    "credit": "Own work"
+  },
+  "sarnath-buddha": {
+    "title": "File:Buddha in Sarnath Museum (Dhammajak Mutra).jpg",
+    "artist": "เทวประภาส มากคล้าย (Thewaprapas Makklay)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Buddha_in_Sarnath_Museum_(Dhammajak_Mutra).jpg",
+    "credit": "Tevaprapas Makklay (พระมหาเทวประภาส วชิรญาณเมธี)"
+  }
+}

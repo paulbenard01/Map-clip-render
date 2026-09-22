@@ -40,7 +40,7 @@
     ruins: { src: IMG("sarnath-ruins"), label: "Sarnath ruins", note: "monastery foundations" },
     dharmarajika: { src: IMG("dharmarajika"), label: "Dharmarajika Stupa", note: "brick base, Sarnath" },
     cunningham: { src: IMG("cunningham"), label: "Alexander Cunningham", note: "portrait" },
-    nehru: { src: IMG("nehru"), label: "Jawaharlal Nehru", note: "c. 1947" },
+    nehru: { src: IMG("nehru"), label: "Jawaharlal Nehru", note: "1947" },
     dashavatara: { src: IMG("dashavatara"), label: "Dashavatara", note: "the ten avatars of Vishnu" },
     partition: { src: IMG("partition"), label: "Partition, 1947", note: "refugees" },
     nalanda: { src: IMG("nalanda"), label: "Nalanda", note: "ruins, Bihar" },
@@ -153,7 +153,7 @@
   ]);
   M.icons.push({ kind: "burst", at: "dhauli", t0: 36.4, t1: 40.9, color: "red" });
   pin("dhauli", 36.67, 44.4, { label: "KALINGA", sub: "WAR · c. 261 BCE", color: "red", side: "right" });
-  ph("pillar", { x: 800, y: 470, w: 400, h: 540, rot: 5, t0: 39.4, t1: 43.3, enter: "right", dist: 600, exit: "right" });
+  ph("pillar", { x: 800, y: 470, w: 400, h: 540, rot: 5, t0: 39.4, t1: 43.3, enter: "right", dist: 600, exit: "right", focus: "0% 50%" });
   tag({ text: "Emperor Ashoka", sub: "his pillar at Vaishali", x: 800, y: 790, t0: 39.8, t1: 43.1 });
   arc("dhauli", "sarnath", 40.75, 44.4, { dur: 1.4, bend: 0.28 });
   pin("sarnath", 42.1, 44.4, { label: "SARNATH", sub: "A PLACE OF WORSHIP", side: "left" });
@@ -230,9 +230,11 @@
 
   // 1:32  "Even Hindus, the country's largest community, already counted the
   //        Buddha as one of their own, as an avatar of Vishnu."
-  ph("dashavatara", { x: 540, y: 780, w: 940, h: 700, rot: -1, t0: 92.6, t1: 99.3, enter: "up", dist: 900, exit: "zoom", kb: [1.0, 1.08] });
-  marker({ kind: "circle", x: 540, y: 780, rx: 150, ry: 170, t0: 96.05, t1: 99.2 });
-  tag({ text: "The avatars of Vishnu", x: 540, y: 1210, t0: 97.73, t1: 99.2 });
+  // Raghurajpur pattachitra: five avatars along the top, five along the
+  // bottom; the Buddha is fourth on the bottom row (68% across, 85% down).
+  ph("dashavatara", { x: 540, y: 760, w: 760, h: 1120, rot: -1, t0: 92.6, t1: 99.3, enter: "up", dist: 900, exit: "zoom", kb: [1.0, 1.04] });
+  marker({ kind: "circle", x: 683, y: 1150, rx: 82, ry: 98, t0: 96.05, t1: 99.2 });
+  tag({ text: "The avatars of Vishnu", x: 540, y: 140, t0: 97.73, t1: 99.2 });
 
   // =====================================================================
   // 1:39  "That's why the lion became India's national emblem. It could sit

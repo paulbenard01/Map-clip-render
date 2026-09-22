@@ -1,16 +1,58 @@
 {
-  "lion-capital": { "search": "Lion Capital of Ashoka Sarnath Museum" },
-  "emblem-of-india": { "file": "File:Emblem of India.svg", "svg": true },
-  "dhamek-stupa": { "search": "Dhamek Stupa Sarnath" },
-  "sarnath-buddha": { "search": "Buddha preaching first sermon Sarnath Museum Gupta" },
-  "ashoka-pillar": { "search": "Ashoka pillar Vaishali lion" },
-  "sarnath-ruins": { "search": "Sarnath monastery ruins archaeological site" },
-  "dharmarajika": { "search": "Dharmarajika Stupa Sarnath" },
-  "cunningham": { "search": "Alexander Cunningham archaeologist portrait" },
-  "nehru": { "search": "Jawaharlal Nehru 1947 portrait" },
-  "dashavatara": { "search": "Dashavatara painting ten avatars Vishnu Buddha" },
-  "partition": { "search": "Partition of India 1947 refugees" },
-  "nalanda": { "search": "Nalanda Mahavihara ruins" },
-  "nanhai": { "search": "Nanshan Temple Sanya Hainan" },
-  "dalai-lama": { "search": "14th Dalai Lama Tenzin Gyatso portrait" }
+  "lion-capital": {
+    "file": "File:Lion capital of Ashoka, Sarnath.jpg",
+    "search": "Lion Capital of Ashoka Sarnath Museum"
+  },
+  "emblem-of-india": {
+    "file": "File:Emblem of India.svg",
+    "svg": true
+  },
+  "dhamek-stupa": {
+    "file": "File:14. Dhamek Stupa, Sarnath.jpg",
+    "search": "Dhamek Stupa Sarnath"
+  },
+  "sarnath-buddha": {
+    "file": "File:Buddha in Sarnath Museum (Dhammajak Mutra).jpg",
+    "search": "Buddha in Sarnath Museum Dhammajak Mutra"
+  },
+  "ashoka-pillar": {
+    "file": "File:Ananda Stupa with Ashok lion pillar at vaishali, Bihar 03.jpg",
+    "search": "Ashoka pillar Vaishali lion"
+  },
+  "sarnath-ruins": {
+    "file": "File:Buddhist monastery near Dhamekh Stupa, Sarnath.jpg",
+    "search": "Sarnath monastery ruins archaeological site"
+  },
+  "dharmarajika": {
+    "file": "File:The Dharmarajika Stupa at sarnath (6563812801).jpg",
+    "search": "Dharmarajika Stupa Sarnath"
+  },
+  "cunningham": {
+    "file": "File:RAS 089.003 - Sir Alexander Cunningham.jpg",
+    "search": "Alexander Cunningham archaeologist portrait"
+  },
+  "nehru": {
+    "file": "File:Jawaharlal Nehru’s first speech after his \"Tryst with Destiny\" speech.jpg",
+    "search": "Jawaharlal Nehru 1947 speech"
+  },
+  "dashavatara": {
+    "file": "File:The painting by an artist from Raghurajpur.JPG",
+    "search": "Raghurajpur pattachitra Dashavatara"
+  },
+  "partition": {
+    "file": "File:Refugees from West Punjab and Dera Ismail Khan.jpg",
+    "search": "refugees West Punjab 1947"
+  },
+  "nalanda": {
+    "file": "File:Temple 3 - Sariputta Stupa - Nalanda Mahavihara (10).jpg",
+    "search": "Nalanda Mahavihara ruins"
+  },
+  "nanhai": {
+    "file": "File:Sanya Nanshan Temple. Sanya Nanshan Buddhism Cultural Tourism Zone. Санья, Хайнань, Китай - panoramio.jpg",
+    "search": "Sanya Nanshan Temple"
+  },
+  "dalai-lama": {
+    "file": "File:The Dalai Lama in 2012.jpg",
+    "search": "14th Dalai Lama Tenzin Gyatso portrait"
+  }
 }

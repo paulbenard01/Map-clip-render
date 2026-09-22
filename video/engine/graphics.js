@@ -31,63 +31,9 @@
       <g transform="translate(450 300) scale(0.84)">${G.wheel(24, "#000080").replace(/<svg[^>]*>|<\/svg>/g, "")}</g></svg>`;
 
 
-  // The Lion Capital as seen on the State Emblem: three lions (the fourth is
-  // hidden behind), on an abacus with the wheel between a horse and a bull.
-  // A stylised silhouette in one colour; the real artwork replaces it when
-  // images/emblem-of-india.svg is present.
-  G.lionCapital = (color = "#E2BE6A", cut = "#141e38") => {
-    const mane = (cx, cy, rx, ry, n, bump) => {
-      let d = "";
-      for (let i = 0; i <= n * 8; i++) {
-        const a = (i / (n * 8)) * Math.PI * 2 - Math.PI / 2;
-        const w = 1 + bump * Math.pow(Math.abs(Math.sin((i / 8) * Math.PI)), 0.6);
-        d += (i ? "L" : "M") + (cx + Math.cos(a) * rx * w).toFixed(1) + "," + (cy + Math.sin(a) * ry * w).toFixed(1);
-      }
-      return d + "Z";
-    };
-    const curls = (cx, cy, r, n) => Array.from({ length: n }, (_, i) => {
-      const a = (i / n) * Math.PI * 2;
-      return `<path d="M${(cx + Math.cos(a) * r * 0.55).toFixed(1)},${(cy + Math.sin(a) * r * 0.55).toFixed(1)} Q${(cx + Math.cos(a + 0.25) * r * 0.8).toFixed(1)},${(cy + Math.sin(a + 0.25) * r * 0.8).toFixed(1)} ${(cx + Math.cos(a) * r * 0.95).toFixed(1)},${(cy + Math.sin(a) * r * 0.95).toFixed(1)}" stroke="${cut}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
-    }).join("");
-    // A side lion in profile, facing `dir` (-1 left, 1 right).
-    const side = (cx, dir) => `
-      <path d="${mane(cx, 92, 34, 44, 11, 0.14)}" fill="${color}"/>
-      ${curls(cx, 92, 38, 11)}
-      <path d="M${cx + dir * 22},70 q${dir * 30},2 ${dir * 36},18 q${dir * 4},10 ${-dir * 4},16 l${-dir * 10},2 q${dir * 6},8 ${-dir * 4},12 q${-dir * 16},2 ${-dir * 28},-6 z" fill="${color}"/>
-      <circle cx="${cx + dir * 30}" cy="80" r="3" fill="${cut}"/>
-      <path d="M${cx + dir * 52},100 l${-dir * 14},2" stroke="${cut}" stroke-width="2.4"/>
-      <rect x="${cx - 20}" y="128" width="40" height="52" rx="6" fill="${color}"/>
-      <path d="M${cx + dir * 20},150 q${dir * 10},14 ${dir * 6},30" stroke="${color}" stroke-width="12" fill="none" stroke-linecap="round"/>`;
-    const front = `
-      <path d="${mane(100, 88, 40, 48, 13, 0.16)}" fill="${color}"/>
-      ${curls(100, 88, 44, 13)}
-      <ellipse cx="100" cy="86" rx="21" ry="25" fill="${color}" stroke="${cut}" stroke-width="3"/>
-      <circle cx="92" cy="80" r="3.2" fill="${cut}"/><circle cx="108" cy="80" r="3.2" fill="${cut}"/>
-      <path d="M94,92 q6,5 12,0 M100,94 v7 M91,103 q9,8 18,0" stroke="${cut}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-      <path d="M78,128 h44 v56 h-44 z" fill="${color}"/>
-      <path d="M86,136 v46 M114,136 v46 M100,132 v50" stroke="${cut}" stroke-width="2.6"/>
-      <path d="M80,178 h18 v8 h-18z M102,178 h18 v8 h-18z" fill="${color}"/>`;
-    const chakra = (cx, cy, r) => {
-      let sp = "";
-      for (let i = 0; i < 24; i++) { const a = (i / 24) * Math.PI * 2; sp += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(a) * r).toFixed(1)}" y2="${(cy + Math.sin(a) * r).toFixed(1)}" stroke="${cut}" stroke-width="1.4"/>`; }
-      return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${cut}" stroke-width="2.6"/>${sp}`;
-    };
-    const horse = `<path d="M26,204 q4,-12 18,-12 h14 q6,-10 14,-12 l4,6 q-6,4 -8,10 q2,6 -2,8 l-2,10 h-4 l1,-8 h-18 l-3,8 h-4 l0,-8 q-6,0 -10,-2 z" fill="${cut}"/>`;
-    const bull = `<path d="M174,204 q-2,-12 -18,-12 h-16 q-6,-6 -12,-6 l-2,-6 -3,5 q-4,2 -2,8 q4,6 8,6 l2,10 h4 l0,-8 h16 l2,8 h4 l0,-8 q6,-2 7,-6 z" fill="${cut}"/>`;
-    return `<svg viewBox="0 0 200 240" width="100%" height="100%" style="overflow:visible">
-      ${side(48, -1)}${side(152, 1)}${front}
-      <rect x="14" y="186" width="172" height="34" rx="3" fill="${color}"/>
-      <rect x="14" y="186" width="172" height="5" fill="${cut}" opacity=".35"/>
-      ${horse}${bull}${chakra(100, 204, 12)}
-      <path d="M22,226 h156 l-10,12 h-136 z" fill="${color}"/>
-    </svg>`;
-  };
-
-  /** The emblem: the real masked artwork if we have it, the drawn lion capital otherwise. */
+  /** The State Emblem (official artwork, images/emblem-of-india.svg) tinted to one colour. */
   G.emblem = (src, color = "var(--gold-bright)") =>
-    src
-      ? `<div style="width:100%;height:100%;background:${color};-webkit-mask:url(${src}) center/contain no-repeat;mask:url(${src}) center/contain no-repeat"></div>`
-      : `<div style="width:100%;height:100%">${G.lionCapital(color.startsWith("var") ? "#E2BE6A" : color)}</div>`;
+    src ? `<div style="width:100%;height:100%;background:${color};-webkit-mask:url(${src}) center/contain no-repeat;mask:url(${src}) center/contain no-repeat"></div>` : "";
 
   // Stylised passport cover: navy board, gold foil. Not a replica.
   G.passport = (emblemSrc) => `
