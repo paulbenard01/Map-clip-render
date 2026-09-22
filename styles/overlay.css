@@ -65,6 +65,12 @@
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
   white-space: nowrap;
 }
+/* Flipped (in scene-view.js, when the card would otherwise run past the
+   frame's right edge) to sit on the marker's other side instead. */
+.pin-card.pin-card-flip {
+  left: auto;
+  right: 18px;
+}
 .pin-card-photo { object-fit: cover; border-radius: 4px; display: block; }
 .pin-card-label {
   font-weight: 700;

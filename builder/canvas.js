@@ -22,22 +22,40 @@ let basemapData = null;
 let handleLayer = null;
 let elements = {};
 
+// Matches lib/renderer.js's resolveDimensions() defaults exactly — the
+// builder doesn't expose a custom --width override, so these are always
+// the actual output's CSS layout size (draft only shrinks the *captured*
+// resolution afterward, never this).
+const LOGICAL_SIZE = { "9:16": [1080, 1920], "16:9": [1920, 1080] };
+
 /**
  * The preview is letterboxed to the scene's aspect ratio, so the framing you
  * compose is the framing that renders. Editing at a different shape than the
  * output is how pins end up cropped out of the final video.
+ *
+ * The frame's own layout size is always fixed to the real output resolution
+ * (LOGICAL_SIZE) — never resized to fit the window — and a CSS transform
+ * scales it down (or up) to fit whatever space is actually available. This
+ * is what keeps the two in sync: the map's projection math (in
+ * lib/equal-earth-map.js) reads the frame's *layout* size, which a
+ * transform never changes, so the same zoom value covers the same ground
+ * whether the preview happens to be rendered at 1080px or squeezed into a
+ * 400px sidebar. Sizing the frame to the available space directly, as this
+ * used to do, meant the same scene framed differently depending on the
+ * window it was edited in — a preview that lies about what you'll get.
  */
 function applyAspect(aspect) {
   const frame = elements.frame;
   const wrap = elements.wrap;
-  const ratio = aspect === "9:16" ? 9 / 16 : 16 / 9;
+  const [logicalW, logicalH] = LOGICAL_SIZE[aspect] || LOGICAL_SIZE["16:9"];
+  frame.style.width = logicalW + "px";
+  frame.style.height = logicalH + "px";
+
   const availW = wrap.clientWidth - 32;
   const availH = wrap.clientHeight - 32;
-  let w = availW;
-  let h = w / ratio;
-  if (h > availH) { h = availH; w = h * ratio; }
-  frame.style.width = Math.round(w) + "px";
-  frame.style.height = Math.round(h) + "px";
+  const fit = Math.max(0.02, Math.min(availW / logicalW, availH / logicalH));
+  frame.style.transform = "scale(" + fit + ")";
+
   if (map) map.resize();
 }
 
@@ -348,8 +366,7 @@ function installHandleDragging() {
 
   handleLayer.addEventListener("pointermove", (e) => {
     if (!dragging) return;
-    const rect = elements.frame.getBoundingClientRect();
-    const lngLat = map.unproject([e.clientX - rect.left, e.clientY - rect.top]);
+    const lngLat = map.unprojectClient(e.clientX, e.clientY);
     const coord = [round(lngLat.lng, 4), round(lngLat.lat, 4)];
 
     if (dragging.kind === "pin") {

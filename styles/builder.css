@@ -161,6 +161,12 @@ body.portrait-layout .workspace {
   position: relative;
   box-shadow: 0 0 0 1px var(--line), 0 12px 40px rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  /* Its width/height are always the real output resolution (see
+     canvas.js's applyAspect) and it's scaled to fit visually via
+     `transform` — flex-shrink:0 keeps flexbox from also shrinking its
+     actual layout size, which would defeat that: the map reads this
+     element's real (untransformed) size for its projection math. */
+  flex-shrink: 0;
 }
 .canvas-frame.tool-active { cursor: crosshair; }
 .canvas-frame.drop-target { box-shadow: 0 0 0 2px var(--accent), 0 12px 40px rgba(0, 0, 0, 0.6); }

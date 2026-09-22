@@ -506,8 +506,7 @@ function wireDropTarget(frame) {
     if (!saved) return;
 
     // Dropping a photo on the map drops a pin there holding it.
-    const rect = frame.getBoundingClientRect();
-    const lngLat = Canvas.getMap().unproject([e.clientX - rect.left, e.clientY - rect.top]);
+    const lngLat = Canvas.getMap().unprojectClient(e.clientX, e.clientY);
     const selected = Store.getSelected();
     if (selected && selected.kind === "pin") {
       Store.updateElement("pin", selected.element.id, { image: saved.path });

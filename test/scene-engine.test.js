@@ -204,7 +204,7 @@ function testRoundTrip() {
   assert.strictEqual(once.pins[0].until, 12.5);
   assert.strictEqual(once.pins[1].until, null, "an open-ended pin stays null, not a guessed number");
   assert.strictEqual(once.routes[0].dashed, true);
-  assert.strictEqual(once.titles[2].text, "Hanoi, Vietnam — 2025");
+  assert.strictEqual(once.titles.length, 0, "no on-screen captions -- narration/subtitles carry that now");
 
   // And the camera behaves identically before and after the trip.
   const a = E.normalizeScene(original), b = E.normalizeScene(once);
