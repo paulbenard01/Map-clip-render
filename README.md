@@ -373,6 +373,16 @@ node render.js --scene <scene.json> [options]
 
 Default full-quality resolutions: 1080x1920 for 9:16, 1920x1080 for 16:9.
 
+## Label overlap
+
+Labels that would land on top of each other — two pins close together, a
+route label near a title — are nudged apart automatically, vertically,
+using the browser's own real layout (not an estimate), so text stays
+legible without you having to manually reposition anything. A pin's marker
+itself never moves, only its label text; the geographic point it marks
+has to stay exact. This runs identically in the builder preview and the
+final render, since both share the same painting code.
+
 ## How it actually works, briefly
 
 `lib/renderer.js` starts a small local web server for the project folder (so
