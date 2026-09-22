@@ -76,14 +76,13 @@
       fetch("/data/graticule.geo.json").then((r) => r.json()),
     ]);
 
-    let terrain = null;
-    if (normalized.terrain) {
-      terrain = await fetch("/data/terrain/bounds.json")
-        .then((r) => (r.ok ? r.json() : null))
-        .then((b) => (b ? { url: "/data/terrain/relief.jpg", coordinates: b.coordinates } : null))
-        .catch(() => null);
-      if (!terrain) console.warn('Scene has "terrain": true but data/terrain/ hasn\'t been built — run `npm run build-terrain`. Rendering without it.');
-    }
+    // Used automatically whenever it's been built locally (npm run
+    // build-terrain) — no per-scene flag. Silently absent otherwise, since
+    // most people won't have run that opt-in step.
+    const terrain = await fetch("/data/terrain/bounds.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((b) => (b ? { url: "/data/terrain/relief.jpg", coordinates: b.coordinates } : null))
+      .catch(() => null);
 
     SceneView.installBasemap(map, preset, { land, countries, graticule, terrain });
 

@@ -192,8 +192,6 @@ broke something.
   "style": "dark-navy",      // a key from styles/presets.json
   "fps": 30,
   "duration": 22,            // optional — auto-computed from content if omitted
-  "terrain": false,          // optional — real relief instead of flat land colour,
-                              // see "Terrain" below. Needs a one-time opt-in build step.
 
   "camera": [
     // Keyframes the camera moves between. `t` is seconds from the start.
@@ -329,14 +327,10 @@ using it round-trips through the builder unchanged. Prefer
 
 ### Terrain
 
-`"terrain": true` swaps the flat land colour for a real relief image —
-visible mountain ranges, vegetation vs. desert tinting — instead of the
-usual solid fill. It's opt-in and off by default; nothing about it changes
-if you never turn it on.
-
-It needs a one-time local build step, because the asset is genuinely big
-and this project's whole point is rendering offline without live map
-services:
+Run one local build step, once, and every scene automatically renders with
+real relief — visible mountain ranges, vegetation vs. desert tinting —
+instead of a flat land colour. There's no per-scene flag and nothing to
+turn on; it's purely "is the asset there or not":
 
 ```
 npm install sharp     # a native dependency, only needed for this step
@@ -347,19 +341,20 @@ That fetches Natural Earth's public-domain cross-blended hypsometric relief
 once from their S3 bucket, converts it to `data/terrain/relief.jpg` +
 `data/terrain/bounds.json`, and deletes the large intermediate files. Nothing
 is fetched at render time — same rule as the country/land data already
-committed to `data/`. If you haven't run the build step, `"terrain": true`
-is simply ignored (with a console warning) rather than failing the render.
+committed to `data/`. Skip this step and every scene renders exactly as it
+did before — flat land colour, no warning, no per-scene setting to remember.
 
-Worth knowing before turning it on:
+Worth knowing once it's on:
 - It's a single static image, not a tile pyramid, so it doesn't get sharper
   the further you zoom in — a landmark-level shot will still show it
   blurred past its native resolution.
 - The image's own colours (real ocean and land tones) show through, rather
-  than the active style preset's palette — turning it on changes the overall
-  look of the clip, not just the terrain texture.
+  than the active style preset's palette — every scene's overall look
+  changes once the asset exists, not just the terrain texture.
 - Land/country fills are drawn semi-transparent over it so borders and
-  highlights stay legible; the toggle is in the builder's toolbar, next to
-  Style and Ratio.
+  highlights stay legible.
+- Delete `data/terrain/` to go back to the flat look — nothing else needs
+  to change.
 
 ### Pins: image requirements
 

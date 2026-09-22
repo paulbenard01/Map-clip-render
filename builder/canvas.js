@@ -19,22 +19,6 @@ let stage = null;
 let preset = null;
 let presets = null;
 let basemapData = null;
-let terrainDataPromise = null;
-let terrainOn = false;
-
-/** Fetches the built terrain asset's bounds once and caches the result (or null if it hasn't been built). */
-function ensureTerrainData() {
-  if (!terrainDataPromise) {
-    terrainDataPromise = fetch("/data/terrain/bounds.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((b) => (b ? { url: "/data/terrain/relief.jpg", coordinates: b.coordinates } : null))
-      .catch(() => null);
-    terrainDataPromise.then((terrain) => {
-      if (!terrain) console.warn('"terrain": true is set but data/terrain/ hasn\'t been built — run `npm run build-terrain`.');
-    });
-  }
-  return terrainDataPromise;
-}
 let handleLayer = null;
 let elements = {};
 
@@ -89,11 +73,15 @@ export async function init(els, options) {
     fetchJson("/data/land.geo.json"),
     fetchJson("/data/countries.geo.json"),
     fetchJson("/data/graticule.geo.json"),
-    Store.getScene().terrain ? ensureTerrainData() : Promise.resolve(null),
+    // Used automatically whenever it's been built locally (npm run
+    // build-terrain) — absent otherwise, with no per-scene flag to set.
+    fetch("/data/terrain/bounds.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((b) => (b ? { url: "/data/terrain/relief.jpg", coordinates: b.coordinates } : null))
+      .catch(() => null),
   ]).then(([land, countries, graticule, terrain]) => ({ land, countries, graticule, terrain }));
 
   View.installBasemap(map, preset, basemapData);
-  terrainOn = !!basemapData.terrain;
 
   stage = View.createStage({
     map,
@@ -131,14 +119,6 @@ export async function init(els, options) {
       }
       stage.setScene(scene);
       applyAspect(scene.aspect);
-      if (!!scene.terrain !== terrainOn) {
-        terrainOn = !!scene.terrain;
-        if (terrainOn) {
-          ensureTerrainData().then((terrain) => { if (terrainOn) View.setTerrain(map, terrain); });
-        } else {
-          View.setTerrain(map, null);
-        }
-      }
     }
     render();
   });
