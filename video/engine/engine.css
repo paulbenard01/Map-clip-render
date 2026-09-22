@@ -1,4 +1,4 @@
-/* Portrait explainer engine: Heritle navy and gold. */
+/* Explainer engine: Heritle navy and gold. Portrait by default, html.landscape for 16:9. */
 
 @font-face { font-family: "Playfair"; font-weight: 700; src: url(../fonts/playfair-display-latin-700-normal.woff2) format("woff2"); }
 @font-face { font-family: "Playfair"; font-weight: 800; src: url(../fonts/playfair-display-latin-800-normal.woff2) format("woff2"); }
@@ -28,15 +28,15 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); }
+html, body { width: var(--W, 1080px); height: var(--H, 1920px); overflow: hidden; background: var(--navy); }
 
 #stage {
-  position: relative; width: 1080px; height: 1920px; overflow: hidden;
+  position: relative; width: var(--W, 1080px); height: var(--H, 1920px); overflow: hidden;
   background: var(--navy);
   font-family: "Inter", sans-serif; color: var(--white);
 }
 .layer { position: absolute; inset: 0; pointer-events: none; }
-canvas.layer, svg.layer { width: 1080px; height: 1920px; }
+canvas.layer, svg.layer { width: var(--W, 1080px); height: var(--H, 1920px); }
 svg.layer { overflow: visible; }
 
 /* ---------- photos ---------- */
@@ -115,11 +115,14 @@ svg.layer { overflow: visible; }
   text-shadow: 0 3px 0 rgba(10,17,34,.9), 0 0 24px rgba(10,17,34,.95), 0 0 6px rgba(10,17,34,.9); }
 #subs .chunk span { display: inline; }
 #subs .chunk .on { color: var(--gold-bright); }
+.landscape #subs .chunk { left: 260px; width: 1400px; top: 912px; font-size: 44px; }
 
 /* ---------- end card ---------- */
 #end { background: var(--navy); opacity: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 #end img { width: 560px; height: auto; }
 #end .word { font-family: "Playfair"; font-weight: 800; font-size: 92px; letter-spacing: .16em; color: var(--gold); margin-top: 56px; padding-left: .16em; }
+.landscape #end img { width: 380px; }
+.landscape #end .word { font-size: 68px; margin-top: 40px; }
 
 #vignette { background: radial-gradient(ellipse 85% 70% at 50% 45%, rgba(0,0,0,0) 55%, rgba(4,8,18,.62) 100%); }
 #fx { mix-blend-mode: overlay; opacity: .16; }

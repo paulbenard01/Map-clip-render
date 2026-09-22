@@ -1,6 +1,7 @@
-# Portrait explainer videos
+# Explainer videos
 
-Full-length vertical (1080×1920, 30fps) explainer videos in the Heritle look:
+Full-length vertical (1080×1920, 30fps) explainer videos in the Heritle look,
+with a landscape (1920×1080) cut of the same timeline for regular YouTube:
 navy and gold, shaded-relief maps, photo prints, marker annotations,
 highlighted documents, and word-synced subtitles. Silent by design: the
 voiceover goes on in the edit.
@@ -47,7 +48,17 @@ node video/render.js sarnath                        # full video -> output/sarna
 node video/render.js sarnath --stills 12.5,80,200   # review frames -> output/stills/sarnath/
 node video/render.js sarnath --from 60 --to 90      # just a slice
 node video/render.js sarnath --draft                # half resolution, for timing checks
+node video/render.js sarnath --landscape            # 1920x1080 -> output/sarnath-landscape.mp4
 ```
+
+`--landscape` works with every other option (`--stills`, `--from/--to`,
+`--draft`); stills go to `output/stills/sarnath-landscape/`. Scenes are written
+in portrait coordinates and the engine maps them into the 16:9 frame: the
+portrait content column is scaled down and centred, map cameras are re-centred,
+and subtitles run along the bottom. Where a beat deserves its own landscape
+layout (photos side by side, a title beside its photo), the item takes a
+`land: { x, y, k }` option in landscape pixels, `k` being its drawing scale.
+The portrait render ignores `land`.
 
 Every frame is a pure function of time, so renders are identical every run
 and the frame range is split across several headless browsers in parallel.

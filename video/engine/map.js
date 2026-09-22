@@ -63,6 +63,15 @@
   }
 
   V.makeMap = async (cfg) => {
+    // Landscape: the same cameras, re-centred for 16:9 and a little closer
+    // (the frame is shorter than a portrait one is wide), with zoom floored so
+    // a world view fits the relief; overlays drawn a bit smaller.
+    const U = V.landscape ? 0.8 : 1;
+    if (V.landscape) {
+      const zMin = V.W / (350 * K);
+      cfg.cams = cfg.cams.map((c) => { const d = [...c]; d[3] = Math.max(c[3] * 1.25, zMin); d[4] = V.ly(c[4] ?? cfg.cy ?? 860); return d; });
+      cfg.cy = V.ly(cfg.cy ?? 860);
+    }
     const base = cfg.dataUrl || "/data/";
     const [meta, countries, rivers] = await Promise.all([
       fetch(base + "video/terrain.json").then((r) => r.json()),
@@ -164,6 +173,9 @@
 
       const cam = camAt(t);
       cam.cx = V.W / 2;
+      // Landscape: keep the view inside the world's east and west edges.
+      const half = V.W / 2 / (cam.z * K);
+      if (V.landscape && half < 180) cam.lon = V.clamp(cam.lon, -180 + half, 180 - half);
       map.cam = cam;
       const z = cam.z;
       const tx = cam.cx - cam.lon * K * z, ty = cam.cy + cam.lat * z;
@@ -300,14 +312,14 @@
       const a = fade(t, l, 0.5, 0.4);
       ctx.save();
       ctx.globalAlpha = a;
-      ctx.font = `${l.italic ? "italic 700" : "800"} ${l.size || 64}px Playfair`;
-      ctx.letterSpacing = (l.spacing ?? 14) + "px";
+      ctx.font = `${l.italic ? "italic 700" : "800"} ${(l.size || 64) * U}px Playfair`;
+      ctx.letterSpacing = (l.spacing ?? 14) * U + "px";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.shadowColor = "rgba(0,0,0,.8)";
       ctx.shadowBlur = 18;
       ctx.fillStyle = rgba(COLORS[l.color || "cream"], 0.95);
-      ctx.fillText(l.text, x + (l.dx || 0), y + (l.dy || 0) + (1 - a) * 16);
+      ctx.fillText(l.text, x + (l.dx || 0) * U, y + (l.dy || 0) * U + (1 - a) * 16);
       ctx.restore();
     }
 
@@ -325,10 +337,10 @@
       ctx.strokeStyle = rgba(col, (0.7 * (1 - ph)).toFixed(3));
       ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.arc(x, y, 16 + ph * 46, 0, Math.PI * 2);
+      ctx.arc(x, y, (16 + ph * 46) * U, 0, Math.PI * 2);
       ctx.stroke();
       // Dot.
-      const r = (p.r || 13) * s;
+      const r = (p.r || 13) * s * U;
       ctx.shadowColor = rgba(col, 0.9);
       ctx.shadowBlur = 18;
       ctx.fillStyle = rgba(col, 1);
@@ -344,7 +356,7 @@
       if (p.label) {
         const la = V.ease.outCubic(V.prog(t, p.t0 + 0.12, p.t0 + 0.5));
         const side = p.side || "right";
-        const size = p.size || 46;
+        const size = (p.size || 46) * U;
         ctx.font = `900 ${size}px Inter`;
         ctx.letterSpacing = "1px";
         const tw = ctx.measureText(p.label).width;
@@ -353,10 +365,10 @@
         const sw = p.sub ? ctx.measureText(p.sub).width : 0;
         const bw = Math.max(tw, sw);
         let lx, ly, align;
-        if (side === "right") { lx = x + 32; ly = y; align = "left"; }
-        else if (side === "left") { lx = x - 32; ly = y; align = "right"; }
-        else if (side === "top") { lx = x; ly = y - 58 - (p.sub ? size * 0.6 : 0); align = "center"; }
-        else { lx = x; ly = y + 62; align = "center"; }
+        if (side === "right") { lx = x + 32 * U; ly = y; align = "left"; }
+        else if (side === "left") { lx = x - 32 * U; ly = y; align = "right"; }
+        else if (side === "top") { lx = x; ly = y - 58 * U - (p.sub ? size * 0.6 : 0); align = "center"; }
+        else { lx = x; ly = y + 62 * U; align = "center"; }
         ctx.globalAlpha = out * la;
         const slide = (1 - la) * 14 * (side === "left" ? 1 : side === "right" ? -1 : 0);
         ctx.textAlign = align;
@@ -391,11 +403,12 @@
       const mx = (x1 + x2) / 2 + (dy / d) * d * bend, my = (y1 + y2) / 2 - (dx / d) * d * bend;
       const pt = (u) => [(1 - u) * (1 - u) * x1 + 2 * (1 - u) * u * mx + u * u * x2, (1 - u) * (1 - u) * y1 + 2 * (1 - u) * u * my + u * u * y2];
       const col = COLORS[a.color || "gold"];
+      const aw = (a.width || 6) * U;
       ctx.save();
       ctx.globalAlpha = out * (a.alpha ?? 1);
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
-      if (a.dashed) ctx.setLineDash([22, 16]);
+      if (a.dashed) ctx.setLineDash([22 * U, 16 * U]);
       ctx.beginPath();
       const N = 72;
       for (let i = 0; i <= N; i++) {
@@ -404,12 +417,12 @@
         if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y);
       }
       ctx.strokeStyle = "rgba(5,9,20,.6)";
-      ctx.lineWidth = (a.width || 6) + 5;
+      ctx.lineWidth = aw + 5 * U;
       ctx.stroke();
       ctx.shadowColor = rgba(col, 0.9);
       ctx.shadowBlur = 16;
       ctx.strokeStyle = rgba(col, 1);
-      ctx.lineWidth = a.width || 6;
+      ctx.lineWidth = aw;
       ctx.stroke();
       ctx.setLineDash([]);
       ctx.shadowBlur = 0;
@@ -417,7 +430,7 @@
       if (a.arrow !== false && p > 0.02) {
         const [bx, by] = pt(Math.max(0, p - 0.02));
         const ang = Math.atan2(hy - by, hx - bx);
-        const L = (a.width || 6) * 4.2;
+        const L = aw * 4.2;
         ctx.fillStyle = rgba(col, 1);
         ctx.beginPath();
         ctx.moveTo(hx + Math.cos(ang) * L * 0.5, hy + Math.sin(ang) * L * 0.5);
@@ -433,12 +446,12 @@
     function drawIcon(ic, t) {
       const [lon, lat] = geo(ic.at);
       let [x, y] = map.xy(lon, lat);
-      x += ic.dx || 0; y += ic.dy || 0;
+      x += (ic.dx || 0) * U; y += (ic.dy || 0) * U;
       const a = V.prog(t, ic.t0, ic.t0 + 0.35);
       const drop = ic.drop ? (1 - V.ease.outBack(a)) * -160 : 0;
       const out = 1 - V.ease.inCubic(V.prog(t, ic.t1 - 0.3, ic.t1));
       const col = COLORS[ic.color || "gold"];
-      const s = (ic.size || 1) * (ic.drop ? 1 : V.ease.outBack(a));
+      const s = (ic.size || 1) * U * (ic.drop ? 1 : V.ease.outBack(a));
       ctx.save();
       ctx.globalAlpha = out * V.clamp(a * 3);
       ctx.translate(x, y + drop);

@@ -1,5 +1,5 @@
 /**
- * Portrait explainer engine: the core.
+ * Explainer engine (portrait, or landscape with ?format=landscape): the core.
  *
  * Every visual is a pure function of time. A scene file calls the builders
  * below (V.photo, V.title, V.tag, ...) once to describe the whole video, and
@@ -10,8 +10,13 @@
  */
 (function () {
   const V = (window.V = {});
-  V.W = 1080;
-  V.H = 1920;
+  // Portrait (1080x1920, Shorts) by default; ?format=landscape gives 1920x1080.
+  V.landscape = new URLSearchParams(location.search).get("format") === "landscape";
+  V.W = V.landscape ? 1920 : 1080;
+  V.H = V.landscape ? 1080 : 1920;
+  document.documentElement.classList.toggle("landscape", V.landscape);
+  document.documentElement.style.setProperty("--W", V.W + "px");
+  document.documentElement.style.setProperty("--H", V.H + "px");
 
   // ---------- maths ----------
   V.clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
@@ -131,6 +136,38 @@
   };
   V.el = el;
 
+  // ---------- landscape layout ----------
+  /**
+   * Scenes are written in portrait coordinates. In landscape every item is
+   * mapped by one affine transform: the portrait content column (y 140..1400)
+   * is scaled by LS and centred in the 16:9 frame, and the item is drawn at
+   * LS of its size, so relative placements (a circle on a photo) hold.
+   * `land: { x, y, k, ... }` overrides the result per item, in landscape px
+   * (k is the drawing scale). Text-led items (titles, counters, documents)
+   * default to a slightly larger k than LS so they stay readable.
+   */
+  const LS = 0.65;
+  V.LS = LS;
+  V.lx = (x) => (V.landscape ? 960 + (x - 540) * LS : x);
+  V.ly = (y) => (V.landscape ? 60 + (y - 140) * LS : y);
+  V.adapt = (o, k = LS) => {
+    if (!V.landscape) return o;
+    const r = { ...o };
+    if (o.frame !== "full") {
+      if (o.x != null) r.x = V.lx(o.x);
+      if (o.y != null) r.y = V.ly(o.y);
+      if (o.x2 != null) r.x2 = V.lx(o.x2);
+      if (o.y2 != null) r.y2 = V.ly(o.y2);
+      if (o.rx != null) r.rx = o.rx * LS;
+      if (o.ry != null) r.ry = o.ry * LS;
+      if (o.dist != null) r.dist = o.dist * LS;
+      if (o.move) r.move = o.move.map(([t, v, e]) => [t, [V.lx(v[0]), V.ly(v[1]), ...v.slice(2)], e]);
+      r.k = k;
+    }
+    if (o.land) Object.assign(r, o.land);
+    return r;
+  };
+
   // Entrance/exit offsets by direction name.
   const DIRS = { up: [0, 1], down: [0, -1], left: [-1, 0], right: [1, 0] };
 
@@ -161,6 +198,7 @@
       r += Math.sin(t * 0.23 + seed * 3) * 0.35;
     }
     if (o.opacity) alpha *= V.kf(t, o.opacity);
+    s *= o.k || 1;
     return { x, y, s, r, alpha };
   }
   V.motion = motion;
@@ -180,6 +218,7 @@
    *      focus: "50% 50%", dim: 0..1 (full frames), layer }
    */
   V.photo = (o) => {
+    o = V.adapt(o);
     o.seed = o.seed || seedCounter++;
     const frame = o.frame || "print";
     if (frame === "full") { o.x = o.x ?? V.W / 2; o.y = o.y ?? V.H / 2; o.w = o.w ?? V.W + 40; o.h = o.h ?? V.H + 40; o.drift = false; }
@@ -227,6 +266,7 @@
   // ---------- generic positioned DOM box ----------
   /** Any HTML (or SVG) positioned by centre with the shared motion. */
   V.box = (o) => {
+    o = V.adapt(o);
     o.seed = o.seed || seedCounter++;
     const node = el(o.cls || "", V.layers[o.layer || "media"], o.html);
     node.style.position = "absolute";
@@ -248,6 +288,8 @@
   // ---------- tag ----------
   /** Mono label chip. Wipes in from the left. o: { text, sub, t0, t1, x, y, align: left|center|right, color } */
   V.tag = (o) => {
+    o = V.adapt(o);
+    const k = o.k || 1;
     const node = el("tag " + (o.color || "gold"), V.layers[o.layer || "text"], o.text + (o.sub ? `<small>${o.sub}</small>` : ""));
     if (o.size) node.style.fontSize = o.size + "px";
     o.seed = o.seed || seedCounter++;
@@ -258,9 +300,10 @@
         const a = V.ease.outQuart(V.prog(t, o.t0, o.t0 + 0.35));
         const b = V.ease.inCubic(V.prog(t, o.t1 - 0.25, o.t1));
         const align = o.align || "center";
-        const x = align === "left" ? o.x : align === "right" ? o.x - w : o.x - w / 2;
+        // Scaled about its centre, so shift left/right-aligned tags to keep their edge.
+        const x = align === "left" ? o.x - (w * (1 - k)) / 2 : align === "right" ? o.x - w + (w * (1 - k)) / 2 : o.x - w / 2;
         const y = o.y - h / 2 + (o.drift === false ? 0 : Math.sin(t * 0.4 + o.seed) * 3);
-        node.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${(o.rot || 0)}deg)`;
+        node.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${(o.rot || 0)}deg) scale(${k})`;
         const inset = align === "right" ? `inset(0 0 0 ${(1 - a) * 100}%)` : `inset(0 ${(1 - a) * 100}% 0 0)`;
         node.style.clipPath = inset;
         node.style.opacity = (1 - b).toFixed(3);
@@ -276,6 +319,8 @@
    * Use `sync: true` to take each word's time from the voiceover transcript.
    */
   V.title = (o) => {
+    o = V.adapt(o, 0.8);
+    const k = o.k || 1;
     const node = el("title " + (o.style || "serif"), V.layers[o.layer || "text"]);
     node.style.fontSize = (o.size || 96) + "px";
     node.style.width = (o.w || 960) + "px";
@@ -303,11 +348,11 @@
         const w = node.offsetWidth, h = node.offsetHeight;
         const b = V.ease.inCubic(V.prog(t, o.t1 - (o.outDur || 0.3), o.t1));
         const align = o.align || "center";
-        const x = align === "left" ? o.x : align === "right" ? o.x - w : o.x - w / 2;
+        const x = align === "left" ? o.x - (w * (1 - k)) / 2 : align === "right" ? o.x - w + (w * (1 - k)) / 2 : o.x - w / 2;
         let y = o.y - h / 2;
         if (o.drift !== false) y += Math.sin(t * 0.35 + o.seed) * 3;
-        const exitY = o.exit === "up" ? -120 * b : 0;
-        node.style.transform = `translate(${x.toFixed(1)}px, ${(y + exitY).toFixed(1)}px) scale(${o.exit === "shrink" ? V.lerp(1, 0.7, b) : 1})`;
+        const exitY = o.exit === "up" ? -120 * k * b : 0;
+        node.style.transform = `translate(${x.toFixed(1)}px, ${(y + exitY).toFixed(1)}px) scale(${((o.exit === "shrink" ? V.lerp(1, 0.7, b) : 1) * k).toFixed(4)})`;
         node.style.opacity = (1 - b).toFixed(3);
         real.forEach((s, i) => {
           const p = V.prog(t, at[i], at[i] + (o.anim === "slam" ? 0.16 : 0.26));
@@ -330,6 +375,7 @@
   // ---------- counter ----------
   /** o: { t0, t1, x, y, from, to, dur, size, label, fmt(v), prefix, suffix } */
   V.counter = (o) => {
+    o = V.adapt(o, 0.75);
     const node = el("counter", V.layers[o.layer || "text"]);
     node.style.fontSize = (o.size || 180) + "px";
     const num = el("n", node);
@@ -351,6 +397,7 @@
 
   // ---------- stamp ----------
   V.stamp = (o) => {
+    o = V.adapt(o);
     const node = el("stamp" + (o.red ? " red" : ""), V.layers[o.layer || "text"], o.text);
     node.style.fontSize = (o.size || 44) + "px";
     V.add({
@@ -362,7 +409,7 @@
         const shake = p >= 1 ? Math.sin((t - o.t0) * 60) * 4 * Math.exp(-(t - o.t0 - 0.18) * 14) : 0;
         const b = V.prog(t, o.t1 - 0.25, o.t1);
         const w = node.offsetWidth, h = node.offsetHeight;
-        node.style.transform = `translate(${(o.x - w / 2 + shake).toFixed(1)}px, ${(o.y - h / 2).toFixed(1)}px) rotate(${o.rot || -6}deg) scale(${s.toFixed(3)})`;
+        node.style.transform = `translate(${(o.x - w / 2 + shake).toFixed(1)}px, ${(o.y - h / 2).toFixed(1)}px) rotate(${o.rot || -6}deg) scale(${(s * (o.k || 1)).toFixed(3)})`;
         node.style.opacity = (V.clamp(p * 4) * (1 - b)).toFixed(3);
       },
     });
@@ -375,6 +422,7 @@
    * o: { t0, t1, x, y, w, rot, head, title, body (HTML with <m data-at="t" data-dur="d">...</m>), source, sans }
    */
   V.doc = (o) => {
+    o = V.adapt(o, 0.8);
     const marks = (h) => h.replace(/<m /g, '<span class="mark" ').replace(/<\/m>/g, "</span>");
     const html =
       (o.head ? `<div class="dh">${o.head}</div>` : "") +
@@ -393,7 +441,7 @@
       t0: o.t0, t1: o.t1, el: node,
       update(t) {
         const env = V.env(t, o.t0, o.t1, 0.5, 0.35);
-        const m = motion(t, { ...o, enter: o.enter || "up", dist: 500 }, env);
+        const m = motion(t, { ...o, enter: o.enter || "up", dist: 500 * (o.k || 1) }, env);
         place(node, m, o.w, node.offsetHeight);
         for (const k of hls) k.m.style.backgroundSize = `${(V.ease.inOutCubic(V.prog(t, k.at, k.at + k.dur)) * 100).toFixed(1)}% ${k.strike ? "7px" : "78%"}`;
         if (o.tick) o.tick(t, node);
@@ -432,6 +480,7 @@
    * o: { kind: circle|underline|strike|arrow|x, t0, t1, dur, x, y, rx, ry, x2, y2, bend, color, width }
    */
   V.marker = (o) => {
+    o = V.adapt(o);
     const g = document.createElementNS(SVGNS, "g");
     V.layers.ink.appendChild(g);
     const seed = o.seed || seedCounter++;
@@ -440,7 +489,7 @@
       p.setAttribute("d", d);
       p.setAttribute("fill", "none");
       p.setAttribute("stroke", o.color || "#E2BE6A");
-      p.setAttribute("stroke-width", o.width || 9);
+      p.setAttribute("stroke-width", (o.width || 9) * (o.k || 1));
       p.setAttribute("stroke-linecap", "round");
       p.setAttribute("stroke-linejoin", "round");
       p.style.filter = "drop-shadow(0 3px 6px rgba(0,0,0,.55))";
@@ -459,7 +508,7 @@
       const bend = o.bend ?? 0.2;
       const mx = (o.x + o.x2) / 2 - (o.y2 - o.y) * bend, my = (o.y + o.y2) / 2 + (o.x2 - o.x) * bend;
       const ang = Math.atan2(o.y2 - my, o.x2 - mx);
-      const L = 34;
+      const L = 34 * (o.k || 1);
       paths.push(mkPath(`M${o.x2 - Math.cos(ang - 0.5) * L},${o.y2 - Math.sin(ang - 0.5) * L} L${o.x2},${o.y2} L${o.x2 - Math.cos(ang + 0.5) * L},${o.y2 - Math.sin(ang + 0.5) * L}`));
     }
     const lens = paths.map((p) => p.getTotalLength());

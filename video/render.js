@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 /**
- * Renders a portrait explainer composition (video/<name>/index.html) to MP4.
+ * Renders an explainer composition (video/<name>/index.html) to MP4, portrait or landscape.
  *
  *   node video/render.js sarnath                      full render, output/sarnath.mp4
  *   node video/render.js sarnath --stills 5,20.5,90   PNG frames to output/stills/ for review
  *   node video/render.js sarnath --from 60 --to 75    just a slice
  *   node video/render.js sarnath --draft              540x960, faster, for timing checks
+ *   node video/render.js sarnath --landscape          1920x1080 for YouTube, output/sarnath-landscape.mp4
  *
  * The composition is a pure function of time (window.__setFrame(t)), so the
  * frame range is split across several headless browsers that each pipe
@@ -32,13 +33,14 @@ function parseArgs(argv) {
     else if (k === "--workers") a.workers = +argv[++i];
     else if (k === "--stills") a.stills = argv[++i].split(",").map(Number);
     else if (k === "--draft") a.draft = true;
+    else if (k === "--landscape") a.landscape = true;
     else if (!k.startsWith("--")) a.name = k;
   }
   return a;
 }
 
-async function openPage(browser, url, scale) {
-  const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: scale });
+async function openPage(browser, url, scale, landscape) {
+  const page = await browser.newPage({ viewport: landscape ? { width: 1920, height: 1080 } : { width: 1080, height: 1920 }, deviceScaleFactor: scale });
   page.on("pageerror", (e) => console.error("[page] " + e.message));
   // Missing photos 404 by design (they render as placeholders), so skip resource errors.
   page.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource/.test(m.text())) console.error("[page] " + m.text()); });
@@ -54,11 +56,11 @@ async function frame(page, t, type) {
   return page.screenshot(type === "png" ? { type: "png" } : { type: "jpeg", quality: 93 });
 }
 
-function ffmpegSegment(out, fps, draft) {
+function ffmpegSegment(out, fps, draft, landscape) {
   const args = [
     "-y", "-loglevel", "error",
     "-f", "image2pipe", "-framerate", String(fps), "-c:v", "mjpeg", "-i", "-",
-    ...(draft ? ["-vf", "scale=540:960"] : []),
+    ...(draft ? ["-vf", landscape ? "scale=960:540" : "scale=540:960"] : []),
     "-c:v", "libx264", "-preset", draft ? "veryfast" : "medium", "-crf", draft ? "26" : "17",
     "-pix_fmt", "yuv420p", "-r", String(fps), out,
   ];
@@ -69,7 +71,7 @@ function ffmpegSegment(out, fps, draft) {
 
 async function main() {
   const a = parseArgs(process.argv.slice(2));
-  if (!a.name) { console.error("usage: node video/render.js <composition> [--stills t,t] [--from s --to s] [--draft]"); process.exit(1); }
+  if (!a.name) { console.error("usage: node video/render.js <composition> [--stills t,t] [--from s --to s] [--draft] [--landscape]"); process.exit(1); }
   const comp = path.join(__dirname, a.name, "index.html");
   if (!fs.existsSync(comp)) { console.error("no composition at " + comp); process.exit(1); }
   for (const f of ["data/countries.geo.json", "data/video/terrain.json"]) {
@@ -80,16 +82,17 @@ async function main() {
   }
 
   const server = await startServer(ROOT);
-  const url = `http://127.0.0.1:${server.address().port}/video/${a.name}/index.html`;
+  const url = `http://127.0.0.1:${server.address().port}/video/${a.name}/index.html${a.landscape ? "?format=landscape" : ""}`;
+  const tagName = a.name + (a.landscape ? "-landscape" : "");
   const browser = await chromium.launch({ args: ["--disable-gpu-vsync", "--disable-frame-rate-limit"] });
   const outDir = path.join(ROOT, "output");
   fs.mkdirSync(outDir, { recursive: true });
 
   try {
     if (a.stills) {
-      const dir = path.join(outDir, "stills", a.name);
+      const dir = path.join(outDir, "stills", tagName);
       fs.mkdirSync(dir, { recursive: true });
-      const page = await openPage(browser, url, 1);
+      const page = await openPage(browser, url, 1, a.landscape);
       for (const t of a.stills) {
         const buf = await frame(page, t, "png");
         const f = path.join(dir, `t${t.toFixed(2).padStart(7, "0")}.png`);
@@ -99,7 +102,7 @@ async function main() {
       return;
     }
 
-    const probe = await openPage(browser, url, 1);
+    const probe = await openPage(browser, url, 1, a.landscape);
     const duration = await probe.evaluate("window.__duration");
     await probe.close();
     const t0 = a.from ?? 0, t1 = a.to ?? duration;
@@ -107,9 +110,9 @@ async function main() {
     const total = last - first;
     const W = Math.min(a.workers, total);
     const per = Math.ceil(total / W);
-    const out = a.out || path.join(outDir, `${a.name}${a.from != null || a.to != null ? `-${t0}-${t1}` : ""}${a.draft ? "-draft" : ""}.mp4`);
+    const out = a.out || path.join(outDir, `${tagName}${a.from != null || a.to != null ? `-${t0}-${t1}` : ""}${a.draft ? "-draft" : ""}.mp4`);
     const tmp = fs.mkdtempSync(path.join(outDir, ".segments-"));
-    console.log(`Rendering ${a.name}: ${total} frames (${t0}s to ${t1}s) at ${a.fps}fps on ${W} browsers`);
+    console.log(`Rendering ${tagName}: ${total} frames (${t0}s to ${t1}s) at ${a.fps}fps on ${W} browsers`);
 
     let doneFrames = 0;
     const started = Date.now();
@@ -125,8 +128,8 @@ async function main() {
       if (a1 <= a0) return;
       const file = path.join(tmp, `seg${String(w).padStart(2, "0")}.mp4`);
       segs[w] = file;
-      const page = await openPage(browser, url, 1);
-      const { ff, done } = ffmpegSegment(file, a.fps, a.draft);
+      const page = await openPage(browser, url, 1, a.landscape);
+      const { ff, done } = ffmpegSegment(file, a.fps, a.draft, a.landscape);
       for (let f = a0; f < a1; f++) {
         const buf = await frame(page, f / a.fps, "jpeg");
         if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once("drain", r));

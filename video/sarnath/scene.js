@@ -91,9 +91,9 @@
   });
   marker({ kind: "circle", x: 410, y: 650, rx: 175, ry: 205, t0: 4.0, t1: 4.9, dur: 0.5 });
 
-  ph("lion", { frame: "full", t0: 4.96, t1: 13.0, enter: "zoom", inDur: 0.35, kb: [1.16, 1.03], dimKf: [[4.96, 0.55], [9.6, 0.55], [10.2, 0.95]] });
-  tag({ text: "Lion Capital of Ashoka", sub: "Sarnath · c. 250 BCE", x: 80, y: 1200, align: "left", t0: 6.2, t1: 9.7 });
-  marker({ kind: "circle", x: 540, y: 690, rx: 360, ry: 330, t0: 6.72, t1: 9.6, dur: 0.55 });
+  ph("lion", { frame: "full", t0: 4.96, t1: 13.0, enter: "zoom", inDur: 0.35, kb: [1.16, 1.03], dimKf: [[4.96, 0.55], [9.6, 0.55], [10.2, 0.95]], land: { focus: "50% 14%" } });
+  tag({ text: "Lion Capital of Ashoka", sub: "Sarnath · c. 250 BCE", x: 80, y: 1200, align: "left", t0: 6.2, t1: 9.7, land: { x: 110, y: 780, k: 0.85 } });
+  marker({ kind: "circle", x: 540, y: 690, rx: 360, ry: 330, t0: 6.72, t1: 9.6, dur: 0.55, land: { x: 960, y: 430, rx: 340, ry: 370 } });
 
   // "And this sculpture and this place have been brought into a wider
   //  conversation about the geopolitics of Buddhism, thanks to the UNESCO
@@ -120,15 +120,15 @@
   M.hotRivers.push({ name: "Ganges", t0: 18.8, t1: 24.45, width: 5 });
   pin("sarnath", 19.05, 24.4, { label: "SARNATH", size: 60 });
   lbl("Varanasi", "varanasi", 20.4, 24.3, { size: 44, italic: true, spacing: 2, dx: -150, dy: 70 });
-  ph("dhamek", { x: 540, y: 1110, w: 600, h: 390, rot: -3, t0: 21.65, t1: 24.3, enter: "pop", focus: "50% 40%" });
+  ph("dhamek", { x: 540, y: 1110, w: 600, h: 390, rot: -3, t0: 21.65, t1: 24.3, enter: "pop", focus: "50% 40%", land: { x: 1480, y: 690, k: 0.85 } });
 
   // =====================================================================
   // 0:24  "Around the sixth century BCE, having just reached enlightenment,
   //        the Buddha taught his first sermon here, an event called the first
   //        turning of the wheel of dharma."
   // =====================================================================
-  title({ text: "c. 6th century BCE", at: [24.77, 24.77, 25.02, 25.34], t0: 24.7, t1: 30.3, x: 540, y: 300, size: 96, style: "serif", anim: "slam", hl: [1, 2, 3] });
-  ph("buddha", { x: 540, y: 860, w: 640, h: 800, rot: 2, t0: 26.2, t1: 31.2, enter: "up", dist: 900, exit: "left", kb: [1.0, 1.1] });
+  title({ text: "c. 6th century BCE", at: [24.77, 24.77, 25.02, 25.34], t0: 24.7, t1: 30.3, x: 540, y: 300, size: 96, style: "serif", anim: "slam", hl: [1, 2, 3], land: { x: 560, y: 450, k: 0.9 } });
+  ph("buddha", { x: 540, y: 860, w: 640, h: 800, rot: 2, t0: 26.2, t1: 31.2, enter: "up", dist: 900, exit: "left", kb: [1.0, 1.1], land: { x: 1390, y: 460, k: 0.95 } });
   box({
     html: gfx.wheel(8, "#E2BE6A", { innerRing: true }), w: 560, h: 560, x: 540, y: 880,
     t0: 31.3, t1: 34.1, enter: "pop", inDur: 0.5,
@@ -153,8 +153,8 @@
   ]);
   M.icons.push({ kind: "burst", at: "dhauli", t0: 36.4, t1: 40.9, color: "red" });
   pin("dhauli", 36.67, 44.4, { label: "KALINGA", sub: "WAR · c. 261 BCE", color: "red", side: "right" });
-  ph("pillar", { x: 800, y: 470, w: 400, h: 540, rot: 5, t0: 39.4, t1: 43.3, enter: "right", dist: 600, exit: "right", focus: "0% 50%" });
-  tag({ text: "Emperor Ashoka", sub: "his pillar at Vaishali", x: 800, y: 790, t0: 39.8, t1: 43.1 });
+  ph("pillar", { x: 800, y: 470, w: 400, h: 540, rot: 5, t0: 39.4, t1: 43.3, enter: "right", dist: 600, exit: "right", focus: "0% 50%", land: { x: 1500, y: 390, k: 0.85 } });
+  tag({ text: "Emperor Ashoka", sub: "his pillar at Vaishali", x: 800, y: 790, t0: 39.8, t1: 43.1, land: { x: 1500, y: 680, k: 0.85 } });
   arc("dhauli", "sarnath", 40.75, 44.4, { dur: 1.4, bend: 0.28 });
   pin("sarnath", 42.1, 44.4, { label: "SARNATH", sub: "A PLACE OF WORSHIP", side: "left" });
 
@@ -171,17 +171,18 @@
     w: 1200, h: 1500, x: 540, y: 1700, drift: false, layer: "back",
     t0: 47.4, t1: 51.4, enter: "cut", exit: "fade",
     move: [[47.4, [540, 2700]], [48.4, [540, 1650], V.ease.outCubic]],
+    land: { x: 960, w: 2100, h: 900, k: 1, move: [[47.4, [960, 1600]], [48.4, [960, 960], V.ease.outCubic]] },
   });
   ph("dharmarajika", { x: 540, y: 700, w: 720, h: 520, rot: -3, t0: 48.45, t1: 51.35, enter: "up", dist: 900, exit: "left" });
   tag({ text: "Dharmarajika Stupa", sub: "taken apart for its bricks · 1794", x: 540, y: 1060, t0: 49.6, t1: 51.3 });
 
   // "A British army engineer did the formal excavation afterwards and got
   //  credit for the discovery for well over a century."
-  ph("cunningham", { x: 540, y: 760, w: 560, h: 720, rot: -3, t0: 51.35, t1: 58.3, enter: "left", dist: 800, exit: "left" });
-  tag({ text: "Alexander Cunningham", sub: "British army engineer", x: 540, y: 1215, t0: 52.0, t1: 58.1 });
-  tag({ text: "Excavated 1835–36", x: 540, y: 290, t0: 53.67, t1: 56.6, color: "navy" });
-  stamp({ text: "Credited", x: 700, y: 930, rot: -10, size: 64, t0: 55.52, t1: 58.2 });
-  counter({ t0: 56.8, t1: 58.3, x: 540, y: 300, to: 100, dur: 0.7, size: 130, suffix: "+", label: "years of credit", labelSize: 28 });
+  ph("cunningham", { x: 540, y: 760, w: 560, h: 720, rot: -3, t0: 51.35, t1: 58.3, enter: "left", dist: 800, exit: "left", land: { x: 700, y: 450, k: 0.95 } });
+  tag({ text: "Alexander Cunningham", sub: "British army engineer", x: 540, y: 1215, t0: 52.0, t1: 58.1, land: { x: 700, y: 830, k: 0.8 } });
+  tag({ text: "Excavated 1835–36", x: 540, y: 290, t0: 53.67, t1: 56.6, color: "navy", land: { x: 1330, y: 450, k: 1 } });
+  stamp({ text: "Credited", x: 700, y: 930, rot: -10, size: 64, t0: 55.52, t1: 58.2, land: { x: 860, y: 580, k: 0.9 } });
+  counter({ t0: 56.8, t1: 58.3, x: 540, y: 300, to: 100, dur: 0.7, size: 130, suffix: "+", label: "years of credit", labelSize: 28, land: { x: 1330, y: 450, k: 1 } });
 
   // =====================================================================
   // 0:58  "This year, India's archaeological survey moved to reinstate that
@@ -213,10 +214,10 @@
   ph("lion", { x: 540, y: 820, w: 660, h: 820, rot: -2, t0: 74.9, t1: 78.8, enter: "up", dist: 900, exit: "up", kb: [1.2, 1.08], pan: [0, 40, 0, -20] });
 
   // 1:19  "Right after independence in 1947, Nehru needed a symbol no religious community could object to."
-  tag({ text: "Independence", x: 540, y: 190, t0: 79.42, t1: 85.9, color: "navy" });
-  title({ text: "1947", at: [80.31], t0: 80.3, t1: 85.95, x: 540, y: 360, size: 210, style: "serif", anim: "slam", hl: [0] });
-  ph("nehru", { x: 540, y: 930, w: 580, h: 680, rot: 3, t0: 81.67, t1: 86.0, enter: "up", dist: 900, exit: "left" });
-  tag({ text: "Jawaharlal Nehru", sub: "first prime minister", x: 540, y: 1290, t0: 82.2, t1: 85.9 });
+  tag({ text: "Independence", x: 540, y: 190, t0: 79.42, t1: 85.9, color: "navy", land: { x: 620, y: 300, k: 0.9 } });
+  title({ text: "1947", at: [80.31], t0: 80.3, t1: 85.95, x: 540, y: 360, size: 210, style: "serif", anim: "slam", hl: [0], land: { x: 620, y: 470, k: 1.05 } });
+  ph("nehru", { x: 540, y: 930, w: 580, h: 680, rot: 3, t0: 81.67, t1: 86.0, enter: "up", dist: 900, exit: "left", land: { x: 1300, y: 450, k: 0.95 } });
+  tag({ text: "Jawaharlal Nehru", sub: "first prime minister", x: 540, y: 1290, t0: 82.2, t1: 85.9, land: { x: 1300, y: 810, k: 0.8 } });
 
   // 1:26  "Buddhism predated the divide between Hindus, Muslims, and Sikhs by
   //        centuries, so it didn't belong to any one side of it."
@@ -244,11 +245,12 @@
   box({
     html: gfx.emblem(EMBLEM), w: 460, h: 580, x: 540, y: 770, t0: 100.0, t1: 107.3, enter: "pop", inDur: 0.5,
     move: [[102.9, [540, 770, 1]], [104.0, [540, 640, 0.86]]],
+    land: { k: 0.8, move: [[102.9, [960, 430, 1]], [104.0, [960, 370, 0.86]]] },
     tick(t, node) { node.style.filter = `drop-shadow(0 0 ${(20 + 14 * Math.sin(t * 2)).toFixed(1)}px rgba(226,190,106,.5))`; },
   });
-  tag({ text: "Adopted 26 January 1950", x: 540, y: 1150, t0: 101.8, t1: 103.0, color: "navy" });
+  tag({ text: "Adopted 26 January 1950", x: 540, y: 1150, t0: 101.8, t1: 103.0, color: "navy", land: { y: 730, k: 0.8 } });
   ["Hindus", "Muslims", "Sikhs"].forEach((txt, i) =>
-    tag({ text: txt, x: 250 + i * 290, y: 1110, t0: 103.6 + i * 0.12, t1: 107.2, color: "cream", size: 36 }));
+    tag({ text: txt, x: 250 + i * 290, y: 1110, t0: 103.6 + i * 0.12, t1: 107.2, color: "cream", size: 36, land: { x: 720 + i * 240, y: 700, k: 0.8 } }));
 
   ph("partition", { frame: "full", t0: 107.3, t1: 111.0, enter: "fade", inDur: 0.4, kb: [1.12, 1.02], dim: 0.9 });
   tag({ text: "Partition · 1947", sub: "~15 million displaced", x: 540, y: 300, t0: 107.9, t1: 110.9, color: "red" });
@@ -266,7 +268,7 @@
   //        so exceptional, it transcends national boundaries entirely."
   tag({ text: "UNESCO World Heritage listing", x: 540, y: 250, t0: 115.77, t1: 127.0, color: "navy" });
   title({ text: "National importance", at: [117.53, 117.93], t0: 117.5, t1: 118.8, x: 540, y: 620, size: 76, style: "sans" });
-  marker({ kind: "strike", x: 150, y: 625, x2: 930, t0: 118.0, t1: 118.8, color: "#E0685B", dur: 0.3, width: 12 });
+  marker({ kind: "strike", x: 150, y: 625, x2: 930, t0: 118.0, t1: 118.8, color: "#E0685B", dur: 0.3, width: 12, land: { x: 640, x2: 1280, k: 0.8 } });
   doc({
     t0: 118.6, t1: 127.1, x: 540, y: 830, w: 920, rot: 1,
     head: "World Heritage Convention · Operational Guidelines, §49",
@@ -283,8 +285,8 @@
       <div style="font-family:Playfair;font-weight:900;font-size:130px;line-height:1;color:var(--gold-bright)">${year}</div>
       <div style="font-family:Mono;font-weight:700;font-size:34px;letter-spacing:.08em;text-transform:uppercase;color:var(--white)">${line}</div>
     </div>`;
-  box({ html: panel("1947", "Above India's internal politics"), w: 920, h: 330, x: 540, y: 520, t0: 127.19, t1: 135.9, enter: "left", dist: 900, exit: "up" });
-  box({ html: panel("2026", "Above national ownership", true), w: 920, h: 330, x: 540, y: 930, t0: 131.75, t1: 135.9, enter: "right", dist: 900, exit: "down" });
+  box({ html: panel("1947", "Above India's internal politics"), w: 920, h: 330, x: 540, y: 520, t0: 127.19, t1: 135.9, enter: "left", dist: 900, exit: "up", land: { x: 530, y: 450, k: 0.85 } });
+  box({ html: panel("2026", "Above national ownership", true), w: 920, h: 330, x: 540, y: 930, t0: 131.75, t1: 135.9, enter: "right", dist: 900, exit: "down", land: { x: 1390, y: 450, k: 0.85 } });
 
   seg(135.8, 141.6, [[135.8, 80, 23, 26, 820], [136.2, 80, 23, 26, 820], [139.6, 88, 24, 4.2, 860], [141.6, 88, 24, 4.0, 860, "linear"]]);
   M.borders = [[0, 1], [137.2, 1], [138.8, 0.04], [141.2, 0.04], [141.7, 1]];
@@ -300,7 +302,7 @@
   // =====================================================================
   const INDIA_SEAT = 16;
   box({
-    html: gfx.hemicycle(21), w: 840, h: 470, x: 540, y: 820, t0: 141.5, t1: 145.8, enter: "fade", inDur: 0.3, exit: "shrink",
+    html: gfx.hemicycle(21), w: 840, h: 470, x: 540, y: 820, t0: 141.5, t1: 145.8, enter: "fade", inDur: 0.3, exit: "shrink", land: { x: 960, y: 570, k: 1 },
     tick(t, node) {
       node.querySelectorAll(".seat").forEach((s) => {
         const i = +s.dataset.i;
@@ -315,9 +317,9 @@
       });
     },
   });
-  tag({ text: "India", x: 540, y: 560, t0: 142.2, t1: 145.6 });
-  tag({ text: "World Heritage Committee", sub: "21 elected member states", x: 540, y: 300, t0: 143.11, t1: 145.6, color: "navy" });
-  tag({ text: "Member until 2025", x: 540, y: 1150, t0: 144.39, t1: 145.6, color: "cream" });
+  tag({ text: "India", x: 540, y: 560, t0: 142.2, t1: 145.6, land: { x: 960, y: 305, k: 0.8 } });
+  tag({ text: "World Heritage Committee", sub: "21 elected member states", x: 540, y: 300, t0: 143.11, t1: 145.6, color: "navy", land: { x: 960, y: 140, k: 0.9 } });
+  tag({ text: "Member until 2025", x: 540, y: 1150, t0: 144.39, t1: 145.6, color: "cream", land: { x: 960, y: 850, k: 0.8 } });
 
   seg(145.5, 148.9, [[145.5, 79, 25.5, 24, 820], [148.9, 77.8, 27.6, 38, 820, "linear"]]);
   hl("IND", 145.5, 148.9, { fill: 0.22 });
@@ -366,9 +368,9 @@
   hl("IND", 158.4, 162.2, { fill: 0.22 });
   hl("CHN", 160.3, 162.2, { fill: 0.22, color: "red" });
 
-  tag({ text: "India's strategy", x: 540, y: 190, t0: 162.06, t1: 169.0, color: "navy" });
+  tag({ text: "India's strategy", x: 540, y: 190, t0: 162.06, t1: 169.0, color: "navy", land: { x: 110, y: 200, k: 0.9, align: "left" } });
   [["✓ Birthplace", 163.82], ["✓ Authenticity", 164.62], ["✓ Relic tours", 165.75], ["✓ Pilgrimage routes", 166.62]].forEach(([txt, t0], i) =>
-    tag({ text: txt, x: 70, y: 300 + i * 88, t0, t1: 169.0, align: "left", color: "cream", size: 34 }));
+    tag({ text: txt, x: 70, y: 300 + i * 88, t0, t1: 169.0, align: "left", color: "cream", size: 34, land: { x: 110, y: 290 + i * 70, k: 0.85 } }));
   M.hotRivers.push({ name: "Ganges", t0: 163.0, t1: 169.2, width: 4 });
   pin("lumbini", 163.82, 169.3, { label: "LUMBINI", sub: "BIRTHPLACE · NEPAL", side: "right", size: 44 });
   pin("bodhgaya", 166.9, 169.3, { label: "BODH GAYA", sub: "ENLIGHTENMENT", side: "right", size: 40 });
@@ -383,7 +385,7 @@
   arc("sarnath", "hcmc", 170.3, 175.2, { dur: 1.1, bend: 0.3 });
   hl("VNM", 171.0, 175.3, { fill: 0.45 });
   lbl("VIETNAM", "VNM", 171.1, 175.2, { size: 54, dx: 190, dy: 30 });
-  counter({ t0: 172.62, t1: 175.2, x: 540, y: 1150, to: 15000000, dur: 1.2, size: 120, suffix: "+", label: "visitors (est.)", labelSize: 28 });
+  counter({ t0: 172.62, t1: 175.2, x: 540, y: 1150, to: 15000000, dur: 1.2, size: 120, suffix: "+", label: "visitors (est.)", labelSize: 28, land: { x: 440, y: 620, k: 0.85 } });
 
   // =====================================================================
   // 2:55  "China is running the counter strategy. Its World Buddhist Forum
@@ -407,21 +409,21 @@
 
   // 3:07  "...finishing its own version of Nalanda, the Nanhai Academy, before
   //        India could revive the original nearby."
-  ph("nalanda", { x: 540, y: 520, w: 780, h: 520, rot: -2, t0: 188.3, t1: 194.0, enter: "left", dist: 900, exit: "left" });
-  tag({ text: "Nalanda · India", sub: "the original", x: 540, y: 800, t0: 188.8, t1: 193.9, color: "cream" });
-  ph("nanhai", { x: 540, y: 1030, w: 780, h: 480, rot: 2, t0: 189.4, t1: 194.0, enter: "right", dist: 900, exit: "right" });
-  tag({ text: "Nanhai Buddhist Academy", sub: "Hainan, China", x: 540, y: 1290, t0: 189.9, t1: 193.9, color: "red" });
-  marker({ kind: "circle", x: 540, y: 520, rx: 440, ry: 300, t0: 192.54, t1: 193.9 });
+  ph("nalanda", { x: 540, y: 520, w: 780, h: 520, rot: -2, t0: 188.3, t1: 194.0, enter: "left", dist: 900, exit: "left", land: { x: 530, y: 430, k: 0.98 } });
+  tag({ text: "Nalanda · India", sub: "the original", x: 540, y: 800, t0: 188.8, t1: 193.9, color: "cream", land: { x: 530, y: 740, k: 0.85 } });
+  ph("nanhai", { x: 540, y: 1030, w: 780, h: 480, rot: 2, t0: 189.4, t1: 194.0, enter: "right", dist: 900, exit: "right", land: { x: 1390, y: 450, k: 0.98 } });
+  tag({ text: "Nanhai Buddhist Academy", sub: "Hainan, China", x: 540, y: 1290, t0: 189.9, t1: 193.9, color: "red", land: { x: 1390, y: 740, k: 0.85 } });
+  marker({ kind: "circle", x: 540, y: 520, rx: 440, ry: 300, t0: 192.54, t1: 193.9, land: { x: 530, y: 430, rx: 430, ry: 290, k: 0.9 } });
 
   // =====================================================================
   // 3:14  "The sharpest edge of all this is the succession of the Dalai Lama.
   //        In 2025, he said only his own office could name his successor.
   //        India backed this position publicly."
   // =====================================================================
-  title({ text: "The succession", at: [196.11, 196.27], t0: 196.1, t1: 202.4, x: 540, y: 230, size: 104, style: "sans", hl: [1] });
-  ph("dalai", { x: 540, y: 830, w: 620, h: 760, rot: -2, t0: 196.9, t1: 202.5, enter: "up", dist: 900, exit: "left" });
-  tag({ text: "The 14th Dalai Lama", x: 540, y: 1250, t0: 197.4, t1: 202.4 });
-  tag({ text: "July 2025", x: 540, y: 360, t0: 198.35, t1: 202.4, color: "navy" });
+  title({ text: "The succession", at: [196.11, 196.27], t0: 196.1, t1: 202.4, x: 540, y: 230, size: 104, style: "sans", hl: [1], land: { x: 560, y: 420, k: 0.85 } });
+  ph("dalai", { x: 540, y: 830, w: 620, h: 760, rot: -2, t0: 196.9, t1: 202.5, enter: "up", dist: 900, exit: "left", land: { x: 1380, y: 440, k: 0.95 } });
+  tag({ text: "The 14th Dalai Lama", x: 540, y: 1250, t0: 197.4, t1: 202.4, land: { x: 1380, y: 840, k: 0.8 } });
+  tag({ text: "July 2025", x: 540, y: 360, t0: 198.35, t1: 202.4, color: "navy", land: { x: 560, y: 540, k: 0.9 } });
 
   seg(202.45, 215.0, [[202.45, 91, 34, 12.5, 860], [215.0, 92, 34, 13.2, 860, "linear"]]);
   hl("IND", 202.6, 215.0, { fill: 0.3 });
@@ -434,7 +436,7 @@
   pin("beijing", 205.55, 214.9, { label: "BEIJING", color: "red", side: "top", size: 48 });
   arc("beijing", "dharamshala", 206.1, 214.9, { dur: 1.2, dashed: true, color: "red", bend: -0.2 });
   doc({
-    t0: 208.49, t1: 212.3, x: 540, y: 620, w: 880, rot: 1.5,
+    t0: 208.49, t1: 212.3, x: 540, y: 620, w: 880, rot: 1.5, land: { x: 700, y: 210 },
     head: "China, on the dispute",
     body: `“…a <m data-at="210.65" data-dur="0.5">thorn</m> in China–India relations.”`,
   });
@@ -453,7 +455,7 @@
   box({
     html: `<div style="display:grid;grid-template-columns:repeat(12,1fr);gap:14px 18px;width:100%">${Array.from({ length: 84 }, (_, i) =>
       `<div class="p" style="height:92px;opacity:0">${gfx.person(i % 7 === 3 ? "#E2BE6A" : "#F3EBDA")}</div>`).join("")}</div>`,
-    w: 980, h: 800, x: 540, y: 900, t0: 224.8, t1: 228.9, enter: "fade", inDur: 0.2,
+    w: 980, h: 800, x: 540, y: 900, t0: 224.8, t1: 228.9, enter: "fade", inDur: 0.2, land: { x: 960, y: 460, w: 1900, h: 780, k: 0.85 },
     tick(t, node) {
       node.querySelectorAll(".p").forEach((p, i) => {
         const at = 225.0 + V.rand(i + 7) * 2.6;
@@ -479,7 +481,7 @@
   hl("IND", 233.2, 251.7, { fill: 0.4, pulse: true });
   ["LKA", "MMR", "THA", "LAO", "KHM", "VNM", "BTN", "NPL", "MNG", "CHN", "KOR", "JPN", "TWN", "SGP", "MYS"].forEach((iso, i) =>
     hl(iso, 237.4 + i * 0.22, 251.7, { fill: 0.3, color: iso === "CHN" ? "cream" : "gold" }));
-  counter({ t0: 240.13, t1: 242.6, x: 540, y: 1150, to: 500000000, dur: 1.0, size: 110, prefix: "~", label: "Buddhists worldwide", labelSize: 28 });
+  counter({ t0: 240.13, t1: 242.6, x: 540, y: 1150, to: 500000000, dur: 1.0, size: 110, prefix: "~", label: "Buddhists worldwide", labelSize: 28, land: { x: 420, y: 640, k: 0.85 } });
 
   // 4:02  "This example in our heritage is used for geopolitical maneuvers is
   //        exactly why we should look more closely at how it happens everywhere else too."
@@ -487,18 +489,19 @@
   const montage = ["lion", "dhamek", "buddha", "cunningham", "nehru", "dashavatara", "nalanda", "nanhai", "dalai", "ruins"];
   montage.forEach((key, i) => {
     const x = 230 + V.rand(i * 3.3) * 620, y = 560 + V.rand(i * 5.1 + 1) * 640;
-    ph(key, { x, y, w: 360, h: 280, rot: (V.rand(i * 7.7) - 0.5) * 22, t0: 247.4 + i * 0.28, t1: 251.6, enter: "pop", inDur: 0.35, exit: "fade" });
+    const land = { x: 330 + V.rand(i * 3.3) * 1260, y: 250 + V.rand(i * 5.1 + 1) * 500, k: 0.85 };
+    ph(key, { x, y, w: 360, h: 280, rot: (V.rand(i * 7.7) - 0.5) * 22, t0: 247.4 + i * 0.28, t1: 251.6, enter: "pop", inDur: 0.35, exit: "fade", land });
   });
 
   // 4:11  "Every flag, every ruin, and every plaque carries a deeper message
   //        that goes beyond the veneer of heritage."
-  box({ html: gfx.indiaFlag(), cls: "photo print", w: 460, h: 320, x: 310, y: 560, rot: -6, t0: 251.97, t1: 255.6, enter: "pop", exit: "shrink" });
-  ph("ruins", { x: 760, y: 820, w: 460, h: 340, rot: 5, t0: 252.85, t1: 255.6, enter: "pop", exit: "shrink" });
+  box({ html: gfx.indiaFlag(), cls: "photo print", w: 460, h: 320, x: 310, y: 560, rot: -6, t0: 251.97, t1: 255.6, enter: "pop", exit: "shrink", land: { x: 480, y: 400, k: 0.95 } });
+  ph("ruins", { x: 760, y: 820, w: 460, h: 340, rot: 5, t0: 252.85, t1: 255.6, enter: "pop", exit: "shrink", land: { x: 1440, y: 420, k: 0.95 } });
   box({
     html: gfx.plaque(`<div style="font-family:Mono;font-weight:700;font-size:20px;letter-spacing:.18em">WORLD HERITAGE SITE</div>
       <div style="font-weight:900;font-size:50px;line-height:1">SARNATH</div>
       <div style="font-weight:700;font-style:italic;font-size:26px">Ancient Buddhist site</div>`),
-    w: 480, h: 300, x: 360, y: 1090, rot: -3, t0: 253.66, t1: 255.6, enter: "pop", exit: "shrink",
+    w: 480, h: 300, x: 360, y: 1090, rot: -3, t0: 253.66, t1: 255.6, enter: "pop", exit: "shrink", land: { x: 960, y: 640, k: 0.95 },
   });
   title({ text: "Beyond the \\n veneer of heritage", t0: 255.83, t1: 257.95, x: 540, y: 760, size: 110, style: "serif", sync: true, hl: [5], outDur: 0.5 });
 
