@@ -336,20 +336,23 @@ turn on; it's purely "is the asset there or not":
 
 ```
 npm install sharp     # a native dependency, only needed for this step
-npm run build-terrain  # downloads ~143MB, converts it, keeps a ~600KB-2MB JPEG
+npm run build-terrain  # downloads ~143MB, converts it, keeps a ~12MB JPEG
 ```
 
 That fetches Natural Earth's public-domain cross-blended hypsometric relief
-once from their S3 bucket, converts it to `data/terrain/relief.jpg` +
-`data/terrain/bounds.json`, and deletes the large intermediate files. Nothing
-is fetched at render time — same rule as the country/land data already
-committed to `data/`. Skip this step and every scene renders exactly as it
-did before — flat land colour, no warning, no per-scene setting to remember.
+once from their S3 bucket, at its full native resolution (21600×10800),
+converts it to `data/terrain/relief.jpg` + `data/terrain/bounds.json`, and
+deletes the large intermediate files. Nothing is fetched at render time —
+same rule as the country/land data already committed to `data/`. Skip this
+step and every scene renders exactly as it did before — flat land colour,
+no warning, no per-scene setting to remember.
 
 Worth knowing once it's on:
 - It's a single static image, not a tile pyramid, so it doesn't get sharper
   the further you zoom in — a landmark-level shot will still show it
-  blurred past its native resolution.
+  blurred past its native resolution (each source pixel covers roughly
+  1.85km at the equator — plenty of detail for continent/country/city-level
+  shots, soft for anything tighter than that).
 - The image's own colours (real ocean and land tones) show through, rather
   than the active style preset's palette — every scene's overall look
   changes once the asset exists, not just the terrain texture.
@@ -492,11 +495,12 @@ Worth knowing about this specifically:
   on every single animated frame cannot, so this is what keeps a 600+-frame
   render's actual wall-clock time reasonable rather than reprocessing
   a ~250-country, 100k-point dataset 600 times over.
-- **Terrain reprojection is the one genuinely slow part.** Vector fills stay
-  fast; per-pixel-reprojecting the terrain raster (see "Terrain" above) is
-  CPU-bound and noticeably heavier — mitigated by reprojecting at a capped
-  internal resolution and upscaling, but a terrain-enabled render still
-  takes meaningfully longer than one without.
+- **Terrain reprojection stays full resolution without being slow**, despite
+  reprojecting per pixel: the expensive part (inverting the projection) only
+  runs on a coarse grid — a few thousand points — and every actual output
+  pixel is a cheap bilinear interpolation of that grid plus one source-image
+  lookup, no trig. Decoding the (large, full-native-resolution) source image
+  is a one-time cost at page load, not a per-frame one.
 
 ## Project layout
 
