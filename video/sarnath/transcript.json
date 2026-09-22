@@ -1,0 +1,4974 @@
+{
+  "transcript": "On every Indian passport and printed currency, there is a representation of this, a sculpture of lions from a Buddhist monument. And this sculpture and this place have been brought into a wider conversation about the geopolitics of Buddhism, thanks to the UNESCO and India facing its biggest rival. This is Sarnath, just outside Varanasi, one of the most sacred places in India. Around the sixth century BCE, having just reached enlightenment, the Buddha taught his first sermon here, an event called the first turning of the wheel of dharma. Centuries later, after a brutal conflict in Kalinga left him in need of spiritual guidance, emperor Ashoka led a Buddhist revival and built a space for worship in Sana. This site was lost for roughly six hundred years, buried until workers quarrying for bricks stumbled onto it. A British army engineer did the formal excavation afterwards and got credit for the discovery for well over a century. This year, India's archaeological survey moved to reinstate that credit back towards the local official whose workers actually found it first. This plays into who gets credit for Buddhism's legacy. And as it turns out, it's a very old and politically consequential battlefield. This isn't the first time this sculpture was pulled into national politics. Right after independence in 1947, Nehru needed a symbol no religious community could object to. Buddhism predated the divide between Hindus, Muslims, and Sikhs by centuries, so it didn't belong to any one side of it. Even Hindus, the country's largest community, already counted the Buddha as one of their own, as an avatar of Vishnu. That's why the lion became India's national emblem. It could sit above the religious politics of the moment as a unifying symbol for a young nation dealing with the catastrophic aftermath of the British Empire. This July, the same method is being reused, but on the international stage. UNESCO's listing isn't based on national importance. Its legal standard is based on outstanding universal value, meaning significance so exceptional, it transcends national boundaries entirely. The nineteen forty seven symbol was built to rise above India's internal politics. And in 2026, it rises above the idea of national ownership altogether, going for a more international vision. The verdict on universal value doesn't arrive on its own. India sat on UNESCO's World Heritage Committee through 2025 and hosted the session itself in New Delhi in 2024, with its own culture minister admitting outright that it would strengthen India's soft power in the world. Sarnat waited twenty eight years for that verdict, and it finally enters as another pawn into the bigger regional contest. India's whole strategy leans on birthplace and authenticity, relic tours, and pilgrimage routes drawing millions, like last year's Buddha Relic Tour through Vietnam, which pulled in crowds estimated above 15,000,000. China is running the counter strategy. Its World Buddhist Forum drew delegates from over 70 countries this year, and China is building temples and academies right next to India's own turf in Nepal, finishing its own version of Nalanda, the Nanhai Academy, before India could revive the original nearby. The sharpest edge of all this is the succession of the Dalai Lama. In 2025, he said only his own office could name his successor. India backed this position publicly. And yet China insists it must approve of that choice instead, calling the dispute, in its own words, a thorn in the relationship. And no one yet knows how this will play out. Sarnath's test is still in its future. The plan meant to protect these fragile ruins from a tourism boom caused by the UNESCO listing still hadn't been published as of late July. And how well the site can actually handle such crowds is yet to be seen. This lion has been a political tool for almost eighty years now. First as a binder to hold India together, now to help place India as a leader for a Buddhist community of roughly half a billion people worldwide. This example in our heritage is used for geopolitical maneuvers is exactly why we should look more closely at how it happens everywhere else too. Every flag, every ruin, and every plaque carries a deeper message that goes beyond the veneer of heritage.",
+  "duration": 0,
+  "words": [
+    {
+      "word": "on",
+      "start": 0.39999998,
+      "end": 0.79999995,
+      "confidence": 0.9902344,
+      "punctuated_word": "On"
+    },
+    {
+      "word": "every",
+      "start": 0.79999995,
+      "end": 1.12,
+      "confidence": 1.0,
+      "punctuated_word": "every"
+    },
+    {
+      "word": "indian",
+      "start": 1.12,
+      "end": 1.5999999,
+      "confidence": 1.0,
+      "punctuated_word": "Indian"
+    },
+    {
+      "word": "passport",
+      "start": 1.5999999,
+      "end": 2.08,
+      "confidence": 1.0,
+      "punctuated_word": "passport"
+    },
+    {
+      "word": "and",
+      "start": 2.08,
+      "end": 2.32,
+      "confidence": 0.99902344,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "printed",
+      "start": 2.32,
+      "end": 2.72,
+      "confidence": 1.0,
+      "punctuated_word": "printed"
+    },
+    {
+      "word": "currency",
+      "start": 2.72,
+      "end": 3.5199997,
+      "confidence": 0.9970703,
+      "punctuated_word": "currency,"
+    },
+    {
+      "word": "there",
+      "start": 3.6,
+      "end": 3.6799998,
+      "confidence": 1.0,
+      "punctuated_word": "there"
+    },
+    {
+      "word": "is",
+      "start": 3.6799998,
+      "end": 3.84,
+      "confidence": 1.0,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "a",
+      "start": 3.84,
+      "end": 4.0,
+      "confidence": 0.9980469,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "representation",
+      "start": 4.0,
+      "end": 4.72,
+      "confidence": 1.0,
+      "punctuated_word": "representation"
+    },
+    {
+      "word": "of",
+      "start": 4.72,
+      "end": 4.96,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "this",
+      "start": 4.96,
+      "end": 5.6,
+      "confidence": 0.9291992,
+      "punctuated_word": "this,"
+    },
+    {
+      "word": "a",
+      "start": 5.92,
+      "end": 6.16,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "sculpture",
+      "start": 6.16,
+      "end": 6.56,
+      "confidence": 1.0,
+      "punctuated_word": "sculpture"
+    },
+    {
+      "word": "of",
+      "start": 6.56,
+      "end": 6.72,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "lions",
+      "start": 6.72,
+      "end": 7.12,
+      "confidence": 0.99902344,
+      "punctuated_word": "lions"
+    },
+    {
+      "word": "from",
+      "start": 7.12,
+      "end": 7.3599997,
+      "confidence": 1.0,
+      "punctuated_word": "from"
+    },
+    {
+      "word": "a",
+      "start": 7.3599997,
+      "end": 7.44,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "buddhist",
+      "start": 7.44,
+      "end": 7.7599998,
+      "confidence": 0.9995117,
+      "punctuated_word": "Buddhist"
+    },
+    {
+      "word": "monument",
+      "start": 7.7599998,
+      "end": 8.559999,
+      "confidence": 0.9255371,
+      "punctuated_word": "monument."
+    },
+    {
+      "word": "and",
+      "start": 8.8,
+      "end": 8.96,
+      "confidence": 0.99902344,
+      "punctuated_word": "And"
+    },
+    {
+      "word": "this",
+      "start": 8.96,
+      "end": 9.2,
+      "confidence": 0.99902344,
+      "punctuated_word": "this"
+    },
+    {
+      "word": "sculpture",
+      "start": 9.2,
+      "end": 9.599999,
+      "confidence": 1.0,
+      "punctuated_word": "sculpture"
+    },
+    {
+      "word": "and",
+      "start": 9.599999,
+      "end": 9.84,
+      "confidence": 0.9863281,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "this",
+      "start": 9.84,
+      "end": 10.08,
+      "confidence": 1.0,
+      "punctuated_word": "this"
+    },
+    {
+      "word": "place",
+      "start": 10.08,
+      "end": 10.559999,
+      "confidence": 1.0,
+      "punctuated_word": "place"
+    },
+    {
+      "word": "have",
+      "start": 10.559999,
+      "end": 10.8,
+      "confidence": 0.9980469,
+      "punctuated_word": "have"
+    },
+    {
+      "word": "been",
+      "start": 10.8,
+      "end": 11.04,
+      "confidence": 1.0,
+      "punctuated_word": "been"
+    },
+    {
+      "word": "brought",
+      "start": 11.04,
+      "end": 11.28,
+      "confidence": 1.0,
+      "punctuated_word": "brought"
+    },
+    {
+      "word": "into",
+      "start": 11.28,
+      "end": 11.5199995,
+      "confidence": 0.99902344,
+      "punctuated_word": "into"
+    },
+    {
+      "word": "a",
+      "start": 11.5199995,
+      "end": 11.679999,
+      "confidence": 0.99902344,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "wider",
+      "start": 11.679999,
+      "end": 12.0,
+      "confidence": 1.0,
+      "punctuated_word": "wider"
+    },
+    {
+      "word": "conversation",
+      "start": 12.0,
+      "end": 12.48,
+      "confidence": 1.0,
+      "punctuated_word": "conversation"
+    },
+    {
+      "word": "about",
+      "start": 12.48,
+      "end": 12.799999,
+      "confidence": 1.0,
+      "punctuated_word": "about"
+    },
+    {
+      "word": "the",
+      "start": 12.799999,
+      "end": 12.88,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "geopolitics",
+      "start": 12.88,
+      "end": 13.679999,
+      "confidence": 0.9996745,
+      "punctuated_word": "geopolitics"
+    },
+    {
+      "word": "of",
+      "start": 13.679999,
+      "end": 13.84,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "buddhism",
+      "start": 13.84,
+      "end": 14.24,
+      "confidence": 0.9193115,
+      "punctuated_word": "Buddhism,"
+    },
+    {
+      "word": "thanks",
+      "start": 14.615,
+      "end": 14.934999,
+      "confidence": 1.0,
+      "punctuated_word": "thanks"
+    },
+    {
+      "word": "to",
+      "start": 14.934999,
+      "end": 15.095,
+      "confidence": 1.0,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "the",
+      "start": 15.095,
+      "end": 15.175,
+      "confidence": 0.99902344,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "unesco",
+      "start": 15.175,
+      "end": 15.735,
+      "confidence": 0.9946289,
+      "punctuated_word": "UNESCO"
+    },
+    {
+      "word": "and",
+      "start": 15.735,
+      "end": 16.055,
+      "confidence": 0.97509766,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "india",
+      "start": 16.055,
+      "end": 16.375,
+      "confidence": 1.0,
+      "punctuated_word": "India"
+    },
+    {
+      "word": "facing",
+      "start": 16.375,
+      "end": 16.775,
+      "confidence": 0.99902344,
+      "punctuated_word": "facing"
+    },
+    {
+      "word": "its",
+      "start": 16.775,
+      "end": 17.015,
+      "confidence": 0.99902344,
+      "punctuated_word": "its"
+    },
+    {
+      "word": "biggest",
+      "start": 17.015,
+      "end": 17.335,
+      "confidence": 1.0,
+      "punctuated_word": "biggest"
+    },
+    {
+      "word": "rival",
+      "start": 17.335,
+      "end": 17.974998,
+      "confidence": 0.99853516,
+      "punctuated_word": "rival."
+    },
+    {
+      "word": "this",
+      "start": 18.535,
+      "end": 18.775,
+      "confidence": 1.0,
+      "punctuated_word": "This"
+    },
+    {
+      "word": "is",
+      "start": 18.775,
+      "end": 19.015,
+      "confidence": 0.99902344,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "sarnath",
+      "start": 19.015,
+      "end": 19.814999,
+      "confidence": 0.8857422,
+      "punctuated_word": "Sarnath,"
+    },
+    {
+      "word": "just",
+      "start": 19.814999,
+      "end": 20.055,
+      "confidence": 1.0,
+      "punctuated_word": "just"
+    },
+    {
+      "word": "outside",
+      "start": 20.055,
+      "end": 20.455,
+      "confidence": 1.0,
+      "punctuated_word": "outside"
+    },
+    {
+      "word": "varanasi",
+      "start": 20.455,
+      "end": 21.494999,
+      "confidence": 0.989624,
+      "punctuated_word": "Varanasi,"
+    },
+    {
+      "word": "one",
+      "start": 21.654999,
+      "end": 21.814999,
+      "confidence": 1.0,
+      "punctuated_word": "one"
+    },
+    {
+      "word": "of",
+      "start": 21.814999,
+      "end": 21.975,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "the",
+      "start": 21.975,
+      "end": 22.055,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "most",
+      "start": 22.055,
+      "end": 22.295,
+      "confidence": 1.0,
+      "punctuated_word": "most"
+    },
+    {
+      "word": "sacred",
+      "start": 22.295,
+      "end": 22.615,
+      "confidence": 1.0,
+      "punctuated_word": "sacred"
+    },
+    {
+      "word": "places",
+      "start": 22.615,
+      "end": 23.015,
+      "confidence": 1.0,
+      "punctuated_word": "places"
+    },
+    {
+      "word": "in",
+      "start": 23.015,
+      "end": 23.255001,
+      "confidence": 1.0,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "india",
+      "start": 23.255001,
+      "end": 23.895,
+      "confidence": 0.9980469,
+      "punctuated_word": "India."
+    },
+    {
+      "word": "around",
+      "start": 24.375,
+      "end": 24.615,
+      "confidence": 1.0,
+      "punctuated_word": "Around"
+    },
+    {
+      "word": "the",
+      "start": 24.615,
+      "end": 24.775,
+      "confidence": 0.99902344,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "sixth",
+      "start": 24.775,
+      "end": 25.015,
+      "confidence": 0.9980469,
+      "punctuated_word": "sixth"
+    },
+    {
+      "word": "century",
+      "start": 25.015,
+      "end": 25.335,
+      "confidence": 0.99902344,
+      "punctuated_word": "century"
+    },
+    {
+      "word": "bce",
+      "start": 25.335,
+      "end": 26.215,
+      "confidence": 0.97965497,
+      "punctuated_word": "BCE,"
+    },
+    {
+      "word": "having",
+      "start": 26.215,
+      "end": 26.535,
+      "confidence": 1.0,
+      "punctuated_word": "having"
+    },
+    {
+      "word": "just",
+      "start": 26.535,
+      "end": 26.775,
+      "confidence": 1.0,
+      "punctuated_word": "just"
+    },
+    {
+      "word": "reached",
+      "start": 26.775,
+      "end": 27.095,
+      "confidence": 0.9980469,
+      "punctuated_word": "reached"
+    },
+    {
+      "word": "enlightenment",
+      "start": 27.095,
+      "end": 27.974998,
+      "confidence": 0.9995117,
+      "punctuated_word": "enlightenment,"
+    },
+    {
+      "word": "the",
+      "start": 27.974998,
+      "end": 28.215,
+      "confidence": 0.9980469,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "buddha",
+      "start": 28.215,
+      "end": 28.535,
+      "confidence": 0.99560547,
+      "punctuated_word": "Buddha"
+    },
+    {
+      "word": "taught",
+      "start": 28.535,
+      "end": 28.855,
+      "confidence": 1.0,
+      "punctuated_word": "taught"
+    },
+    {
+      "word": "his",
+      "start": 28.855,
+      "end": 29.015,
+      "confidence": 0.99902344,
+      "punctuated_word": "his"
+    },
+    {
+      "word": "first",
+      "start": 29.015,
+      "end": 29.255,
+      "confidence": 1.0,
+      "punctuated_word": "first"
+    },
+    {
+      "word": "sermon",
+      "start": 29.255,
+      "end": 29.654999,
+      "confidence": 1.0,
+      "punctuated_word": "sermon"
+    },
+    {
+      "word": "here",
+      "start": 29.654999,
+      "end": 29.895,
+      "confidence": 0.9758301,
+      "punctuated_word": "here,"
+    },
+    {
+      "word": "an",
+      "start": 30.43,
+      "end": 30.75,
+      "confidence": 1.0,
+      "punctuated_word": "an"
+    },
+    {
+      "word": "event",
+      "start": 30.75,
+      "end": 30.99,
+      "confidence": 1.0,
+      "punctuated_word": "event"
+    },
+    {
+      "word": "called",
+      "start": 30.99,
+      "end": 31.390001,
+      "confidence": 1.0,
+      "punctuated_word": "called"
+    },
+    {
+      "word": "the",
+      "start": 31.390001,
+      "end": 31.710001,
+      "confidence": 0.96972656,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "first",
+      "start": 31.710001,
+      "end": 31.95,
+      "confidence": 0.96435547,
+      "punctuated_word": "first"
+    },
+    {
+      "word": "turning",
+      "start": 31.95,
+      "end": 32.35,
+      "confidence": 0.99902344,
+      "punctuated_word": "turning"
+    },
+    {
+      "word": "of",
+      "start": 32.35,
+      "end": 32.510002,
+      "confidence": 0.99902344,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "the",
+      "start": 32.510002,
+      "end": 32.670002,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "wheel",
+      "start": 32.670002,
+      "end": 32.91,
+      "confidence": 0.9951172,
+      "punctuated_word": "wheel"
+    },
+    {
+      "word": "of",
+      "start": 32.91,
+      "end": 32.99,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "dharma",
+      "start": 32.99,
+      "end": 33.79,
+      "confidence": 0.9766846,
+      "punctuated_word": "dharma."
+    },
+    {
+      "word": "centuries",
+      "start": 34.03,
+      "end": 34.510002,
+      "confidence": 0.9995117,
+      "punctuated_word": "Centuries"
+    },
+    {
+      "word": "later",
+      "start": 34.510002,
+      "end": 35.15,
+      "confidence": 0.99194336,
+      "punctuated_word": "later,"
+    },
+    {
+      "word": "after",
+      "start": 35.23,
+      "end": 35.47,
+      "confidence": 1.0,
+      "punctuated_word": "after"
+    },
+    {
+      "word": "a",
+      "start": 35.47,
+      "end": 35.63,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "brutal",
+      "start": 35.63,
+      "end": 36.03,
+      "confidence": 1.0,
+      "punctuated_word": "brutal"
+    },
+    {
+      "word": "conflict",
+      "start": 36.03,
+      "end": 36.43,
+      "confidence": 0.9951172,
+      "punctuated_word": "conflict"
+    },
+    {
+      "word": "in",
+      "start": 36.43,
+      "end": 36.67,
+      "confidence": 0.9980469,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "kalinga",
+      "start": 36.67,
+      "end": 37.23,
+      "confidence": 0.991862,
+      "punctuated_word": "Kalinga"
+    },
+    {
+      "word": "left",
+      "start": 37.23,
+      "end": 37.63,
+      "confidence": 0.9667969,
+      "punctuated_word": "left"
+    },
+    {
+      "word": "him",
+      "start": 37.63,
+      "end": 37.79,
+      "confidence": 1.0,
+      "punctuated_word": "him"
+    },
+    {
+      "word": "in",
+      "start": 37.79,
+      "end": 37.95,
+      "confidence": 0.9941406,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "need",
+      "start": 37.95,
+      "end": 38.11,
+      "confidence": 1.0,
+      "punctuated_word": "need"
+    },
+    {
+      "word": "of",
+      "start": 38.11,
+      "end": 38.19,
+      "confidence": 0.99902344,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "spiritual",
+      "start": 38.19,
+      "end": 38.67,
+      "confidence": 1.0,
+      "punctuated_word": "spiritual"
+    },
+    {
+      "word": "guidance",
+      "start": 38.67,
+      "end": 39.31,
+      "confidence": 0.9975586,
+      "punctuated_word": "guidance,"
+    },
+    {
+      "word": "emperor",
+      "start": 39.39,
+      "end": 39.79,
+      "confidence": 0.9173177,
+      "punctuated_word": "emperor"
+    },
+    {
+      "word": "ashoka",
+      "start": 39.79,
+      "end": 40.35,
+      "confidence": 0.99576825,
+      "punctuated_word": "Ashoka"
+    },
+    {
+      "word": "led",
+      "start": 40.35,
+      "end": 40.59,
+      "confidence": 0.99609375,
+      "punctuated_word": "led"
+    },
+    {
+      "word": "a",
+      "start": 40.59,
+      "end": 40.75,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "buddhist",
+      "start": 40.75,
+      "end": 41.15,
+      "confidence": 0.99902344,
+      "punctuated_word": "Buddhist"
+    },
+    {
+      "word": "revival",
+      "start": 41.15,
+      "end": 41.71,
+      "confidence": 0.9995117,
+      "punctuated_word": "revival"
+    },
+    {
+      "word": "and",
+      "start": 41.71,
+      "end": 42.03,
+      "confidence": 0.9921875,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "built",
+      "start": 42.03,
+      "end": 42.27,
+      "confidence": 0.99902344,
+      "punctuated_word": "built"
+    },
+    {
+      "word": "a",
+      "start": 42.27,
+      "end": 42.43,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "space",
+      "start": 42.43,
+      "end": 42.75,
+      "confidence": 0.9921875,
+      "punctuated_word": "space"
+    },
+    {
+      "word": "for",
+      "start": 42.75,
+      "end": 42.91,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "worship",
+      "start": 42.91,
+      "end": 43.23,
+      "confidence": 1.0,
+      "punctuated_word": "worship"
+    },
+    {
+      "word": "in",
+      "start": 43.23,
+      "end": 43.47,
+      "confidence": 0.98828125,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "sana",
+      "start": 43.47,
+      "end": 43.79,
+      "confidence": 0.77815753,
+      "punctuated_word": "Sana."
+    },
+    {
+      "word": "this",
+      "start": 44.475,
+      "end": 44.795,
+      "confidence": 0.9980469,
+      "punctuated_word": "This"
+    },
+    {
+      "word": "site",
+      "start": 44.795,
+      "end": 45.114998,
+      "confidence": 0.99902344,
+      "punctuated_word": "site"
+    },
+    {
+      "word": "was",
+      "start": 45.114998,
+      "end": 45.355,
+      "confidence": 1.0,
+      "punctuated_word": "was"
+    },
+    {
+      "word": "lost",
+      "start": 45.355,
+      "end": 45.594997,
+      "confidence": 1.0,
+      "punctuated_word": "lost"
+    },
+    {
+      "word": "for",
+      "start": 45.594997,
+      "end": 45.754997,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "roughly",
+      "start": 45.754997,
+      "end": 46.074997,
+      "confidence": 1.0,
+      "punctuated_word": "roughly"
+    },
+    {
+      "word": "six",
+      "start": 46.074997,
+      "end": 46.395,
+      "confidence": 1.0,
+      "punctuated_word": "six"
+    },
+    {
+      "word": "hundred",
+      "start": 46.395,
+      "end": 46.715,
+      "confidence": 1.0,
+      "punctuated_word": "hundred"
+    },
+    {
+      "word": "years",
+      "start": 46.715,
+      "end": 47.274998,
+      "confidence": 0.92626953,
+      "punctuated_word": "years,"
+    },
+    {
+      "word": "buried",
+      "start": 47.515,
+      "end": 48.074997,
+      "confidence": 0.99902344,
+      "punctuated_word": "buried"
+    },
+    {
+      "word": "until",
+      "start": 48.074997,
+      "end": 48.475,
+      "confidence": 0.5678711,
+      "punctuated_word": "until"
+    },
+    {
+      "word": "workers",
+      "start": 48.475,
+      "end": 48.954998,
+      "confidence": 0.99902344,
+      "punctuated_word": "workers"
+    },
+    {
+      "word": "quarrying",
+      "start": 48.954998,
+      "end": 49.434998,
+      "confidence": 0.9788411,
+      "punctuated_word": "quarrying"
+    },
+    {
+      "word": "for",
+      "start": 49.434998,
+      "end": 49.594997,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "bricks",
+      "start": 49.594997,
+      "end": 49.915,
+      "confidence": 1.0,
+      "punctuated_word": "bricks"
+    },
+    {
+      "word": "stumbled",
+      "start": 49.915,
+      "end": 50.394997,
+      "confidence": 0.9995117,
+      "punctuated_word": "stumbled"
+    },
+    {
+      "word": "onto",
+      "start": 50.394997,
+      "end": 50.635,
+      "confidence": 0.9902344,
+      "punctuated_word": "onto"
+    },
+    {
+      "word": "it",
+      "start": 50.635,
+      "end": 51.114998,
+      "confidence": 0.9995117,
+      "punctuated_word": "it."
+    },
+    {
+      "word": "a",
+      "start": 51.355,
+      "end": 51.594997,
+      "confidence": 0.99902344,
+      "punctuated_word": "A"
+    },
+    {
+      "word": "british",
+      "start": 51.594997,
+      "end": 51.914997,
+      "confidence": 1.0,
+      "punctuated_word": "British"
+    },
+    {
+      "word": "army",
+      "start": 51.914997,
+      "end": 52.235,
+      "confidence": 0.6586914,
+      "punctuated_word": "army"
+    },
+    {
+      "word": "engineer",
+      "start": 52.235,
+      "end": 52.954998,
+      "confidence": 1.0,
+      "punctuated_word": "engineer"
+    },
+    {
+      "word": "did",
+      "start": 52.954998,
+      "end": 53.274998,
+      "confidence": 1.0,
+      "punctuated_word": "did"
+    },
+    {
+      "word": "the",
+      "start": 53.274998,
+      "end": 53.355,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "formal",
+      "start": 53.355,
+      "end": 53.675,
+      "confidence": 1.0,
+      "punctuated_word": "formal"
+    },
+    {
+      "word": "excavation",
+      "start": 53.675,
+      "end": 54.235,
+      "confidence": 1.0,
+      "punctuated_word": "excavation"
+    },
+    {
+      "word": "afterwards",
+      "start": 54.235,
+      "end": 55.034996,
+      "confidence": 0.99902344,
+      "punctuated_word": "afterwards"
+    },
+    {
+      "word": "and",
+      "start": 55.035,
+      "end": 55.274998,
+      "confidence": 0.96777344,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "got",
+      "start": 55.274998,
+      "end": 55.515,
+      "confidence": 1.0,
+      "punctuated_word": "got"
+    },
+    {
+      "word": "credit",
+      "start": 55.515,
+      "end": 55.915,
+      "confidence": 1.0,
+      "punctuated_word": "credit"
+    },
+    {
+      "word": "for",
+      "start": 55.915,
+      "end": 55.995,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "the",
+      "start": 55.995,
+      "end": 56.155,
+      "confidence": 0.99902344,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "discovery",
+      "start": 56.155,
+      "end": 56.635,
+      "confidence": 1.0,
+      "punctuated_word": "discovery"
+    },
+    {
+      "word": "for",
+      "start": 56.635,
+      "end": 56.795,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "well",
+      "start": 56.795,
+      "end": 57.035,
+      "confidence": 1.0,
+      "punctuated_word": "well"
+    },
+    {
+      "word": "over",
+      "start": 57.035,
+      "end": 57.355,
+      "confidence": 1.0,
+      "punctuated_word": "over"
+    },
+    {
+      "word": "a",
+      "start": 57.355,
+      "end": 57.515,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "century",
+      "start": 57.515,
+      "end": 57.754997,
+      "confidence": 1.0,
+      "punctuated_word": "century."
+    },
+    {
+      "word": "this",
+      "start": 58.37,
+      "end": 58.77,
+      "confidence": 1.0,
+      "punctuated_word": "This"
+    },
+    {
+      "word": "year",
+      "start": 58.77,
+      "end": 59.25,
+      "confidence": 0.9970703,
+      "punctuated_word": "year,"
+    },
+    {
+      "word": "india's",
+      "start": 59.25,
+      "end": 59.73,
+      "confidence": 1.0,
+      "punctuated_word": "India's"
+    },
+    {
+      "word": "archaeological",
+      "start": 59.73,
+      "end": 60.29,
+      "confidence": 0.961792,
+      "punctuated_word": "archaeological"
+    },
+    {
+      "word": "survey",
+      "start": 60.29,
+      "end": 61.01,
+      "confidence": 1.0,
+      "punctuated_word": "survey"
+    },
+    {
+      "word": "moved",
+      "start": 61.01,
+      "end": 61.329998,
+      "confidence": 0.99902344,
+      "punctuated_word": "moved"
+    },
+    {
+      "word": "to",
+      "start": 61.329998,
+      "end": 61.57,
+      "confidence": 1.0,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "reinstate",
+      "start": 61.57,
+      "end": 62.05,
+      "confidence": 1.0,
+      "punctuated_word": "reinstate"
+    },
+    {
+      "word": "that",
+      "start": 62.05,
+      "end": 62.29,
+      "confidence": 0.99902344,
+      "punctuated_word": "that"
+    },
+    {
+      "word": "credit",
+      "start": 62.29,
+      "end": 62.77,
+      "confidence": 1.0,
+      "punctuated_word": "credit"
+    },
+    {
+      "word": "back",
+      "start": 62.77,
+      "end": 63.09,
+      "confidence": 0.9970703,
+      "punctuated_word": "back"
+    },
+    {
+      "word": "towards",
+      "start": 63.09,
+      "end": 63.41,
+      "confidence": 0.9951172,
+      "punctuated_word": "towards"
+    },
+    {
+      "word": "the",
+      "start": 63.41,
+      "end": 63.649998,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "local",
+      "start": 63.649998,
+      "end": 63.97,
+      "confidence": 1.0,
+      "punctuated_word": "local"
+    },
+    {
+      "word": "official",
+      "start": 63.97,
+      "end": 64.369995,
+      "confidence": 0.9921875,
+      "punctuated_word": "official"
+    },
+    {
+      "word": "whose",
+      "start": 64.369995,
+      "end": 64.69,
+      "confidence": 0.9863281,
+      "punctuated_word": "whose"
+    },
+    {
+      "word": "workers",
+      "start": 64.69,
+      "end": 65.25,
+      "confidence": 0.9980469,
+      "punctuated_word": "workers"
+    },
+    {
+      "word": "actually",
+      "start": 65.25,
+      "end": 65.729996,
+      "confidence": 0.9970703,
+      "punctuated_word": "actually"
+    },
+    {
+      "word": "found",
+      "start": 65.729996,
+      "end": 65.97,
+      "confidence": 0.9980469,
+      "punctuated_word": "found"
+    },
+    {
+      "word": "it",
+      "start": 65.97,
+      "end": 66.13,
+      "confidence": 0.99902344,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "first",
+      "start": 66.13,
+      "end": 66.61,
+      "confidence": 1.0,
+      "punctuated_word": "first."
+    },
+    {
+      "word": "this",
+      "start": 67.01,
+      "end": 67.33,
+      "confidence": 1.0,
+      "punctuated_word": "This"
+    },
+    {
+      "word": "plays",
+      "start": 67.33,
+      "end": 67.65,
+      "confidence": 0.99902344,
+      "punctuated_word": "plays"
+    },
+    {
+      "word": "into",
+      "start": 67.65,
+      "end": 67.97,
+      "confidence": 0.9980469,
+      "punctuated_word": "into"
+    },
+    {
+      "word": "who",
+      "start": 67.97,
+      "end": 68.29,
+      "confidence": 0.99902344,
+      "punctuated_word": "who"
+    },
+    {
+      "word": "gets",
+      "start": 68.29,
+      "end": 68.53,
+      "confidence": 0.99902344,
+      "punctuated_word": "gets"
+    },
+    {
+      "word": "credit",
+      "start": 68.53,
+      "end": 68.85,
+      "confidence": 0.99902344,
+      "punctuated_word": "credit"
+    },
+    {
+      "word": "for",
+      "start": 68.85,
+      "end": 69.01,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "buddhism's",
+      "start": 69.01,
+      "end": 69.57,
+      "confidence": 0.99902344,
+      "punctuated_word": "Buddhism's"
+    },
+    {
+      "word": "legacy",
+      "start": 69.57,
+      "end": 69.89,
+      "confidence": 0.744751,
+      "punctuated_word": "legacy."
+    },
+    {
+      "word": "and",
+      "start": 70.305,
+      "end": 70.545006,
+      "confidence": 1.0,
+      "punctuated_word": "And"
+    },
+    {
+      "word": "as",
+      "start": 70.545006,
+      "end": 70.785,
+      "confidence": 0.9614258,
+      "punctuated_word": "as"
+    },
+    {
+      "word": "it",
+      "start": 70.785,
+      "end": 70.865005,
+      "confidence": 1.0,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "turns",
+      "start": 70.865005,
+      "end": 71.105,
+      "confidence": 1.0,
+      "punctuated_word": "turns"
+    },
+    {
+      "word": "out",
+      "start": 71.105,
+      "end": 71.345,
+      "confidence": 0.99853516,
+      "punctuated_word": "out,"
+    },
+    {
+      "word": "it's",
+      "start": 71.345,
+      "end": 71.505005,
+      "confidence": 0.9995117,
+      "punctuated_word": "it's"
+    },
+    {
+      "word": "a",
+      "start": 71.505005,
+      "end": 71.665,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "very",
+      "start": 71.665,
+      "end": 71.825005,
+      "confidence": 1.0,
+      "punctuated_word": "very"
+    },
+    {
+      "word": "old",
+      "start": 71.825005,
+      "end": 72.065,
+      "confidence": 1.0,
+      "punctuated_word": "old"
+    },
+    {
+      "word": "and",
+      "start": 72.065,
+      "end": 72.305,
+      "confidence": 0.99902344,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "politically",
+      "start": 72.305,
+      "end": 72.785,
+      "confidence": 0.99902344,
+      "punctuated_word": "politically"
+    },
+    {
+      "word": "consequential",
+      "start": 72.785,
+      "end": 73.505005,
+      "confidence": 1.0,
+      "punctuated_word": "consequential"
+    },
+    {
+      "word": "battlefield",
+      "start": 73.505005,
+      "end": 74.385,
+      "confidence": 0.99934894,
+      "punctuated_word": "battlefield."
+    },
+    {
+      "word": "this",
+      "start": 74.945,
+      "end": 75.265,
+      "confidence": 1.0,
+      "punctuated_word": "This"
+    },
+    {
+      "word": "isn't",
+      "start": 75.265,
+      "end": 75.505005,
+      "confidence": 1.0,
+      "punctuated_word": "isn't"
+    },
+    {
+      "word": "the",
+      "start": 75.505005,
+      "end": 75.665,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "first",
+      "start": 75.665,
+      "end": 75.825005,
+      "confidence": 1.0,
+      "punctuated_word": "first"
+    },
+    {
+      "word": "time",
+      "start": 75.825005,
+      "end": 75.985,
+      "confidence": 1.0,
+      "punctuated_word": "time"
+    },
+    {
+      "word": "this",
+      "start": 75.985,
+      "end": 76.305,
+      "confidence": 0.99609375,
+      "punctuated_word": "this"
+    },
+    {
+      "word": "sculpture",
+      "start": 76.305,
+      "end": 76.705,
+      "confidence": 0.99902344,
+      "punctuated_word": "sculpture"
+    },
+    {
+      "word": "was",
+      "start": 76.705,
+      "end": 76.865005,
+      "confidence": 1.0,
+      "punctuated_word": "was"
+    },
+    {
+      "word": "pulled",
+      "start": 76.865005,
+      "end": 77.105,
+      "confidence": 0.99902344,
+      "punctuated_word": "pulled"
+    },
+    {
+      "word": "into",
+      "start": 77.105,
+      "end": 77.425,
+      "confidence": 1.0,
+      "punctuated_word": "into"
+    },
+    {
+      "word": "national",
+      "start": 77.425,
+      "end": 77.825005,
+      "confidence": 0.9980469,
+      "punctuated_word": "national"
+    },
+    {
+      "word": "politics",
+      "start": 77.825005,
+      "end": 78.465004,
+      "confidence": 0.9946289,
+      "punctuated_word": "politics."
+    },
+    {
+      "word": "right",
+      "start": 78.865005,
+      "end": 79.185005,
+      "confidence": 1.0,
+      "punctuated_word": "Right"
+    },
+    {
+      "word": "after",
+      "start": 79.185005,
+      "end": 79.425,
+      "confidence": 1.0,
+      "punctuated_word": "after"
+    },
+    {
+      "word": "independence",
+      "start": 79.425,
+      "end": 79.985,
+      "confidence": 0.99121094,
+      "punctuated_word": "independence"
+    },
+    {
+      "word": "in",
+      "start": 79.985,
+      "end": 80.305,
+      "confidence": 0.9902344,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "1947",
+      "start": 80.305,
+      "end": 81.425,
+      "confidence": 0.9996745,
+      "punctuated_word": "1947,"
+    },
+    {
+      "word": "nehru",
+      "start": 81.665,
+      "end": 82.385,
+      "confidence": 0.9980469,
+      "punctuated_word": "Nehru"
+    },
+    {
+      "word": "needed",
+      "start": 82.545,
+      "end": 82.865005,
+      "confidence": 0.99902344,
+      "punctuated_word": "needed"
+    },
+    {
+      "word": "a",
+      "start": 82.865005,
+      "end": 83.105,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "symbol",
+      "start": 83.105,
+      "end": 83.585,
+      "confidence": 1.0,
+      "punctuated_word": "symbol"
+    },
+    {
+      "word": "no",
+      "start": 83.585,
+      "end": 83.985,
+      "confidence": 0.96972656,
+      "punctuated_word": "no"
+    },
+    {
+      "word": "religious",
+      "start": 83.985,
+      "end": 84.385,
+      "confidence": 1.0,
+      "punctuated_word": "religious"
+    },
+    {
+      "word": "community",
+      "start": 84.385,
+      "end": 84.785,
+      "confidence": 1.0,
+      "punctuated_word": "community"
+    },
+    {
+      "word": "could",
+      "start": 84.785,
+      "end": 85.025,
+      "confidence": 1.0,
+      "punctuated_word": "could"
+    },
+    {
+      "word": "object",
+      "start": 85.025,
+      "end": 85.345,
+      "confidence": 1.0,
+      "punctuated_word": "object"
+    },
+    {
+      "word": "to",
+      "start": 85.345,
+      "end": 85.585,
+      "confidence": 0.99853516,
+      "punctuated_word": "to."
+    },
+    {
+      "word": "buddhism",
+      "start": 86.05,
+      "end": 86.53,
+      "confidence": 1.0,
+      "punctuated_word": "Buddhism"
+    },
+    {
+      "word": "predated",
+      "start": 86.53,
+      "end": 87.09,
+      "confidence": 0.99853516,
+      "punctuated_word": "predated"
+    },
+    {
+      "word": "the",
+      "start": 87.09,
+      "end": 87.25,
+      "confidence": 0.9980469,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "divide",
+      "start": 87.25,
+      "end": 87.57,
+      "confidence": 1.0,
+      "punctuated_word": "divide"
+    },
+    {
+      "word": "between",
+      "start": 87.57,
+      "end": 87.89,
+      "confidence": 1.0,
+      "punctuated_word": "between"
+    },
+    {
+      "word": "hindus",
+      "start": 87.89,
+      "end": 88.45,
+      "confidence": 1.0,
+      "punctuated_word": "Hindus,"
+    },
+    {
+      "word": "muslims",
+      "start": 88.45,
+      "end": 89.01,
+      "confidence": 0.9899089,
+      "punctuated_word": "Muslims,"
+    },
+    {
+      "word": "and",
+      "start": 89.01,
+      "end": 89.09,
+      "confidence": 0.99902344,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "sikhs",
+      "start": 89.09,
+      "end": 89.409996,
+      "confidence": 0.9987793,
+      "punctuated_word": "Sikhs"
+    },
+    {
+      "word": "by",
+      "start": 89.409996,
+      "end": 89.65,
+      "confidence": 0.99902344,
+      "punctuated_word": "by"
+    },
+    {
+      "word": "centuries",
+      "start": 89.65,
+      "end": 90.37,
+      "confidence": 0.90625,
+      "punctuated_word": "centuries,"
+    },
+    {
+      "word": "so",
+      "start": 90.53,
+      "end": 90.69,
+      "confidence": 1.0,
+      "punctuated_word": "so"
+    },
+    {
+      "word": "it",
+      "start": 90.69,
+      "end": 90.85,
+      "confidence": 1.0,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "didn't",
+      "start": 90.85,
+      "end": 91.01,
+      "confidence": 1.0,
+      "punctuated_word": "didn't"
+    },
+    {
+      "word": "belong",
+      "start": 91.01,
+      "end": 91.33,
+      "confidence": 1.0,
+      "punctuated_word": "belong"
+    },
+    {
+      "word": "to",
+      "start": 91.33,
+      "end": 91.49,
+      "confidence": 0.99902344,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "any",
+      "start": 91.49,
+      "end": 91.65,
+      "confidence": 0.9873047,
+      "punctuated_word": "any"
+    },
+    {
+      "word": "one",
+      "start": 91.65,
+      "end": 91.81,
+      "confidence": 0.99902344,
+      "punctuated_word": "one"
+    },
+    {
+      "word": "side",
+      "start": 91.81,
+      "end": 91.97,
+      "confidence": 1.0,
+      "punctuated_word": "side"
+    },
+    {
+      "word": "of",
+      "start": 91.97,
+      "end": 92.13,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "it",
+      "start": 92.13,
+      "end": 92.61,
+      "confidence": 0.9995117,
+      "punctuated_word": "it."
+    },
+    {
+      "word": "even",
+      "start": 92.61,
+      "end": 92.93,
+      "confidence": 1.0,
+      "punctuated_word": "Even"
+    },
+    {
+      "word": "hindus",
+      "start": 92.93,
+      "end": 93.49,
+      "confidence": 0.9996745,
+      "punctuated_word": "Hindus,"
+    },
+    {
+      "word": "the",
+      "start": 93.49,
+      "end": 93.65,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "country's",
+      "start": 93.65,
+      "end": 94.05,
+      "confidence": 0.99902344,
+      "punctuated_word": "country's"
+    },
+    {
+      "word": "largest",
+      "start": 94.05,
+      "end": 94.45,
+      "confidence": 1.0,
+      "punctuated_word": "largest"
+    },
+    {
+      "word": "community",
+      "start": 94.45,
+      "end": 95.09,
+      "confidence": 0.9604492,
+      "punctuated_word": "community,"
+    },
+    {
+      "word": "already",
+      "start": 95.17,
+      "end": 95.49,
+      "confidence": 1.0,
+      "punctuated_word": "already"
+    },
+    {
+      "word": "counted",
+      "start": 95.49,
+      "end": 95.89,
+      "confidence": 0.99609375,
+      "punctuated_word": "counted"
+    },
+    {
+      "word": "the",
+      "start": 95.89,
+      "end": 96.05,
+      "confidence": 0.99902344,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "buddha",
+      "start": 96.05,
+      "end": 96.369995,
+      "confidence": 0.99658203,
+      "punctuated_word": "Buddha"
+    },
+    {
+      "word": "as",
+      "start": 96.369995,
+      "end": 96.53,
+      "confidence": 0.99902344,
+      "punctuated_word": "as"
+    },
+    {
+      "word": "one",
+      "start": 96.53,
+      "end": 96.69,
+      "confidence": 1.0,
+      "punctuated_word": "one"
+    },
+    {
+      "word": "of",
+      "start": 96.69,
+      "end": 96.77,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "their",
+      "start": 96.77,
+      "end": 96.93,
+      "confidence": 1.0,
+      "punctuated_word": "their"
+    },
+    {
+      "word": "own",
+      "start": 96.93,
+      "end": 97.49,
+      "confidence": 0.8293457,
+      "punctuated_word": "own,"
+    },
+    {
+      "word": "as",
+      "start": 97.49,
+      "end": 97.57,
+      "confidence": 1.0,
+      "punctuated_word": "as"
+    },
+    {
+      "word": "an",
+      "start": 97.57,
+      "end": 97.729996,
+      "confidence": 1.0,
+      "punctuated_word": "an"
+    },
+    {
+      "word": "avatar",
+      "start": 97.729996,
+      "end": 98.13,
+      "confidence": 0.9975586,
+      "punctuated_word": "avatar"
+    },
+    {
+      "word": "of",
+      "start": 98.13,
+      "end": 98.29,
+      "confidence": 0.99902344,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "vishnu",
+      "start": 98.29,
+      "end": 98.77,
+      "confidence": 0.99328613,
+      "punctuated_word": "Vishnu."
+    },
+    {
+      "word": "that's",
+      "start": 99.375,
+      "end": 99.774994,
+      "confidence": 1.0,
+      "punctuated_word": "That's"
+    },
+    {
+      "word": "why",
+      "start": 99.774994,
+      "end": 99.935,
+      "confidence": 1.0,
+      "punctuated_word": "why"
+    },
+    {
+      "word": "the",
+      "start": 99.935,
+      "end": 100.09499,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "lion",
+      "start": 100.09499,
+      "end": 100.41499,
+      "confidence": 0.99609375,
+      "punctuated_word": "lion"
+    },
+    {
+      "word": "became",
+      "start": 100.41499,
+      "end": 100.73499,
+      "confidence": 1.0,
+      "punctuated_word": "became"
+    },
+    {
+      "word": "india's",
+      "start": 100.73499,
+      "end": 101.295,
+      "confidence": 1.0,
+      "punctuated_word": "India's"
+    },
+    {
+      "word": "national",
+      "start": 101.295,
+      "end": 101.615,
+      "confidence": 0.9970703,
+      "punctuated_word": "national"
+    },
+    {
+      "word": "emblem",
+      "start": 101.615,
+      "end": 102.255,
+      "confidence": 0.99934894,
+      "punctuated_word": "emblem."
+    },
+    {
+      "word": "it",
+      "start": 102.575,
+      "end": 102.814995,
+      "confidence": 1.0,
+      "punctuated_word": "It"
+    },
+    {
+      "word": "could",
+      "start": 102.814995,
+      "end": 102.975,
+      "confidence": 1.0,
+      "punctuated_word": "could"
+    },
+    {
+      "word": "sit",
+      "start": 102.975,
+      "end": 103.134995,
+      "confidence": 0.9980469,
+      "punctuated_word": "sit"
+    },
+    {
+      "word": "above",
+      "start": 103.134995,
+      "end": 103.454994,
+      "confidence": 1.0,
+      "punctuated_word": "above"
+    },
+    {
+      "word": "the",
+      "start": 103.454994,
+      "end": 103.615,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "religious",
+      "start": 103.615,
+      "end": 104.015,
+      "confidence": 1.0,
+      "punctuated_word": "religious"
+    },
+    {
+      "word": "politics",
+      "start": 104.015,
+      "end": 104.41499,
+      "confidence": 1.0,
+      "punctuated_word": "politics"
+    },
+    {
+      "word": "of",
+      "start": 104.41499,
+      "end": 104.655,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "the",
+      "start": 104.655,
+      "end": 104.814995,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "moment",
+      "start": 104.814995,
+      "end": 105.05499,
+      "confidence": 0.9716797,
+      "punctuated_word": "moment"
+    },
+    {
+      "word": "as",
+      "start": 105.05499,
+      "end": 105.375,
+      "confidence": 0.99609375,
+      "punctuated_word": "as"
+    },
+    {
+      "word": "a",
+      "start": 105.375,
+      "end": 105.534996,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "unifying",
+      "start": 105.534996,
+      "end": 105.935,
+      "confidence": 1.0,
+      "punctuated_word": "unifying"
+    },
+    {
+      "word": "symbol",
+      "start": 105.935,
+      "end": 106.255,
+      "confidence": 1.0,
+      "punctuated_word": "symbol"
+    },
+    {
+      "word": "for",
+      "start": 106.255,
+      "end": 106.494995,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "a",
+      "start": 106.494995,
+      "end": 106.575,
+      "confidence": 0.99902344,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "young",
+      "start": 106.575,
+      "end": 106.814995,
+      "confidence": 1.0,
+      "punctuated_word": "young"
+    },
+    {
+      "word": "nation",
+      "start": 106.814995,
+      "end": 107.295,
+      "confidence": 1.0,
+      "punctuated_word": "nation"
+    },
+    {
+      "word": "dealing",
+      "start": 107.295,
+      "end": 107.695,
+      "confidence": 0.96240234,
+      "punctuated_word": "dealing"
+    },
+    {
+      "word": "with",
+      "start": 107.695,
+      "end": 107.854996,
+      "confidence": 1.0,
+      "punctuated_word": "with"
+    },
+    {
+      "word": "the",
+      "start": 107.854996,
+      "end": 108.015,
+      "confidence": 0.99609375,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "catastrophic",
+      "start": 108.015,
+      "end": 108.575,
+      "confidence": 1.0,
+      "punctuated_word": "catastrophic"
+    },
+    {
+      "word": "aftermath",
+      "start": 108.575,
+      "end": 109.215,
+      "confidence": 0.9980469,
+      "punctuated_word": "aftermath"
+    },
+    {
+      "word": "of",
+      "start": 109.215,
+      "end": 109.454994,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "the",
+      "start": 109.454994,
+      "end": 109.615,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "british",
+      "start": 109.615,
+      "end": 109.935,
+      "confidence": 1.0,
+      "punctuated_word": "British"
+    },
+    {
+      "word": "empire",
+      "start": 109.935,
+      "end": 110.655,
+      "confidence": 0.8129883,
+      "punctuated_word": "Empire."
+    },
+    {
+      "word": "this",
+      "start": 110.975,
+      "end": 111.215,
+      "confidence": 1.0,
+      "punctuated_word": "This"
+    },
+    {
+      "word": "july",
+      "start": 111.215,
+      "end": 111.615,
+      "confidence": 0.99902344,
+      "punctuated_word": "July,"
+    },
+    {
+      "word": "the",
+      "start": 112.01,
+      "end": 112.25,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "same",
+      "start": 112.25,
+      "end": 112.49,
+      "confidence": 1.0,
+      "punctuated_word": "same"
+    },
+    {
+      "word": "method",
+      "start": 112.49,
+      "end": 112.81,
+      "confidence": 1.0,
+      "punctuated_word": "method"
+    },
+    {
+      "word": "is",
+      "start": 112.81,
+      "end": 112.97,
+      "confidence": 1.0,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "being",
+      "start": 112.97,
+      "end": 113.21,
+      "confidence": 1.0,
+      "punctuated_word": "being"
+    },
+    {
+      "word": "reused",
+      "start": 113.21,
+      "end": 113.93,
+      "confidence": 0.8466797,
+      "punctuated_word": "reused,"
+    },
+    {
+      "word": "but",
+      "start": 113.93,
+      "end": 114.01,
+      "confidence": 0.99902344,
+      "punctuated_word": "but"
+    },
+    {
+      "word": "on",
+      "start": 114.01,
+      "end": 114.17,
+      "confidence": 1.0,
+      "punctuated_word": "on"
+    },
+    {
+      "word": "the",
+      "start": 114.17,
+      "end": 114.33,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "international",
+      "start": 114.33,
+      "end": 114.89,
+      "confidence": 0.9980469,
+      "punctuated_word": "international"
+    },
+    {
+      "word": "stage",
+      "start": 114.89,
+      "end": 115.45,
+      "confidence": 0.99658203,
+      "punctuated_word": "stage."
+    },
+    {
+      "word": "unesco's",
+      "start": 115.77,
+      "end": 116.49,
+      "confidence": 0.9975586,
+      "punctuated_word": "UNESCO's"
+    },
+    {
+      "word": "listing",
+      "start": 116.49,
+      "end": 116.81,
+      "confidence": 0.99902344,
+      "punctuated_word": "listing"
+    },
+    {
+      "word": "isn't",
+      "start": 116.81,
+      "end": 117.13,
+      "confidence": 1.0,
+      "punctuated_word": "isn't"
+    },
+    {
+      "word": "based",
+      "start": 117.13,
+      "end": 117.37,
+      "confidence": 1.0,
+      "punctuated_word": "based"
+    },
+    {
+      "word": "on",
+      "start": 117.37,
+      "end": 117.53,
+      "confidence": 1.0,
+      "punctuated_word": "on"
+    },
+    {
+      "word": "national",
+      "start": 117.53,
+      "end": 117.93,
+      "confidence": 0.99902344,
+      "punctuated_word": "national"
+    },
+    {
+      "word": "importance",
+      "start": 117.93,
+      "end": 118.65,
+      "confidence": 0.9812012,
+      "punctuated_word": "importance."
+    },
+    {
+      "word": "its",
+      "start": 118.73,
+      "end": 118.97,
+      "confidence": 0.98828125,
+      "punctuated_word": "Its"
+    },
+    {
+      "word": "legal",
+      "start": 118.97,
+      "end": 119.29,
+      "confidence": 1.0,
+      "punctuated_word": "legal"
+    },
+    {
+      "word": "standard",
+      "start": 119.29,
+      "end": 119.69,
+      "confidence": 1.0,
+      "punctuated_word": "standard"
+    },
+    {
+      "word": "is",
+      "start": 119.69,
+      "end": 119.93,
+      "confidence": 1.0,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "based",
+      "start": 119.93,
+      "end": 120.17,
+      "confidence": 1.0,
+      "punctuated_word": "based"
+    },
+    {
+      "word": "on",
+      "start": 120.17,
+      "end": 120.33,
+      "confidence": 1.0,
+      "punctuated_word": "on"
+    },
+    {
+      "word": "outstanding",
+      "start": 120.33,
+      "end": 121.13,
+      "confidence": 0.9980469,
+      "punctuated_word": "outstanding"
+    },
+    {
+      "word": "universal",
+      "start": 121.13,
+      "end": 121.770004,
+      "confidence": 0.94628906,
+      "punctuated_word": "universal"
+    },
+    {
+      "word": "value",
+      "start": 121.770004,
+      "end": 122.409996,
+      "confidence": 0.85498047,
+      "punctuated_word": "value,"
+    },
+    {
+      "word": "meaning",
+      "start": 122.57,
+      "end": 122.89,
+      "confidence": 1.0,
+      "punctuated_word": "meaning"
+    },
+    {
+      "word": "significance",
+      "start": 122.89,
+      "end": 123.61,
+      "confidence": 0.95703125,
+      "punctuated_word": "significance"
+    },
+    {
+      "word": "so",
+      "start": 123.61,
+      "end": 123.93,
+      "confidence": 0.9863281,
+      "punctuated_word": "so"
+    },
+    {
+      "word": "exceptional",
+      "start": 123.93,
+      "end": 124.729996,
+      "confidence": 0.91015625,
+      "punctuated_word": "exceptional,"
+    },
+    {
+      "word": "it",
+      "start": 124.729996,
+      "end": 124.97,
+      "confidence": 0.99902344,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "transcends",
+      "start": 124.97,
+      "end": 125.37,
+      "confidence": 0.9970703,
+      "punctuated_word": "transcends"
+    },
+    {
+      "word": "national",
+      "start": 125.37,
+      "end": 125.770004,
+      "confidence": 0.9980469,
+      "punctuated_word": "national"
+    },
+    {
+      "word": "boundaries",
+      "start": 125.770004,
+      "end": 126.25,
+      "confidence": 1.0,
+      "punctuated_word": "boundaries"
+    },
+    {
+      "word": "entirely",
+      "start": 126.25,
+      "end": 126.65,
+      "confidence": 0.9885254,
+      "punctuated_word": "entirely."
+    },
+    {
+      "word": "the",
+      "start": 127.185,
+      "end": 127.424995,
+      "confidence": 1.0,
+      "punctuated_word": "The"
+    },
+    {
+      "word": "nineteen",
+      "start": 127.424995,
+      "end": 127.744995,
+      "confidence": 0.99902344,
+      "punctuated_word": "nineteen"
+    },
+    {
+      "word": "forty",
+      "start": 127.744995,
+      "end": 128.065,
+      "confidence": 1.0,
+      "punctuated_word": "forty"
+    },
+    {
+      "word": "seven",
+      "start": 128.065,
+      "end": 128.305,
+      "confidence": 1.0,
+      "punctuated_word": "seven"
+    },
+    {
+      "word": "symbol",
+      "start": 128.305,
+      "end": 128.705,
+      "confidence": 1.0,
+      "punctuated_word": "symbol"
+    },
+    {
+      "word": "was",
+      "start": 128.705,
+      "end": 128.94499,
+      "confidence": 1.0,
+      "punctuated_word": "was"
+    },
+    {
+      "word": "built",
+      "start": 128.94499,
+      "end": 129.185,
+      "confidence": 1.0,
+      "punctuated_word": "built"
+    },
+    {
+      "word": "to",
+      "start": 129.185,
+      "end": 129.345,
+      "confidence": 1.0,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "rise",
+      "start": 129.345,
+      "end": 129.665,
+      "confidence": 1.0,
+      "punctuated_word": "rise"
+    },
+    {
+      "word": "above",
+      "start": 129.665,
+      "end": 129.905,
+      "confidence": 1.0,
+      "punctuated_word": "above"
+    },
+    {
+      "word": "india's",
+      "start": 129.905,
+      "end": 130.385,
+      "confidence": 1.0,
+      "punctuated_word": "India's"
+    },
+    {
+      "word": "internal",
+      "start": 130.385,
+      "end": 130.785,
+      "confidence": 1.0,
+      "punctuated_word": "internal"
+    },
+    {
+      "word": "politics",
+      "start": 130.785,
+      "end": 131.425,
+      "confidence": 0.74658203,
+      "punctuated_word": "politics."
+    },
+    {
+      "word": "and",
+      "start": 131.425,
+      "end": 131.745,
+      "confidence": 0.99902344,
+      "punctuated_word": "And"
+    },
+    {
+      "word": "in",
+      "start": 131.745,
+      "end": 131.905,
+      "confidence": 0.99316406,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "2026",
+      "start": 131.905,
+      "end": 132.785,
+      "confidence": 0.99934894,
+      "punctuated_word": "2026,"
+    },
+    {
+      "word": "it",
+      "start": 132.785,
+      "end": 132.94499,
+      "confidence": 1.0,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "rises",
+      "start": 132.94499,
+      "end": 133.345,
+      "confidence": 1.0,
+      "punctuated_word": "rises"
+    },
+    {
+      "word": "above",
+      "start": 133.345,
+      "end": 133.58499,
+      "confidence": 1.0,
+      "punctuated_word": "above"
+    },
+    {
+      "word": "the",
+      "start": 133.58499,
+      "end": 133.745,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "idea",
+      "start": 133.745,
+      "end": 134.065,
+      "confidence": 1.0,
+      "punctuated_word": "idea"
+    },
+    {
+      "word": "of",
+      "start": 134.065,
+      "end": 134.22499,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "national",
+      "start": 134.22499,
+      "end": 134.625,
+      "confidence": 0.99902344,
+      "punctuated_word": "national"
+    },
+    {
+      "word": "ownership",
+      "start": 134.625,
+      "end": 135.105,
+      "confidence": 1.0,
+      "punctuated_word": "ownership"
+    },
+    {
+      "word": "altogether",
+      "start": 135.105,
+      "end": 135.905,
+      "confidence": 0.93530273,
+      "punctuated_word": "altogether,"
+    },
+    {
+      "word": "going",
+      "start": 136.145,
+      "end": 136.385,
+      "confidence": 1.0,
+      "punctuated_word": "going"
+    },
+    {
+      "word": "for",
+      "start": 136.385,
+      "end": 136.545,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "a",
+      "start": 136.545,
+      "end": 136.705,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "more",
+      "start": 136.705,
+      "end": 136.86499,
+      "confidence": 1.0,
+      "punctuated_word": "more"
+    },
+    {
+      "word": "international",
+      "start": 136.86499,
+      "end": 137.425,
+      "confidence": 0.99902344,
+      "punctuated_word": "international"
+    },
+    {
+      "word": "vision",
+      "start": 137.425,
+      "end": 137.985,
+      "confidence": 1.0,
+      "punctuated_word": "vision."
+    },
+    {
+      "word": "the",
+      "start": 138.625,
+      "end": 138.785,
+      "confidence": 1.0,
+      "punctuated_word": "The"
+    },
+    {
+      "word": "verdict",
+      "start": 138.785,
+      "end": 139.185,
+      "confidence": 0.9996745,
+      "punctuated_word": "verdict"
+    },
+    {
+      "word": "on",
+      "start": 139.185,
+      "end": 139.345,
+      "confidence": 1.0,
+      "punctuated_word": "on"
+    },
+    {
+      "word": "universal",
+      "start": 139.345,
+      "end": 139.825,
+      "confidence": 0.99316406,
+      "punctuated_word": "universal"
+    },
+    {
+      "word": "value",
+      "start": 139.825,
+      "end": 140.22499,
+      "confidence": 1.0,
+      "punctuated_word": "value"
+    },
+    {
+      "word": "doesn't",
+      "start": 140.22499,
+      "end": 140.545,
+      "confidence": 1.0,
+      "punctuated_word": "doesn't"
+    },
+    {
+      "word": "arrive",
+      "start": 140.545,
+      "end": 140.86499,
+      "confidence": 0.99902344,
+      "punctuated_word": "arrive"
+    },
+    {
+      "word": "on",
+      "start": 140.86499,
+      "end": 141.025,
+      "confidence": 1.0,
+      "punctuated_word": "on"
+    },
+    {
+      "word": "its",
+      "start": 141.025,
+      "end": 141.185,
+      "confidence": 0.9980469,
+      "punctuated_word": "its"
+    },
+    {
+      "word": "own",
+      "start": 141.185,
+      "end": 141.425,
+      "confidence": 0.9980469,
+      "punctuated_word": "own."
+    },
+    {
+      "word": "india",
+      "start": 141.59,
+      "end": 142.06999,
+      "confidence": 1.0,
+      "punctuated_word": "India"
+    },
+    {
+      "word": "sat",
+      "start": 142.06999,
+      "end": 142.39,
+      "confidence": 0.9970703,
+      "punctuated_word": "sat"
+    },
+    {
+      "word": "on",
+      "start": 142.39,
+      "end": 142.54999,
+      "confidence": 0.99902344,
+      "punctuated_word": "on"
+    },
+    {
+      "word": "unesco's",
+      "start": 142.54999,
+      "end": 143.11,
+      "confidence": 0.98742676,
+      "punctuated_word": "UNESCO's"
+    },
+    {
+      "word": "world",
+      "start": 143.11,
+      "end": 143.26999,
+      "confidence": 0.8432617,
+      "punctuated_word": "World"
+    },
+    {
+      "word": "heritage",
+      "start": 143.26999,
+      "end": 143.67,
+      "confidence": 0.99902344,
+      "punctuated_word": "Heritage"
+    },
+    {
+      "word": "committee",
+      "start": 143.67,
+      "end": 143.98999,
+      "confidence": 0.97802734,
+      "punctuated_word": "Committee"
+    },
+    {
+      "word": "through",
+      "start": 143.98999,
+      "end": 144.39,
+      "confidence": 0.99902344,
+      "punctuated_word": "through"
+    },
+    {
+      "word": "2025",
+      "start": 144.39,
+      "end": 145.34999,
+      "confidence": 1.0,
+      "punctuated_word": "2025"
+    },
+    {
+      "word": "and",
+      "start": 145.34999,
+      "end": 145.67,
+      "confidence": 0.90722656,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "hosted",
+      "start": 145.67,
+      "end": 146.06999,
+      "confidence": 1.0,
+      "punctuated_word": "hosted"
+    },
+    {
+      "word": "the",
+      "start": 146.06999,
+      "end": 146.23,
+      "confidence": 0.9980469,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "session",
+      "start": 146.23,
+      "end": 146.47,
+      "confidence": 1.0,
+      "punctuated_word": "session"
+    },
+    {
+      "word": "itself",
+      "start": 146.47,
+      "end": 146.87,
+      "confidence": 1.0,
+      "punctuated_word": "itself"
+    },
+    {
+      "word": "in",
+      "start": 146.87,
+      "end": 147.18999,
+      "confidence": 0.9980469,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "new",
+      "start": 147.18999,
+      "end": 147.34999,
+      "confidence": 0.9980469,
+      "punctuated_word": "New"
+    },
+    {
+      "word": "delhi",
+      "start": 147.34999,
+      "end": 147.59,
+      "confidence": 1.0,
+      "punctuated_word": "Delhi"
+    },
+    {
+      "word": "in",
+      "start": 147.59,
+      "end": 147.82999,
+      "confidence": 0.99902344,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "2024",
+      "start": 147.82999,
+      "end": 148.71,
+      "confidence": 0.9217122,
+      "punctuated_word": "2024,"
+    },
+    {
+      "word": "with",
+      "start": 148.79,
+      "end": 148.87,
+      "confidence": 1.0,
+      "punctuated_word": "with"
+    },
+    {
+      "word": "its",
+      "start": 148.87,
+      "end": 149.11,
+      "confidence": 0.99902344,
+      "punctuated_word": "its"
+    },
+    {
+      "word": "own",
+      "start": 149.11,
+      "end": 149.26999,
+      "confidence": 1.0,
+      "punctuated_word": "own"
+    },
+    {
+      "word": "culture",
+      "start": 149.26999,
+      "end": 149.59,
+      "confidence": 0.9741211,
+      "punctuated_word": "culture"
+    },
+    {
+      "word": "minister",
+      "start": 149.59,
+      "end": 149.98999,
+      "confidence": 0.99902344,
+      "punctuated_word": "minister"
+    },
+    {
+      "word": "admitting",
+      "start": 149.98999,
+      "end": 150.47,
+      "confidence": 0.99902344,
+      "punctuated_word": "admitting"
+    },
+    {
+      "word": "outright",
+      "start": 150.47,
+      "end": 151.11,
+      "confidence": 0.99902344,
+      "punctuated_word": "outright"
+    },
+    {
+      "word": "that",
+      "start": 151.11,
+      "end": 151.43,
+      "confidence": 0.99609375,
+      "punctuated_word": "that"
+    },
+    {
+      "word": "it",
+      "start": 151.43,
+      "end": 151.59,
+      "confidence": 1.0,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "would",
+      "start": 151.59,
+      "end": 151.75,
+      "confidence": 1.0,
+      "punctuated_word": "would"
+    },
+    {
+      "word": "strengthen",
+      "start": 151.75,
+      "end": 152.23,
+      "confidence": 1.0,
+      "punctuated_word": "strengthen"
+    },
+    {
+      "word": "india's",
+      "start": 152.23,
+      "end": 152.62999,
+      "confidence": 0.99902344,
+      "punctuated_word": "India's"
+    },
+    {
+      "word": "soft",
+      "start": 152.62999,
+      "end": 152.87,
+      "confidence": 1.0,
+      "punctuated_word": "soft"
+    },
+    {
+      "word": "power",
+      "start": 152.87,
+      "end": 153.18999,
+      "confidence": 1.0,
+      "punctuated_word": "power"
+    },
+    {
+      "word": "in",
+      "start": 153.18999,
+      "end": 153.34999,
+      "confidence": 1.0,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "the",
+      "start": 153.34999,
+      "end": 153.43,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "world",
+      "start": 153.43,
+      "end": 153.59,
+      "confidence": 0.9995117,
+      "punctuated_word": "world."
+    },
+    {
+      "word": "sarnat",
+      "start": 154.465,
+      "end": 154.94499,
+      "confidence": 0.61238605,
+      "punctuated_word": "Sarnat"
+    },
+    {
+      "word": "waited",
+      "start": 154.94499,
+      "end": 155.425,
+      "confidence": 0.9980469,
+      "punctuated_word": "waited"
+    },
+    {
+      "word": "twenty",
+      "start": 155.425,
+      "end": 155.745,
+      "confidence": 1.0,
+      "punctuated_word": "twenty"
+    },
+    {
+      "word": "eight",
+      "start": 155.745,
+      "end": 155.985,
+      "confidence": 0.99902344,
+      "punctuated_word": "eight"
+    },
+    {
+      "word": "years",
+      "start": 155.985,
+      "end": 156.22499,
+      "confidence": 1.0,
+      "punctuated_word": "years"
+    },
+    {
+      "word": "for",
+      "start": 156.22499,
+      "end": 156.385,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "that",
+      "start": 156.385,
+      "end": 156.545,
+      "confidence": 0.99902344,
+      "punctuated_word": "that"
+    },
+    {
+      "word": "verdict",
+      "start": 156.545,
+      "end": 157.185,
+      "confidence": 0.94970703,
+      "punctuated_word": "verdict,"
+    },
+    {
+      "word": "and",
+      "start": 157.665,
+      "end": 157.825,
+      "confidence": 1.0,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "it",
+      "start": 157.825,
+      "end": 158.065,
+      "confidence": 1.0,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "finally",
+      "start": 158.065,
+      "end": 158.385,
+      "confidence": 0.99902344,
+      "punctuated_word": "finally"
+    },
+    {
+      "word": "enters",
+      "start": 158.385,
+      "end": 158.785,
+      "confidence": 0.99902344,
+      "punctuated_word": "enters"
+    },
+    {
+      "word": "as",
+      "start": 158.785,
+      "end": 159.025,
+      "confidence": 0.99609375,
+      "punctuated_word": "as"
+    },
+    {
+      "word": "another",
+      "start": 159.025,
+      "end": 159.265,
+      "confidence": 1.0,
+      "punctuated_word": "another"
+    },
+    {
+      "word": "pawn",
+      "start": 159.265,
+      "end": 159.58499,
+      "confidence": 0.98876953,
+      "punctuated_word": "pawn"
+    },
+    {
+      "word": "into",
+      "start": 159.58499,
+      "end": 159.905,
+      "confidence": 0.99902344,
+      "punctuated_word": "into"
+    },
+    {
+      "word": "the",
+      "start": 159.905,
+      "end": 160.065,
+      "confidence": 0.99902344,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "bigger",
+      "start": 160.065,
+      "end": 160.305,
+      "confidence": 1.0,
+      "punctuated_word": "bigger"
+    },
+    {
+      "word": "regional",
+      "start": 160.305,
+      "end": 160.785,
+      "confidence": 0.99609375,
+      "punctuated_word": "regional"
+    },
+    {
+      "word": "contest",
+      "start": 160.785,
+      "end": 161.425,
+      "confidence": 0.99316406,
+      "punctuated_word": "contest."
+    },
+    {
+      "word": "india's",
+      "start": 162.065,
+      "end": 162.545,
+      "confidence": 1.0,
+      "punctuated_word": "India's"
+    },
+    {
+      "word": "whole",
+      "start": 162.545,
+      "end": 162.785,
+      "confidence": 1.0,
+      "punctuated_word": "whole"
+    },
+    {
+      "word": "strategy",
+      "start": 162.785,
+      "end": 163.185,
+      "confidence": 1.0,
+      "punctuated_word": "strategy"
+    },
+    {
+      "word": "leans",
+      "start": 163.185,
+      "end": 163.665,
+      "confidence": 0.9995117,
+      "punctuated_word": "leans"
+    },
+    {
+      "word": "on",
+      "start": 163.665,
+      "end": 163.825,
+      "confidence": 1.0,
+      "punctuated_word": "on"
+    },
+    {
+      "word": "birthplace",
+      "start": 163.825,
+      "end": 164.385,
+      "confidence": 0.99365234,
+      "punctuated_word": "birthplace"
+    },
+    {
+      "word": "and",
+      "start": 164.385,
+      "end": 164.625,
+      "confidence": 0.9980469,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "authenticity",
+      "start": 164.625,
+      "end": 165.585,
+      "confidence": 0.98779297,
+      "punctuated_word": "authenticity,"
+    },
+    {
+      "word": "relic",
+      "start": 165.745,
+      "end": 166.14499,
+      "confidence": 0.89501953,
+      "punctuated_word": "relic"
+    },
+    {
+      "word": "tours",
+      "start": 166.14499,
+      "end": 166.625,
+      "confidence": 0.8574219,
+      "punctuated_word": "tours,"
+    },
+    {
+      "word": "and",
+      "start": 166.625,
+      "end": 166.705,
+      "confidence": 1.0,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "pilgrimage",
+      "start": 166.705,
+      "end": 167.265,
+      "confidence": 0.99975586,
+      "punctuated_word": "pilgrimage"
+    },
+    {
+      "word": "routes",
+      "start": 167.265,
+      "end": 167.665,
+      "confidence": 0.9892578,
+      "punctuated_word": "routes"
+    },
+    {
+      "word": "drawing",
+      "start": 167.665,
+      "end": 168.22499,
+      "confidence": 0.70703125,
+      "punctuated_word": "drawing"
+    },
+    {
+      "word": "millions",
+      "start": 168.22499,
+      "end": 168.625,
+      "confidence": 0.8366699,
+      "punctuated_word": "millions,"
+    },
+    {
+      "word": "like",
+      "start": 169.1,
+      "end": 169.42,
+      "confidence": 0.9980469,
+      "punctuated_word": "like"
+    },
+    {
+      "word": "last",
+      "start": 169.42,
+      "end": 169.66,
+      "confidence": 0.9970703,
+      "punctuated_word": "last"
+    },
+    {
+      "word": "year's",
+      "start": 169.66,
+      "end": 169.98,
+      "confidence": 0.9995117,
+      "punctuated_word": "year's"
+    },
+    {
+      "word": "buddha",
+      "start": 169.98,
+      "end": 170.3,
+      "confidence": 0.9880371,
+      "punctuated_word": "Buddha"
+    },
+    {
+      "word": "relic",
+      "start": 170.3,
+      "end": 170.62,
+      "confidence": 0.8000488,
+      "punctuated_word": "Relic"
+    },
+    {
+      "word": "tour",
+      "start": 170.62,
+      "end": 170.86,
+      "confidence": 0.8198242,
+      "punctuated_word": "Tour"
+    },
+    {
+      "word": "through",
+      "start": 170.86,
+      "end": 171.1,
+      "confidence": 0.99609375,
+      "punctuated_word": "through"
+    },
+    {
+      "word": "vietnam",
+      "start": 171.1,
+      "end": 171.90001,
+      "confidence": 0.9692383,
+      "punctuated_word": "Vietnam,"
+    },
+    {
+      "word": "which",
+      "start": 171.98,
+      "end": 172.14,
+      "confidence": 1.0,
+      "punctuated_word": "which"
+    },
+    {
+      "word": "pulled",
+      "start": 172.14,
+      "end": 172.38,
+      "confidence": 0.9951172,
+      "punctuated_word": "pulled"
+    },
+    {
+      "word": "in",
+      "start": 172.38,
+      "end": 172.62,
+      "confidence": 1.0,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "crowds",
+      "start": 172.62,
+      "end": 172.94,
+      "confidence": 0.99316406,
+      "punctuated_word": "crowds"
+    },
+    {
+      "word": "estimated",
+      "start": 172.94,
+      "end": 173.34,
+      "confidence": 0.9980469,
+      "punctuated_word": "estimated"
+    },
+    {
+      "word": "above",
+      "start": 173.34,
+      "end": 173.74,
+      "confidence": 0.95166016,
+      "punctuated_word": "above"
+    },
+    {
+      "word": "15,000,000",
+      "start": 173.74,
+      "end": 174.70001,
+      "confidence": 0.998291,
+      "punctuated_word": "15,000,000."
+    },
+    {
+      "word": "china",
+      "start": 175.26,
+      "end": 175.81999,
+      "confidence": 1.0,
+      "punctuated_word": "China"
+    },
+    {
+      "word": "is",
+      "start": 175.81999,
+      "end": 175.98,
+      "confidence": 1.0,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "running",
+      "start": 175.98,
+      "end": 176.3,
+      "confidence": 1.0,
+      "punctuated_word": "running"
+    },
+    {
+      "word": "the",
+      "start": 176.3,
+      "end": 176.45999,
+      "confidence": 0.9951172,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "counter",
+      "start": 176.45999,
+      "end": 176.78,
+      "confidence": 0.9243164,
+      "punctuated_word": "counter"
+    },
+    {
+      "word": "strategy",
+      "start": 176.78,
+      "end": 177.58,
+      "confidence": 0.94506836,
+      "punctuated_word": "strategy."
+    },
+    {
+      "word": "its",
+      "start": 177.81999,
+      "end": 178.06,
+      "confidence": 0.95703125,
+      "punctuated_word": "Its"
+    },
+    {
+      "word": "world",
+      "start": 178.06,
+      "end": 178.38,
+      "confidence": 0.88183594,
+      "punctuated_word": "World"
+    },
+    {
+      "word": "buddhist",
+      "start": 178.38,
+      "end": 178.78,
+      "confidence": 0.99609375,
+      "punctuated_word": "Buddhist"
+    },
+    {
+      "word": "forum",
+      "start": 178.78,
+      "end": 179.1,
+      "confidence": 0.9116211,
+      "punctuated_word": "Forum"
+    },
+    {
+      "word": "drew",
+      "start": 179.1,
+      "end": 179.5,
+      "confidence": 1.0,
+      "punctuated_word": "drew"
+    },
+    {
+      "word": "delegates",
+      "start": 179.5,
+      "end": 179.98,
+      "confidence": 1.0,
+      "punctuated_word": "delegates"
+    },
+    {
+      "word": "from",
+      "start": 179.98,
+      "end": 180.3,
+      "confidence": 1.0,
+      "punctuated_word": "from"
+    },
+    {
+      "word": "over",
+      "start": 180.3,
+      "end": 180.54,
+      "confidence": 0.99902344,
+      "punctuated_word": "over"
+    },
+    {
+      "word": "70",
+      "start": 180.54,
+      "end": 180.94,
+      "confidence": 0.99902344,
+      "punctuated_word": "70"
+    },
+    {
+      "word": "countries",
+      "start": 180.94,
+      "end": 181.42,
+      "confidence": 1.0,
+      "punctuated_word": "countries"
+    },
+    {
+      "word": "this",
+      "start": 181.42,
+      "end": 181.66,
+      "confidence": 1.0,
+      "punctuated_word": "this"
+    },
+    {
+      "word": "year",
+      "start": 181.66,
+      "end": 181.81999,
+      "confidence": 0.92626953,
+      "punctuated_word": "year,"
+    },
+    {
+      "word": "and",
+      "start": 182.225,
+      "end": 182.545,
+      "confidence": 1.0,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "china",
+      "start": 182.545,
+      "end": 182.865,
+      "confidence": 1.0,
+      "punctuated_word": "China"
+    },
+    {
+      "word": "is",
+      "start": 182.865,
+      "end": 183.105,
+      "confidence": 1.0,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "building",
+      "start": 183.105,
+      "end": 183.345,
+      "confidence": 1.0,
+      "punctuated_word": "building"
+    },
+    {
+      "word": "temples",
+      "start": 183.345,
+      "end": 183.745,
+      "confidence": 1.0,
+      "punctuated_word": "temples"
+    },
+    {
+      "word": "and",
+      "start": 183.745,
+      "end": 183.985,
+      "confidence": 1.0,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "academies",
+      "start": 183.985,
+      "end": 184.465,
+      "confidence": 0.99658203,
+      "punctuated_word": "academies"
+    },
+    {
+      "word": "right",
+      "start": 184.465,
+      "end": 184.865,
+      "confidence": 0.9980469,
+      "punctuated_word": "right"
+    },
+    {
+      "word": "next",
+      "start": 184.865,
+      "end": 185.025,
+      "confidence": 1.0,
+      "punctuated_word": "next"
+    },
+    {
+      "word": "to",
+      "start": 185.025,
+      "end": 185.185,
+      "confidence": 1.0,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "india's",
+      "start": 185.185,
+      "end": 185.58499,
+      "confidence": 1.0,
+      "punctuated_word": "India's"
+    },
+    {
+      "word": "own",
+      "start": 185.58499,
+      "end": 185.745,
+      "confidence": 1.0,
+      "punctuated_word": "own"
+    },
+    {
+      "word": "turf",
+      "start": 185.745,
+      "end": 186.065,
+      "confidence": 1.0,
+      "punctuated_word": "turf"
+    },
+    {
+      "word": "in",
+      "start": 186.065,
+      "end": 186.225,
+      "confidence": 0.99902344,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "nepal",
+      "start": 186.225,
+      "end": 187.02501,
+      "confidence": 0.9835205,
+      "punctuated_word": "Nepal,"
+    },
+    {
+      "word": "finishing",
+      "start": 187.185,
+      "end": 187.665,
+      "confidence": 1.0,
+      "punctuated_word": "finishing"
+    },
+    {
+      "word": "its",
+      "start": 187.665,
+      "end": 187.905,
+      "confidence": 0.9980469,
+      "punctuated_word": "its"
+    },
+    {
+      "word": "own",
+      "start": 187.905,
+      "end": 188.065,
+      "confidence": 0.99902344,
+      "punctuated_word": "own"
+    },
+    {
+      "word": "version",
+      "start": 188.065,
+      "end": 188.385,
+      "confidence": 1.0,
+      "punctuated_word": "version"
+    },
+    {
+      "word": "of",
+      "start": 188.385,
+      "end": 188.545,
+      "confidence": 0.99902344,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "nalanda",
+      "start": 188.545,
+      "end": 189.345,
+      "confidence": 0.9711914,
+      "punctuated_word": "Nalanda,"
+    },
+    {
+      "word": "the",
+      "start": 189.345,
+      "end": 189.505,
+      "confidence": 0.9970703,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "nanhai",
+      "start": 189.505,
+      "end": 190.065,
+      "confidence": 0.9195964,
+      "punctuated_word": "Nanhai"
+    },
+    {
+      "word": "academy",
+      "start": 190.065,
+      "end": 190.945,
+      "confidence": 0.87475586,
+      "punctuated_word": "Academy,"
+    },
+    {
+      "word": "before",
+      "start": 191.105,
+      "end": 191.345,
+      "confidence": 1.0,
+      "punctuated_word": "before"
+    },
+    {
+      "word": "india",
+      "start": 191.345,
+      "end": 191.825,
+      "confidence": 1.0,
+      "punctuated_word": "India"
+    },
+    {
+      "word": "could",
+      "start": 191.825,
+      "end": 191.985,
+      "confidence": 0.99902344,
+      "punctuated_word": "could"
+    },
+    {
+      "word": "revive",
+      "start": 191.985,
+      "end": 192.305,
+      "confidence": 1.0,
+      "punctuated_word": "revive"
+    },
+    {
+      "word": "the",
+      "start": 192.305,
+      "end": 192.545,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "original",
+      "start": 192.545,
+      "end": 192.865,
+      "confidence": 1.0,
+      "punctuated_word": "original"
+    },
+    {
+      "word": "nearby",
+      "start": 192.865,
+      "end": 193.345,
+      "confidence": 1.0,
+      "punctuated_word": "nearby."
+    },
+    {
+      "word": "the",
+      "start": 194.19,
+      "end": 194.43001,
+      "confidence": 1.0,
+      "punctuated_word": "The"
+    },
+    {
+      "word": "sharpest",
+      "start": 194.43001,
+      "end": 194.83,
+      "confidence": 0.99902344,
+      "punctuated_word": "sharpest"
+    },
+    {
+      "word": "edge",
+      "start": 194.83,
+      "end": 195.07,
+      "confidence": 1.0,
+      "punctuated_word": "edge"
+    },
+    {
+      "word": "of",
+      "start": 195.07,
+      "end": 195.23,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "all",
+      "start": 195.23,
+      "end": 195.39,
+      "confidence": 0.99902344,
+      "punctuated_word": "all"
+    },
+    {
+      "word": "this",
+      "start": 195.39,
+      "end": 195.79001,
+      "confidence": 0.9838867,
+      "punctuated_word": "this"
+    },
+    {
+      "word": "is",
+      "start": 195.79001,
+      "end": 196.11,
+      "confidence": 0.99609375,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "the",
+      "start": 196.11,
+      "end": 196.27,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "succession",
+      "start": 196.27,
+      "end": 196.75,
+      "confidence": 0.99609375,
+      "punctuated_word": "succession"
+    },
+    {
+      "word": "of",
+      "start": 196.75,
+      "end": 196.83,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "the",
+      "start": 196.83,
+      "end": 196.99,
+      "confidence": 0.9970703,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "dalai",
+      "start": 196.99,
+      "end": 197.39,
+      "confidence": 0.9995117,
+      "punctuated_word": "Dalai"
+    },
+    {
+      "word": "lama",
+      "start": 197.39,
+      "end": 198.03001,
+      "confidence": 0.9973958,
+      "punctuated_word": "Lama."
+    },
+    {
+      "word": "in",
+      "start": 198.11,
+      "end": 198.35,
+      "confidence": 1.0,
+      "punctuated_word": "In"
+    },
+    {
+      "word": "2025",
+      "start": 198.35,
+      "end": 199.47,
+      "confidence": 0.9977214,
+      "punctuated_word": "2025,"
+    },
+    {
+      "word": "he",
+      "start": 199.47,
+      "end": 199.55,
+      "confidence": 0.99902344,
+      "punctuated_word": "he"
+    },
+    {
+      "word": "said",
+      "start": 199.55,
+      "end": 199.79001,
+      "confidence": 1.0,
+      "punctuated_word": "said"
+    },
+    {
+      "word": "only",
+      "start": 199.79001,
+      "end": 200.11,
+      "confidence": 0.97802734,
+      "punctuated_word": "only"
+    },
+    {
+      "word": "his",
+      "start": 200.11,
+      "end": 200.35,
+      "confidence": 1.0,
+      "punctuated_word": "his"
+    },
+    {
+      "word": "own",
+      "start": 200.35,
+      "end": 200.51001,
+      "confidence": 0.99902344,
+      "punctuated_word": "own"
+    },
+    {
+      "word": "office",
+      "start": 200.51001,
+      "end": 200.91,
+      "confidence": 1.0,
+      "punctuated_word": "office"
+    },
+    {
+      "word": "could",
+      "start": 200.91,
+      "end": 201.15001,
+      "confidence": 1.0,
+      "punctuated_word": "could"
+    },
+    {
+      "word": "name",
+      "start": 201.15001,
+      "end": 201.39,
+      "confidence": 1.0,
+      "punctuated_word": "name"
+    },
+    {
+      "word": "his",
+      "start": 201.39,
+      "end": 201.55,
+      "confidence": 0.99902344,
+      "punctuated_word": "his"
+    },
+    {
+      "word": "successor",
+      "start": 201.55,
+      "end": 202.35,
+      "confidence": 0.9951172,
+      "punctuated_word": "successor."
+    },
+    {
+      "word": "india",
+      "start": 202.59,
+      "end": 202.99,
+      "confidence": 1.0,
+      "punctuated_word": "India"
+    },
+    {
+      "word": "backed",
+      "start": 202.99,
+      "end": 203.31,
+      "confidence": 0.99902344,
+      "punctuated_word": "backed"
+    },
+    {
+      "word": "this",
+      "start": 203.31,
+      "end": 203.55,
+      "confidence": 0.9970703,
+      "punctuated_word": "this"
+    },
+    {
+      "word": "position",
+      "start": 203.55,
+      "end": 203.95,
+      "confidence": 1.0,
+      "punctuated_word": "position"
+    },
+    {
+      "word": "publicly",
+      "start": 203.95,
+      "end": 204.67001,
+      "confidence": 0.8647461,
+      "punctuated_word": "publicly."
+    },
+    {
+      "word": "and",
+      "start": 205.15001,
+      "end": 205.31,
+      "confidence": 0.99902344,
+      "punctuated_word": "And"
+    },
+    {
+      "word": "yet",
+      "start": 205.31,
+      "end": 205.55,
+      "confidence": 0.98535156,
+      "punctuated_word": "yet"
+    },
+    {
+      "word": "china",
+      "start": 205.55,
+      "end": 206.11,
+      "confidence": 0.55078125,
+      "punctuated_word": "China"
+    },
+    {
+      "word": "insists",
+      "start": 206.11,
+      "end": 206.59,
+      "confidence": 0.99902344,
+      "punctuated_word": "insists"
+    },
+    {
+      "word": "it",
+      "start": 206.59,
+      "end": 206.83,
+      "confidence": 0.9902344,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "must",
+      "start": 206.83,
+      "end": 207.07,
+      "confidence": 1.0,
+      "punctuated_word": "must"
+    },
+    {
+      "word": "approve",
+      "start": 207.07,
+      "end": 207.39,
+      "confidence": 0.9980469,
+      "punctuated_word": "approve"
+    },
+    {
+      "word": "of",
+      "start": 207.39,
+      "end": 207.55,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "that",
+      "start": 207.55,
+      "end": 207.71,
+      "confidence": 0.99902344,
+      "punctuated_word": "that"
+    },
+    {
+      "word": "choice",
+      "start": 207.71,
+      "end": 207.95,
+      "confidence": 1.0,
+      "punctuated_word": "choice"
+    },
+    {
+      "word": "instead",
+      "start": 207.95,
+      "end": 208.35,
+      "confidence": 0.9814453,
+      "punctuated_word": "instead,"
+    },
+    {
+      "word": "calling",
+      "start": 208.485,
+      "end": 208.965,
+      "confidence": 1.0,
+      "punctuated_word": "calling"
+    },
+    {
+      "word": "the",
+      "start": 208.965,
+      "end": 209.125,
+      "confidence": 1.0,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "dispute",
+      "start": 209.125,
+      "end": 209.605,
+      "confidence": 0.8803711,
+      "punctuated_word": "dispute,"
+    },
+    {
+      "word": "in",
+      "start": 209.605,
+      "end": 209.765,
+      "confidence": 1.0,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "its",
+      "start": 209.765,
+      "end": 209.925,
+      "confidence": 0.9970703,
+      "punctuated_word": "its"
+    },
+    {
+      "word": "own",
+      "start": 209.925,
+      "end": 210.085,
+      "confidence": 1.0,
+      "punctuated_word": "own"
+    },
+    {
+      "word": "words",
+      "start": 210.085,
+      "end": 210.405,
+      "confidence": 0.9975586,
+      "punctuated_word": "words,"
+    },
+    {
+      "word": "a",
+      "start": 210.405,
+      "end": 210.645,
+      "confidence": 0.99609375,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "thorn",
+      "start": 210.645,
+      "end": 210.885,
+      "confidence": 1.0,
+      "punctuated_word": "thorn"
+    },
+    {
+      "word": "in",
+      "start": 210.885,
+      "end": 211.045,
+      "confidence": 1.0,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "the",
+      "start": 211.045,
+      "end": 211.205,
+      "confidence": 0.9951172,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "relationship",
+      "start": 211.205,
+      "end": 211.925,
+      "confidence": 0.7907715,
+      "punctuated_word": "relationship."
+    },
+    {
+      "word": "and",
+      "start": 212.245,
+      "end": 212.405,
+      "confidence": 0.99609375,
+      "punctuated_word": "And"
+    },
+    {
+      "word": "no",
+      "start": 212.405,
+      "end": 212.645,
+      "confidence": 1.0,
+      "punctuated_word": "no"
+    },
+    {
+      "word": "one",
+      "start": 212.645,
+      "end": 212.805,
+      "confidence": 0.99902344,
+      "punctuated_word": "one"
+    },
+    {
+      "word": "yet",
+      "start": 212.805,
+      "end": 213.045,
+      "confidence": 1.0,
+      "punctuated_word": "yet"
+    },
+    {
+      "word": "knows",
+      "start": 213.045,
+      "end": 213.365,
+      "confidence": 1.0,
+      "punctuated_word": "knows"
+    },
+    {
+      "word": "how",
+      "start": 213.365,
+      "end": 213.605,
+      "confidence": 1.0,
+      "punctuated_word": "how"
+    },
+    {
+      "word": "this",
+      "start": 213.605,
+      "end": 213.765,
+      "confidence": 1.0,
+      "punctuated_word": "this"
+    },
+    {
+      "word": "will",
+      "start": 213.765,
+      "end": 213.925,
+      "confidence": 1.0,
+      "punctuated_word": "will"
+    },
+    {
+      "word": "play",
+      "start": 213.925,
+      "end": 214.165,
+      "confidence": 1.0,
+      "punctuated_word": "play"
+    },
+    {
+      "word": "out",
+      "start": 214.165,
+      "end": 214.645,
+      "confidence": 0.99853516,
+      "punctuated_word": "out."
+    },
+    {
+      "word": "sarnath's",
+      "start": 215.125,
+      "end": 215.765,
+      "confidence": 0.72802734,
+      "punctuated_word": "Sarnath's"
+    },
+    {
+      "word": "test",
+      "start": 215.765,
+      "end": 216.005,
+      "confidence": 0.99609375,
+      "punctuated_word": "test"
+    },
+    {
+      "word": "is",
+      "start": 216.005,
+      "end": 216.245,
+      "confidence": 1.0,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "still",
+      "start": 216.245,
+      "end": 216.485,
+      "confidence": 1.0,
+      "punctuated_word": "still"
+    },
+    {
+      "word": "in",
+      "start": 216.485,
+      "end": 216.645,
+      "confidence": 1.0,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "its",
+      "start": 216.645,
+      "end": 216.805,
+      "confidence": 0.9980469,
+      "punctuated_word": "its"
+    },
+    {
+      "word": "future",
+      "start": 216.805,
+      "end": 217.365,
+      "confidence": 0.99560547,
+      "punctuated_word": "future."
+    },
+    {
+      "word": "the",
+      "start": 217.765,
+      "end": 218.005,
+      "confidence": 0.96240234,
+      "punctuated_word": "The"
+    },
+    {
+      "word": "plan",
+      "start": 218.005,
+      "end": 218.245,
+      "confidence": 0.99902344,
+      "punctuated_word": "plan"
+    },
+    {
+      "word": "meant",
+      "start": 218.245,
+      "end": 218.405,
+      "confidence": 1.0,
+      "punctuated_word": "meant"
+    },
+    {
+      "word": "to",
+      "start": 218.405,
+      "end": 218.565,
+      "confidence": 1.0,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "protect",
+      "start": 218.565,
+      "end": 218.805,
+      "confidence": 1.0,
+      "punctuated_word": "protect"
+    },
+    {
+      "word": "these",
+      "start": 218.805,
+      "end": 219.045,
+      "confidence": 1.0,
+      "punctuated_word": "these"
+    },
+    {
+      "word": "fragile",
+      "start": 219.045,
+      "end": 219.365,
+      "confidence": 1.0,
+      "punctuated_word": "fragile"
+    },
+    {
+      "word": "ruins",
+      "start": 219.365,
+      "end": 219.685,
+      "confidence": 1.0,
+      "punctuated_word": "ruins"
+    },
+    {
+      "word": "from",
+      "start": 219.685,
+      "end": 219.845,
+      "confidence": 1.0,
+      "punctuated_word": "from"
+    },
+    {
+      "word": "a",
+      "start": 219.845,
+      "end": 220.005,
+      "confidence": 0.99902344,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "tourism",
+      "start": 220.005,
+      "end": 220.405,
+      "confidence": 1.0,
+      "punctuated_word": "tourism"
+    },
+    {
+      "word": "boom",
+      "start": 220.405,
+      "end": 220.645,
+      "confidence": 0.99609375,
+      "punctuated_word": "boom"
+    },
+    {
+      "word": "caused",
+      "start": 220.645,
+      "end": 220.965,
+      "confidence": 0.99902344,
+      "punctuated_word": "caused"
+    },
+    {
+      "word": "by",
+      "start": 220.965,
+      "end": 221.045,
+      "confidence": 1.0,
+      "punctuated_word": "by"
+    },
+    {
+      "word": "the",
+      "start": 221.045,
+      "end": 221.205,
+      "confidence": 0.99902344,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "unesco",
+      "start": 221.205,
+      "end": 221.605,
+      "confidence": 0.98811847,
+      "punctuated_word": "UNESCO"
+    },
+    {
+      "word": "listing",
+      "start": 221.605,
+      "end": 222.325,
+      "confidence": 0.99902344,
+      "punctuated_word": "listing"
+    },
+    {
+      "word": "still",
+      "start": 222.325,
+      "end": 222.565,
+      "confidence": 0.9838867,
+      "punctuated_word": "still"
+    },
+    {
+      "word": "hadn't",
+      "start": 222.565,
+      "end": 222.965,
+      "confidence": 0.99902344,
+      "punctuated_word": "hadn't"
+    },
+    {
+      "word": "been",
+      "start": 222.965,
+      "end": 223.125,
+      "confidence": 1.0,
+      "punctuated_word": "been"
+    },
+    {
+      "word": "published",
+      "start": 223.125,
+      "end": 223.445,
+      "confidence": 1.0,
+      "punctuated_word": "published"
+    },
+    {
+      "word": "as",
+      "start": 223.445,
+      "end": 223.685,
+      "confidence": 1.0,
+      "punctuated_word": "as"
+    },
+    {
+      "word": "of",
+      "start": 223.685,
+      "end": 223.765,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "late",
+      "start": 223.765,
+      "end": 224.005,
+      "confidence": 1.0,
+      "punctuated_word": "late"
+    },
+    {
+      "word": "july",
+      "start": 224.005,
+      "end": 224.245,
+      "confidence": 0.7705078,
+      "punctuated_word": "July."
+    },
+    {
+      "word": "and",
+      "start": 224.78001,
+      "end": 225.02,
+      "confidence": 1.0,
+      "punctuated_word": "And"
+    },
+    {
+      "word": "how",
+      "start": 225.02,
+      "end": 225.26001,
+      "confidence": 1.0,
+      "punctuated_word": "how"
+    },
+    {
+      "word": "well",
+      "start": 225.26001,
+      "end": 225.42001,
+      "confidence": 1.0,
+      "punctuated_word": "well"
+    },
+    {
+      "word": "the",
+      "start": 225.42001,
+      "end": 225.58,
+      "confidence": 0.9760742,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "site",
+      "start": 225.58,
+      "end": 225.82,
+      "confidence": 0.99902344,
+      "punctuated_word": "site"
+    },
+    {
+      "word": "can",
+      "start": 225.82,
+      "end": 225.98001,
+      "confidence": 1.0,
+      "punctuated_word": "can"
+    },
+    {
+      "word": "actually",
+      "start": 225.98001,
+      "end": 226.3,
+      "confidence": 0.9970703,
+      "punctuated_word": "actually"
+    },
+    {
+      "word": "handle",
+      "start": 226.3,
+      "end": 226.54001,
+      "confidence": 1.0,
+      "punctuated_word": "handle"
+    },
+    {
+      "word": "such",
+      "start": 226.54001,
+      "end": 226.78001,
+      "confidence": 1.0,
+      "punctuated_word": "such"
+    },
+    {
+      "word": "crowds",
+      "start": 226.78001,
+      "end": 227.18001,
+      "confidence": 0.9980469,
+      "punctuated_word": "crowds"
+    },
+    {
+      "word": "is",
+      "start": 227.18001,
+      "end": 227.42001,
+      "confidence": 0.99902344,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "yet",
+      "start": 227.42001,
+      "end": 227.66,
+      "confidence": 1.0,
+      "punctuated_word": "yet"
+    },
+    {
+      "word": "to",
+      "start": 227.66,
+      "end": 227.74,
+      "confidence": 1.0,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "be",
+      "start": 227.74,
+      "end": 227.90001,
+      "confidence": 1.0,
+      "punctuated_word": "be"
+    },
+    {
+      "word": "seen",
+      "start": 227.90001,
+      "end": 228.38002,
+      "confidence": 0.9995117,
+      "punctuated_word": "seen."
+    },
+    {
+      "word": "this",
+      "start": 228.86,
+      "end": 229.1,
+      "confidence": 1.0,
+      "punctuated_word": "This"
+    },
+    {
+      "word": "lion",
+      "start": 229.1,
+      "end": 229.5,
+      "confidence": 0.92089844,
+      "punctuated_word": "lion"
+    },
+    {
+      "word": "has",
+      "start": 229.5,
+      "end": 229.74,
+      "confidence": 0.99902344,
+      "punctuated_word": "has"
+    },
+    {
+      "word": "been",
+      "start": 229.74,
+      "end": 229.90001,
+      "confidence": 1.0,
+      "punctuated_word": "been"
+    },
+    {
+      "word": "a",
+      "start": 229.90001,
+      "end": 230.06001,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "political",
+      "start": 230.06001,
+      "end": 230.54001,
+      "confidence": 1.0,
+      "punctuated_word": "political"
+    },
+    {
+      "word": "tool",
+      "start": 230.54001,
+      "end": 230.78,
+      "confidence": 1.0,
+      "punctuated_word": "tool"
+    },
+    {
+      "word": "for",
+      "start": 230.78,
+      "end": 231.02,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "almost",
+      "start": 231.02,
+      "end": 231.42001,
+      "confidence": 1.0,
+      "punctuated_word": "almost"
+    },
+    {
+      "word": "eighty",
+      "start": 231.42001,
+      "end": 231.74,
+      "confidence": 1.0,
+      "punctuated_word": "eighty"
+    },
+    {
+      "word": "years",
+      "start": 231.74,
+      "end": 231.98001,
+      "confidence": 1.0,
+      "punctuated_word": "years"
+    },
+    {
+      "word": "now",
+      "start": 231.98001,
+      "end": 232.54001,
+      "confidence": 0.77856445,
+      "punctuated_word": "now."
+    },
+    {
+      "word": "first",
+      "start": 232.94,
+      "end": 233.26001,
+      "confidence": 0.99902344,
+      "punctuated_word": "First"
+    },
+    {
+      "word": "as",
+      "start": 233.26001,
+      "end": 233.5,
+      "confidence": 0.64404297,
+      "punctuated_word": "as"
+    },
+    {
+      "word": "a",
+      "start": 233.5,
+      "end": 233.58,
+      "confidence": 0.99902344,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "binder",
+      "start": 233.58,
+      "end": 234.06001,
+      "confidence": 1.0,
+      "punctuated_word": "binder"
+    },
+    {
+      "word": "to",
+      "start": 234.06001,
+      "end": 234.3,
+      "confidence": 0.9921875,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "hold",
+      "start": 234.3,
+      "end": 234.54001,
+      "confidence": 1.0,
+      "punctuated_word": "hold"
+    },
+    {
+      "word": "india",
+      "start": 234.54001,
+      "end": 234.86,
+      "confidence": 1.0,
+      "punctuated_word": "India"
+    },
+    {
+      "word": "together",
+      "start": 234.86,
+      "end": 235.58002,
+      "confidence": 0.8937988,
+      "punctuated_word": "together,"
+    },
+    {
+      "word": "now",
+      "start": 235.74,
+      "end": 235.90001,
+      "confidence": 0.99902344,
+      "punctuated_word": "now"
+    },
+    {
+      "word": "to",
+      "start": 235.90001,
+      "end": 236.14,
+      "confidence": 0.9790039,
+      "punctuated_word": "to"
+    },
+    {
+      "word": "help",
+      "start": 236.14,
+      "end": 236.38,
+      "confidence": 1.0,
+      "punctuated_word": "help"
+    },
+    {
+      "word": "place",
+      "start": 236.38,
+      "end": 236.70001,
+      "confidence": 1.0,
+      "punctuated_word": "place"
+    },
+    {
+      "word": "india",
+      "start": 236.70001,
+      "end": 237.26001,
+      "confidence": 1.0,
+      "punctuated_word": "India"
+    },
+    {
+      "word": "as",
+      "start": 237.26001,
+      "end": 237.58,
+      "confidence": 0.9980469,
+      "punctuated_word": "as"
+    },
+    {
+      "word": "a",
+      "start": 237.58,
+      "end": 237.74,
+      "confidence": 0.99902344,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "leader",
+      "start": 237.74,
+      "end": 238.06001,
+      "confidence": 1.0,
+      "punctuated_word": "leader"
+    },
+    {
+      "word": "for",
+      "start": 238.06001,
+      "end": 238.22,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "a",
+      "start": 238.22,
+      "end": 238.38,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "buddhist",
+      "start": 238.38,
+      "end": 238.78,
+      "confidence": 0.9970703,
+      "punctuated_word": "Buddhist"
+    },
+    {
+      "word": "community",
+      "start": 238.78,
+      "end": 239.42001,
+      "confidence": 0.99902344,
+      "punctuated_word": "community"
+    },
+    {
+      "word": "of",
+      "start": 239.495,
+      "end": 239.735,
+      "confidence": 0.99609375,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "roughly",
+      "start": 239.735,
+      "end": 240.135,
+      "confidence": 1.0,
+      "punctuated_word": "roughly"
+    },
+    {
+      "word": "half",
+      "start": 240.135,
+      "end": 240.375,
+      "confidence": 0.99902344,
+      "punctuated_word": "half"
+    },
+    {
+      "word": "a",
+      "start": 240.375,
+      "end": 240.53499,
+      "confidence": 0.99902344,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "billion",
+      "start": 240.53499,
+      "end": 240.855,
+      "confidence": 1.0,
+      "punctuated_word": "billion"
+    },
+    {
+      "word": "people",
+      "start": 240.855,
+      "end": 241.17499,
+      "confidence": 1.0,
+      "punctuated_word": "people"
+    },
+    {
+      "word": "worldwide",
+      "start": 241.17499,
+      "end": 242.05501,
+      "confidence": 0.99853516,
+      "punctuated_word": "worldwide."
+    },
+    {
+      "word": "this",
+      "start": 242.69499,
+      "end": 242.935,
+      "confidence": 1.0,
+      "punctuated_word": "This"
+    },
+    {
+      "word": "example",
+      "start": 242.935,
+      "end": 243.33499,
+      "confidence": 1.0,
+      "punctuated_word": "example"
+    },
+    {
+      "word": "in",
+      "start": 243.33499,
+      "end": 243.575,
+      "confidence": 0.9658203,
+      "punctuated_word": "in"
+    },
+    {
+      "word": "our",
+      "start": 243.575,
+      "end": 243.81499,
+      "confidence": 0.98291016,
+      "punctuated_word": "our"
+    },
+    {
+      "word": "heritage",
+      "start": 243.81499,
+      "end": 244.295,
+      "confidence": 1.0,
+      "punctuated_word": "heritage"
+    },
+    {
+      "word": "is",
+      "start": 244.295,
+      "end": 244.61499,
+      "confidence": 0.9921875,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "used",
+      "start": 244.61499,
+      "end": 244.855,
+      "confidence": 1.0,
+      "punctuated_word": "used"
+    },
+    {
+      "word": "for",
+      "start": 244.855,
+      "end": 245.015,
+      "confidence": 1.0,
+      "punctuated_word": "for"
+    },
+    {
+      "word": "geopolitical",
+      "start": 245.015,
+      "end": 245.575,
+      "confidence": 1.0,
+      "punctuated_word": "geopolitical"
+    },
+    {
+      "word": "maneuvers",
+      "start": 245.575,
+      "end": 246.135,
+      "confidence": 0.99902344,
+      "punctuated_word": "maneuvers"
+    },
+    {
+      "word": "is",
+      "start": 246.135,
+      "end": 246.45499,
+      "confidence": 0.87158203,
+      "punctuated_word": "is"
+    },
+    {
+      "word": "exactly",
+      "start": 246.45499,
+      "end": 246.775,
+      "confidence": 1.0,
+      "punctuated_word": "exactly"
+    },
+    {
+      "word": "why",
+      "start": 246.775,
+      "end": 247.09499,
+      "confidence": 1.0,
+      "punctuated_word": "why"
+    },
+    {
+      "word": "we",
+      "start": 247.09499,
+      "end": 247.25499,
+      "confidence": 1.0,
+      "punctuated_word": "we"
+    },
+    {
+      "word": "should",
+      "start": 247.25499,
+      "end": 247.415,
+      "confidence": 1.0,
+      "punctuated_word": "should"
+    },
+    {
+      "word": "look",
+      "start": 247.415,
+      "end": 247.655,
+      "confidence": 1.0,
+      "punctuated_word": "look"
+    },
+    {
+      "word": "more",
+      "start": 247.655,
+      "end": 247.97499,
+      "confidence": 1.0,
+      "punctuated_word": "more"
+    },
+    {
+      "word": "closely",
+      "start": 247.97499,
+      "end": 248.61499,
+      "confidence": 1.0,
+      "punctuated_word": "closely"
+    },
+    {
+      "word": "at",
+      "start": 248.61499,
+      "end": 248.855,
+      "confidence": 0.66064453,
+      "punctuated_word": "at"
+    },
+    {
+      "word": "how",
+      "start": 248.855,
+      "end": 249.015,
+      "confidence": 1.0,
+      "punctuated_word": "how"
+    },
+    {
+      "word": "it",
+      "start": 249.015,
+      "end": 249.17499,
+      "confidence": 1.0,
+      "punctuated_word": "it"
+    },
+    {
+      "word": "happens",
+      "start": 249.17499,
+      "end": 249.495,
+      "confidence": 1.0,
+      "punctuated_word": "happens"
+    },
+    {
+      "word": "everywhere",
+      "start": 249.495,
+      "end": 249.97499,
+      "confidence": 1.0,
+      "punctuated_word": "everywhere"
+    },
+    {
+      "word": "else",
+      "start": 249.97499,
+      "end": 250.215,
+      "confidence": 1.0,
+      "punctuated_word": "else"
+    },
+    {
+      "word": "too",
+      "start": 250.215,
+      "end": 250.935,
+      "confidence": 0.99560547,
+      "punctuated_word": "too."
+    },
+    {
+      "word": "every",
+      "start": 251.655,
+      "end": 251.97499,
+      "confidence": 1.0,
+      "punctuated_word": "Every"
+    },
+    {
+      "word": "flag",
+      "start": 251.97499,
+      "end": 252.61499,
+      "confidence": 1.0,
+      "punctuated_word": "flag,"
+    },
+    {
+      "word": "every",
+      "start": 252.61499,
+      "end": 252.855,
+      "confidence": 1.0,
+      "punctuated_word": "every"
+    },
+    {
+      "word": "ruin",
+      "start": 252.855,
+      "end": 253.33499,
+      "confidence": 0.986084,
+      "punctuated_word": "ruin,"
+    },
+    {
+      "word": "and",
+      "start": 253.33499,
+      "end": 253.415,
+      "confidence": 0.99902344,
+      "punctuated_word": "and"
+    },
+    {
+      "word": "every",
+      "start": 253.415,
+      "end": 253.655,
+      "confidence": 1.0,
+      "punctuated_word": "every"
+    },
+    {
+      "word": "plaque",
+      "start": 253.655,
+      "end": 254.055,
+      "confidence": 0.99902344,
+      "punctuated_word": "plaque"
+    },
+    {
+      "word": "carries",
+      "start": 254.06694,
+      "end": 254.54694,
+      "confidence": 0.9980469,
+      "punctuated_word": "carries"
+    },
+    {
+      "word": "a",
+      "start": 254.54694,
+      "end": 254.78694,
+      "confidence": 1.0,
+      "punctuated_word": "a"
+    },
+    {
+      "word": "deeper",
+      "start": 254.78694,
+      "end": 255.10693,
+      "confidence": 1.0,
+      "punctuated_word": "deeper"
+    },
+    {
+      "word": "message",
+      "start": 255.10693,
+      "end": 255.34694,
+      "confidence": 1.0,
+      "punctuated_word": "message"
+    },
+    {
+      "word": "that",
+      "start": 255.34694,
+      "end": 255.66695,
+      "confidence": 1.0,
+      "punctuated_word": "that"
+    },
+    {
+      "word": "goes",
+      "start": 255.66695,
+      "end": 255.82693,
+      "confidence": 1.0,
+      "punctuated_word": "goes"
+    },
+    {
+      "word": "beyond",
+      "start": 255.82693,
+      "end": 256.22693,
+      "confidence": 1.0,
+      "punctuated_word": "beyond"
+    },
+    {
+      "word": "the",
+      "start": 256.22693,
+      "end": 256.54694,
+      "confidence": 0.99902344,
+      "punctuated_word": "the"
+    },
+    {
+      "word": "veneer",
+      "start": 256.54694,
+      "end": 256.94693,
+      "confidence": 0.9996745,
+      "punctuated_word": "veneer"
+    },
+    {
+      "word": "of",
+      "start": 256.94693,
+      "end": 257.10693,
+      "confidence": 1.0,
+      "punctuated_word": "of"
+    },
+    {
+      "word": "heritage",
+      "start": 257.10693,
+      "end": 257.66693,
+      "confidence": 0.9941406,
+      "punctuated_word": "heritage."
+    }
+  ],
+  "metadata": {
+    "model": "deepgram-nova-3",
+    "language": "en",
+    "confidence": 0
+  }
+}

@@ -1,0 +1,125 @@
+/* Portrait explainer engine: Heritle navy and gold. */
+
+@font-face { font-family: "Playfair"; font-weight: 700; src: url(../fonts/playfair-display-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Playfair"; font-weight: 800; src: url(../fonts/playfair-display-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "Playfair"; font-weight: 900; src: url(../fonts/playfair-display-latin-900-normal.woff2) format("woff2"); }
+@font-face { font-family: "Playfair"; font-weight: 700; font-style: italic; src: url(../fonts/playfair-display-latin-700-italic.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url(../fonts/inter-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url(../fonts/inter-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 700; src: url(../fonts/inter-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 800; src: url(../fonts/inter-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 900; src: url(../fonts/inter-latin-900-normal.woff2) format("woff2"); }
+@font-face { font-family: "Mono"; font-weight: 500; src: url(../fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Mono"; font-weight: 700; src: url(../fonts/jetbrains-mono-latin-700-normal.woff2) format("woff2"); }
+
+:root {
+  --navy: #131D34;
+  --navy-2: #1B2A4A;
+  --navy-3: #233A63;
+  --navy-deep: #0a1122;
+  --gold: #C9A24B;
+  --gold-bright: #E2BE6A;
+  --gold-dim: #8E7333;
+  --cream: #F3EBDA;
+  --paper: #EFE5CF;
+  --ink: #16213B;
+  --red: #C0463A;
+  --white: #F7F3EA;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); }
+
+#stage {
+  position: relative; width: 1080px; height: 1920px; overflow: hidden;
+  background: var(--navy);
+  font-family: "Inter", sans-serif; color: var(--white);
+}
+.layer { position: absolute; inset: 0; pointer-events: none; }
+canvas.layer, svg.layer { width: 1080px; height: 1920px; }
+svg.layer { overflow: visible; }
+
+/* ---------- photos ---------- */
+.photo { position: absolute; left: 0; top: 0; will-change: transform, opacity; }
+.photo .inner { position: absolute; inset: 0; overflow: hidden; background: var(--navy-2); }
+.photo img { position: absolute; left: 50%; top: 50%; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+.photo.print { padding: 16px; background: #f4efe4; box-shadow: 0 22px 50px rgba(0,0,0,.55), 0 4px 10px rgba(0,0,0,.35); }
+.photo.print .inner { inset: 16px; }
+.photo.print::after { /* faint paper sheen */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(125deg, rgba(255,255,255,.10), rgba(255,255,255,0) 40%, rgba(0,0,0,.06));
+}
+.photo.plain { box-shadow: 0 22px 50px rgba(0,0,0,.5); }
+.photo.circle .inner { border-radius: 50%; border: 8px solid var(--gold); }
+.photo.full .inner { background: var(--navy-deep); }
+.photo .dim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,17,34,.35), rgba(10,17,34,.2) 40%, rgba(10,17,34,.85)); }
+.photo .tint { position: absolute; inset: 0; background: var(--navy); mix-blend-mode: color; opacity: 0; }
+
+.ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background:
+    repeating-linear-gradient(135deg, rgba(201,162,75,.07) 0 14px, rgba(201,162,75,0) 14px 28px),
+    radial-gradient(circle at 50% 40%, #2a426d, #16223d);
+  color: var(--gold); text-align: center; padding: 30px; }
+.ph b { font-family: "Mono"; font-weight: 700; font-size: 26px; letter-spacing: .14em; text-transform: uppercase; }
+.ph i { font-family: "Inter"; font-style: normal; font-weight: 600; font-size: 24px; color: rgba(247,243,234,.7); }
+.ph svg { width: 70px; height: 70px; opacity: .8; }
+
+/* ---------- labels ---------- */
+.tag {
+  position: absolute; left: 0; top: 0; white-space: nowrap;
+  font-family: "Mono"; font-weight: 700; font-size: 30px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 12px 20px 11px; line-height: 1;
+}
+.tag.gold { background: var(--gold); color: var(--navy); }
+.tag.navy { background: var(--navy); color: var(--gold); border: 3px solid var(--gold); }
+.tag.cream { background: var(--cream); color: var(--ink); }
+.tag.red { background: var(--red); color: var(--white); }
+.tag.ghost { color: var(--gold); padding: 0; font-size: 28px; text-shadow: 0 2px 10px rgba(0,0,0,.7); }
+.tag small { display: block; font-size: .72em; opacity: .85; margin-top: 8px; letter-spacing: .06em; }
+
+.title { position: absolute; left: 0; top: 0; text-align: center; line-height: 1.02; text-shadow: 0 6px 30px rgba(0,0,0,.55); }
+.title .w { display: inline-block; white-space: pre; will-change: transform, opacity; }
+.title.serif { font-family: "Playfair"; font-weight: 800; }
+.title.serif-i { font-family: "Playfair"; font-weight: 700; font-style: italic; }
+.title.sans { font-family: "Inter"; font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; }
+.title .hl { color: var(--gold-bright); }
+.title .rd { color: #E0685B; }
+
+.counter { position: absolute; left: 0; top: 0; text-align: center; font-family: "Playfair"; font-weight: 900; color: var(--gold-bright);
+  text-shadow: 0 8px 40px rgba(0,0,0,.6); line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+.counter .lbl { display: block; font-family: "Mono"; font-weight: 700; color: var(--white); letter-spacing: .12em; text-transform: uppercase; margin-top: 18px; }
+
+.stamp { position: absolute; left: 0; top: 0; font-family: "Mono"; font-weight: 700; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--gold-bright); border: 6px solid var(--gold-bright); outline: 2px solid var(--gold-bright); outline-offset: 6px;
+  padding: 16px 28px 14px; white-space: nowrap; text-align: center; line-height: 1.05; background: rgba(10,17,34,.35); }
+.stamp.red { color: #E36A5C; border-color: #E36A5C; outline-color: #E36A5C; }
+
+/* ---------- document card ---------- */
+.doc { position: absolute; left: 0; top: 0; background: var(--paper); color: var(--ink); padding: 54px 56px 50px;
+  box-shadow: 0 26px 60px rgba(0,0,0,.55); }
+.doc::before { content: ""; position: absolute; inset: 0; background-image: var(--paper-tex); background-size: 540px; opacity: .55; mix-blend-mode: multiply; pointer-events: none; }
+.doc .dh { font-family: "Mono"; font-weight: 700; font-size: 24px; letter-spacing: .1em; text-transform: uppercase; color: #6b5a33; border-bottom: 2px solid rgba(22,33,59,.25); padding-bottom: 16px; margin-bottom: 26px; }
+.doc .dt { font-family: "Playfair"; font-weight: 800; font-size: 58px; line-height: 1.05; margin-bottom: 24px; }
+.doc .db { font-family: "Playfair"; font-weight: 700; font-size: 40px; line-height: 1.38; }
+.doc .db.sans { font-family: "Inter"; font-weight: 600; font-size: 36px; line-height: 1.4; }
+.doc .ds { font-family: "Mono"; font-weight: 500; font-size: 22px; color: #6b5a33; margin-top: 28px; letter-spacing: .04em; }
+.doc .mark { background-image: linear-gradient(rgba(226,190,106,.85), rgba(226,190,106,.85)); background-repeat: no-repeat; background-size: 0% 78%; background-position: 0 70%;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 4px; margin: 0 -4px; }
+.doc .mark.strike-m { background-image: linear-gradient(#C0463A, #C0463A); background-position: 0 58%; }
+.doc .small { font-family: "Inter"; font-weight: 600; font-size: 28px; color: #5d5140; }
+.doc .bar { height: 26px; background: rgba(22,33,59,.12); margin: 18px 0; border-radius: 3px; }
+
+/* ---------- subtitles ---------- */
+#subs .chunk { position: absolute; left: 90px; width: 900px; top: 1405px; text-align: center;
+  font-family: "Inter"; font-weight: 800; font-size: 56px; line-height: 1.16; letter-spacing: -.005em; color: var(--white);
+  text-shadow: 0 3px 0 rgba(10,17,34,.9), 0 0 24px rgba(10,17,34,.95), 0 0 6px rgba(10,17,34,.9); }
+#subs .chunk span { display: inline; }
+#subs .chunk .on { color: var(--gold-bright); }
+
+/* ---------- end card ---------- */
+#end { background: var(--navy); opacity: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#end img { width: 560px; height: auto; }
+#end .word { font-family: "Playfair"; font-weight: 800; font-size: 92px; letter-spacing: .16em; color: var(--gold); margin-top: 56px; padding-left: .16em; }
+
+#vignette { background: radial-gradient(ellipse 85% 70% at 50% 45%, rgba(0,0,0,0) 55%, rgba(4,8,18,.62) 100%); }
+#fx { mix-blend-mode: overlay; opacity: .16; }

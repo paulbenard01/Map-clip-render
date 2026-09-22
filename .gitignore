@@ -4,3 +4,4 @@ data/*.geo.json
 data/version.json
 data/terrain/
 .DS_Store
+data/video/
