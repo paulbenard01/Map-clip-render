@@ -424,7 +424,11 @@ Run `npm test` after touching the engine. Rendering
 
 ## Regenerating the basemap
 
-If you ever delete the `data/` folder, or want a higher-resolution basemap
+The builder and the CLI both build `data/` automatically when it's missing,
+and rebuild it when a change to the project has made the existing files out
+of date — so normally you never run this by hand.
+
+If you delete the `data/` folder, or want a higher-resolution basemap
 for tighter close-up zooms (edit `lib/build-basemap.js` and change
 `RESOLUTION` to `"10m"` — bigger file, more coastline detail, only worth it
 if you're zooming in past country level):
