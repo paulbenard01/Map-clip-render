@@ -94,6 +94,7 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 .tb-group { display: flex; align-items: center; gap: 8px; }
 .tb-group label { display: flex; align-items: center; gap: 5px; color: var(--muted); font-size: 12px; }
 .tb-group input[type="number"] { width: 62px; }
+.tb-group input[type="range"] { width: 90px; }
 .tb-right { margin-left: auto; }
 .brand { font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px; color: var(--accent); }
 #projectName { width: 150px; }

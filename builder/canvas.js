@@ -80,6 +80,7 @@ export async function init(els, options) {
       .then((b) => (b ? { url: "/data/terrain/relief.jpg", coordinates: b.coordinates } : null))
       .catch(() => null),
   ]).then(([land, countries, graticule, terrain]) => ({ land, countries, graticule, terrain }));
+  basemapData.terrainOpacity = Store.getScene().terrainOpacity;
 
   View.installBasemap(map, preset, basemapData);
 

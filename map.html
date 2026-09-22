@@ -84,7 +84,7 @@
       .then((b) => (b ? { url: "/data/terrain/relief.jpg", coordinates: b.coordinates } : null))
       .catch(() => null);
 
-    SceneView.installBasemap(map, preset, { land, countries, graticule, terrain });
+    SceneView.installBasemap(map, preset, { land, countries, graticule, terrain, terrainOpacity: normalized.terrainOpacity });
 
     stage = SceneView.createStage({
       map,

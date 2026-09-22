@@ -101,6 +101,16 @@ function wireToolbar() {
   $("#durationInput").onchange = (e) => Store.update((d) => { d.duration = Number(e.target.value) || undefined; });
   $("#projectName").onchange = (e) => Store.setProjectName(e.target.value.trim() || "untitled");
 
+  let terrainDragging = false;
+  $("#terrainOpacityInput").oninput = (e) => {
+    if (!terrainDragging) { terrainDragging = true; Store.beginInteraction("terrain opacity"); }
+    Store.update((d) => { d.terrainOpacity = Number(e.target.value) / 100; });
+  };
+  $("#terrainOpacityInput").onchange = () => {
+    terrainDragging = false;
+    Store.endInteraction();
+  };
+
   document.querySelectorAll("[data-tool]").forEach((btn) => {
     btn.onclick = () => {
       const tool = btn.dataset.tool;
@@ -198,6 +208,7 @@ function refreshMeta() {
   $("#aspectPicker").value = scene.aspect;
   $("#fpsInput").value = scene.fps;
   $("#durationInput").value = round(Engine.computeDuration(scene), 2);
+  if ($("#terrainOpacityInput") !== document.activeElement) $("#terrainOpacityInput").value = Math.round(scene.terrainOpacity * 100);
   if ($("#projectName") !== document.activeElement) $("#projectName").value = state.projectName;
   $("#undoBtn").disabled = !Store.canUndo();
   $("#redoBtn").disabled = !Store.canRedo();

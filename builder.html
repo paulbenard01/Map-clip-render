@@ -36,6 +36,9 @@
     </label>
     <label>fps <input id="fpsInput" type="number" min="1" max="60" step="1" value="30" /></label>
     <label>Duration <input id="durationInput" type="number" min="1" step="0.5" value="12" /></label>
+    <label class="tb-slider" title="How much the terrain relief shows through, from a flat map to full terrain. Only visible once npm run build-terrain has been run locally.">
+      Terrain <input id="terrainOpacityInput" type="range" min="0" max="100" step="1" value="100" />
+    </label>
   </div>
 
   <div class="tb-group">

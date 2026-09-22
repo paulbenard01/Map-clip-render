@@ -356,10 +356,18 @@ Worth knowing once it's on:
 - The image's own colours (real ocean and land tones) show through, rather
   than the active style preset's palette — every scene's overall look
   changes once the asset exists, not just the terrain texture.
-- Land/country fills are drawn semi-transparent over it so borders and
-  highlights stay legible.
+- Land/country fills — and a highlighted country's fill — are drawn
+  semi-transparent over it so borders, highlights and country shapes all
+  stay legible with the relief showing through underneath, rather than one
+  painting over the other.
 - Delete `data/terrain/` to go back to the flat look — nothing else needs
   to change.
+
+How much shows through is a slider, not just on/off: `"terrainOpacity"`
+(0..1, default 1) blends between a flat map (0) and full relief (1) —
+in the builder it's the **Terrain** slider in the toolbar, next to Style
+and Ratio. It only does anything once the asset above exists; the field
+is otherwise inert, same as `"terrainOpacity"` never being set at all.
 
 ### Pins: image requirements
 

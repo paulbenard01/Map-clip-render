@@ -424,9 +424,25 @@ function testZoneRoundTrip() {
   console.log("  ok  circle and polygon zones each serialize only their own relevant fields");
 }
 
+function testTerrainOpacityDefaultsAndClamps() {
+  const def = E.normalizeScene({});
+  assert.strictEqual(def.terrainOpacity, 1, "defaults to full terrain");
+  assert.strictEqual(E.serializeScene(def).terrainOpacity, undefined, "default doesn't clutter the export");
+
+  const half = E.normalizeScene({ terrainOpacity: 0.5 });
+  assert.strictEqual(half.terrainOpacity, 0.5);
+  assert.strictEqual(E.serializeScene(half).terrainOpacity, 0.5);
+  assert.strictEqual(E.normalizeScene(E.serializeScene(half)).terrainOpacity, 0.5, "round-trips exactly");
+
+  assert.strictEqual(E.normalizeScene({ terrainOpacity: -0.5 }).terrainOpacity, 0, "clamps below 0");
+  assert.strictEqual(E.normalizeScene({ terrainOpacity: 1.5 }).terrainOpacity, 1, "clamps above 1");
+  console.log("  ok  terrainOpacity defaults to 1, clamps to 0..1, and round-trips");
+}
+
 testZoneCircle();
 testZonePolygon();
 testZoneRoundTrip();
 testEasedFadeAndRouteDrawStillAnchorCorrectly();
+testTerrainOpacityDefaultsAndClamps();
 testNormalizeIsIdempotent();
 console.log("all scene-engine tests passed");
