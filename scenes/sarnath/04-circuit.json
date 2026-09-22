@@ -26,10 +26,11 @@
     {
       "t": 19,
       "center": [
-        84.0,
-        26.0
+        84.15,
+        25.85
       ],
-      "zoom": 5.4
+      "zoom": 5.55,
+      "transition": "smooth"
     }
   ],
   "countryHighlights": [
