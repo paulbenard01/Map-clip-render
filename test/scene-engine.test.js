@@ -241,17 +241,17 @@ testTimedHighlights();
 testDuration();
 testRoundTrip();
 function testTitleTextStyleDefaults() {
-  const s = E.normalizeScene({ titles: [{ text: "Plain" }, { text: "Styled", caps: false, bold: false, color: "#ff0000" }] });
-  assert.strictEqual(s.titles[0].caps, true, "caps defaults on:");
+  const s = E.normalizeScene({ titles: [{ text: "Plain" }, { text: "Styled", caps: true, bold: false, color: "#ff0000" }] });
+  assert.strictEqual(s.titles[0].caps, false, "caps defaults off:");
   assert.strictEqual(s.titles[0].bold, true, "bold defaults on:");
   assert.strictEqual(s.titles[0].color, null, "no colour override by default:");
-  assert.strictEqual(s.titles[1].caps, false);
+  assert.strictEqual(s.titles[1].caps, true);
   assert.strictEqual(s.titles[1].bold, false);
   assert.strictEqual(s.titles[1].color, "#ff0000");
 
   const once = E.serializeScene(s);
   assert.strictEqual(once.titles[0].caps, undefined, "default caps is not written out:");
-  assert.strictEqual(once.titles[1].caps, false, "an override is written out:");
+  assert.strictEqual(once.titles[1].caps, true, "an override is written out:");
   assert.strictEqual(once.titles[1].bold, false);
   assert.strictEqual(once.titles[1].color, "#ff0000");
   console.log("  ok  title caps/bold/colour default to the current look and round-trip");
@@ -281,17 +281,17 @@ function testTitleCustomPosition() {
 
 function testPinAndRouteLabelStyle() {
   const s = E.normalizeScene({
-    pins: [{ center: [0, 0], label: "Loud", labelCaps: false, labelBold: false }],
-    routes: [{ from: [0, 0], to: [1, 1], label: "Quiet", labelCaps: false }],
+    pins: [{ center: [0, 0], label: "Loud", labelCaps: true, labelBold: false }],
+    routes: [{ from: [0, 0], to: [1, 1], label: "Quiet", labelCaps: true }],
   });
-  assert.strictEqual(s.pins[0].labelCaps, false);
+  assert.strictEqual(s.pins[0].labelCaps, true);
   assert.strictEqual(s.pins[0].labelBold, false);
-  assert.strictEqual(s.routes[0].labelCaps, false);
+  assert.strictEqual(s.routes[0].labelCaps, true);
   assert.strictEqual(s.routes[0].labelBold, true, "unset field still defaults on:");
 
   const out = E.serializeScene(s);
-  assert.strictEqual(out.pins[0].labelCaps, false);
-  assert.strictEqual(out.routes[0].labelCaps, false);
+  assert.strictEqual(out.pins[0].labelCaps, true);
+  assert.strictEqual(out.routes[0].labelCaps, true);
   assert.strictEqual(out.routes[0].labelBold, undefined, "default is not written out:");
   console.log("  ok  pin and route label style overrides round-trip");
 }

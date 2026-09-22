@@ -123,9 +123,18 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
    top row wastes most of the window's height. Instead: the preview runs
    the full height on the left, and the inspector + timeline share a
    narrower column on the right, inspector on top since that's what you're
-   looking at right after clicking something. */
+   looking at right after clicking something.
+
+   The left column's width is --canvas-col-w, set by canvas.js's
+   applyAspect() to exactly what the preview needs at the available
+   height — not a fixed share of the window. A fixed share left the
+   actual (height-constrained) preview centred inside a column with
+   empty space on both sides; the timeline, the more important thing to
+   have room for, got whatever was left over. Sizing the column to the
+   preview's real width instead means there's no empty column space to
+   speak of, and the timeline gets everything else. */
 body.portrait-layout .workspace {
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: var(--canvas-col-w, 50%) 1fr;
   grid-template-rows: minmax(220px, 38vh) 1fr;
   grid-template-areas:
     "canvas inspector"
@@ -257,8 +266,8 @@ body.portrait-layout .workspace {
 .insp-empty p { margin-bottom: 8px; }
 .insp-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
 .insp-kind {
-  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: #17181a; background: var(--accent); padding: 2px 6px; border-radius: 3px; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #17181a; background: var(--accent); padding: 3px 8px; border-radius: 3px; font-weight: 700;
 }
 .insp-id { flex: 1; }
 .field-note { color: #5f6673; font-size: 10px; margin: -4px 0 10px; }
@@ -331,16 +340,16 @@ body.portrait-layout .tl-resize-handle { display: none; }
    that — without a scrollbar the lowest track (titles) would silently be
    clipped out of view, as it was before this was added. */
 .tl-body { flex: 1; display: flex; overflow-y: auto; overflow-x: hidden; }
-.tl-track-names { width: 86px; flex-shrink: 0; border-right: 1px solid var(--line); padding-top: 24px; }
+.tl-track-names { width: 98px; flex-shrink: 0; border-right: 1px solid var(--line); padding-top: 24px; }
 .tl-name {
   height: 38px; display: flex; align-items: center; padding-left: 10px;
-  font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: 12px; line-height: 1.25; color: var(--text); letter-spacing: 0.04em; text-transform: uppercase;
   border-bottom: 1px solid #262a31;
 }
 .tl-scroll { flex: 1; position: relative; overflow: hidden; }
 
 .tl-ruler { height: 24px; position: relative; border-bottom: 1px solid var(--line); cursor: pointer; background: var(--panel-2); }
-.tl-tick { position: absolute; top: 0; height: 24px; padding-left: 4px; font-size: 10px; color: var(--muted); border-left: 1px solid var(--line); line-height: 24px; }
+.tl-tick { position: absolute; top: 0; height: 24px; padding-left: 4px; font-size: 11px; color: var(--muted); border-left: 1px solid var(--line); line-height: 24px; }
 
 .tl-lanes { position: relative; }
 .tl-lane { height: 38px; position: relative; border-bottom: 1px solid #262a31; }
@@ -365,7 +374,7 @@ body.portrait-layout .tl-resize-handle { display: none; }
 .tl-highlights { background: var(--track-highlights); }
 .tl-titles { background: var(--track-titles); }
 .tl-zones { background: var(--track-zones); }
-.tl-label { padding: 0 8px; font-size: 11px; color: #121316; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
+.tl-label { padding: 0 8px; font-size: 12px; color: #121316; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
 /* The lighter head of a route block is the draw-on portion. */
 .tl-draw { position: absolute; left: 0; top: 0; bottom: 0; background: rgba(255, 255, 255, 0.28); pointer-events: none; }
 .tl-resize { position: absolute; top: 0; bottom: 0; width: 7px; cursor: ew-resize; }
@@ -377,7 +386,7 @@ body.portrait-layout .tl-resize-handle { display: none; }
 .tl-diamond { position: absolute; left: -7px; width: 14px; height: 14px; background: var(--track-camera); border: 1px solid rgba(255, 255, 255, 0.5); transform: rotate(45deg); }
 .tl-block.point.selected { outline: none; }
 .tl-block.point.selected .tl-diamond { background: var(--accent); box-shadow: 0 0 0 2px rgba(232, 193, 76, 0.5); }
-.tl-point-label { position: absolute; left: 10px; top: -1px; font-size: 10px; color: var(--muted); white-space: nowrap; pointer-events: none; }
+.tl-point-label { position: absolute; left: 10px; top: -1px; font-size: 11px; color: var(--muted); white-space: nowrap; pointer-events: none; }
 
 .tl-playhead { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--accent); pointer-events: none; z-index: 5; }
 .tl-playhead::before { content: ""; position: absolute; top: 0; left: -5px; border: 5px solid transparent; border-top-color: var(--accent); }

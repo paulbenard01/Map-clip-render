@@ -236,7 +236,7 @@ export function markClean() {
 export function nextId(prefix) {
   const used = new Set();
   const s = state.scene;
-  [s.pins, s.routes, s.camera, s.titles, s.countryHighlights].forEach((list) => {
+  [s.pins, s.routes, s.camera, s.titles, s.countryHighlights, s.zones].forEach((list) => {
     list.forEach((el) => used.add(el.id));
   });
   let n = 1;

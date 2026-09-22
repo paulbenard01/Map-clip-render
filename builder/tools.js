@@ -26,10 +26,15 @@ function handleClick(lngLat) {
   const t = state.time;
 
   if (state.tool === "pin") {
+    // Starts at the beginning of the clip, not the playhead -- placing a
+    // pin while scrubbed near the end used to make it appear (and its
+    // timeline block start) right at that late timestamp, often with no
+    // room left before the clip ends for it to actually be visible or
+    // reachable by clicking away from the very end.
     Store.addElement("pin", {
       id: Store.nextId("pin"),
       center: lngLat,
-      at: round(t, 2),
+      at: 0,
       until: null,
       label: null,
       size: Engine.DEFAULTS.pinSize,
@@ -44,7 +49,7 @@ function handleClick(lngLat) {
       id: Store.nextId("zone"),
       center: lngLat,
       radius: Engine.DEFAULTS.zoneRadius,
-      at: round(t, 2),
+      at: 0,
       until: null,
       label: null,
     });

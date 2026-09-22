@@ -51,10 +51,25 @@ function applyAspect(aspect) {
   frame.style.width = logicalW + "px";
   frame.style.height = logicalH + "px";
 
+  const isPortrait = aspect === "9:16";
   const availW = wrap.clientWidth - 32;
   const availH = wrap.clientHeight - 32;
-  const fit = Math.max(0.02, Math.min(availW / logicalW, availH / logicalH));
+  // Portrait is height-constrained, not width-constrained (that's the
+  // whole point of the portrait layout in builder.html/builder.css: the
+  // preview runs the full window height). Fitting it to *both* dimensions,
+  // as landscape does, left the preview column exactly as wide as whatever
+  // fixed share of the window CSS gave it, with the actual frame centred
+  // inside that -- most of that column empty on both sides. Sizing the
+  // column to the frame's own real width (below) instead of the other way
+  // around is what actually fixes that.
+  const fit = isPortrait
+    ? Math.max(0.02, availH / logicalH)
+    : Math.max(0.02, Math.min(availW / logicalW, availH / logicalH));
   frame.style.transform = "scale(" + fit + ")";
+
+  if (isPortrait) {
+    document.documentElement.style.setProperty("--canvas-col-w", Math.round(fit * logicalW + 32) + "px");
+  }
 
   if (map) map.resize();
 }

@@ -128,22 +128,22 @@ function wireToolbar() {
   Store.subscribe((s, reason) => { if (reason === "tool") syncToolButtons(); });
 
   $("#addTitle").onclick = () => {
-    const t = Store.getState().time;
+    // Starts at the beginning of the clip, not the playhead -- see the
+    // matching note in tools.js's pin placement for why.
     Store.addElement("title", {
       id: Store.nextId("title"),
       text: "New text box",
       position: "bottom-left",
-      at: round(t, 2),
-      until: round(t + 3, 2),
+      at: 0,
+      until: 3,
     });
   };
 
   $("#addHighlight").onclick = () => {
-    const t = Store.getState().time;
     Store.addElement("highlight", {
       id: Store.nextId("hl"),
       iso: "IND",
-      at: round(t, 2),
+      at: 0,
       until: null,
       fade: 0.6,
     });
