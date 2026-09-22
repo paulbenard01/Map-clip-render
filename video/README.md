@@ -53,6 +53,19 @@ Every frame is a pure function of time, so renders are identical every run
 and the frame range is split across several headless browsers in parallel.
 `video/tools/contact-sheet.js out.png a.png b.png ...` tiles stills for review.
 
+## Sonic logo
+
+`video/brand/heritle-sting.wav` is the sound for the end card: two soft
+electric-piano chords (Gmaj7 to Dmaj9), about 4.4s, mixed to -20 LUFS. The
+file starts where the voiceover ends: the first chord lands as the logo
+appears, the second as the wordmark comes in. In the edit, place it at the
+end of the voiceover (4:17.67 in the Sarnath short). To regenerate or tweak it:
+
+```
+pip install numpy scipy
+python video/tools/sting.py video/brand/heritle-sting.wav
+```
+
 ## Photos
 
 Each photo slot in `scene.js` points at `images/<id>.jpg`. A missing file
