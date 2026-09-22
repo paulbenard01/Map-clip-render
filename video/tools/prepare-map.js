@@ -145,7 +145,13 @@ async function buildRivers() {
     console.log("  downloading Natural Earth rivers...");
     await download("https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_rivers_lake_centerlines.zip", zip);
     fs.mkdirSync(dir, { recursive: true });
-    execFileSync("python3", ["-c", `import zipfile;zipfile.ZipFile(${JSON.stringify(zip)}).extractall(${JSON.stringify(dir)})`]);
+    try {
+      execFileSync("unzip", ["-o", "-q", zip, "-d", dir], { stdio: "inherit" });
+    } catch (err) {
+      // Plain Windows has no `unzip`; PowerShell does the same job.
+      const ps = (p) => "'" + p.replace(/'/g, "''") + "'";
+      execFileSync("powershell", ["-NoProfile", "-Command", `Expand-Archive -LiteralPath ${ps(zip)} -DestinationPath ${ps(dir)} -Force`], { stdio: "inherit" });
+    }
     fs.rmSync(zip);
   }
   const src = await shapefile.open(path.join(dir, "ne_10m_rivers_lake_centerlines.shp"));

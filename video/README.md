@@ -21,15 +21,22 @@ tags, counters, stamps, documents, markers), `map.js` (the relief map),
 
 ## One-time setup
 
+You need Node.js 18+ and `ffmpeg` on your PATH (the same as the map clips).
+Then, from the repository folder:
+
 ```
+git fetch origin
+git checkout claude/keen-volta-0j6f36
 npm install
 npm install --no-save sharp shapefile
+npx playwright install chromium
 npm run build-basemap
 npm run build-terrain
 node video/tools/prepare-map.js
 ```
 
-Along with `ffmpeg` on your PATH, that's everything. `prepare-map.js`
+`build-terrain` downloads about 143MB once. It all works the same from
+Windows PowerShell, macOS or Linux. `prepare-map.js`
 recolours Natural Earth's shaded relief into Heritle navy and writes it to
 `data/video/`. It is regenerable, so it isn't committed.
 
