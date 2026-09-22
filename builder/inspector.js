@@ -374,18 +374,44 @@ function checkboxField(label, checked, onChange) {
 
 /** A colour with a "follow the preset" state, since null is meaningful. */
 function colorField(label, value, fallback, onChange) {
+  const initial = value || fallback || "#ffffff";
   const picker = el("input", {
     type: "color",
-    value: value || fallback || "#ffffff",
-    oninput: (e) => onChange(e.target.value),
+    value: initial,
+    oninput: (e) => { hexInput.value = e.target.value; onChange(e.target.value); },
+  });
+  const hexInput = el("input", {
+    type: "text",
+    className: "hex-input mono",
+    value: initial,
+    maxlength: 7,
+    placeholder: "#rrggbb",
+    // Live-update the swatch as you type, but only commit (and only
+    // correct stray casing/shorthand) once it's a complete, valid hex —
+    // otherwise every half-typed keystroke would fight the field.
+    oninput: (e) => { const v = normalizeHex(e.target.value); if (v) picker.value = v; },
+    onchange: (e) => {
+      const v = normalizeHex(e.target.value);
+      if (v) { e.target.value = v; picker.value = v; onChange(v); } else { e.target.value = picker.value; }
+    },
   });
   return el("div", { className: "field" },
     el("label", {}, label),
     el("div", { className: "row" },
       picker,
+      hexInput,
       value ? button("Use preset", () => onChange(null)) : el("span", { className: "muted" }, "following preset")
     )
   );
+}
+
+/** "#abc", "abc", "#AABBCC", "aabbcc" -> "#aabbcc"; anything else -> null. */
+function normalizeHex(s) {
+  s = (s || "").trim();
+  if (!s.startsWith("#")) s = "#" + s;
+  if (/^#[0-9a-f]{6}$/i.test(s)) return s.toLowerCase();
+  if (/^#[0-9a-f]{3}$/i.test(s)) return "#" + s.slice(1).split("").map((c) => c + c).join("").toLowerCase();
+  return null;
 }
 
 function sectionLabel(text, hint) {
