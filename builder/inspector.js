@@ -152,10 +152,32 @@ function routeFields(body, route) {
 }
 
 // ---------------------------------------------------------------- camera
+// Past this zoom, a shot with nothing else in it risks looking like an
+// empty colour field — see the warning this triggers below.
+const HIGH_ZOOM_THRESHOLD = 9;
+
+
+/**
+ * The basemap is deliberately flat country polygons — no roads, cities or
+ * terrain, by design (see the README on why: no tile server, fully offline,
+ * byte-for-byte reproducible). That's invisible at continent/country zoom,
+ * but past a certain point a shot with nothing else in it is just an empty
+ * colour field. This says so, plainly, rather than leaving it a mystery.
+ */
+function highZoomWarning() {
+  return el("p", { className: "insp-warning" },
+    "At this zoom the basemap has no roads, cities or terrain — a shot with " +
+    "nothing else in it may look empty. A pin, photo or title fills the frame; " +
+    "rebuilding the basemap at 10m resolution (README, \u201cRegenerating the " +
+    "basemap\u201d) adds finer coastline detail but not interior detail."
+  );
+}
+
 function cameraFields(body, kf) {
   body.appendChild(numberField("Time (s)", kf.t, { min: 0, step: 0.1 }, (v) => set("camera", kf, { t: v })));
   body.appendChild(coordField("Center", kf.center, (v) => set("camera", kf, { center: v })));
   body.appendChild(numberField("Zoom", kf.zoom, { min: 0, max: 22, step: 0.1 }, (v) => set("camera", kf, { zoom: v })));
+  if (kf.zoom > HIGH_ZOOM_THRESHOLD) body.appendChild(highZoomWarning());
   body.appendChild(numberField("Bearing (°)", kf.bearing, { min: -360, max: 360, step: 1 }, (v) => set("camera", kf, { bearing: v })));
   body.appendChild(numberField("Pitch (°)", kf.pitch, { min: 0, max: 60, step: 1 }, (v) => set("camera", kf, { pitch: v })));
 
