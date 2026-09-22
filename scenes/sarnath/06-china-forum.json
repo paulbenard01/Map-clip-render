@@ -289,13 +289,6 @@
   ],
   "titles": [
     {
-      "id": "t1",
-      "text": "World Buddhist Forum",
-      "position": "bottom-left",
-      "at": 0.6,
-      "until": 5.5
-    },
-    {
       "id": "t2",
       "text": "Delegates from 70+ countries",
       "position": "bottom-left",

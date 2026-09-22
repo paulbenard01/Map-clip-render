@@ -121,20 +121,5 @@
       "label": "Unresolved"
     }
   ],
-  "titles": [
-    {
-      "id": "t1",
-      "text": "2025: succession declaration",
-      "position": "bottom-left",
-      "at": 0.6,
-      "until": 3.8
-    },
-    {
-      "id": "t2",
-      "text": "“A thorn in the relationship”",
-      "position": "bottom-left",
-      "at": 8.5,
-      "until": 15.5
-    }
-  ]
+  "titles": []
 }

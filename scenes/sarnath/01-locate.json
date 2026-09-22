@@ -70,20 +70,5 @@
     }
   ],
   "routes": [],
-  "titles": [
-    {
-      "id": "t1",
-      "text": "Sarnath, Uttar Pradesh",
-      "position": "bottom-left",
-      "at": 0.6,
-      "until": 4.4
-    },
-    {
-      "id": "t2",
-      "text": "The first turning of the wheel",
-      "position": "bottom-left",
-      "at": 8.0,
-      "until": 14.5
-    }
-  ]
+  "titles": []
 }

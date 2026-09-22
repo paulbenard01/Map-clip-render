@@ -50,11 +50,7 @@
     }
   ],
 
-  "titles": [
-    { "id": "t1", "text": "Sarnath, India", "position": "bottom-left", "at": 0.3, "until": 3 },
-    { "id": "t2", "text": "The Buddhist Circuit", "position": "bottom-left", "at": 12.7, "until": 16 },
-    { "id": "t3", "text": "Hanoi, Vietnam — 2025", "position": "bottom-left", "at": 17.5, "until": 21.5 }
-  ],
+  "titles": [],
 
   "duration": 22
 }

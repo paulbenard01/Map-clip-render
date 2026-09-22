@@ -63,14 +63,5 @@
     }
   ],
   "routes": [],
-  "titles": [
-    {
-      "id": "t1",
-      "text": "Outstanding Universal Value",
-      "position": "center",
-      "at": 8.0,
-      "until": 13.5,
-      "size": 26
-    }
-  ]
+  "titles": []
 }

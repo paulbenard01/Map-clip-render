@@ -95,13 +95,5 @@
       "label": "Ashoka's revival"
     }
   ],
-  "titles": [
-    {
-      "id": "t1",
-      "text": "Kalinga, c. 261 BCE",
-      "position": "bottom-left",
-      "at": 0.5,
-      "until": 5.5
-    }
-  ]
+  "titles": []
 }

@@ -194,13 +194,5 @@
       "arrowEnd": true
     }
   ],
-  "titles": [
-    {
-      "id": "t1",
-      "text": "The Buddhist Circuit",
-      "position": "bottom-left",
-      "at": 0.5,
-      "until": 6.0
-    }
-  ]
+  "titles": []
 }

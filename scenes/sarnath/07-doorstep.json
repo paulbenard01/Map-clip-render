@@ -117,20 +117,5 @@
     }
   ],
   "routes": [],
-  "titles": [
-    {
-      "id": "t1",
-      "text": "Lumbini — on India's doorstep",
-      "position": "bottom-left",
-      "at": 0.6,
-      "until": 4.8
-    },
-    {
-      "id": "t2",
-      "text": "Nanhai Academy, Hainan",
-      "position": "bottom-left",
-      "at": 5.6,
-      "until": 9.8
-    }
-  ]
+  "titles": []
 }
