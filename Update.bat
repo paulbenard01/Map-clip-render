@@ -47,11 +47,7 @@ if errorlevel 1 (
 
 echo.
 echo   Checking dependencies...
-REM --no-audit: npm flags a critical advisory against MapLibre 4, which this
-REM project stays on deliberately. It is in MapLibre's HTML popup sanitizer,
-REM a code path this tool never touches (no popups anywhere). See the README
-REM section "On the library version". Run `npm audit` any time to see it.
-call npm install --no-audit
+call npm install
 if errorlevel 1 (
   echo.
   echo   Dependencies failed to update.

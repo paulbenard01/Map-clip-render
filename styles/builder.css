@@ -140,9 +140,6 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 .canvas-frame.tool-active { cursor: crosshair; }
 .canvas-frame.drop-target { box-shadow: 0 0 0 2px var(--accent), 0 12px 40px rgba(0, 0, 0, 0.6); }
 #map { position: absolute; inset: 0; }
-.canvas-frame .maplibregl-ctrl-attrib,
-.canvas-frame .maplibregl-ctrl-logo,
-.canvas-frame .maplibregl-control-container { display: none !important; }
 
 /* Overlay pins are clickable here (they are not on the render page). */
 .canvas-frame #overlay { pointer-events: none; }

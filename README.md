@@ -279,10 +279,12 @@ before it.
 An **orbit** needs no special field: two keyframes with the same `center`
 and `zoom` and different `bearing` values, a few seconds apart, is an orbit.
 
-There's no 3D globe. MapLibre 4 (which this project stays on deliberately,
-see below) has no globe projection — that shipped later. If a true rotating
-globe shot ever becomes a hard requirement, that's a conversation about the
-MapLibre version, not something to fake.
+There's no 3D globe, and `pitch` has no visual effect — the map is a flat
+Equal Earth projection (see "Projection" below), and a flat pseudocylindrical
+projection has no tilt to give it. The field is kept in the schema so a
+scene that sets it doesn't error, but it's a no-op. If a true rotating globe
+shot ever becomes a hard requirement, that's a real rendering-technology
+change, not something to fake.
 
 ### Pin styles
 
@@ -449,25 +451,52 @@ The builder's Render button posts the scene to `POST /api/render`, which
 calls that same function. The UI never captures video itself — a canvas or
 MediaRecorder capture would be real-time and would drift.
 
-The map itself is [MapLibre GL](https://maplibre.org/) (an open-source,
-free fork of Mapbox GL), drawing flat-color country polygons rather than
-photographic tiles. Pins, routes, and titles are drawn as ordinary HTML/SVG
-on top of the map canvas and repositioned every frame, rather than using
-MapLibre's own label/marker system — this is a deliberate choice, not a
-shortcut: it means text rendering doesn't depend on a remote font-glyph
-server (which is the usual reason online map tools need an internet
-connection even for "static" labels), and it gives full control over the
-exact look of pins and captions to match Heritle's own visual style.
+Pins, routes, and titles are drawn as ordinary HTML/SVG on top of the map
+canvas and repositioned every frame, rather than using a map library's own
+label/marker system — this is a deliberate choice, not a shortcut: it means
+text rendering doesn't depend on a remote font-glyph server (which is the
+usual reason online map tools need an internet connection even for "static"
+labels), and it gives full control over the exact look of pins and captions
+to match Heritle's own visual style.
 
-**On the library version:** this pins MapLibre GL to the 4.x line rather
-than the newest 6.x release. MapLibre 6 dropped the plain `<script>`-loadable
-build in favor of ES modules with a separately-loaded worker file, which
-adds real fragility for a tool meant to just run — npm's audit flags a
-critical XSS advisory against versions ≤6.4.0, but that vulnerability is in
-MapLibre's HTML popup sanitizer, a code path this renderer never
-exercises (no popups, no HTML strings passed into MapLibre; all text here
-is plain DOM elements this tool builds itself). Worth knowing about if you
-ever extend this to use MapLibre popups directly.
+### Projection
+
+The map draws in the **Equal Earth** projection — following the UN General
+Assembly's September 2026 "Correct the Map" resolution, which endorsed
+equal-area projections like Equal Earth over Mercator for representing
+relative landmass size (Mercator visibly inflates land the further it is
+from the equator — Greenland reads as roughly Africa-sized under it, though
+Africa is about 14 times larger).
+
+This is a real technology swap, not a setting: `lib/equal-earth-map.js` is a
+from-scratch renderer built on [d3-geo](https://d3js.org/d3-geo) and a 2D
+canvas, implementing just enough of a slippy-map's API (pan, zoom, sources,
+layers) that `lib/scene-view.js` — the file the builder's live preview and
+the CLI's frame-exact export both depend on — didn't need to change at all.
+The project no longer uses MapLibre GL / WebGL for the base map.
+
+Worth knowing about this specifically:
+
+- **Equal Earth isn't conformal and has no tile scheme** — the reason every
+  interactive slippy map (Google Maps, Mapbox, Apple Maps, MapLibre itself)
+  still uses Mercator: it doesn't have a clean, distortion-free way to zoom
+  in tight the way Mercator does. A landmark/city-level shot (zoom 10+)
+  will look increasingly stretched compared to how it would have under
+  Mercator. This is inherent to the projection, not a bug to work around.
+- **`bearing`-driven orbit shots** still work — bearing rotates the canvas
+  itself around its centre, the same flat 2D effect it always was.
+- **Country/land geometry is simplified and viewport-culled** before
+  drawing, once per source rather than per frame. A GPU (what MapLibre
+  used) can re-transform already-tessellated geometry almost for free on
+  every pan/zoom; a CPU walking full-resolution GeoJSON with `d3.geoPath`
+  on every single animated frame cannot, so this is what keeps a 600+-frame
+  render's actual wall-clock time reasonable rather than reprocessing
+  a ~250-country, 100k-point dataset 600 times over.
+- **Terrain reprojection is the one genuinely slow part.** Vector fills stay
+  fast; per-pixel-reprojecting the terrain raster (see "Terrain" above) is
+  CPU-bound and noticeably heavier — mitigated by reprojecting at a capped
+  internal resolution and upscaling, but a terrain-enabled render still
+  takes meaningfully longer than one without.
 
 ## Project layout
 
@@ -479,7 +508,8 @@ update.sh             the same, for Mac and Linux
 builder.html          the editor page
 builder/              its modules (store, canvas, timeline, inspector, tools)
 lib/scene-engine.js   camera/fade/route/duration math — pure functions
-lib/scene-view.js     paints a scene onto a MapLibre map (DOM + SVG overlays)
+lib/equal-earth-map.js  the Equal Earth map renderer (d3-geo + canvas)
+lib/scene-view.js     paints a scene onto the map (DOM + SVG overlays)
 lib/renderer.js       the frame-exact capture loop and ffmpeg encode
 lib/build-basemap.js  builds data/*.geo.json from world-atlas
 lib/build-terrain.js  opt-in: builds data/terrain/ from Natural Earth relief

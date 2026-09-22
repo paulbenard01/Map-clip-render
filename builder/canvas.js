@@ -1,7 +1,7 @@
 /**
- * The editing canvas: an interactive MapLibre map with the scene painted on
- * top by lib/scene-view.js — the same painter the render page uses, so what
- * you see here is what gets captured.
+ * The editing canvas: an interactive EqualEarthMap (lib/equal-earth-map.js)
+ * with the scene painted on top by lib/scene-view.js — the same painter the
+ * render page uses, so what you see here is what gets captured.
  *
  * Editor-only furniture (drag handles, the route `via` handle, ghosts for
  * elements that aren't visible at the current time) is drawn separately, on
@@ -49,7 +49,7 @@ export async function init(els, options) {
   applyAspect(Store.getScene().aspect);
   window.addEventListener("resize", () => applyAspect(Store.getScene().aspect));
 
-  map = new maplibregl.Map({
+  map = new EqualEarthMap({
     container: elements.map,
     style: {
       version: 8,

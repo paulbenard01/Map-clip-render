@@ -40,9 +40,14 @@ think about a shot list — then convert each beat into keyframe timestamps.
       "t": 0,
       "center": [79.5, 22.5],
       "zoom": 3.6,                  // roughly: 1-2 whole continent, 4-6 country,
-                                    // 8-10 city, 12+ landmark
+                                    // 8-10 city, 12+ landmark. The map is Equal
+                                    // Earth (not Mercator) — it has no tile scheme,
+                                    // so very tight landmark zooms look softer/more
+                                    // stretched than they would have under Mercator.
+                                    // That's an inherent projection limit, not a bug.
       "bearing": 0,                 // compass rotation in degrees, optional (default 0)
-      "pitch": 0,                   // tilt in degrees, optional (default 0)
+      "pitch": 0,                   // no visual effect — the map is flat, kept only
+                                    // for schema compatibility (default 0)
       "transition": "ease"          // how the camera ARRIVES here from the previous
                                     // keyframe. Optional, default "ease".
                                     //   "ease"      smooth pan/zoom

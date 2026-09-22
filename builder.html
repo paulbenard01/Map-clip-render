@@ -4,7 +4,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Heritle Scene Builder</title>
-<link rel="stylesheet" href="/node_modules/maplibre-gl/dist/maplibre-gl.css" />
 <link rel="stylesheet" href="/styles/overlay.css" />
 <link rel="stylesheet" href="/styles/builder.css" />
 <!--
@@ -12,7 +11,9 @@
   ES modules (which are deferred) run. Same files the render page loads —
   the preview and the export are painted by one implementation.
 -->
-<script src="/node_modules/maplibre-gl/dist/maplibre-gl.js"></script>
+<script src="/node_modules/d3-array/dist/d3-array.js"></script>
+<script src="/node_modules/d3-geo/dist/d3-geo.js"></script>
+<script src="/lib/equal-earth-map.js"></script>
 <script src="/lib/scene-engine.js"></script>
 <script src="/lib/scene-view.js"></script>
 </head>

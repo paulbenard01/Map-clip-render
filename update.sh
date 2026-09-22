@@ -30,11 +30,7 @@ git pull || {
 }
 
 echo; echo "  Checking dependencies..."
-# --no-audit: npm flags a critical advisory against MapLibre 4, which this
-# project stays on deliberately. It is in MapLibre's HTML popup sanitizer, a
-# code path this tool never touches (no popups anywhere). See the README
-# section "On the library version". Run `npm audit` any time to see it.
-npm install --no-audit || { echo; echo "  Dependencies failed to update."; exit 1; }
+npm install || { echo; echo "  Dependencies failed to update."; exit 1; }
 
 # A no-op when the right browser is already there.
 npx playwright install chromium

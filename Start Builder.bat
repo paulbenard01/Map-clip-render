@@ -24,13 +24,12 @@ if errorlevel 1 (
   exit /b 1
 )
 
-if not exist "node_modules\maplibre-gl\package.json" (
+if not exist "node_modules\d3-geo\package.json" (
   echo.
   echo   First run - setting things up. This takes a few minutes,
   echo   and only happens once.
   echo.
-  REM --no-audit: see the note in Update.bat and the README.
-  call npm install --no-audit
+  call npm install
   if errorlevel 1 (
     echo.
     echo   Setup failed while installing dependencies.
