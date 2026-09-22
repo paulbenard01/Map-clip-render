@@ -39,6 +39,29 @@ function handleClick(lngLat) {
     return true;
   }
 
+  if (state.tool === "zone") {
+    Store.addElement("zone", {
+      id: Store.nextId("zone"),
+      center: lngLat,
+      radius: Engine.DEFAULTS.zoneRadius,
+      at: round(t, 2),
+      until: null,
+      label: null,
+    });
+    Store.setTool("select");
+    return true;
+  }
+
+  if (state.tool === "zoneShape") {
+    // Each click adds a vertex; nothing is committed to the scene until
+    // finishZoneShape() runs (Enter, once there are at least 3 points) — an
+    // irregular region needs several clicks, unlike every other tool here,
+    // which places its element on the very first click.
+    const pending = state.toolState || { points: [] };
+    Store.setToolState({ points: pending.points.concat([lngLat]) });
+    return true;
+  }
+
   if (state.tool === "camera") {
     const view = Canvas.currentView();
     Store.addElement("camera", {
@@ -105,10 +128,15 @@ function updateStatus() {
     select: "",
     pin: "Click the map to drop a pin.",
     camera: "Frame the shot by panning and zooming, then click to place the keyframe.",
+    zone: "Click the map to place a sphere of influence — drag its edge afterward to set the radius.",
     route: toolState ? "Now click the destination." : "Click the route's starting point.",
     radiate: toolState
       ? `Click each destination in turn — ${toolState.count} added. Press Esc or pick another tool when done.`
       : "Click the origin all the routes will share.",
+    zoneShape: toolState && toolState.points.length
+      ? `${toolState.points.length} point${toolState.points.length === 1 ? "" : "s"} placed` +
+        (toolState.points.length >= 3 ? " — press Enter to finish, Esc to cancel." : " — at least 3 needed, keep clicking.")
+      : "Click to place each point of an irregular region, in order.",
   };
   statusEl.textContent = messages[tool] || "";
   statusEl.classList.toggle("active", tool !== "select");
@@ -139,4 +167,23 @@ export function addOrbit(seconds, degrees) {
       transition: "ease",
     });
   });
+}
+
+/**
+ * Commits the in-progress zoneShape polygon (see the "zoneShape" tool
+ * above) to the scene. No-ops below 3 points — a region needs at least a
+ * triangle. Bound to Enter in main.js's keyboard handler.
+ */
+export function finishZoneShape() {
+  const state = Store.getState();
+  if (state.tool !== "zoneShape" || !state.toolState || state.toolState.points.length < 3) return false;
+  Store.addElement("zone", {
+    id: Store.nextId("zone"),
+    points: state.toolState.points,
+    at: round(state.time, 2),
+    until: null,
+    label: null,
+  });
+  Store.setTool("select");
+  return true;
 }

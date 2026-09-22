@@ -149,10 +149,11 @@ export function listFor(kind) {
     camera: s.camera,
     title: s.titles,
     highlight: s.countryHighlights,
+    zone: s.zones,
   }[kind] || null;
 }
 
-const PLURAL = { pin: "pins", route: "routes", camera: "camera", title: "titles", highlight: "countryHighlights" };
+const PLURAL = { pin: "pins", route: "routes", camera: "camera", title: "titles", highlight: "countryHighlights", zone: "zones" };
 
 /** Edits one element by id. Used by nearly every inspector field. */
 export function updateElement(kind, id, changes, opts) {

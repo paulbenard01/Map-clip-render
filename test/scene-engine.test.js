@@ -367,6 +367,66 @@ function testEasedFadeAndRouteDrawStillAnchorCorrectly() {
 
 testNewEasingCurves();
 testCameraSmoothAndOrganicTransitions();
+function testZoneCircle() {
+  const s = E.normalizeScene({ zones: [{ center: [80, 25], radius: 300, label: "Test", at: 1, until: 5 }] });
+  const z = s.zones[0];
+  assert.strictEqual(z.shape, "circle");
+  assert.strictEqual(z.points.length, 0);
+
+  const ring = E.zoneCircle(z.center, z.radius, 32);
+  assert.deepStrictEqual(ring[0], ring[ring.length - 1], "ring is closed");
+  // The northernmost point should sit ~300km (radius) due north of centre —
+  // rough sanity check via distanceKm, not an exact equality (great-circle
+  // math vs. a simple lat delta diverge slightly).
+  close(E.distanceKm(z.center, ring[0]), 300, 2, "north point is ~radius away:");
+
+  const at = E.zonesAt(s, 3);
+  assert.strictEqual(at[0].opacity, 1, "fully faded in mid-window");
+  assert.deepStrictEqual(at[0].ring[0], at[0].ring[at[0].ring.length - 1], "zonesAt's ring is also closed");
+  console.log("  ok  circle zones compute a correct geodesic ring");
+}
+
+function testZonePolygon() {
+  const points = [[80, 20], [85, 20], [85, 25], [80, 25]];
+  const s = E.normalizeScene({ zones: [{ points, label: "Region", at: 0, until: null }] });
+  const z = s.zones[0];
+  assert.strictEqual(z.shape, "polygon");
+  assert.deepStrictEqual(z.points, points);
+  close(z.center[0], 82.5, 1e-9, "centroid lng:");
+  close(z.center[1], 22.5, 1e-9, "centroid lat:");
+
+  const ring = E.zoneRing(z);
+  assert.strictEqual(ring.length, points.length + 1, "closed with one extra point");
+  assert.deepStrictEqual(ring[ring.length - 1], ring[0]);
+
+  // Fewer than 3 points isn't a polygon — falls back to a (degenerate but
+  // harmless) circle rather than crashing on an unclosable shape.
+  const tooFew = E.normalizeScene({ zones: [{ points: [[0, 0], [1, 1]], center: [0, 0], radius: 50 }] });
+  assert.strictEqual(tooFew.zones[0].shape, "circle");
+  console.log("  ok  polygon zones compute their centroid and a closed ring");
+}
+
+function testZoneRoundTrip() {
+  const circle = E.normalizeScene({ zones: [{ center: [10, 10], radius: 250, color: "#ff0000", label: "C" }] });
+  const c1 = E.serializeScene(circle).zones[0];
+  assert.deepStrictEqual(c1.center, [10, 10]);
+  assert.strictEqual(c1.radius, 250);
+  assert.strictEqual(c1.points, undefined, "circle export carries no points array");
+
+  const poly = E.normalizeScene({ zones: [{ points: [[0, 0], [2, 0], [1, 2]], label: "P" }] });
+  const p1 = E.serializeScene(poly).zones[0];
+  assert.deepStrictEqual(p1.points, [[0, 0], [2, 0], [1, 2]]);
+  assert.strictEqual(p1.center, undefined, "polygon export carries no derived centre");
+  assert.strictEqual(p1.radius, undefined, "polygon export carries no meaningless radius");
+
+  const twice = E.normalizeScene(E.serializeScene(poly));
+  assert.deepStrictEqual(twice.zones[0], E.normalizeScene(poly).zones[0], "polygon zone round-trips exactly");
+  console.log("  ok  circle and polygon zones each serialize only their own relevant fields");
+}
+
+testZoneCircle();
+testZonePolygon();
+testZoneRoundTrip();
 testEasedFadeAndRouteDrawStillAnchorCorrectly();
 testNormalizeIsIdempotent();
 console.log("all scene-engine tests passed");

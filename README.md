@@ -239,6 +239,13 @@ broke something.
     { "iso": "CHN", "color": "#c0392b", "at": 8.0, "until": null, "fade": 0.6 }
   ],
 
+  "zones": [
+    // A "sphere of influence" — a region defined by a centre and radius,
+    // not tied to any country's border. Drawn as a hatched fill with a
+    // dashed boundary, visually distinct from a solid countryHighlights fill.
+    { "center": [95.0, 22.0], "radius": 500, "color": "#e8c14c", "label": "Regional influence", "at": 2.0, "until": null, "fade": 0.6 }
+  ],
+
   "titles": [
     {
       "text": "Sarnath, India",
@@ -285,6 +292,27 @@ MapLibre version, not something to fake.
 | `"square"` / `"rounded-square"` | Same, squared off. |
 | `"badge"` | A small marker on the exact coordinate, with the photo in a card beside it. Use when several pins would otherwise overlap. |
 | `"polaroid"` | Photo print with a thick cream border, a slight tilt and a heavy shadow. |
+
+### Zones (sphere of influence)
+
+Two shapes, chosen by which fields you give it:
+
+- **Circle** — `center` + `radius` (km): a geodesic circle, for a simple
+  radius of influence.
+- **Polygon** — `points`, an array of three or more `[lng, lat]` pairs, in
+  order: an arbitrary shape, for a region that isn't round — a contested
+  border strip, a cultural corridor, a coastline. Give `points` and `center`/
+  `radius` are ignored.
+
+Unlike `countryHighlights`, neither shape is tied to a border. `label` is
+optional; the fill is a diagonal hatch pattern (distinct from a country
+highlight's solid fill), with a dashed boundary line, both in `color` (or
+the style preset's accent colour if omitted).
+
+In the builder: the **Zone (circle)** tool places one on a single click,
+then drag its edge handle to resize. The **Zone (shape)** tool places a
+vertex per click — at least 3 — then press **Enter** to finish, **Esc** to
+cancel; drag any vertex afterward to reshape it.
 
 ### Country highlights
 

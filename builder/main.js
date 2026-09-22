@@ -455,6 +455,10 @@ function wireKeyboard() {
     if (typing) return;
 
     if (e.key === " ") { e.preventDefault(); togglePlayback(); }
+    else if (e.key === "Enter" && Store.getState().tool === "zoneShape") {
+      e.preventDefault();
+      if (Tools.finishZoneShape()) { syncToolButtons(); Canvas.render(); }
+    }
     else if (e.key === "Escape") { Store.setTool("select"); syncToolButtons(); }
     else if (e.key === "Delete" || e.key === "Backspace") {
       const sel = Store.getSelected();

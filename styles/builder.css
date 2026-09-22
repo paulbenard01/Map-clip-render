@@ -22,6 +22,7 @@
   --track-routes: #6a9a6f;
   --track-highlights: #8a6aa8;
   --track-titles: #a85f6a;
+  --track-zones: #c99a4a;
   --radius: 5px;
   --toolbar-h: 52px;
   --timeline-h: 260px;
@@ -200,6 +201,18 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 .handle.via-handle.via-set { background: var(--accent); }
 .handle.camera-handle { border-radius: 2px; transform: rotate(45deg); }
 .handle.camera-handle .handle-label { transform: rotate(-45deg); }
+.handle.zone-radius-handle { background: var(--track-zones); box-shadow: 0 0 0 1px var(--track-zones), 0 2px 8px rgba(0,0,0,0.6); }
+.zone-shape-preview { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.zone-shape-preview path { fill: none; stroke: var(--track-zones); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.zone-shape-point {
+  position: absolute;
+  width: 9px; height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  background: var(--track-zones);
+  border: 1.5px solid #17181a;
+  pointer-events: none;
+}
 
 /* ------------------------------------------------------------ inspector */
 .inspector {
@@ -218,6 +231,7 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
   color: #17181a; background: var(--accent); padding: 2px 6px; border-radius: 3px; font-weight: 700;
 }
 .insp-id { flex: 1; }
+.field-note { color: #5f6673; font-size: 10px; margin: -4px 0 10px; }
 .insp-section { margin: 16px 0 8px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; }
 .field { margin-bottom: 10px; }
 .field-group { display: contents; }
@@ -286,6 +300,7 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 .tl-routes { background: var(--track-routes); }
 .tl-highlights { background: var(--track-highlights); }
 .tl-titles { background: var(--track-titles); }
+.tl-zones { background: var(--track-zones); }
 .tl-label { padding: 0 8px; font-size: 11px; color: #121316; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
 /* The lighter head of a route block is the draw-on portion. */
 .tl-draw { position: absolute; left: 0; top: 0; bottom: 0; background: rgba(255, 255, 255, 0.28); pointer-events: none; }

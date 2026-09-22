@@ -102,6 +102,15 @@ think about a shot list — then convert each beat into keyframe timestamps.
     { "iso": "CHN", "color": "#c0392b", "at": 8, "until": null, "fade": 0.6 }
   ],
 
+  "zones": [
+    // A "sphere of influence" — not tied to a country border. Hatched fill,
+    // dashed boundary. Two shapes:
+    //   circle:  give "center" + "radius" (km)
+    //   polygon: give "points" — three or more [lng,lat] pairs, in order —
+    //            for a shape that isn't round (a contested strip, a corridor)
+    { "center": [95.0, 22.0], "radius": 500, "color": "#e8c14c", "label": "Regional influence", "at": 2.0, "until": null }
+  ],
+
   "titles": [
     {
       "text": "Sarnath, India",

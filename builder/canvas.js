@@ -188,10 +188,46 @@ function onMapMove(e) {
  * anything selected that isn't visible at the current time (otherwise
  * selecting a pin that hasn't appeared yet looks like nothing happened).
  */
+/**
+ * The polygon being drawn by the "zoneShape" tool, before it's committed to
+ * the scene: a dashed outline connecting the points placed so far, plus a
+ * small marker at each one. Lives in the handle layer like everything else
+ * editor-only, and redraws automatically — every store change (including a
+ * click adding a point) already triggers render() -> drawHandles().
+ */
+function drawZoneShapeInProgress() {
+  const state = Store.getState();
+  if (state.tool !== "zoneShape" || !state.toolState || !state.toolState.points.length) return;
+  const points = state.toolState.points;
+
+  if (points.length > 1) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "zone-shape-preview");
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    const d = points.map((pt, i) => {
+      const p = map.project(pt);
+      return (i === 0 ? "M" : "L") + p.x.toFixed(1) + "," + p.y.toFixed(1);
+    }).join(" ");
+    path.setAttribute("d", d);
+    svg.appendChild(path);
+    handleLayer.appendChild(svg);
+  }
+
+  points.forEach(function (pt) {
+    const p = map.project(pt);
+    const dot = document.createElement("div");
+    dot.className = "zone-shape-point";
+    dot.style.left = p.x + "px";
+    dot.style.top = p.y + "px";
+    handleLayer.appendChild(dot);
+  });
+}
+
 function drawHandles() {
   syncTitleSelection();
   if (!handleLayer || !map) return;
   handleLayer.innerHTML = "";
+  drawZoneShapeInProgress();
 
   const selected = Store.getSelected();
   if (!selected) return;
@@ -211,6 +247,18 @@ function drawHandles() {
       element.via ? "via" : "bend");
   } else if (kind === "camera") {
     addHandle(element.center, "camera-handle", { kind: "camera", id: element.id, role: "center" }, "t=" + element.t);
+  } else if (kind === "zone" && element.shape === "polygon") {
+    // One handle per vertex — a polygon has no single "radius" to grab,
+    // its shape *is* its points.
+    element.points.forEach(function (pt, i) {
+      addHandle(pt, "zone-handle", { kind: "zone", id: element.id, role: "point" + i }, "");
+    });
+  } else if (kind === "zone") {
+    addHandle(element.center, "zone-handle", { kind: "zone", id: element.id, role: "center" }, element.label || "zone");
+    // The radius handle sits on the circle's northernmost point — drag it
+    // toward or away from the centre to resize.
+    var edge = Engine.zoneCircle(element.center, element.radius, 4)[0];
+    addHandle(edge, "zone-handle zone-radius-handle", { kind: "zone", id: element.id, role: "radius" }, Math.round(element.radius) + " km");
   }
 }
 
@@ -295,6 +343,24 @@ function installHandleDragging() {
       if (dragging.role === "from") Store.updateElement("route", dragging.id, { from: coord });
       else if (dragging.role === "to") Store.updateElement("route", dragging.id, { to: coord });
       else Store.updateElement("route", dragging.id, { via: coord });
+    } else if (dragging.kind === "zone") {
+      if (dragging.role === "center") {
+        Store.updateElement("zone", dragging.id, { center: coord });
+      } else if (dragging.role === "radius") {
+        const zone = Store.findElement("zone", dragging.id);
+        if (zone) {
+          const radius = Math.max(5, Math.round(Engine.distanceKm(zone.center, coord)));
+          Store.updateElement("zone", dragging.id, { radius });
+        }
+      } else if (dragging.role.startsWith("point")) {
+        const zone = Store.findElement("zone", dragging.id);
+        const index = Number(dragging.role.slice(5));
+        if (zone && zone.points) {
+          const points = zone.points.slice();
+          points[index] = coord;
+          Store.updateElement("zone", dragging.id, { points });
+        }
+      }
     }
   });
 

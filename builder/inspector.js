@@ -49,6 +49,7 @@ export function render() {
     camera: cameraFields,
     title: titleFields,
     highlight: highlightFields,
+    zone: zoneFields,
   })[kind](body, element);
   root.appendChild(body);
 
@@ -221,6 +222,22 @@ function highlightFields(body, hl) {
     "e.g. IND, CHN, VNM — matches the id in data/countries.geo.json"));
   body.appendChild(colorField("Colour", hl.color, presetColor("landFocus"), (v) => set("highlight", hl, { color: v })));
   body.appendChild(timingFields("highlight", hl));
+}
+
+// -------------------------------------------------------------- zones
+function zoneFields(body, zone) {
+  if (zone.shape === "polygon") {
+    body.appendChild(el("p", { className: "field-note" },
+      `An irregular region — ${zone.points.length} points. Drag any vertex on the canvas to reshape it.`));
+  } else {
+    body.appendChild(coordField("Center", zone.center, (v) => set("zone", zone, { center: v })));
+    body.appendChild(numberField("Radius (km)", zone.radius, { min: 5, max: 5000, step: 10 }, (v) => set("zone", zone, { radius: v })));
+    body.appendChild(el("p", { className: "field-note" },
+      "A region, not a country — drag the handles on the canvas, or set exact numbers here."));
+  }
+  body.appendChild(colorField("Colour", zone.color, presetColor("accent"), (v) => set("zone", zone, { color: v })));
+  body.appendChild(textField("Label", zone.label || "", (v) => set("zone", zone, { label: v || null })));
+  body.appendChild(timingFields("zone", zone));
 }
 
 // ----------------------------------------------------------------- parts

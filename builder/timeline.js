@@ -16,6 +16,7 @@ const TRACKS = [
   { key: "pins", label: "Pins", kind: "pin" },
   { key: "routes", label: "Routes", kind: "route" },
   { key: "highlights", label: "Countries", kind: "highlight" },
+  { key: "zones", label: "Zones", kind: "zone" },
   { key: "titles", label: "Titles", kind: "title" },
 ];
 
