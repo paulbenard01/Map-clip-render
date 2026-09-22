@@ -7,6 +7,7 @@
  *   node video/render.js sarnath --from 60 --to 75    just a slice
  *   node video/render.js sarnath --draft              540x960, faster, for timing checks
  *   node video/render.js sarnath --landscape          1920x1080 for YouTube, output/sarnath-landscape.mp4
+ *   node video/render.js sarnath --thumbnail          the scene's thumbnail card, output/thumbnails/ (with --landscape: 1280x720 JPG too)
  *
  * The composition is a pure function of time (window.__setFrame(t)), so the
  * frame range is split across several headless browsers that each pipe
@@ -34,6 +35,7 @@ function parseArgs(argv) {
     else if (k === "--stills") a.stills = argv[++i].split(",").map(Number);
     else if (k === "--draft") a.draft = true;
     else if (k === "--landscape") a.landscape = true;
+    else if (k === "--thumbnail") a.thumbnail = true;
     else if (!k.startsWith("--")) a.name = k;
   }
   return a;
@@ -71,7 +73,7 @@ function ffmpegSegment(out, fps, draft, landscape) {
 
 async function main() {
   const a = parseArgs(process.argv.slice(2));
-  if (!a.name) { console.error("usage: node video/render.js <composition> [--stills t,t] [--from s --to s] [--draft] [--landscape]"); process.exit(1); }
+  if (!a.name) { console.error("usage: node video/render.js <composition> [--stills t,t] [--from s --to s] [--draft] [--landscape] [--thumbnail]"); process.exit(1); }
   const comp = path.join(__dirname, a.name, "index.html");
   if (!fs.existsSync(comp)) { console.error("no composition at " + comp); process.exit(1); }
   for (const f of ["data/countries.geo.json", "data/video/terrain.json"]) {
@@ -89,6 +91,24 @@ async function main() {
   fs.mkdirSync(outDir, { recursive: true });
 
   try {
+    if (a.thumbnail) {
+      const dir = path.join(outDir, "thumbnails");
+      fs.mkdirSync(dir, { recursive: true });
+      const page = await openPage(browser, url, 1, a.landscape);
+      if (!(await page.evaluate("typeof window.__thumbnail === 'function'"))) throw new Error(`${a.name}/scene.js defines no window.__thumbnail`);
+      await page.evaluate("window.__thumbnail()");
+      const png = path.join(dir, `${tagName}.png`);
+      fs.writeFileSync(png, await page.screenshot({ type: "png" }));
+      // A JPEG next to it: 1280x720 for a YouTube thumbnail, full size for a portrait cover.
+      const jpg = png.replace(/\.png$/, ".jpg");
+      await new Promise((res, rej) => {
+        const ff = spawn("ffmpeg", ["-y", "-loglevel", "error", "-i", png, ...(a.landscape ? ["-vf", "scale=1280:720:flags=lanczos"] : []), "-q:v", "2", jpg], { stdio: "inherit" });
+        ff.on("close", (c) => (c === 0 ? res() : rej(new Error("ffmpeg exited " + c))));
+      });
+      console.log(png + "\n" + jpg);
+      return;
+    }
+
     if (a.stills) {
       const dir = path.join(outDir, "stills", tagName);
       fs.mkdirSync(dir, { recursive: true });

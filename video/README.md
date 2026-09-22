@@ -60,6 +60,15 @@ layout (photos side by side, a title beside its photo), the item takes a
 `land: { x, y, k }` option in landscape pixels, `k` being its drawing scale.
 The portrait render ignores `land`.
 
+```
+node video/render.js sarnath --landscape --thumbnail   # YouTube: output/thumbnails/sarnath-landscape.jpg (1280x720)
+node video/render.js sarnath --thumbnail               # Shorts/TikTok cover: output/thumbnails/sarnath.jpg (1080x1920)
+```
+
+The thumbnail is whatever the scene's `window.__thumbnail()` sets up: in the
+Sarnath short, the "geopolitics of Buddhism" frame with the Heritle mark and a
+UNESCO · 2026 tag in place of the subtitles.
+
 Every frame is a pure function of time, so renders are identical every run
 and the frame range is split across several headless browsers in parallel.
 `video/tools/contact-sheet.js out.png a.png b.png ...` tiles stills for review.

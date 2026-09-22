@@ -124,5 +124,18 @@ svg.layer { overflow: visible; }
 .landscape #end img { width: 380px; }
 .landscape #end .word { font-size: 68px; margin-top: 40px; }
 
+/* ---------- thumbnail card (render.js --thumbnail) ---------- */
+#thumb { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+#thumb .brand { position: absolute; top: 150px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 30px; }
+#thumb .brand img { width: 128px; height: auto; filter: drop-shadow(0 6px 24px rgba(0,0,0,.6)); }
+#thumb .brand span { font-family: "Playfair"; font-weight: 800; font-size: 66px; letter-spacing: .16em; color: var(--gold); text-shadow: 0 4px 24px rgba(0,0,0,.7); }
+#thumb .title { position: static; font-size: 132px; line-height: 1.02; width: 1000px; }
+#thumb .tag { position: static; margin-top: 56px; font-size: 54px; padding: 18px 30px 16px; box-shadow: 0 16px 40px rgba(0,0,0,.5); }
+.landscape #thumb .brand { top: 64px; }
+.landscape #thumb .brand img { width: 104px; }
+.landscape #thumb .brand span { font-size: 56px; }
+.landscape #thumb .title { font-size: 168px; width: 1700px; }
+.landscape #thumb .tag { margin-top: 48px; }
+
 #vignette { background: radial-gradient(ellipse 85% 70% at 50% 45%, rgba(0,0,0,0) 55%, rgba(4,8,18,.62) 100%); }
 #fx { mix-blend-mode: overlay; opacity: .16; }

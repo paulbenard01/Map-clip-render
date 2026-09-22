@@ -524,6 +524,20 @@
     },
   });
 
+  // ---------- thumbnail: the title frame over the map, with the Heritle mark ----------
+  window.__thumbnail = async () => {
+    V.setFrame(15.1);
+    V.layers.subs.style.display = "none";
+    V.layers.text.style.display = "none";
+    const card = V.el("layer", V.stage, `
+      <div class="brand"><img src="../brand/heritle-logo-white.svg" alt=""><span>HERITLE</span></div>
+      <div class="title serif"><span class="w">The</span> <span class="w">geopolitics</span><br><span class="w">of</span> <span class="w hl">Buddhism</span></div>
+      <div class="tag gold">UNESCO · 2026</div>`);
+    card.id = "thumb";
+    await V.loadImage("../brand/heritle-logo-white.svg");
+    await V.ready();
+  };
+
   // ---------- go ----------
   M.cams.sort((a, b) => a[0] - b[0]);
   M.alpha.push([END, 0]);
