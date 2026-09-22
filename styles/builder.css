@@ -255,6 +255,19 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
   padding: 8px 10px;
   margin: -4px 0 10px;
 }
+.insp-suggestion {
+  font-size: 11px;
+  line-height: 1.5;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  margin: -4px 0 12px;
+}
+.insp-suggestion p { margin-bottom: 6px; color: var(--muted); }
+.preset-field { margin-bottom: 14px; }
+.preset-field select { width: 100%; color: var(--muted); }
 .insp-actions { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); }
 
 /* ------------------------------------------------------------- timeline */

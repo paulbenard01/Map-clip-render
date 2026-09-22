@@ -10,6 +10,7 @@
 import * as Store from "./store.js";
 import * as Canvas from "./canvas.js";
 import { openImagePicker } from "./images.js";
+import { PRESETS_BY_KIND } from "./presets.js";
 
 const Engine = window.SceneEngine;
 
@@ -77,6 +78,15 @@ function header(kind, element) {
 
 // ------------------------------------------------------------------ pins
 function pinFields(body, pin) {
+  body.appendChild(presetPicker("pin", pin));
+  const crowded = nearbyPins(pin);
+  if (crowded.length && pin.style !== "badge") {
+    body.appendChild(suggestion(
+      `${crowded.length} other pin${crowded.length === 1 ? " sits" : "s sit"} close by at this zoom — badge style keeps labels legible instead of overlapping photos.`,
+      "Switch to badge",
+      () => set("pin", pin, { style: "badge", size: Math.min(pin.size, 90) })
+    ));
+  }
   body.appendChild(coordField("Position", pin.center, (v) => set("pin", pin, { center: v })));
   body.appendChild(timingFields("pin", pin));
 
@@ -118,6 +128,15 @@ function pinFields(body, pin) {
 
 // ---------------------------------------------------------------- routes
 function routeFields(body, route) {
+  body.appendChild(presetPicker("route", route));
+  const longHaul = Engine.distanceKm(route.from, route.to);
+  if (route.curve === "straight" && longHaul > 3000) {
+    body.appendChild(suggestion(
+      `This is a ${Math.round(longHaul).toLocaleString()}km hop — a straight line will visibly cut across the curvature at this distance.`,
+      "Use greatCircle",
+      () => set("route", route, { curve: "greatCircle" })
+    ));
+  }
   body.appendChild(coordField("From", route.from, (v) => set("route", route, { from: v })));
   body.appendChild(coordField("To", route.to, (v) => set("route", route, { to: v })));
 
@@ -196,6 +215,7 @@ function cameraFields(body, kf) {
 
 // ---------------------------------------------------------------- titles
 function titleFields(body, title) {
+  body.appendChild(presetPicker("title", title));
   body.appendChild(textField("Text", title.text, (v) => set("title", title, { text: v })));
 
   // The five named positions are the quick option; "Custom" is what you get
@@ -226,6 +246,7 @@ function highlightFields(body, hl) {
 
 // -------------------------------------------------------------- zones
 function zoneFields(body, zone) {
+  body.appendChild(presetPicker("zone", zone));
   if (zone.shape === "polygon") {
     body.appendChild(el("p", { className: "field-note" },
       `An irregular region — ${zone.points.length} points. Drag any vertex on the canvas to reshape it.`));
@@ -367,6 +388,52 @@ function colorField(label, value, fallback, onChange) {
 
 function sectionLabel(text, hint) {
   return el("div", { className: "insp-section" }, text, hint ? el("span", { className: "hint" }, hint) : null);
+}
+
+/**
+ * A one-click style bundle for the selected element's kind — a starting
+ * point, not a locked-in choice; every field it sets is still an ordinary
+ * field right below, free to adjust afterward. Deliberately never touches
+ * position, timing, text or id — picking a preset only ever changes how
+ * something looks, never where or when it is.
+ */
+function presetPicker(kind, element) {
+  const options = PRESETS_BY_KIND[kind];
+  if (!options) return null;
+  const sel = el("select", {
+    onchange: (e) => {
+      const preset = options.find((p) => p.key === e.target.value);
+      if (preset) set(kind, element, preset.apply);
+      e.target.value = ""; // a preset is an action, not a persistent field
+    },
+  }, el("option", { value: "" }, "Apply a preset…"), ...options.map((p) => el("option", { value: p.key }, p.name)));
+  return el("div", { className: "field preset-field" }, sel);
+}
+
+/** A short, dismissable suggestion — never blocking, just a one-click fix. */
+function suggestion(text, actionLabel, onApply) {
+  return el("div", { className: "insp-suggestion" },
+    el("p", {}, text),
+    actionLabel ? button(actionLabel, onApply) : null
+  );
+}
+
+/**
+ * Other pins close enough on screen, at the current view, that their
+ * markers would visually crowd — a fixed geographic radius wouldn't work
+ * here, since the same real-world distance reads as huge or tiny depending
+ * on zoom; what actually matters is how close they land on screen.
+ */
+function nearbyPins(pin) {
+  const map = Canvas.getMap();
+  if (!map) return [];
+  const here = map.project(pin.center);
+  const threshold = Math.max(50, pin.size * 0.6);
+  return Store.getScene().pins.filter((other) => {
+    if (other.id === pin.id) return false;
+    const p = map.project(other.center);
+    return Math.hypot(p.x - here.x, p.y - here.y) < threshold;
+  });
 }
 
 function presetColor(key) {

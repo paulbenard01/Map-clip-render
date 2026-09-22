@@ -373,6 +373,24 @@ node render.js --scene <scene.json> [options]
 
 Default full-quality resolutions: 1080x1920 for 9:16, 1920x1080 for 16:9.
 
+## Style presets and suggestions
+
+Every element's inspector panel opens with an **Apply a preset…** dropdown —
+a one-click style bundle (a route as a dashed arced "flight path", a title as
+a bold lower-third, a pin as a polaroid) to start from rather than setting
+five fields by hand. A preset only ever changes *look*: position, timing,
+text and id are never touched.
+
+Two contextual suggestions appear when they're actually relevant, each with
+a one-click fix, and disappear once no longer applicable:
+
+- **A pin with others crowded close by on screen** (at the current view, not
+  a fixed real-world distance — the same distance reads as huge or tiny
+  depending on zoom) suggests switching to badge style.
+- **A straight route over a genuinely long haul** (>3,000km) suggests
+  `greatCircle`, since a flat line visibly cuts across the curvature at
+  that distance.
+
 ## Label overlap
 
 Labels that would land on top of each other — two pins close together, a
