@@ -99,6 +99,7 @@ function wireToolbar() {
   $("#aspectPicker").onchange = (e) => Store.update((d) => { d.aspect = e.target.value; });
   $("#fpsInput").onchange = (e) => Store.update((d) => { d.fps = Number(e.target.value) || 30; });
   $("#durationInput").onchange = (e) => Store.update((d) => { d.duration = Number(e.target.value) || undefined; });
+  $("#terrainToggle").onchange = (e) => Store.update((d) => { d.terrain = e.target.checked; });
   $("#projectName").onchange = (e) => Store.setProjectName(e.target.value.trim() || "untitled");
 
   document.querySelectorAll("[data-tool]").forEach((btn) => {
@@ -198,6 +199,7 @@ function refreshMeta() {
   $("#aspectPicker").value = scene.aspect;
   $("#fpsInput").value = scene.fps;
   $("#durationInput").value = round(Engine.computeDuration(scene), 2);
+  $("#terrainToggle").checked = !!scene.terrain;
   if ($("#projectName") !== document.activeElement) $("#projectName").value = state.projectName;
   $("#undoBtn").disabled = !Store.canUndo();
   $("#redoBtn").disabled = !Store.canRedo();

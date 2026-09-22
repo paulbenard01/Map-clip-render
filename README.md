@@ -192,6 +192,8 @@ broke something.
   "style": "dark-navy",      // a key from styles/presets.json
   "fps": 30,
   "duration": 22,            // optional — auto-computed from content if omitted
+  "terrain": false,          // optional — real relief instead of flat land colour,
+                              // see "Terrain" below. Needs a one-time opt-in build step.
 
   "camera": [
     // Keyframes the camera moves between. `t` is seconds from the start.
@@ -325,6 +327,40 @@ written before timed highlights existed render exactly as they did. A scene
 using it round-trips through the builder unchanged. Prefer
 `countryHighlights` for anything new.
 
+### Terrain
+
+`"terrain": true` swaps the flat land colour for a real relief image —
+visible mountain ranges, vegetation vs. desert tinting — instead of the
+usual solid fill. It's opt-in and off by default; nothing about it changes
+if you never turn it on.
+
+It needs a one-time local build step, because the asset is genuinely big
+and this project's whole point is rendering offline without live map
+services:
+
+```
+npm install sharp     # a native dependency, only needed for this step
+npm run build-terrain  # downloads ~143MB, converts it, keeps a ~600KB-2MB JPEG
+```
+
+That fetches Natural Earth's public-domain cross-blended hypsometric relief
+once from their S3 bucket, converts it to `data/terrain/relief.jpg` +
+`data/terrain/bounds.json`, and deletes the large intermediate files. Nothing
+is fetched at render time — same rule as the country/land data already
+committed to `data/`. If you haven't run the build step, `"terrain": true`
+is simply ignored (with a console warning) rather than failing the render.
+
+Worth knowing before turning it on:
+- It's a single static image, not a tile pyramid, so it doesn't get sharper
+  the further you zoom in — a landmark-level shot will still show it
+  blurred past its native resolution.
+- The image's own colours (real ocean and land tones) show through, rather
+  than the active style preset's palette — turning it on changes the overall
+  look of the clip, not just the terrain texture.
+- Land/country fills are drawn semi-transparent over it so borders and
+  highlights stay legible; the toggle is in the builder's toolbar, next to
+  Style and Ratio.
+
 ### Pins: image requirements
 
 Any JPG or PNG works. In the default circle style the *center* of the image
@@ -451,6 +487,7 @@ lib/scene-engine.js   camera/fade/route/duration math — pure functions
 lib/scene-view.js     paints a scene onto a MapLibre map (DOM + SVG overlays)
 lib/renderer.js       the frame-exact capture loop and ffmpeg encode
 lib/build-basemap.js  builds data/*.geo.json from world-atlas
+lib/build-terrain.js  opt-in: builds data/terrain/ from Natural Earth relief
 lib/image-search.js   Wikimedia Commons + Openverse search and import
 map.html              the headless page the renderer screenshots
 render.js             the CLI

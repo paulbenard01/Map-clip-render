@@ -5,6 +5,7 @@
   "description": "Renders map-animation video clips from a scene JSON, plus a browser-based visual scene builder.",
   "scripts": {
     "build-basemap": "node lib/build-basemap.js",
+    "build-terrain": "node lib/build-terrain.js",
     "builder": "node server.js",
     "render": "node render.js",
     "test": "node test/scene-engine.test.js && node test/image-search.test.js"

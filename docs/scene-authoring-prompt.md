@@ -33,6 +33,10 @@ think about a shot list — then convert each beat into keyframe timestamps.
   "style": "dark-navy",             // "dark-navy" | "muted-editorial" | "mono-contrast"
   "fps": 30,
   "duration": 22,                   // total seconds — always set this explicitly
+  "terrain": false,                 // optional — real relief instead of flat land
+                                    // colour. Needs a one-time `npm run build-terrain`
+                                    // first; leave this out unless the person asks
+                                    // for terrain/topography specifically.
 
   "camera": [
     // Keyframes the camera moves between, in order of "t".

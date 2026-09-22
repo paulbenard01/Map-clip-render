@@ -76,7 +76,16 @@
       fetch("/data/graticule.geo.json").then((r) => r.json()),
     ]);
 
-    SceneView.installBasemap(map, preset, { land, countries, graticule });
+    let terrain = null;
+    if (normalized.terrain) {
+      terrain = await fetch("/data/terrain/bounds.json")
+        .then((r) => (r.ok ? r.json() : null))
+        .then((b) => (b ? { url: "/data/terrain/relief.jpg", coordinates: b.coordinates } : null))
+        .catch(() => null);
+      if (!terrain) console.warn('Scene has "terrain": true but data/terrain/ hasn\'t been built — run `npm run build-terrain`. Rendering without it.');
+    }
+
+    SceneView.installBasemap(map, preset, { land, countries, graticule, terrain });
 
     stage = SceneView.createStage({
       map,

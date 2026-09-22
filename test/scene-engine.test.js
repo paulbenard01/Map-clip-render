@@ -424,9 +424,22 @@ function testZoneRoundTrip() {
   console.log("  ok  circle and polygon zones each serialize only their own relevant fields");
 }
 
+function testTerrainFlagRoundTrips() {
+  const off = E.normalizeScene({});
+  assert.strictEqual(off.terrain, false, "terrain defaults off");
+  assert.strictEqual(E.serializeScene(off).terrain, undefined, "off doesn't clutter the export");
+
+  const on = E.normalizeScene({ terrain: true });
+  assert.strictEqual(on.terrain, true);
+  assert.strictEqual(E.serializeScene(on).terrain, true);
+  assert.strictEqual(E.normalizeScene(E.serializeScene(on)).terrain, true, "round-trips exactly");
+  console.log("  ok  the terrain flag defaults off and round-trips");
+}
+
 testZoneCircle();
 testZonePolygon();
 testZoneRoundTrip();
 testEasedFadeAndRouteDrawStillAnchorCorrectly();
+testTerrainFlagRoundTrips();
 testNormalizeIsIdempotent();
 console.log("all scene-engine tests passed");
