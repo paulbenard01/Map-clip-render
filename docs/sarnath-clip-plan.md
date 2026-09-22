@@ -4,14 +4,14 @@ A beat-by-beat pass over the 4–5 minute script, marking every place the
 renderer can carry a point, and what each clip is actually doing.
 
 Nine clips, 165 seconds of map footage in total, all 9:16 dark-navy at 30fps
-to match the rest of the series. Each is a separate scene file in `scenes/`,
-so they can be re-timed independently as the edit moves.
+to match the rest of the series. Each is a separate scene file in
+`scenes/sarnath/`, so they can be re-timed independently as the edit moves.
 
 Open any of them with **Import → From scenes/** in the builder, or render one
 straight from the command line:
 
 ```
-node render.js --scene scenes/sarnath-04-circuit.json --draft
+node render.js --scene scenes/sarnath/04-circuit.json --draft
 ```
 
 ---
@@ -20,15 +20,15 @@ node render.js --scene scenes/sarnath-04-circuit.json --draft
 
 | # | Script beat | Scene file | What the map is doing |
 |---|---|---|---|
-| 1 | 0:12 — "This is Sarnath, just outside Varanasi" | `sarnath-01-locate` | Wide on northern India, then a hard push onto the site. Establishes where before the history starts. |
-| 2 | 0:30 — Ashoka after Kalinga | `sarnath-02-kalinga` | Opens on the battlefield, pulls back, draws north to Sarnath. The arc *is* the argument: conflict in one place, revival in another. |
-| 3 | 1:36 — "transcends national boundaries" | `sarnath-03-transcend` | Pulls from Sarnath out to the region while the India highlight fades. The national frame dissolving into the global one is the beat. |
-| 4 | ~2:30 — the Buddhist Circuit | `sarnath-04-circuit` | The circuit graphic the shot list already calls for. Legs draw in pilgrimage order. |
-| 5 | 2:50 — the relic tour | `sarnath-05-relic-tour` | India to Vietnam. The highlight hands off from one country to the other as the route lands, so focus follows the relics. |
-| 6 | ~3:05 — China's World Buddhist Forum | `sarnath-06-china-forum` | Delegate routes radiating from Ningbo, drawing on one after another. The counter-strategy as a picture. |
-| 7 | ~3:15 — building on India's doorstep | `sarnath-07-doorstep` | Lumbini, then a hard cut to the Nanhai Academy, then both in one frame. |
-| 8 | 3:25 — the succession | `sarnath-08-succession` | Dharamshala and Beijing, two colours, one dashed line. |
-| 9 | 4:08 — "roughly half a billion people" | `sarnath-09-worldwide` | Countries light up in sequence so the scale accumulates under the line. India lands last. |
+| 1 | 0:12 — "This is Sarnath, just outside Varanasi" | `sarnath/01-locate` | Wide on northern India, then a hard push onto the site. Establishes where before the history starts. |
+| 2 | 0:30 — Ashoka after Kalinga | `sarnath/02-kalinga` | Opens on the battlefield, pulls back, draws north to Sarnath. The arc *is* the argument: conflict in one place, revival in another. |
+| 3 | 1:36 — "transcends national boundaries" | `sarnath/03-transcend` | Pulls from Sarnath out to the region while the India highlight fades. The national frame dissolving into the global one is the beat. |
+| 4 | ~2:30 — the Buddhist Circuit | `sarnath/04-circuit` | The circuit graphic the shot list already calls for. Legs draw in pilgrimage order. |
+| 5 | 2:50 — the relic tour | `sarnath/05-relic-tour` | India to Vietnam. The highlight hands off from one country to the other as the route lands, so focus follows the relics. |
+| 6 | ~3:05 — China's World Buddhist Forum | `sarnath/06-china-forum` | Delegate routes radiating from Ningbo, drawing on one after another. The counter-strategy as a picture. |
+| 7 | ~3:15 — building on India's doorstep | `sarnath/07-doorstep` | Lumbini, then a hard cut to the Nanhai Academy, then both in one frame. |
+| 8 | 3:25 — the succession | `sarnath/08-succession` | Dharamshala and Beijing, two colours, one dashed line. |
+| 9 | 4:08 — "roughly half a billion people" | `sarnath/09-worldwide` | Countries light up in sequence so the scale accumulates under the line. India lands last. |
 
 ## Beats deliberately left without a map
 

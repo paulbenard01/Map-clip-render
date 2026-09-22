@@ -169,6 +169,11 @@ The example scene uses two placeholder images generated for testing
 plain solid-color squares with text). Swap in real photos before using this
 scene for anything real — see "Pins" below for the image requirements.
 
+`scenes/sarnath/` holds a full nine-clip set built from a real script; see
+[`docs/sarnath-clip-plan.md`](docs/sarnath-clip-plan.md) for what each one
+does. Scenes can be grouped in subfolders like that one level deep, and the
+builder's Import list groups them by folder.
+
 `scenes/example-features.json` is a second example that exercises every
 newer schema field in one clip (camera `cut` and `zoomBlast`, all four pin
 styles, the three route curves, `via`, arrowheads, timed multi-country

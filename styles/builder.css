@@ -325,6 +325,17 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
 .import-cols textarea { margin-bottom: 8px; }
 .scene-list { list-style: none; }
 .scene-list li { padding: 3px 0; border-bottom: 1px solid #262a31; display: flex; justify-content: space-between; gap: 8px; }
+.scene-list .scene-group {
+  border-bottom: none;
+  margin-top: 10px;
+  padding-bottom: 1px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.scene-list .scene-group:first-child { margin-top: 0; }
+.scene-list .scene-nested { padding-left: 12px; }
 
 .modal-search { display: flex; gap: 7px; margin-bottom: 8px; }
 .modal-search .img-query { flex: 1; }

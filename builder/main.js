@@ -292,22 +292,42 @@ async function refreshSceneList() {
       list.innerHTML = '<li class="muted">No scenes in scenes/ yet.</li>';
       return;
     }
+    // Grouped by subfolder, so a project's clips read as a set rather than
+    // as loose files among everything else.
+    const groups = new Map();
     scenes.forEach((s) => {
-      const li = document.createElement("li");
-      const btn = document.createElement("button");
-      btn.className = "btn link";
-      btn.type = "button";
-      btn.textContent = s.name;
-      btn.onclick = async () => {
-        const text = await fetch("/scenes/" + s.file).then((r) => r.text());
-        applyImport(text, s.name);
-      };
-      li.appendChild(btn);
-      li.appendChild(Object.assign(document.createElement("span"), {
-        className: "muted",
-        textContent: s.duration ? ` ${s.duration.toFixed(1)}s` : "",
-      }));
-      list.appendChild(li);
+      const key = s.folder || "";
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(s);
+    });
+
+    Array.from(groups.keys()).sort().forEach((folder) => {
+      if (folder) {
+        const heading = document.createElement("li");
+        heading.className = "scene-group";
+        heading.textContent = folder + "/";
+        list.appendChild(heading);
+      }
+      groups.get(folder).forEach((s) => {
+        const li = document.createElement("li");
+        if (folder) li.className = "scene-nested";
+        const btn = document.createElement("button");
+        btn.className = "btn link";
+        btn.type = "button";
+        btn.textContent = s.name;
+        btn.onclick = async () => {
+          const text = await fetch("/scenes/" + s.file).then((r) => r.text());
+          // Prefer the scene's own name, so a clip in a folder still renders
+          // to a clearly-named file rather than a bare "01-locate.mp4".
+          applyImport(text, s.title || s.name);
+        };
+        li.appendChild(btn);
+        li.appendChild(Object.assign(document.createElement("span"), {
+          className: "muted",
+          textContent: s.duration ? ` ${s.duration.toFixed(1)}s` : "",
+        }));
+        list.appendChild(li);
+      });
     });
   } catch (err) {
     list.innerHTML = '<li class="muted">Could not list scenes.</li>';

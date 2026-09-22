@@ -80,20 +80,8 @@ async function handleApi(req, res, url) {
   // ---- scenes ----
   if (route === "/api/scenes" && req.method === "GET") {
     fs.mkdirSync(SCENES_DIR, { recursive: true });
-    const files = fs.readdirSync(SCENES_DIR)
-      .filter((f) => f.endsWith(".json"))
-      .map((f) => {
-        const full = path.join(SCENES_DIR, f);
-        const stat = fs.statSync(full);
-        let title = null, duration = null;
-        try {
-          const parsed = JSON.parse(fs.readFileSync(full, "utf8"));
-          title = parsed.name || null;
-          duration = Engine.computeDuration(Engine.normalizeScene(parsed));
-        } catch (err) { /* a scene mid-edit shouldn't break the list */ }
-        return { file: f, name: path.basename(f, ".json"), title, duration, modified: stat.mtimeMs };
-      })
-      .sort((a, b) => b.modified - a.modified);
+    const files = listScenes(SCENES_DIR)
+      .sort((a, b) => (a.folder || "").localeCompare(b.folder || "") || a.name.localeCompare(b.name));
     return sendJson(res, 200, { scenes: files });
   }
 
@@ -101,14 +89,18 @@ async function handleApi(req, res, url) {
     const body = await readJson(req);
     const name = safeName(body.name, "untitled");
     const file = name.endsWith(".json") ? name : name + ".json";
-    fs.mkdirSync(SCENES_DIR, { recursive: true });
-    const target = path.join(SCENES_DIR, file);
+    // An optional single subfolder, sanitised the same way the filename is.
+    const folder = body.folder ? safeName(body.folder, "") : "";
+    const dir = folder ? path.join(SCENES_DIR, folder) : SCENES_DIR;
+    fs.mkdirSync(dir, { recursive: true });
+    const target = path.join(dir, file);
     const serialized = Engine.serializeScene(body.scene || {});
     // The filename is what the person actually chose, so it wins over
     // whatever `name` the scene was carrying (a template's, usually).
     serialized.name = path.basename(file, ".json");
     fs.writeFileSync(target, JSON.stringify(serialized, null, 2) + "\n");
-    return sendJson(res, 200, { saved: "/scenes/" + file, name: path.basename(file, ".json") });
+    const rel = (folder ? folder + "/" : "") + file;
+    return sendJson(res, 200, { saved: "/scenes/" + rel, name: path.basename(file, ".json") });
   }
 
   // ---- asset upload ----
@@ -168,6 +160,51 @@ async function handleApi(req, res, url) {
   }
 
   return false;
+}
+
+
+/**
+ * Walks scenes/ for scene files, one level of subfolders deep.
+ *
+ * Subfolders are how a project's clips stay together — scenes/sarnath/ rather
+ * than nine files loose among everything else. One level is deliberate: deeper
+ * nesting would want a tree widget, and a flat group list is easier to scan.
+ */
+function listScenes(dir, folder, depth) {
+  folder = folder || "";
+  depth = depth || 0;
+  const out = [];
+  let entries;
+  try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch (err) { return out; }
+
+  entries.forEach((entry) => {
+    if (entry.isDirectory()) {
+      if (depth < 1 && !entry.name.startsWith(".")) {
+        out.push.apply(out, listScenes(path.join(dir, entry.name), path.join(folder, entry.name), depth + 1));
+      }
+      return;
+    }
+    if (!entry.name.endsWith(".json")) return;
+
+    const full = path.join(dir, entry.name);
+    const rel = path.join(folder, entry.name).split(path.sep).join("/");
+    let title = null, duration = null;
+    try {
+      const parsed = JSON.parse(fs.readFileSync(full, "utf8"));
+      title = parsed.name || null;
+      duration = Engine.computeDuration(Engine.normalizeScene(parsed));
+    } catch (err) { /* a scene mid-edit shouldn't break the list */ }
+
+    out.push({
+      file: rel,
+      name: path.basename(entry.name, ".json"),
+      folder: folder.split(path.sep).join("/"),
+      title,
+      duration,
+      modified: fs.statSync(full).mtimeMs,
+    });
+  });
+  return out;
 }
 
 function uniquePath(dir, filename) {
