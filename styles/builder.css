@@ -25,7 +25,7 @@
   --track-zones: #c99a4a;
   --radius: 5px;
   --toolbar-h: 52px;
-  --timeline-h: 260px;
+  --timeline-h: 300px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -277,7 +277,11 @@ textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; r
   flex-direction: column;
 }
 .tl-transport { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-bottom: 1px solid var(--line); }
-.tl-body { flex: 1; display: flex; overflow: hidden; }
+/* auto (not hidden): six tracks fit the default height, but a track with
+   overlapping blocks packs extra sub-rows and can still run taller than
+   that — without a scrollbar the lowest track (titles) would silently be
+   clipped out of view, as it was before this was added. */
+.tl-body { flex: 1; display: flex; overflow-y: auto; overflow-x: hidden; }
 .tl-track-names { width: 86px; flex-shrink: 0; border-right: 1px solid var(--line); padding-top: 24px; }
 .tl-name {
   height: 38px; display: flex; align-items: center; padding-left: 10px;

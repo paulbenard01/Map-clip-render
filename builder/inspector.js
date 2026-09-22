@@ -59,9 +59,11 @@ export function render() {
   ));
 }
 
+const KIND_LABEL = { title: "text box" };
+
 function header(kind, element) {
   return el("div", { className: "insp-header" },
-    el("span", { className: "insp-kind" }, kind),
+    el("span", { className: "insp-kind" }, KIND_LABEL[kind] || kind),
     el("input", {
       className: "insp-id",
       value: element.id,

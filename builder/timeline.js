@@ -17,7 +17,7 @@ const TRACKS = [
   { key: "routes", label: "Routes", kind: "route" },
   { key: "highlights", label: "Countries", kind: "highlight" },
   { key: "zones", label: "Zones", kind: "zone" },
-  { key: "titles", label: "Titles", kind: "title" },
+  { key: "titles", label: "Text boxes", kind: "title" },
 ];
 
 let root = null;

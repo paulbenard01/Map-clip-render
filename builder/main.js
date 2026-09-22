@@ -124,7 +124,7 @@ function wireToolbar() {
     const t = Store.getState().time;
     Store.addElement("title", {
       id: Store.nextId("title"),
-      text: "New title",
+      text: "New text box",
       position: "bottom-left",
       at: round(t, 2),
       until: round(t + 3, 2),
