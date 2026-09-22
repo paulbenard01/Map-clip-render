@@ -51,6 +51,9 @@ think about a shot list — then convert each beat into keyframe timestamps.
                                     //   "zoomBlast" pan eases normally but the zoom
                                     //               hangs back then rushes in; the
                                     //               dramatic push onto a target
+                                    //   "smooth"    a slower, more deliberate glide
+                                    //   "organic"   drifts slightly past the target then
+                                    //               eases back — a soft, human landing
     }
   ],
 

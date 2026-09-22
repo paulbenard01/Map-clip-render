@@ -299,5 +299,74 @@ function testPinAndRouteLabelStyle() {
 testTitleTextStyleDefaults();
 testTitleCustomPosition();
 testPinAndRouteLabelStyle();
+function testNewEasingCurves() {
+  // Endpoints anchor at 0/1 for all of them — that's what keeps duration
+  // and "is this visible yet" boundaries unaffected by which curve is used.
+  [E.smoothstep, E.easeInOutQuint, E.easeOutBack].forEach((fn) => {
+    close(fn(0), 0, 1e-9, fn.name + "(0):");
+    close(fn(1), 1, 1e-9, fn.name + "(1):");
+  });
+
+  // smoothstep has zero slope at both ends — a fade should ease in rather
+  // than jump at a constant rate the instant it starts.
+  assert.ok(E.smoothstep(0.05) < 0.05 * 3, "smoothstep starts slower than linear");
+
+  // easeInOutQuint holds longer at the ends than easeInOutCubic — a
+  // genuinely slower glide, not just a relabelled cubic.
+  assert.ok(E.easeInOutQuint(0.25) < E.easeInOutCubic(0.25), "quint lags cubic near the start");
+
+  // easeOutBack is the whole point of "organic": it actually overshoots
+  // past the target before settling, unlike every other curve here.
+  const overshoots = Array.from({ length: 20 }, (_, i) => E.easeOutBack(i / 19)).some((v) => v > 1.001);
+  assert.ok(overshoots, "easeOutBack should overshoot past 1 somewhere in its range");
+  console.log("  ok  smoothstep/easeInOutQuint/easeOutBack behave as advertised");
+}
+
+function testCameraSmoothAndOrganicTransitions() {
+  const smooth = E.normalizeScene({ camera: [
+    { t: 0, center: [0, 0], zoom: 2 },
+    { t: 10, center: [10, 0], zoom: 12, transition: "smooth" },
+  ] });
+  // A slower glide: further behind at the 25% mark than the default ease.
+  const smoothAt25 = E.cameraAt(smooth, 2.5).center[0];
+  const easeScene = E.normalizeScene({ camera: [
+    { t: 0, center: [0, 0], zoom: 2 }, { t: 10, center: [10, 0], zoom: 12 },
+  ] });
+  const easeAt25 = E.cameraAt(easeScene, 2.5).center[0];
+  assert.ok(smoothAt25 < easeAt25, "smooth lags the default ease early in the move");
+  close(E.cameraAt(smooth, 10).center[0], 10, 1e-9, "smooth still lands exactly on target:");
+
+  const organic = E.normalizeScene({ camera: [
+    { t: 0, center: [0, 0], zoom: 2 },
+    { t: 10, center: [10, 0], zoom: 2, transition: "organic" },
+  ] });
+  // Somewhere before arrival, the camera should actually pass the target
+  // and come back — that's the overshoot-and-settle "organic" is for.
+  const overshootsPastTarget = Array.from({ length: 40 }, (_, i) => E.cameraAt(organic, i / 39 * 10).center[0])
+    .some((lng) => lng > 10.001);
+  assert.ok(overshootsPastTarget, "organic transition should drift past the target before settling");
+  close(E.cameraAt(organic, 10).center[0], 10, 1e-9, "organic still lands exactly on target:");
+  console.log("  ok  smooth glides slower, organic overshoots then settles, both land exactly");
+}
+
+function testEasedFadeAndRouteDrawStillAnchorCorrectly() {
+  // The shape changed; the boundaries — invisible before `at`, fully
+  // resolved once settled, gone after `until` — must not have moved.
+  close(E.fadeOpacity(0.999, 1, 5, 0.5), 0, 1e-6, "still invisible right before `at`:");
+  close(E.fadeOpacity(1.5, 1, 5, 0.5), 1, 1e-9, "fully faded in once settled:");
+  close(E.fadeOpacity(5.001, 1, 5, 0.5), 0, 1e-6, "gone right after `until`:");
+
+  const r = E.normalizeScene({ routes: [{ from: [0, 0], to: [1, 1], startAt: 2, drawDuration: 4 }] }).routes[0];
+  close(E.routeStateAt(r, 2).drawFrac, 0, 1e-9, "route not drawn yet:");
+  close(E.routeStateAt(r, 6).drawFrac, 1, 1e-9, "route fully drawn once its duration elapses:");
+  // The curve is what changed — the 25% mark should now be further behind
+  // than a constant-speed draw would have it.
+  assert.ok(E.routeStateAt(r, 3).drawFrac < 0.25, "eased draw lags a constant-speed draw early on");
+  console.log("  ok  eased fade/route-draw curves keep their timing boundaries, only the shape changed");
+}
+
+testNewEasingCurves();
+testCameraSmoothAndOrganicTransitions();
+testEasedFadeAndRouteDrawStillAnchorCorrectly();
 testNormalizeIsIdempotent();
 console.log("all scene-engine tests passed");

@@ -266,6 +266,8 @@ before it.
 | `"ease"` (default) | Smooth eased pan and zoom. |
 | `"cut"` | Instant jump: holds the previous keyframe, then snaps. This is how you cut between places. |
 | `"zoomBlast"` | Pan, bearing and pitch ease normally, but zoom hangs back and then rushes in — the dramatic push onto a target. |
+| `"smooth"` | A slower, more deliberate glide — holds longer at both ends than the default. |
+| `"organic"` | The camera drifts slightly past the target and eases back, rather than stopping dead on arrival — a softer, more human landing. |
 
 An **orbit** needs no special field: two keyframes with the same `center`
 and `zoom` and different `bearing` values, a few seconds apart, is an orbit.
@@ -310,6 +312,11 @@ timing. (It captures a full-size page at half device scale rather than
 shrinking the viewport, which at the same zoom would show half as much map.)
 
 ### A note on precision
+
+Fades and a route's draw-on are eased (a smooth S-curve, not a constant
+rate) by default — this changed in schemaVersion 2 and applies automatically,
+no field to set. The timing (`fade`, `drawDuration`) means the same thing as
+before; only the shape of the ramp is smoother.
 
 Camera interpolation moves in a straight line between coordinates and does
 not handle the antimeridian (the 180°/-180° seam); a camera move across it
