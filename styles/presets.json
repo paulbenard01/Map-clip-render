@@ -46,5 +46,21 @@
     "text": "#ffffff",
     "textBacking": "rgba(5,5,5,0.8)",
     "labelText": "#ffffff"
+  },
+  "bayeux-linen": {
+    "description": "Baby-blue sea, warm linen land, madder red and woad blue accents (Bayeux Tapestry app).",
+    "background": "#cde5f4",
+    "land": "#efe3c8",
+    "landFocus": "#e2c68c",
+    "border": "#b8a079",
+    "borderWidth": 0.7,
+    "graticule": "rgba(40,90,140,0.07)",
+    "accent": "#9b2d20",
+    "pinRing": "#9b2d20",
+    "pinRingInner": "#fbf6ec",
+    "routeColor": "#2f4a6d",
+    "text": "#2a2119",
+    "textBacking": "rgba(251,246,236,0.9)",
+    "labelText": "#2a2119"
   }
 }
